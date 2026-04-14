@@ -420,7 +420,108 @@
 
     .source-link:hover { text-decoration: underline; }
 
-    /* ── Footer ── */
+    /* ── Collapsible sources ── */
+    .sources-section {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .sources-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+      padding: 4px 0;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .sources-toggle-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+
+    .sources-toggle-icon {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--border);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.3s, background 0.2s;
+      color: var(--ink-muted);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .sources-toggle[aria-expanded="true"] .sources-toggle-icon {
+      transform: rotate(180deg);
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .sources-body {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sources-body.open { max-height: 1200px; }
+
+    .sources-inner { padding-top: 20px; }
+
+    /* ── About me ── */
+    .about-section {
+      margin-top: 32px;
+      padding: 28px 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .about-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      flex-shrink: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .about-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+
+    .about-handle {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+    }
+
+    .about-bio {
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.7;
+    }
+
     .site-footer {
       margin-top: 48px;
       padding: 32px 0 16px;
@@ -761,35 +862,53 @@
     </div>
   </div>
 
-  <!-- Sources section -->
+  <!-- Sources section — collapsible -->
   <div class="sources-section">
-    <div class="sources-title">About the data sources</div>
+    <button class="sources-toggle" aria-expanded="false" onclick="toggleSources(this)">
+      <span class="sources-toggle-label">About the data sources</span>
+      <span class="sources-toggle-icon">▾</span>
+    </button>
+    <div class="sources-body" id="sourcesBody">
+      <div class="sources-inner">
 
-    <div class="source-card">
-      <div class="source-card-header">
-        <span class="source-pill">WHO</span>
-        <span class="source-name">World Health Organization — Asia-Pacific Guidelines</span>
+        <div class="source-card">
+          <div class="source-card-header">
+            <span class="source-pill">WHO</span>
+            <span class="source-name">World Health Organization — Asia-Pacific Guidelines</span>
+          </div>
+          <p class="source-desc">The WHO published specific BMI cutoffs for Asian populations in 2004, recognising that Asians develop metabolic risk at lower BMI levels than Western populations. This app uses the WHO Asia-Pacific thresholds: healthy BMI 18.5–22.9, overweight ≥23, obese ≥27.5. Waist circumference thresholds for Asian adults are ≥90 cm for men and ≥80 cm for women — lower than the global WHO cutoffs.</p>
+          <a class="source-link" href="https://www.who.int/publications/i/item/9789241517836" target="_blank" rel="noopener">WHO Expert Consultation report →</a>
+        </div>
+
+        <div class="source-card">
+          <div class="source-card-header">
+            <span class="source-pill">OWID</span>
+            <span class="source-name">Our World in Data — Global Obesity & NCD Trends</span>
+          </div>
+          <p class="source-desc">Our World in Data aggregates long-run health statistics from the Global Burden of Disease study and WHO. The population context figures used in this app — including Malaysia's overweight prevalence (~50% of adults) and the tripling of obesity rates since 1990 — are drawn from OWID's published country-level data for Malaysia.</p>
+          <a class="source-link" href="https://ourworldindata.org/obesity" target="_blank" rel="noopener">OWID obesity data →</a>
+        </div>
+
+        <div class="source-card">
+          <div class="source-card-header">
+            <span class="source-pill">NHMS</span>
+            <span class="source-name">National Health & Morbidity Survey 2019 — Malaysia</span>
+          </div>
+          <p class="source-desc">The NHMS is Malaysia's most comprehensive national health survey, conducted by the Institute for Public Health under the Ministry of Health Malaysia. The 2019 edition surveyed over 10,000 adults and reported national prevalence of overweight, obesity, abdominal obesity, hypertension, and diabetes. The Malaysian population distribution shown in this app's chart uses NHMS 2019 mean BMI and waist circumference figures by sex as the basis for the simulated reference cloud.</p>
+          <a class="source-link" href="https://iku.moh.gov.my/images/IKU/Document/REPORT/NHMS2019/Report_NHMS2019-NCD.pdf" target="_blank" rel="noopener">NHMS 2019 full report →</a>
+        </div>
+
       </div>
-      <p class="source-desc">The WHO published specific BMI cutoffs for Asian populations in 2004, recognising that Asians develop metabolic risk at lower BMI levels than Western populations. This app uses the WHO Asia-Pacific thresholds: healthy BMI 18.5–22.9, overweight ≥23, obese ≥27.5. Waist circumference thresholds for Asian adults are ≥90 cm for men and ≥80 cm for women — lower than the global WHO cutoffs.</p>
-      <a class="source-link" href="https://www.who.int/publications/i/item/9789241517836" target="_blank" rel="noopener">WHO Expert Consultation report →</a>
     </div>
+  </div>
 
-    <div class="source-card">
-      <div class="source-card-header">
-        <span class="source-pill">OWID</span>
-        <span class="source-name">Our World in Data — Global Obesity & NCD Trends</span>
-      </div>
-      <p class="source-desc">Our World in Data aggregates long-run health statistics from the Global Burden of Disease study and WHO. The population context figures used in this app — including Malaysia's overweight prevalence (~50% of adults) and the tripling of obesity rates since 1990 — are drawn from OWID's published country-level data for Malaysia.</p>
-      <a class="source-link" href="https://ourworldindata.org/obesity" target="_blank" rel="noopener">OWID obesity data →</a>
-    </div>
-
-    <div class="source-card">
-      <div class="source-card-header">
-        <span class="source-pill">NHMS</span>
-        <span class="source-name">National Health & Morbidity Survey 2019 — Malaysia</span>
-      </div>
-      <p class="source-desc">The NHMS is Malaysia's most comprehensive national health survey, conducted by the Institute for Public Health under the Ministry of Health Malaysia. The 2019 edition surveyed over 10,000 adults and reported national prevalence of overweight, obesity, abdominal obesity, hypertension, and diabetes. The Malaysian population distribution shown in this app's chart uses NHMS 2019 mean BMI and waist circumference figures by sex as the basis for the simulated reference cloud.</p>
-      <a class="source-link" href="https://iku.moh.gov.my/images/IKU/Document/REPORT/NHMS2019/Report_NHMS2019-NCD.pdf" target="_blank" rel="noopener">NHMS 2019 full report →</a>
+  <!-- About me -->
+  <div class="about-section">
+    <div class="about-avatar">A</div>
+    <div>
+      <div class="about-name">Auf Ali</div>
+      <div class="about-handle">@theaufthority</div>
+      <p class="about-bio">I'm Auf Ali, known online as Aufthority — an evidence-based educator determined to create awareness and actionable tools for the public to make informed healthcare decisions daily. Cermin Diri is one of those tools: built not just to show numbers, but to help you understand what they mean for your life.</p>
     </div>
   </div>
 
@@ -1190,6 +1309,14 @@
     showPop = false;
     S = {};
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── Collapsible sources ────────────────────────────────── */
+  function toggleSources(btn) {
+    const body = document.getElementById('sourcesBody');
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !expanded);
+    body.classList.toggle('open', !expanded);
   }
 </script>
 </body>
