@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BodyCheck — Know Your Numbers</title>
+  <title>Cermin Diri — Know Your Numbers</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -37,7 +38,6 @@
       min-height: 100vh;
     }
 
-    /* Grain overlay */
     body::before {
       content: '';
       position: fixed;
@@ -49,14 +49,14 @@
     }
 
     .container {
-      max-width: 680px;
+      max-width: 700px;
       margin: 0 auto;
       padding: 48px 24px 80px;
       position: relative;
       z-index: 1;
     }
 
-    /* Header */
+    /* ── Header ── */
     header {
       text-align: center;
       margin-bottom: 52px;
@@ -78,31 +78,22 @@
       margin-bottom: 28px;
     }
 
-    .logo-dot {
-      width: 7px;
-      height: 7px;
-      background: var(--accent);
-      border-radius: 50%;
-    }
+    .logo-dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; }
 
     h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(38px, 7vw, 58px);
-      line-height: 1.05;
+      font-size: clamp(42px, 8vw, 64px);
+      line-height: 1.0;
       letter-spacing: -0.02em;
-      color: var(--ink);
       margin-bottom: 16px;
     }
 
-    h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
+    h1 em { font-style: italic; color: var(--accent); }
 
     .subtitle {
       color: var(--ink-muted);
       font-size: 16px;
-      max-width: 400px;
+      max-width: 420px;
       margin: 0 auto;
       line-height: 1.7;
     }
@@ -122,7 +113,7 @@
       border-radius: 100px;
     }
 
-    /* Form card */
+    /* ── Form ── */
     .form-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -133,18 +124,8 @@
       animation: fadeUp 0.6s 0.1s ease both;
     }
 
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
     .form-group.full { grid-column: 1 / -1; }
 
     label {
@@ -155,7 +136,7 @@
       color: var(--ink-muted);
     }
 
-    input[type="number"], select {
+    input[type="number"] {
       background: var(--bg);
       border: 1.5px solid var(--border);
       border-radius: 10px;
@@ -169,21 +150,15 @@
       appearance: none;
     }
 
-    input[type="number"]:focus, select:focus {
+    input[type="number"]:focus {
       outline: none;
       border-color: var(--accent);
       box-shadow: 0 0 0 3px var(--accent-light);
     }
 
-    .input-suffix {
-      position: relative;
-    }
-
-    .input-suffix input {
-      padding-right: 48px;
-    }
-
-    .suffix-label {
+    .input-wrap { position: relative; }
+    .input-wrap input { padding-right: 48px; }
+    .unit {
       position: absolute;
       right: 14px;
       top: 50%;
@@ -194,340 +169,243 @@
       pointer-events: none;
     }
 
-    /* Sex toggle */
-    .sex-toggle {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
+    .sex-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .sex-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
       padding: 13px;
       background: var(--bg);
       border: 1.5px solid var(--border);
       border-radius: 10px;
       cursor: pointer;
       font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
+      font-size: 15px; font-weight: 500;
       color: var(--ink-muted);
       transition: all 0.2s;
     }
-
     .sex-btn:hover { border-color: var(--ink-muted); }
+    .sex-btn.active { background: var(--ink); border-color: var(--ink); color: var(--bg); }
 
-    .sex-btn.active {
-      background: var(--ink);
-      border-color: var(--ink);
-      color: var(--bg);
-    }
-
-    .form-divider {
-      grid-column: 1 / -1;
-      height: 1px;
-      background: var(--border);
-      margin: 4px 0;
-    }
-
+    .form-divider { grid-column: 1 / -1; height: 1px; background: var(--border); margin: 4px 0; }
     .section-label {
       grid-column: 1 / -1;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      padding-top: 4px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-muted); padding-top: 4px;
     }
 
-    /* Submit button */
-    .btn-submit {
-      width: 100%;
-      padding: 16px;
-      margin-top: 28px;
-      background: var(--ink);
-      color: var(--bg);
-      border: none;
-      border-radius: 12px;
+    .btn-primary {
+      width: 100%; padding: 16px; margin-top: 28px;
+      background: var(--ink); color: var(--bg);
+      border: none; border-radius: 12px;
       font-family: 'DM Serif Display', serif;
-      font-size: 20px;
-      cursor: pointer;
+      font-size: 20px; cursor: pointer;
       transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      letter-spacing: -0.01em;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
     }
-
-    .btn-submit:hover {
+    .btn-primary:hover {
       background: var(--accent);
       transform: translateY(-1px);
       box-shadow: 0 8px 24px rgba(200,68,10,0.25);
     }
 
-    .btn-submit:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-    }
+    /* ── Results ── */
+    #results { display: none; animation: fadeUp 0.5s ease both; }
 
-    /* Results */
-    #results {
-      display: none;
-      animation: fadeUp 0.5s ease both;
-    }
-
-    .results-header {
-      text-align: center;
-      margin-bottom: 32px;
-    }
-
+    .results-header { text-align: center; margin-bottom: 24px; }
     .results-header h2 {
       font-family: 'DM Serif Display', serif;
-      font-size: 32px;
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
+      font-size: 32px; letter-spacing: -0.02em; margin-bottom: 6px;
     }
+    .results-header p { color: var(--ink-muted); font-size: 15px; }
 
-    .results-header p {
-      color: var(--ink-muted);
-      font-size: 15px;
-    }
-
-    /* Three metric cards */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .metric-card {
+    /* Summary strip */
+    .summary-strip {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 28px 32px;
-      box-shadow: 0 2px 12px rgba(26,18,8,0.06);
+      padding: 20px 24px;
+      margin-bottom: 20px;
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      align-items: start;
-      position: relative;
-      overflow: hidden;
+      text-align: center;
     }
-
-    .metric-card::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: var(--card-accent, var(--border));
-      border-radius: 4px 0 0 4px;
+    .strip-label {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--ink-muted); margin-bottom: 4px;
     }
-
-    .metric-card.risk-low { --card-accent: var(--green); }
-    .metric-card.risk-moderate { --card-accent: var(--amber); }
-    .metric-card.risk-high { --card-accent: var(--red); }
-
-    .metric-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-bottom: 6px;
-    }
-
-    .metric-value {
+    .strip-value {
       font-family: 'DM Serif Display', serif;
-      font-size: 36px;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      margin-bottom: 6px;
+      font-size: 26px; letter-spacing: -0.02em;
     }
+    .strip-risk { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; margin-top: 2px; }
+    .r-low  { color: var(--green); }
+    .r-mod  { color: var(--amber); }
+    .r-high { color: var(--red); }
 
-    .metric-desc {
-      font-size: 14px;
-      color: var(--ink-muted);
-      line-height: 1.5;
-    }
-
-    .risk-badge {
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .risk-low .risk-badge { background: var(--green-light); color: var(--green); }
-    .risk-moderate .risk-badge { background: var(--amber-light); color: var(--amber); }
-    .risk-high .risk-badge { background: var(--red-light); color: var(--red); }
-
-    /* Progress bar */
-    .metric-bar-wrap {
-      grid-column: 1 / -1;
-      margin-top: 8px;
-    }
-
-    .metric-bar-track {
-      height: 6px;
-      background: var(--border);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    .metric-bar-fill {
-      height: 100%;
-      border-radius: 3px;
-      background: var(--card-accent, var(--border));
-      width: 0;
-      transition: width 1s cubic-bezier(0.4,0,0.2,1) 0.3s;
-    }
-
-    /* Population context */
-    .context-line {
-      grid-column: 1 / -1;
-      font-size: 12px;
-      color: var(--ink-muted);
-      padding-top: 6px;
-      border-top: 1px solid var(--border);
-      margin-top: 4px;
-    }
-
-    .context-line strong { color: var(--ink); }
-
-    /* AI Interpretation */
-    .ai-card {
-      background: var(--ink);
-      color: var(--bg);
+    /* Chart card */
+    .chart-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 32px;
-      box-shadow: 0 4px 24px rgba(26,18,8,0.15);
-    }
-
-    .ai-card-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      padding: 28px 28px 20px;
+      box-shadow: 0 2px 12px rgba(26,18,8,0.06);
       margin-bottom: 20px;
     }
 
-    .ai-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(0.85); }
-    }
-
-    .ai-card-header span {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,0.5);
-    }
-
-    .ai-text {
-      font-size: 15px;
-      line-height: 1.8;
-      color: rgba(245,240,232,0.88);
-    }
-
-    .ai-text p { margin-bottom: 12px; }
-    .ai-text p:last-child { margin-bottom: 0; }
-
-    .ai-loading {
+    .chart-card-header {
       display: flex;
+      justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       gap: 12px;
-      color: rgba(245,240,232,0.5);
-      font-size: 14px;
+      margin-bottom: 20px;
     }
 
-    .spinner {
-      width: 18px;
-      height: 18px;
-      border: 2px solid rgba(245,240,232,0.2);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
+    .chart-card-title {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-muted);
     }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+    .pop-toggle {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 12px; color: var(--ink-muted);
+      cursor: pointer; user-select: none;
+    }
 
-    /* Reset button */
-    .btn-reset {
-      display: block;
+    .pop-toggle input[type="checkbox"] {
+      width: 14px; height: 14px; cursor: pointer;
+      accent-color: var(--ink);
+    }
+
+    .chart-wrap {
+      position: relative;
       width: 100%;
-      margin-top: 20px;
-      padding: 14px;
-      background: transparent;
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--ink-muted);
-      cursor: pointer;
-      transition: all 0.2s;
+      height: 420px;
     }
 
-    .btn-reset:hover {
-      border-color: var(--ink);
-      color: var(--ink);
+    /* Legend */
+    .chart-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .legend-item {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 12px; color: var(--ink-muted);
+    }
+    .legend-swatch {
+      width: 12px; height: 12px;
+      border-radius: 2px; flex-shrink: 0;
+    }
+    .legend-swatch.circle { border-radius: 50%; }
+
+    /* Slider card */
+    .slider-card {
+      background: var(--ink);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 24px rgba(26,18,8,0.15);
     }
 
-    /* Disclaimer */
+    .slider-card-header { margin-bottom: 28px; }
+    .slider-card-header h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px; color: var(--bg); margin-bottom: 4px;
+    }
+    .slider-card-header p { font-size: 13px; color: rgba(245,240,232,0.45); }
+
+    .slider-group { margin-bottom: 28px; }
+    .slider-group:last-child { margin-bottom: 0; }
+
+    .slider-label-row {
+      display: flex; justify-content: space-between;
+      align-items: baseline; margin-bottom: 12px;
+    }
+    .slider-label {
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(245,240,232,0.45);
+    }
+    .slider-val-wrap { display: flex; align-items: baseline; gap: 6px; }
+    .slider-val {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px; color: var(--bg); letter-spacing: -0.02em;
+    }
+    .slider-unit { font-size: 13px; color: rgba(245,240,232,0.4); }
+    .slider-delta { font-size: 12px; font-weight: 600; color: #7ED4A4; }
+
+    input[type="range"] {
+      -webkit-appearance: none; appearance: none;
+      width: 100%; height: 5px; border-radius: 3px;
+      background: rgba(245,240,232,0.15);
+      outline: none; cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--bg);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      cursor: pointer; transition: transform 0.15s;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+
+    .slider-range-labels {
+      display: flex; justify-content: space-between;
+      margin-top: 8px; font-size: 11px;
+      color: rgba(245,240,232,0.25);
+    }
+
+    .context-note {
+      font-size: 12px; color: rgba(245,240,232,0.38);
+      margin-top: 8px; line-height: 1.6;
+    }
+
+    .btn-reset {
+      display: block; width: 100%; margin-top: 8px; padding: 14px;
+      background: transparent; border: 1.5px solid var(--border);
+      border-radius: 12px; font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 500; color: var(--ink-muted);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-reset:hover { border-color: var(--ink); color: var(--ink); }
+
     .disclaimer {
-      text-align: center;
-      margin-top: 32px;
-      font-size: 12px;
-      color: var(--ink-muted);
-      line-height: 1.7;
+      text-align: center; margin-top: 28px;
+      font-size: 12px; color: var(--ink-muted); line-height: 1.7;
     }
 
-    /* Animations */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 480px) {
-      .form-card { padding: 24px 20px; }
+    @media (max-width: 520px) {
+      .form-card, .chart-card, .slider-card { padding: 24px 18px; }
       .form-grid { grid-template-columns: 1fr; }
       .form-group.full { grid-column: 1; }
-      .form-divider { display: none; }
-      .metric-card { grid-template-columns: 1fr; padding: 24px 20px; }
-      .risk-badge { justify-self: start; }
+      .summary-strip { grid-template-columns: repeat(3,1fr); gap: 10px; padding: 16px; }
+      .strip-value { font-size: 20px; }
+      .chart-wrap { height: 300px; }
     }
   </style>
 </head>
 <body>
 <div class="container">
+
+  <!-- Header -->
   <header>
-    <div class="logo-mark"><div class="logo-dot"></div> BodyCheck</div>
-    <h1>Know your<br/><em>numbers.</em></h1>
-    <p class="subtitle">Enter three measurements. Get a calibrated health risk profile based on WHO Asia-Pacific guidelines and Malaysian population data.</p>
+    <div class="logo-mark"><div class="logo-dot"></div> Health Tool</div>
+    <h1>Cermin<br/><em>Diri.</em></h1>
+    <p class="subtitle">Know your numbers. Three measurements, calibrated for Asian bodies, backed by global data.</p>
     <div class="source-badge">📊 WHO · OWID · NHMS Malaysia</div>
   </header>
 
-  <!-- Input Form -->
+  <!-- Form -->
   <div class="form-card" id="formSection">
     <div class="form-grid">
 
@@ -536,16 +414,16 @@
       <div class="form-group full">
         <label>Biological Sex</label>
         <div class="sex-toggle">
-          <button class="sex-btn active" data-sex="male" onclick="setSex('male')">♂ Male</button>
-          <button class="sex-btn" data-sex="female" onclick="setSex('female')">♀ Female</button>
+          <button class="sex-btn active" data-sex="male"   onclick="setSex('male')">♂ Male</button>
+          <button class="sex-btn"        data-sex="female" onclick="setSex('female')">♀ Female</button>
         </div>
       </div>
 
       <div class="form-group full">
         <label>Age</label>
-        <div class="input-suffix">
-          <input type="number" id="age" placeholder="e.g. 35" min="15" max="100" />
-          <span class="suffix-label">yrs</span>
+        <div class="input-wrap">
+          <input type="number" id="inAge" placeholder="e.g. 35" min="15" max="100" />
+          <span class="unit">yrs</span>
         </div>
       </div>
 
@@ -554,303 +432,497 @@
 
       <div class="form-group">
         <label>Weight</label>
-        <div class="input-suffix">
-          <input type="number" id="weight" placeholder="e.g. 72" min="20" max="300" step="0.1" />
-          <span class="suffix-label">kg</span>
+        <div class="input-wrap">
+          <input type="number" id="inWeight" placeholder="e.g. 72" min="20" max="300" step="0.5" />
+          <span class="unit">kg</span>
         </div>
       </div>
 
       <div class="form-group">
         <label>Height</label>
-        <div class="input-suffix">
-          <input type="number" id="height" placeholder="e.g. 170" min="100" max="250" />
-          <span class="suffix-label">cm</span>
+        <div class="input-wrap">
+          <input type="number" id="inHeight" placeholder="e.g. 170" min="100" max="250" />
+          <span class="unit">cm</span>
         </div>
       </div>
 
       <div class="form-group full">
         <label>Waist Circumference</label>
-        <div class="input-suffix">
-          <input type="number" id="waist" placeholder="e.g. 88" min="40" max="200" step="0.5" />
-          <span class="suffix-label">cm</span>
+        <div class="input-wrap">
+          <input type="number" id="inWaist" placeholder="e.g. 88" min="40" max="160" step="0.5" />
+          <span class="unit">cm</span>
         </div>
       </div>
 
     </div>
-
-    <button class="btn-submit" id="submitBtn" onclick="calculate()">
-      Analyse My Risk →
-    </button>
+    <button class="btn-primary" onclick="calculate()">Cermin Diri →</button>
   </div>
 
   <!-- Results -->
   <div id="results">
+
     <div class="results-header">
       <h2>Your Health Profile</h2>
       <p id="resultsSubtitle"></p>
     </div>
 
-    <div class="cards-grid">
-      <!-- BMI Card -->
-      <div class="metric-card" id="bmiCard">
-        <div>
-          <div class="metric-label">Body Mass Index (BMI)</div>
-          <div class="metric-value" id="bmiValue">—</div>
-          <div class="metric-desc" id="bmiDesc"></div>
-        </div>
-        <div class="risk-badge" id="bmiBadge"></div>
-        <div class="metric-bar-wrap">
-          <div class="metric-bar-track">
-            <div class="metric-bar-fill" id="bmiBar"></div>
-          </div>
-        </div>
-        <div class="context-line" id="bmiContext"></div>
+    <!-- Summary strip -->
+    <div class="summary-strip">
+      <div>
+        <div class="strip-label">BMI</div>
+        <div class="strip-value" id="sBMI">—</div>
+        <div class="strip-risk"  id="sBMIcat"></div>
       </div>
-
-      <!-- Waist Card -->
-      <div class="metric-card" id="waistCard">
-        <div>
-          <div class="metric-label">Abdominal Obesity (Waist)</div>
-          <div class="metric-value" id="waistValue">—</div>
-          <div class="metric-desc" id="waistDesc"></div>
-        </div>
-        <div class="risk-badge" id="waistBadge"></div>
-        <div class="metric-bar-wrap">
-          <div class="metric-bar-track">
-            <div class="metric-bar-fill" id="waistBar"></div>
-          </div>
-        </div>
-        <div class="context-line" id="waistContext"></div>
+      <div>
+        <div class="strip-label">Waist</div>
+        <div class="strip-value" id="sWaist">—</div>
+        <div class="strip-risk"  id="sWaistcat"></div>
       </div>
-
-      <!-- WHtR Card -->
-      <div class="metric-card" id="whtCard">
-        <div>
-          <div class="metric-label">Waist-to-Height Ratio</div>
-          <div class="metric-value" id="whtValue">—</div>
-          <div class="metric-desc" id="whtDesc"></div>
-        </div>
-        <div class="risk-badge" id="whtBadge"></div>
-        <div class="metric-bar-wrap">
-          <div class="metric-bar-track">
-            <div class="metric-bar-fill" id="whtBar"></div>
-          </div>
-        </div>
-        <div class="context-line" id="whtContext"></div>
+      <div>
+        <div class="strip-label">WHtR</div>
+        <div class="strip-value" id="sWHtR">—</div>
+        <div class="strip-risk"  id="sWHtRcat"></div>
       </div>
     </div>
 
-    <!-- AI Interpretation -->
-    <div class="ai-card">
-      <div class="ai-card-header">
-        <div class="ai-dot"></div>
-        <span>AI Health Interpretation</span>
+    <!-- Chart card -->
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <div class="chart-card-title">📍 BMI vs Waist Risk Map</div>
+        <label class="pop-toggle">
+          <input type="checkbox" id="chkPop" onchange="togglePop()" />
+          Show Malaysian population (NHMS 2019)
+        </label>
       </div>
-      <div id="aiOutput">
-        <div class="ai-loading">
-          <div class="spinner"></div>
-          Generating your personalised interpretation…
-        </div>
+
+      <div class="chart-wrap">
+        <canvas id="riskChart"
+          role="img"
+          aria-label="Scatter chart of BMI vs waist circumference showing WHO Asia-Pacific risk zones. Green is healthy, amber is elevated risk, red is high risk. Blue dot marks your position.">
+          BMI vs waist risk chart — green = healthy, amber = elevated, red = high risk.
+        </canvas>
+      </div>
+
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-swatch" style="background:rgba(99,153,34,0.35)"></div> Healthy zone</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:rgba(186,117,23,0.35)"></div> Elevated risk</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:rgba(226,75,74,0.35)"></div> High risk</div>
+        <div class="legend-item"><div class="legend-swatch circle" style="background:#378ADD"></div> Your position</div>
+        <div class="legend-item"><div class="legend-swatch circle" style="background:#3B6D11;opacity:0.6"></div> Your goal</div>
+        <div class="legend-item"><div class="legend-swatch circle" style="background:#888780;opacity:0.5"></div> MY population</div>
       </div>
     </div>
 
-    <button class="btn-reset" onclick="reset()">← Start Over</button>
+    <!-- Sliders -->
+    <div class="slider-card">
+      <div class="slider-card-header">
+        <h3>What if I improve?</h3>
+        <p>Drag to simulate your goal — watch the green dot move on the chart above.</p>
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label-row">
+          <span class="slider-label">Goal Weight</span>
+          <div class="slider-val-wrap">
+            <span class="slider-val" id="slWeightVal">—</span>
+            <span class="slider-unit">kg</span>
+            <span class="slider-delta" id="slWeightDelta"></span>
+          </div>
+        </div>
+        <input type="range" id="slWeight" step="0.5" oninput="onSlide()" />
+        <div class="slider-range-labels">
+          <span id="slWeightMin"></span><span id="slWeightMax"></span>
+        </div>
+        <div class="context-note" id="ctxWeight"></div>
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label-row">
+          <span class="slider-label">Goal Waist</span>
+          <div class="slider-val-wrap">
+            <span class="slider-val" id="slWaistVal">—</span>
+            <span class="slider-unit">cm</span>
+            <span class="slider-delta" id="slWaistDelta"></span>
+          </div>
+        </div>
+        <input type="range" id="slWaist" step="0.5" oninput="onSlide()" />
+        <div class="slider-range-labels">
+          <span id="slWaistMin"></span><span id="slWaistMax"></span>
+        </div>
+        <div class="context-note" id="ctxWaist"></div>
+      </div>
+    </div>
+
+    <button class="btn-reset" onclick="resetApp()">← Start Over</button>
 
     <div class="disclaimer">
-      This tool is for informational purposes only and does not constitute medical advice.<br/>
-      Consult a qualified healthcare professional for diagnosis and treatment.
+      For informational purposes only. Not a substitute for professional medical advice.<br/>
+      Please consult a qualified healthcare provider for diagnosis and treatment.
     </div>
   </div>
+
 </div>
 
 <script>
-  let selectedSex = 'male';
+  /* ── State ─────────────────────────────────────────────── */
+  let sex = 'male';
+  let S = {};          // current session inputs
+  let chart = null;
+  let showPop = false;
 
-  function setSex(sex) {
-    selectedSex = sex;
+  /* ── Sex toggle ────────────────────────────────────────── */
+  function setSex(s) {
+    sex = s;
     document.querySelectorAll('.sex-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector(`[data-sex="${sex}"]`).classList.add('active');
+    document.querySelector(`[data-sex="${s}"]`).classList.add('active');
   }
 
-  function getRiskClass(level) {
-    if (level === 'low') return 'risk-low';
-    if (level === 'moderate') return 'risk-moderate';
-    return 'risk-high';
+  /* ── Calculations ───────────────────────────────────────── */
+  function calcBMI(w, h) { return w / ((h / 100) ** 2); }
+
+  function bmiCat(b) {
+    if (b < 18.5) return { cat: 'Underweight', risk: 'mod' };
+    if (b < 23)   return { cat: 'Healthy',     risk: 'low' };
+    if (b < 27.5) return { cat: 'Overweight',  risk: 'mod' };
+    return               { cat: 'Obese',        risk: 'high' };
   }
 
-  function calcBMI(weight, height) {
-    const bmi = weight / ((height / 100) ** 2);
-    // WHO Asia-Pacific cutoffs
-    let category, level, desc, barPct;
-    if (bmi < 18.5) {
-      category = 'Underweight'; level = 'moderate';
-      desc = 'Below healthy range. Risk of nutritional deficiency and immune dysfunction.';
-      barPct = 20;
-    } else if (bmi < 23) {
-      category = 'Healthy'; level = 'low';
-      desc = 'Within the healthy range for Asian adults (WHO Asia-Pacific). Keep it up.';
-      barPct = 35;
-    } else if (bmi < 27.5) {
-      category = 'Overweight'; level = 'moderate';
-      desc = 'Above healthy range for Asian adults. Elevated risk of metabolic conditions.';
-      barPct = 62;
-    } else {
-      category = 'Obese'; level = 'high';
-      desc = 'Significantly above healthy range. High risk of cardiovascular disease, T2 diabetes, and hypertension.';
-      barPct = 88;
+  function waistCat(w, s) {
+    const t1 = s === 'male' ? 90 : 80;
+    const t2 = s === 'male' ? 100 : 90;
+    if (w < t1) return { cat: 'Normal',   risk: 'low' };
+    if (w < t2) return { cat: 'Elevated', risk: 'mod' };
+    return             { cat: 'High',     risk: 'high' };
+  }
+
+  function whtR(waist, height) {
+    const r = waist / height;
+    if (r < 0.4) return { val: r.toFixed(3), cat: 'Low',       risk: 'low' };
+    if (r < 0.5) return { val: r.toFixed(3), cat: 'Healthy',   risk: 'low' };
+    if (r < 0.6) return { val: r.toFixed(3), cat: 'Elevated',  risk: 'mod' };
+    return              { val: r.toFixed(3), cat: 'High risk',  risk: 'high' };
+  }
+
+  function riskZone(bmiVal, waistVal, s) {
+    const t = s === 'male' ? 90 : 80;
+    if (bmiVal < 18.5)                   return 'amber';
+    if (bmiVal < 23 && waistVal < t)     return 'green';
+    if (bmiVal >= 23 && waistVal >= t)   return 'red';
+    return 'amber';
+  }
+
+  /* ── Seeded population cloud ────────────────────────────── */
+  function seededRand(seed) {
+    let s = seed;
+    return () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
+  }
+
+  function buildPopCloud(s) {
+    const rand = seededRand(s === 'male' ? 42 : 99);
+    const meanBMI   = s === 'male' ? 26.8 : 27.6;
+    const meanWaist = s === 'male' ? 85.5 : 78.0;
+    const sdBMI = 4.2, sdWaist = 10.5;
+    const pts = [];
+    for (let i = 0; i < 220; i++) {
+      const u1 = rand() + 0.001, u2 = rand();
+      const z1 = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+      const u3 = rand() + 0.001, u4 = rand();
+      const z2 = Math.sqrt(-2 * Math.log(u3)) * Math.cos(2 * Math.PI * u4);
+      pts.push({ x: +(meanWaist + z2 * sdWaist).toFixed(1), y: +(meanBMI + z1 * sdBMI).toFixed(1) });
     }
-    return { value: bmi.toFixed(1), category, level, desc, barPct };
+    return pts;
   }
 
-  function calcWaist(waist, sex) {
-    // WHO Asian cutoffs: men ≥90cm, women ≥80cm
-    const threshold = sex === 'male' ? 90 : 80;
-    const high = sex === 'male' ? 100 : 90;
-    let category, level, desc, barPct;
-    if (waist < threshold) {
-      category = 'Normal'; level = 'low';
-      desc = `Below the ${threshold}cm threshold for Asian ${sex}s. Abdominal fat within safe limits.`;
-      barPct = Math.round((waist / threshold) * 45);
-    } else if (waist < high) {
-      category = 'Elevated'; level = 'moderate';
-      desc = `Above ${threshold}cm — the WHO Asian cutoff for ${sex}s. Visceral fat may be impacting metabolic health.`;
-      barPct = 65;
-    } else {
-      category = 'High'; level = 'high';
-      desc = `Substantially above WHO thresholds. Strongly associated with cardiometabolic disease risk.`;
-      barPct = 90;
-    }
-    return { value: `${waist} cm`, category, level, desc, barPct };
-  }
-
-  function calcWHtR(waist, height) {
-    const ratio = waist / height;
-    let category, level, desc, barPct;
-    if (ratio < 0.4) {
-      category = 'Low'; level = 'low';
-      desc = 'Excellent ratio. Body fat well distributed relative to height.';
-      barPct = 22;
-    } else if (ratio < 0.5) {
-      category = 'Healthy'; level = 'low';
-      desc = 'Within the healthy range. Ratio below the universal 0.5 boundary.';
-      barPct = 40;
-    } else if (ratio < 0.6) {
-      category = 'Elevated'; level = 'moderate';
-      desc = 'Above 0.5 — the evidence-backed threshold linked to increased cardiometabolic risk.';
-      barPct = 65;
-    } else {
-      category = 'High Risk'; level = 'high';
-      desc = 'Significantly above 0.5. Strong predictor of cardiovascular and metabolic disease.';
-      barPct = 90;
-    }
-    return { value: ratio.toFixed(3), category, level, desc, barPct };
-  }
-
-  // Malaysia OWID context stats (hardcoded from OWID 2022 / NHMS 2019)
-  const MY_CONTEXT = {
-    bmi: {
-      low: 'You\'re in the <strong>healthy minority</strong> — only ~29% of Malaysian adults maintain a healthy BMI.',
-      moderate: 'Around <strong>50% of Malaysian adults</strong> are in the overweight or obese range (OWID 2022).',
-      high: '<strong>1 in 5 Malaysian adults</strong> is classified as obese. Obesity prevalence has tripled since 1990 (OWID).'
-    },
-    waist: {
-      low: 'Your waist measurement is within safe limits — a strong protective factor for metabolic disease.',
-      moderate: 'Abdominal obesity affects roughly <strong>35–40% of Malaysian adults</strong>, particularly in urban areas (NHMS 2019).',
-      high: 'Abdominal obesity is a leading driver of Malaysia\'s <strong>diabetes and hypertension burden</strong>, the highest in ASEAN.'
-    },
-    wht: {
-      low: 'Excellent result. A WHtR below 0.5 is one of the best standalone predictors of cardiovascular health.',
-      moderate: 'A WHtR above 0.5 predicts cardiovascular risk better than BMI alone in multiple Asian cohort studies.',
-      high: 'A WHtR above 0.6 significantly increases 10-year risk of heart disease and type 2 diabetes.'
-    }
+  /* ── Context notes ──────────────────────────────────────── */
+  const CTX_WEIGHT = {
+    low:  'You\'re within a healthy BMI range. Only ~29% of Malaysian adults maintain this — keep it up.',
+    mod:  'Around 50% of Malaysian adults are overweight or obese (OWID 2022). Each kg lost reduces cardiovascular risk.',
+    high: 'Obesity in Malaysia has tripled since 1990 (OWID). Losing even 5–10% of body weight significantly reduces risk.'
+  };
+  const CTX_WAIST = {
+    low:  'Waist within safe limits — a strong protective factor against metabolic disease.',
+    mod:  'Abdominal obesity affects ~35–40% of Malaysian adults (NHMS 2019). Even 4–5 cm off your waist improves outcomes.',
+    high: 'Abdominal obesity drives Malaysia\'s diabetes & hypertension burden — highest in ASEAN. Reducing waist is the most impactful change.'
   };
 
-  function renderCard(cardId, valueId, descId, badgeId, barId, contextId, data, contextKey) {
-    const card = document.getElementById(cardId);
-    card.className = `metric-card ${getRiskClass(data.level)}`;
-    document.getElementById(valueId).textContent = data.value;
-    document.getElementById(descId).textContent = data.desc;
-    const badge = document.getElementById(badgeId);
-    badge.textContent = data.category;
-    document.getElementById(contextId).innerHTML = MY_CONTEXT[contextKey][data.level];
-    setTimeout(() => {
-      document.getElementById(barId).style.width = data.barPct + '%';
-    }, 100);
-  }
+  /* ── Chart render ───────────────────────────────────────── */
+  function renderChart() {
+    const t = sex === 'male' ? 90 : 80;
+    const curBMI  = calcBMI(S.weight, S.height);
+    const goalBMI = calcBMI(S.goalW, S.height);
+    const goalChanged = S.goalW !== S.weight || S.goalWt !== S.waist;
 
-  async function fetchAI(payload) {
-    try {
-      const res = await fetch('/api/interpret', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const data = await res.json();
-      return data.interpretation || 'Unable to generate interpretation at this time.';
-    } catch (e) {
-      return 'AI interpretation is unavailable right now. Please refer to the metrics above for your health profile.';
+    /* Zone background bubbles */
+    const bgGreen = [], bgAmber = [], bgRed = [];
+    const step = 1;
+    for (let w = 50; w < 130; w += step) {
+      for (let b = 14; b < 45; b += step) {
+        const z = riskZone(b + step / 2, w + step / 2, sex);
+        const pt = { x: w + step / 2, y: b + step / 2, r: step * 4.5 };
+        if      (z === 'green') bgGreen.push(pt);
+        else if (z === 'amber') bgAmber.push(pt);
+        else                    bgRed.push(pt);
+      }
     }
+
+    const datasets = [
+      { label: 'Healthy zone',   data: bgGreen, type: 'bubble', backgroundColor: 'rgba(99,153,34,0.18)',  borderColor: 'transparent', borderWidth: 0, order: 5 },
+      { label: 'Elevated zone',  data: bgAmber, type: 'bubble', backgroundColor: 'rgba(186,117,23,0.18)', borderColor: 'transparent', borderWidth: 0, order: 4 },
+      { label: 'High risk zone', data: bgRed,   type: 'bubble', backgroundColor: 'rgba(226,75,74,0.18)',  borderColor: 'transparent', borderWidth: 0, order: 3 },
+    ];
+
+    if (showPop) {
+      datasets.push({
+        label: 'Malaysian adults (NHMS 2019)',
+        data: buildPopCloud(sex),
+        type: 'scatter',
+        pointRadius: 3, pointStyle: 'circle',
+        backgroundColor: 'rgba(136,135,128,0.2)',
+        borderColor: 'rgba(136,135,128,0.3)',
+        borderWidth: 0.5, order: 2
+      });
+    }
+
+    if (goalChanged) {
+      datasets.push({
+        label: 'Your goal',
+        data: [{ x: S.goalWt, y: goalBMI }],
+        type: 'scatter',
+        pointRadius: 10, pointStyle: 'circle',
+        backgroundColor: 'rgba(59,109,17,0.3)',
+        borderColor: '#3B6D11', borderWidth: 2, order: 1
+      });
+    }
+
+    datasets.push({
+      label: 'Your position',
+      data: [{ x: S.waist, y: curBMI }],
+      type: 'scatter',
+      pointRadius: 12, pointStyle: 'circle',
+      backgroundColor: 'rgba(55,138,221,0.85)',
+      borderColor: '#185FA5', borderWidth: 2, order: 0
+    });
+
+    const gridColor  = 'rgba(0,0,0,0.07)';
+    const tickColor  = 'rgba(0,0,0,0.45)';
+    const labelColor = 'rgba(0,0,0,0.55)';
+
+    if (chart) chart.destroy();
+
+    chart = new Chart(document.getElementById('riskChart'), {
+      type: 'bubble',
+      data: { datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: { duration: 380 },
+        layout: { padding: { top: 18, right: 18, bottom: 8, left: 4 } },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            filter: item => ['Your position', 'Your goal', 'Malaysian adults (NHMS 2019)'].includes(item.dataset.label),
+            callbacks: {
+              title: item => item[0].dataset.label,
+              label: item => {
+                const b = +item.raw.y.toFixed(1);
+                const w = +item.raw.x.toFixed(1);
+                return [
+                  `Waist: ${w} cm (${waistCat(w, sex).cat})`,
+                  `BMI: ${b} (${bmiCat(b).cat})`
+                ];
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            min: 50, max: 130,
+            title: { display: true, text: 'Waist circumference (cm)', color: labelColor, font: { size: 12, family: "'DM Sans', sans-serif" } },
+            grid: { color: gridColor },
+            ticks: { color: tickColor, stepSize: 10, callback: v => v + ' cm' }
+          },
+          y: {
+            min: 14, max: 45,
+            title: { display: true, text: 'BMI', color: labelColor, font: { size: 12, family: "'DM Sans', sans-serif" } },
+            grid: { color: gridColor },
+            ticks: { color: tickColor, stepSize: 5 }
+          }
+        }
+      }
+    });
+
+    /* Draw threshold lines + arrow after chart renders */
+    setTimeout(() => drawAnnotations(curBMI, goalBMI, goalChanged, t), 420);
   }
 
-  function renderAI(text) {
-    const paras = text.split('\n').filter(p => p.trim());
-    document.getElementById('aiOutput').innerHTML = paras
-      .map(p => `<p>${p}</p>`)
-      .join('');
-    document.getElementById('aiOutput').className = 'ai-text';
+  function drawAnnotations(curBMI, goalBMI, goalChanged, waistThreshold) {
+    if (!chart) return;
+    const ctx    = chart.ctx;
+    const xScale = chart.scales.x;
+    const yScale = chart.scales.y;
+    const tickColor = 'rgba(0,0,0,0.35)';
+
+    ctx.save();
+
+    /* Threshold lines */
+    ctx.setLineDash([5, 4]);
+    ctx.strokeStyle = 'rgba(0,0,0,0.15)';
+    ctx.lineWidth = 1;
+
+    [[waistThreshold, 'x'], [23, 'y'], [27.5, 'y']].forEach(([val, axis]) => {
+      ctx.beginPath();
+      if (axis === 'x') {
+        const px = xScale.getPixelForValue(val);
+        ctx.moveTo(px, yScale.top);
+        ctx.lineTo(px, yScale.bottom);
+      } else {
+        const py = yScale.getPixelForValue(val);
+        ctx.moveTo(xScale.left, py);
+        ctx.lineTo(xScale.right, py);
+      }
+      ctx.stroke();
+    });
+
+    ctx.setLineDash([]);
+    ctx.font = "11px 'DM Sans', sans-serif";
+    ctx.fillStyle = tickColor;
+    ctx.textAlign = 'right';
+    ctx.fillText('BMI 23',    xScale.right - 4, yScale.getPixelForValue(23) - 5);
+    ctx.fillText('BMI 27.5',  xScale.right - 4, yScale.getPixelForValue(27.5) - 5);
+    ctx.textAlign = 'left';
+    ctx.fillText(`Waist ${waistThreshold}cm`, xScale.getPixelForValue(waistThreshold) + 4, yScale.top + 14);
+
+    /* Arrow from current to goal */
+    if (goalChanged) {
+      const x1 = xScale.getPixelForValue(S.waist);
+      const y1 = yScale.getPixelForValue(curBMI);
+      const x2 = xScale.getPixelForValue(S.goalWt);
+      const y2 = yScale.getPixelForValue(goalBMI);
+      const dx = x2 - x1, dy = y2 - y1;
+      const len = Math.sqrt(dx * dx + dy * dy);
+      if (len > 16) {
+        const ux = dx / len, uy = dy / len;
+        ctx.beginPath();
+        ctx.setLineDash([5, 4]);
+        ctx.strokeStyle = '#3B6D11';
+        ctx.lineWidth = 1.5;
+        ctx.moveTo(x1 + ux * 14, y1 + uy * 14);
+        ctx.lineTo(x2 - ux * 14, y2 - uy * 14);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = '#3B6D11';
+        ctx.beginPath();
+        ctx.moveTo(x2 - ux * 14,            y2 - uy * 14);
+        ctx.lineTo(x2 - ux * 23 + uy * 5,   y2 - uy * 23 - ux * 5);
+        ctx.lineTo(x2 - ux * 23 - uy * 5,   y2 - uy * 23 + ux * 5);
+        ctx.closePath();
+        ctx.fill();
+      }
+    }
+
+    ctx.restore();
   }
 
-  async function calculate() {
-    const age = parseInt(document.getElementById('age').value);
-    const weight = parseFloat(document.getElementById('weight').value);
-    const height = parseFloat(document.getElementById('height').value);
-    const waist = parseFloat(document.getElementById('waist').value);
+  /* ── Slider interaction ─────────────────────────────────── */
+  function onSlide() {
+    S.goalW  = parseFloat(document.getElementById('slWeight').value);
+    S.goalWt = parseFloat(document.getElementById('slWaist').value);
+
+    document.getElementById('slWeightVal').textContent = S.goalW.toFixed(1);
+    document.getElementById('slWaistVal').textContent  = S.goalWt.toFixed(1);
+
+    const dW = +(S.weight - S.goalW).toFixed(1);
+    const dC = +(S.waist  - S.goalWt).toFixed(1);
+    document.getElementById('slWeightDelta').textContent = dW > 0 ? `−${dW} kg` : dW < 0 ? `+${Math.abs(dW)} kg` : '';
+    document.getElementById('slWaistDelta').textContent  = dC > 0 ? `−${dC} cm` : dC < 0 ? `+${Math.abs(dC)} cm` : '';
+
+    const goalBMI   = calcBMI(S.goalW, S.height);
+    const goalBMIc  = bmiCat(goalBMI);
+    const goalWaistC = waistCat(S.goalWt, sex);
+    document.getElementById('ctxWeight').textContent = CTX_WEIGHT[goalBMIc.risk];
+    document.getElementById('ctxWaist').textContent  = CTX_WAIST[goalWaistC.risk];
+
+    renderChart();
+  }
+
+  function togglePop() {
+    showPop = document.getElementById('chkPop').checked;
+    renderChart();
+  }
+
+  /* ── Main calculate ─────────────────────────────────────── */
+  function calculate() {
+    const age    = parseInt(document.getElementById('inAge').value);
+    const weight = parseFloat(document.getElementById('inWeight').value);
+    const height = parseFloat(document.getElementById('inHeight').value);
+    const waist  = parseFloat(document.getElementById('inWaist').value);
 
     if (!age || !weight || !height || !waist) {
       alert('Please fill in all fields to continue.');
       return;
     }
 
-    const btn = document.getElementById('submitBtn');
-    btn.disabled = true;
-    btn.textContent = 'Calculating…';
+    const b  = calcBMI(weight, height);
+    const bc = bmiCat(b);
+    const wc = waistCat(waist, sex);
+    const wr = whtR(waist, height);
 
-    const bmi = calcBMI(weight, height);
-    const waistResult = calcWaist(waist, selectedSex);
-    const wht = calcWHtR(waist, height);
+    /* Summary strip */
+    document.getElementById('sBMI').textContent    = b.toFixed(1);
+    document.getElementById('sBMIcat').textContent = bc.cat;
+    document.getElementById('sBMIcat').className   = 'strip-risk r-' + bc.risk;
 
-    document.getElementById('formSection').style.display = 'none';
-    document.getElementById('results').style.display = 'block';
+    document.getElementById('sWaist').textContent    = waist + ' cm';
+    document.getElementById('sWaistcat').textContent = wc.cat;
+    document.getElementById('sWaistcat').className   = 'strip-risk r-' + wc.risk;
+
+    document.getElementById('sWHtR').textContent    = wr.val;
+    document.getElementById('sWHtRcat').textContent = wr.cat;
+    document.getElementById('sWHtRcat').className   = 'strip-risk r-' + wr.risk;
+
     document.getElementById('resultsSubtitle').textContent =
-      `${selectedSex === 'male' ? 'Male' : 'Female'}, ${age} years old · Calibrated for Asian populations`;
+      `${sex === 'male' ? 'Male' : 'Female'}, ${age} years old · WHO Asia-Pacific calibrated`;
 
-    renderCard('bmiCard', 'bmiValue', 'bmiDesc', 'bmiBadge', 'bmiBar', 'bmiContext', bmi, 'bmi');
-    renderCard('waistCard', 'waistValue', 'waistDesc', 'waistBadge', 'waistBar', 'waistContext', waistResult, 'waist');
-    renderCard('whtCard', 'whtValue', 'whtDesc', 'whtBadge', 'whtBar', 'whtContext', wht, 'wht');
+    /* Set state */
+    S = { age, weight, height, waist, goalW: weight, goalWt: waist };
 
+    /* Setup sliders */
+    const sw = document.getElementById('slWeight');
+    sw.min = Math.max(30, Math.round(weight * 0.72 * 2) / 2);
+    sw.max = Math.round(weight * 1.08 * 2) / 2;
+    sw.value = weight;
+    document.getElementById('slWeightMin').textContent = sw.min + ' kg';
+    document.getElementById('slWeightMax').textContent = sw.max + ' kg';
+    document.getElementById('slWeightVal').textContent = weight.toFixed(1);
+
+    const sc = document.getElementById('slWaist');
+    sc.min = Math.max(40, Math.round(waist * 0.72 * 2) / 2);
+    sc.max = Math.round(waist * 1.08 * 2) / 2;
+    sc.value = waist;
+    document.getElementById('slWaistMin').textContent = sc.min + ' cm';
+    document.getElementById('slWaistMax').textContent = sc.max + ' cm';
+    document.getElementById('slWaistVal').textContent = waist.toFixed(1);
+
+    /* Initial context notes */
+    document.getElementById('ctxWeight').textContent = CTX_WEIGHT[bc.risk];
+    document.getElementById('ctxWaist').textContent  = CTX_WAIST[wc.risk];
+
+    /* Show results */
+    document.getElementById('formSection').style.display = 'none';
+    document.getElementById('results').style.display     = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // Fetch AI interpretation
-    const interpretation = await fetchAI({
-      age, sex: selectedSex, weight, height, waist,
-      bmi: bmi.value, bmiCategory: bmi.category,
-      waistCategory: waistResult.category,
-      whtRatio: wht.value, whtCategory: wht.category
-    });
-    renderAI(interpretation);
-
-    btn.disabled = false;
-    btn.textContent = 'Analyse My Risk →';
+    setTimeout(() => renderChart(), 80);
   }
 
-  function reset() {
-    document.getElementById('results').style.display = 'none';
+  /* ── Reset ──────────────────────────────────────────────── */
+  function resetApp() {
+    if (chart) { chart.destroy(); chart = null; }
+    document.getElementById('results').style.display     = 'none';
     document.getElementById('formSection').style.display = 'block';
-    document.getElementById('aiOutput').innerHTML = `<div class="ai-loading"><div class="spinner"></div>Generating your personalised interpretation…</div>`;
-    // Reset bars
-    ['bmiBar','waistBar','whtBar'].forEach(id => {
-      document.getElementById(id).style.width = '0';
-    });
+    document.getElementById('chkPop').checked = false;
+    showPop = false;
+    S = {};
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 </script>
