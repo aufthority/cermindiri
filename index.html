@@ -1183,6 +1183,7 @@
       </div>
       <div class="ms-dial-verdict" id="ms-dv">&#8212;</div>
       <div class="ms-dial-sub"     id="ms-ds">&#8212;</div>
+      <div class="ms-dial-context" id="ms-dc-ctx"></div>
     </div>
 
     <!-- ── SECTION 2: Summary strip (BMI / Waist / WHtR) ── -->
@@ -2104,7 +2105,7 @@
       : comp <= 55 ? `Score ${comp}/100 — lower is better. A few areas to improve.`
       : comp <= 70 ? `Score ${comp}/100 — lower is better. Multiple risk factors present.`
       : `Score ${comp}/100 — lower is better. High risk detected across several markers.`;
-    document.getElementById('ms-dc-ctx').textContent = ctxNote;
+    const ctxEl = document.getElementById('ms-dc-ctx'); if (ctxEl) ctxEl.textContent = ctxNote;
     msDrawDial(comp, rCol);
 
     /* Summary strip */
