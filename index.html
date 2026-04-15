@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,6 +29,7 @@
     }
 
     html { scroll-behavior: smooth; }
+    html, body { overscroll-behavior: none; }
 
     body {
       background: var(--bg);
@@ -52,7 +53,7 @@
     .container {
       max-width: 700px;
       margin: 0 auto;
-      padding: 48px 24px 80px;
+      padding: 32px 20px 60px;
       position: relative;
       z-index: 1;
     }
@@ -60,7 +61,7 @@
     /* ── Header ── */
     header {
       text-align: center;
-      margin-bottom: 52px;
+      margin-bottom: 32px;
       animation: fadeUp 0.6s ease both;
     }
 
@@ -76,17 +77,17 @@
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 28px;
+      margin-bottom: 16px;
     }
 
     .logo-dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; }
 
     h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(42px, 8vw, 64px);
+      font-size: clamp(32px, 8vw, 56px);
       line-height: 1.0;
       letter-spacing: -0.02em;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
     }
 
     h1 em { font-style: italic; color: var(--accent); }
@@ -96,23 +97,23 @@
       font-weight: 500;
       letter-spacing: 0.08em;
       color: var(--ink-muted);
-      margin-bottom: 16px;
+      margin-bottom: 8px;
       text-transform: uppercase;
     }
 
     .subtitle {
       color: var(--ink-muted);
-      font-size: 16px;
-      max-width: 420px;
+      font-size: 14px;
+      max-width: 380px;
       margin: 0 auto;
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
     .source-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      margin-top: 16px;
+      margin-top: 10px;
       font-size: 11px;
       font-weight: 500;
       color: var(--ink-muted);
@@ -128,14 +129,14 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 36px;
-      margin-bottom: 24px;
+      padding: 24px 20px;
+      margin-bottom: 20px;
       box-shadow: 0 2px 12px rgba(26,18,8,0.06);
       animation: fadeUp 0.6s 0.1s ease both;
     }
 
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
     .form-group.full { grid-column: 1 / -1; }
 
     label {
@@ -150,9 +151,9 @@
       background: var(--bg);
       border: 1.5px solid var(--border);
       border-radius: 10px;
-      padding: 13px 16px;
+      padding: 10px 14px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
+      font-size: 15px;
       color: var(--ink);
       width: 100%;
       transition: border-color 0.2s, box-shadow 0.2s;
@@ -181,16 +182,16 @@
 
     .sex-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .sex-btn {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 13px;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 9px 12px;
       background: var(--bg);
       border: 1.5px solid var(--border);
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
       font-family: 'DM Sans', sans-serif;
-      font-size: 15px; font-weight: 500;
+      font-size: 13px; font-weight: 500;
       color: var(--ink-muted);
-      transition: all 0.2s;
+      transition: all 0.15s;
     }
     .sex-btn:hover { border-color: var(--ink-muted); }
     .sex-btn.active { background: var(--ink); border-color: var(--ink); color: var(--bg); }
@@ -204,11 +205,11 @@
     }
 
     .btn-primary {
-      width: 100%; padding: 16px; margin-top: 28px;
+      width: 100%; padding: 13px; margin-top: 20px;
       background: var(--ink); color: var(--bg);
       border: none; border-radius: 12px;
       font-family: 'DM Serif Display', serif;
-      font-size: 20px; cursor: pointer;
+      font-size: 18px; cursor: pointer;
       transition: all 0.2s;
       display: flex; align-items: center; justify-content: center; gap: 10px;
     }
@@ -342,39 +343,44 @@
     .info-icon:focus .tooltip {
       opacity: 1;
       pointer-events: auto;
-      transform: translateY(0);
+      transform: translate(-50%, -50%) scale(1);
     }
 
     .tooltip {
-      position: absolute;
-      bottom: calc(100% + 8px);
+      position: fixed;
+      bottom: auto;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%) translateY(4px);
+      transform: translate(-50%, -50%) scale(0.95);
       background: var(--ink);
       color: var(--bg);
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 400;
-      line-height: 1.6;
-      padding: 10px 14px;
-      border-radius: 10px;
-      width: 230px;
+      line-height: 1.7;
+      padding: 14px 18px;
+      border-radius: 12px;
+      width: min(280px, 80vw);
       text-align: left;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.2s, transform 0.2s;
-      z-index: 100;
+      z-index: 9999;
       letter-spacing: 0;
       text-transform: none;
+      box-shadow: 0 8px 32px rgba(26,18,8,0.25);
     }
 
-    .tooltip::after {
+    .tooltip::after { display: none; }
+
+    /* Dim overlay when tooltip is open */
+    .info-icon:hover::before,
+    .info-icon:focus::before {
       content: '';
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      border: 5px solid transparent;
-      border-top-color: var(--ink);
+      position: fixed;
+      inset: 0;
+      background: rgba(26,18,8,0.3);
+      z-index: 9998;
+      pointer-events: none;
     }
 
     /* Sources section */
@@ -642,50 +648,7 @@
     .tier-amber .action-link.secondary { color: var(--amber); }
     .tier-red   .action-link.secondary { color: var(--red); }
 
-    /* ── Disclaimer ── */
-    .about-section {
-      margin-top: 32px;
-      padding: 28px 32px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-    }
-
-    .about-avatar {
-      width: 48px; height: 48px;
-      border-radius: 50%;
-      background: var(--ink);
-      color: var(--bg);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'DM Serif Display', serif;
-      font-size: 18px;
-      flex-shrink: 0;
-      letter-spacing: -0.02em;
-    }
-
-    .about-name {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 3px;
-    }
-
-    .about-handle {
-      font-size: 12px;
-      color: var(--accent);
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      margin-bottom: 10px;
-    }
-
-    .about-bio {
-      font-size: 14px;
-      color: var(--ink-muted);
-      line-height: 1.7;
-    }
+    /* about-section replaced by about-compact */
 
     .site-footer {
       margin-top: 48px;
@@ -889,14 +852,11 @@
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius); box-shadow: 0 2px 12px rgba(26,18,8,.06);
     }
-    .ms-dial-rel { position: relative; width: 260px; height: 148px; }
-    #ms-dc { width: 260px; height: 148px; display: block; }
-    .ms-dial-center {
-      position: absolute; bottom: 4px; left: 50%;
-      transform: translateX(-50%); text-align: center; pointer-events: none;
-    }
-    .ms-dial-num { font-family: 'DM Serif Display', serif; font-size: 40px; color: var(--ink); line-height: 1; }
-    .ms-dial-lbl { font-size: 10px; color: var(--ink-muted); margin-top: 1px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; }
+    .ms-dial-rel { position: relative; width: 260px; height: 130px; }
+    #ms-dc { width: 260px; height: 130px; display: block; }
+    .ms-dial-score-row { text-align: center; margin-top: 10px; }
+    .ms-dial-num { font-family: 'DM Serif Display', serif; font-size: 40px; color: var(--ink); line-height: 1; display: block; }
+    .ms-dial-lbl { font-size: 10px; color: var(--ink-muted); margin-top: 2px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; display: block; }
     .ms-dial-verdict { font-size: 16px; font-weight: 600; margin-top: 12px; }
     .ms-dial-sub { font-size: 13px; color: var(--ink-muted); text-align: center; max-width: 420px; margin-top: 5px; line-height: 1.65; }
     .ms-dial-context { font-size: 11px; color: var(--ink-muted); text-align: center; margin-top: 6px; padding: 5px 12px; background: var(--bg); border-radius: 100px; letter-spacing: 0.03em; }
@@ -947,16 +907,22 @@
       font-family: 'DM Sans', sans-serif; font-weight: 700;
       flex-shrink: 0; border: none; line-height: 1; position: relative;
     }
-    .ms-ibtn:hover .ms-tip { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .ms-ibtn:hover .ms-tip { opacity: 1; pointer-events: auto; transform: translate(-50%,-50%) scale(1); }
     .ms-tip {
-      position: absolute; bottom: calc(100% + 8px); left: 50%;
-      transform: translateX(-50%) translateY(4px);
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0.95);
       background: var(--ink); color: var(--bg);
-      font-size: 11px; font-weight: 400; line-height: 1.6;
-      padding: 10px 14px; border-radius: 10px; width: 220px;
+      font-size: 13px; font-weight: 400; line-height: 1.7;
+      padding: 14px 18px; border-radius: 12px; width: min(280px, 80vw);
       text-align: left; opacity: 0; pointer-events: none;
-      transition: opacity .2s, transform .2s; z-index: 100;
+      transition: opacity .2s, transform .2s; z-index: 9999;
       letter-spacing: 0; text-transform: none; font-style: normal;
+      box-shadow: 0 8px 32px rgba(26,18,8,0.25);
+    }
+    .ms-tip::after { display: none; }
+    .ms-ibtn:hover::before, .ms-ibtn:focus::before {
+      content: ''; position: fixed; inset: 0;
+      background: rgba(26,18,8,0.3); z-index: 9998; pointer-events: none;
     }
     .ms-tip::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:var(--ink); }
     .ms-pill { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; letter-spacing: .04em; }
@@ -1013,15 +979,77 @@
     .ms-percentile-badge.bad   { background: var(--red-light);   color: var(--red); }
 
     @media (max-width: 520px) {
-      .ms-cards-grid { grid-template-columns: 1fr; }
-      .ms-scatter-filters { gap: 6px; }
-      .form-grid { grid-template-columns: 1fr; }
+      .container { padding: 20px 16px 48px; }
+      header { margin-bottom: 20px; }
+      .logo-mark { margin-bottom: 12px; padding: 6px 14px; font-size: 11px; }
+      h1 { font-size: 30px; margin-bottom: 6px; }
+      .byline { margin-bottom: 6px; font-size: 12px; }
+      .subtitle { font-size: 13px; }
+      .source-badge { margin-top: 8px; font-size: 10px; }
+      .form-card { padding: 18px 16px; }
+      .form-grid { grid-template-columns: 1fr; gap: 12px; }
       .form-group.full { grid-column: 1; }
-      .summary-strip { grid-template-columns: repeat(3,1fr); gap: 10px; padding: 16px; }
-      .strip-value { font-size: 20px; }
-      .chart-wrap { height: 300px; }
-      .form-card, .chart-card, .slider-card { padding: 24px 18px; }
+      .sex-btn { padding: 8px 10px; font-size: 12px; }
+      input[type="number"] { padding: 9px 12px; font-size: 14px; }
+      .btn-primary { padding: 12px; font-size: 17px; margin-top: 16px; }
+      .summary-strip { grid-template-columns: repeat(3,1fr); gap: 8px; padding: 14px 12px; }
+      .strip-value { font-size: 18px; }
+      .chart-wrap { height: 280px; }
+      .chart-card, .slider-card { padding: 18px 14px; }
+      .ms-cards-grid { grid-template-columns: 1fr; }
+      .ms-scatter-filters { gap: 5px; }
+      .ms-ftog { padding: 4px 9px; font-size: 11px; }
+      .about-compact { padding: 10px 14px; }
+      .lang-toggle { top: 12px; right: 12px; padding: 5px 11px; font-size: 11px; }
     }
+
+    /* ── About compact ── */
+    .about-compact {
+      margin-top: 24px;
+      padding: 14px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .about-compact-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--ink); color: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif; font-size: 14px;
+      flex-shrink: 0;
+    }
+    .about-compact-body {
+      font-size: 12px; color: var(--ink-muted);
+      display: flex; flex-wrap: wrap; align-items: center; gap: 4px;
+    }
+    .about-compact-name { font-weight: 600; color: var(--ink); }
+    .about-compact-handle { color: var(--accent); font-weight: 500; text-decoration: none; }
+    .about-compact-handle:hover { text-decoration: underline; }
+    .about-compact-sep { color: var(--border); }
+    .about-compact-desc { color: var(--ink-muted); }
+
+    /* ── Language toggle ── */
+    .lang-toggle {
+      position: fixed; top: 16px; right: 16px; z-index: 999;
+      background: var(--ink); color: var(--bg);
+      border: none; border-radius: 100px;
+      padding: 6px 14px; font-family: 'DM Sans', sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .lang-toggle:hover { background: var(--accent); }
+
+    /* BM strings — shown when body[data-lang="bm"] */
+    [data-lang="bm"] [data-en] { display: none !important; }
+    [data-lang="bm"] [data-bm] { display: block !important; }
+    [data-lang="en"] [data-bm] { display: none !important; }
+    [data-lang="en"] [data-en] { display: block !important; }
+
+    /* Inline spans need inline not block */
+    span[data-bm], span[data-en] { display: inline !important; }
   </style>
 </head>
 <body>
@@ -1030,9 +1058,13 @@
   <!-- Header -->
   <header>
     <div class="logo-mark"><div class="logo-dot"></div> Health Tool</div>
+    <button class="lang-toggle" id="langToggle" onclick="toggleLang()" aria-label="Toggle language">
+      <span class="lang-en">BM</span>
+      <span class="lang-bm" style="display:none">EN</span>
+    </button>
     <h1>Cermin<br/><em>Diri.</em></h1>
     <p class="byline">By Aufthority</p>
-    <p class="subtitle">Know your numbers. Three measurements, calibrated for Asian bodies, backed by global data.</p>
+    <p class="subtitle"><span data-en>Find out your metabolic health risk in minutes — calibrated for Malaysian bodies.</span><span data-bm style="display:none">Ketahui risiko kesihatan metabolik anda dalam minit — dikalibrasi untuk tubuh Malaysia.</span></p>
     <div class="source-badge">📊 WHO · OWID · NHMS Malaysia</div>
   </header>
 
@@ -1040,18 +1072,18 @@
   <div class="form-card" id="formSection">
     <div class="form-grid">
 
-      <div class="section-label">About you</div>
+      <div class="section-label"><span data-en>About you</span><span data-bm style="display:none">Tentang anda</span></div>
 
       <div class="form-group full">
-        <label>Biological Sex</label>
+        <label><span data-en>Biological Sex</span><span data-bm style="display:none">Jantina</span></label>
         <div class="sex-toggle">
-          <button class="sex-btn active" data-sex="male"   onclick="setSex('male')">&#9794; Male</button>
-          <button class="sex-btn"        data-sex="female" onclick="setSex('female')">&#9792; Female</button>
+          <button class="sex-btn active" data-sex="male"   onclick="setSex('male')"><span data-en>&#9794; Male</span><span data-bm style="display:none">&#9794; Lelaki</span></button>
+          <button class="sex-btn"        data-sex="female" onclick="setSex('female')"><span data-en>&#9792; Female</span><span data-bm style="display:none">&#9792; Perempuan</span></button>
         </div>
       </div>
 
       <div class="form-group full">
-        <label>Age</label>
+        <label><span data-en>Age</span><span data-bm style="display:none">Umur</span></label>
         <div class="input-wrap">
           <input type="number" id="inAge" placeholder="e.g. 35" min="15" max="100" />
           <span class="unit">yrs</span>
@@ -1059,10 +1091,10 @@
       </div>
 
       <div class="form-divider"></div>
-      <div class="section-label">Measurements</div>
+      <div class="section-label"><span data-en>Measurements</span><span data-bm style="display:none">Ukuran</span></div>
 
       <div class="form-group">
-        <label>Weight</label>
+        <label><span data-en>Weight</span><span data-bm style="display:none">Berat</span></label>
         <div class="input-wrap">
           <input type="number" id="inWeight" placeholder="e.g. 72" min="20" max="300" step="0.5" />
           <span class="unit">kg</span>
@@ -1070,7 +1102,7 @@
       </div>
 
       <div class="form-group">
-        <label>Height</label>
+        <label><span data-en>Height</span><span data-bm style="display:none">Tinggi</span></label>
         <div class="input-wrap">
           <input type="number" id="inHeight" placeholder="e.g. 170" min="100" max="250" />
           <span class="unit">cm</span>
@@ -1078,7 +1110,7 @@
       </div>
 
       <div class="form-group">
-        <label>Waist</label>
+        <label><span data-en>Waist</span><span data-bm style="display:none">Pinggang</span></label>
         <div class="input-wrap">
           <input type="number" id="inWaist" placeholder="e.g. 88" min="40" max="160" step="0.5" />
           <span class="unit">cm</span>
@@ -1094,10 +1126,10 @@
       </div>
 
       <div class="form-divider"></div>
-      <div class="section-label">Lifestyle &amp; history</div>
+      <div class="section-label"><span data-en>Lifestyle &amp; history</span><span data-bm style="display:none">Gaya hidup &amp; sejarah</span></div>
 
       <div class="form-group full">
-        <label>At least 30 min moderate physical activity daily?</label>
+        <label><span data-en>At least 30 min moderate physical activity daily?</span><span data-bm style="display:none">Sekurang-kurangnya 30 min aktiviti fizikal sederhana setiap hari?</span></label>
         <div class="sex-toggle">
           <button class="sex-btn active" data-act="yes" onclick="setAct('yes')">Yes</button>
           <button class="sex-btn"        data-act="no"  onclick="setAct('no')">No</button>
@@ -1105,7 +1137,7 @@
       </div>
 
       <div class="form-group full">
-        <label>Eat vegetables or fruit every day?</label>
+        <label><span data-en>Eat vegetables or fruit every day?</span><span data-bm style="display:none">Makan sayur atau buah setiap hari?</span></label>
         <div class="sex-toggle">
           <button class="sex-btn active" data-diet="yes" onclick="setDiet('yes')">Yes</button>
           <button class="sex-btn"        data-diet="no"  onclick="setDiet('no')">No</button>
@@ -1113,7 +1145,7 @@
       </div>
 
       <div class="form-group full">
-        <label>Smoking status</label>
+        <label><span data-en>Smoking status</span><span data-bm style="display:none">Status merokok</span></label>
         <div class="sex-toggle" style="grid-template-columns:1fr 1fr 1fr">
           <button class="sex-btn active" data-smk="never"   onclick="setSmk('never')">Never</button>
           <button class="sex-btn"        data-smk="ex"      onclick="setSmk('ex')">Ex-smoker</button>
@@ -1122,7 +1154,7 @@
       </div>
 
       <div class="form-group">
-        <label>Ever told you have high blood pressure or on BP medication?</label>
+        <label><span data-en>Ever told you have high blood pressure or on BP medication?</span><span data-bm style="display:none">Pernah diberitahu mempunyai tekanan darah tinggi atau mengambil ubat?</span></label>
         <div class="sex-toggle">
           <button class="sex-btn active" data-bp="no"  onclick="setBp('no')">No</button>
           <button class="sex-btn"        data-bp="yes" onclick="setBp('yes')">Yes</button>
@@ -1130,7 +1162,7 @@
       </div>
 
       <div class="form-group">
-        <label>Ever found to have high blood glucose?</label>
+        <label><span data-en>Ever found to have high blood glucose?</span><span data-bm style="display:none">Pernah didapati mempunyai gula darah tinggi?</span></label>
         <div class="sex-toggle">
           <button class="sex-btn active" data-glc="no"  onclick="setGlc('no')">No</button>
           <button class="sex-btn"        data-glc="yes" onclick="setGlc('yes')">Yes</button>
@@ -1138,7 +1170,7 @@
       </div>
 
       <div class="form-group full">
-        <label>Family history of diabetes</label>
+        <label><span data-en>Family history of diabetes</span><span data-bm style="display:none">Sejarah keluarga diabetes</span></label>
         <div class="sex-toggle" style="grid-template-columns:1fr 1fr 1fr">
           <button class="sex-btn active" data-fam="none" onclick="setFam('none')">None</button>
           <button class="sex-btn"        data-fam="2nd"  onclick="setFam('2nd')">Grandparent / aunt / uncle</button>
@@ -1147,7 +1179,7 @@
       </div>
 
       <div class="form-group full" id="gdmRow" style="display:none">
-        <label>Ever had gestational diabetes?</label>
+        <label><span data-en>Ever had gestational diabetes?</span><span data-bm style="display:none">Pernah menghidap diabetes semasa hamil?</span></label>
         <div class="sex-toggle">
           <button class="sex-btn active" data-gdm="no"  onclick="setGdm('no')">No</button>
           <button class="sex-btn"        data-gdm="yes" onclick="setGdm('yes')">Yes</button>
@@ -1162,7 +1194,7 @@
   <div id="results">
 
     <div class="results-header">
-      <h2>Your Health Profile</h2>
+      <h2><span data-en>Your Health Profile</span><span data-bm style="display:none">Profil Kesihatan Anda</span></h2>
       <p id="resultsSubtitle"></p>
     </div>
 
@@ -1175,11 +1207,11 @@
     <!-- ── SECTION 1: Metabolic risk dial + score ── -->
     <div class="ms-dial-wrap" id="ms-dial-wrap">
       <div class="ms-dial-rel">
-        <canvas id="ms-dc" width="260" height="148"></canvas>
-        <div class="ms-dial-center">
-          <div class="ms-dial-num" id="ms-dn">&#8212;</div>
-          <div class="ms-dial-lbl">Overall risk index</div>
-        </div>
+        <canvas id="ms-dc" width="260" height="130"></canvas>
+      </div>
+      <div class="ms-dial-score-row">
+        <div class="ms-dial-num" id="ms-dn">&#8212;</div>
+        <div class="ms-dial-lbl"><span data-en>Overall risk index &mdash; lower is better</span><span data-bm style="display:none">Indeks risiko keseluruhan &mdash; lebih rendah lebih baik</span></div>
       </div>
       <div class="ms-dial-verdict" id="ms-dv">&#8212;</div>
       <div class="ms-dial-sub"     id="ms-ds">&#8212;</div>
@@ -1208,25 +1240,25 @@
     <!-- ── SECTION 3: Diabetes risk score ── -->
     <div class="ms-fr-card">
       <div class="ms-fr-top">
-        <div class="ms-fr-title">Diabetes risk score</div>
+        <div class="ms-fr-title"><span data-en>Diabetes risk score</span><span data-bm style="display:none">Skor risiko diabetes</span></div>
         <div class="ms-fr-pill" id="ms-fr-pill">&#8212;</div>
       </div>
       <div class="ms-fr-sub" id="ms-fr-sub">&#8212;</div>
       <div class="ms-ftrack"><div class="ms-fthumb" id="ms-fthumb" style="left:0%"></div></div>
-      <div class="ms-fticks"><span>Low</span><span>Slightly elevated</span><span>Moderate</span><span>High</span><span>Very high</span></div>
+      <div class="ms-fticks"><span data-en>Low</span><span data-bm style="display:none">Rendah</span><span data-en>Slightly elevated</span><span data-bm style="display:none">Agak tinggi</span><span data-en>Moderate</span><span data-bm style="display:none">Sederhana</span><span data-en>High</span><span data-bm style="display:none">Tinggi</span><span data-en>Very high</span><span data-bm style="display:none">Sangat tinggi</span></div>
     </div>
 
     <!-- ── SECTION 4: Metric cards ── -->
-    <div class="ms-cards-lbl">Your measurements &#8212; tap any card to explore</div>
+    <div class="ms-cards-lbl"><span data-en>Your measurements &#8212; tap any card to explore</span><span data-bm style="display:none">Ukuran anda &#8212; ketik kad untuk maklumat lanjut</span></div>
     <div class="ms-cards-grid" id="ms-cards"></div>
 
     <!-- ── SECTION 5: What if I improve? (original slider chart) ── -->
     <div class="chart-card">
       <div class="chart-card-header">
-        <div class="chart-card-title">&#128205; BMI vs Waist &#8212; Goal planner</div>
+        <div class="chart-card-title">&#128205; <span data-en>BMI vs Waist &#8212; Goal planner</span><span data-bm style="display:none">BMI vs Pinggang &#8212; Perancang sasaran</span></div>
         <label class="pop-toggle">
           <input type="checkbox" id="chkPop" onchange="togglePop()" />
-          Show Malaysian population (NHMS 2019)
+          <span data-en>Show Malaysian population (NHMS 2019)</span><span data-bm style="display:none">Tunjuk populasi Malaysia (NHMS 2019)</span>
         </label>
       </div>
       <div class="chart-wrap">
@@ -1248,8 +1280,8 @@
 
     <div class="slider-card">
       <div class="slider-card-header">
-        <h3>What if I improve?</h3>
-        <p>Drag to simulate your goal &#8212; watch the green dot move on the chart above.</p>
+        <h3><span data-en>What if I improve?</span><span data-bm style="display:none">Bagaimana jika saya bertambah baik?</span></h3>
+        <p><span data-en>Drag to simulate your goal &#8212; watch the green dot move on the chart above.</span><span data-bm style="display:none">Seret untuk mensimulasi sasaran anda &#8212; lihat titik hijau bergerak pada carta di atas.</span></p>
       </div>
       <div class="slider-group">
         <div class="slider-label-row">
@@ -1285,15 +1317,15 @@
 
     <!-- ── SECTION 6: Population scatter ── -->
     <div class="ms-scatter-card">
-      <div class="ms-scatter-head"><div class="ms-scatter-title">&#128205; Your position among Malaysians</div></div>
+      <div class="ms-scatter-head"><div class="ms-scatter-title">&#128205; <span data-en>Your position among Malaysians</span><span data-bm style="display:none">Kedudukan anda dalam kalangan rakyat Malaysia</span></div></div>
       <div class="ms-scatter-filters">
         <div class="ms-fgrp">
-          <span class="ms-fgrp-lbl">Sex</span>
-          <button class="ms-ftog" id="ms-sf-male"   onclick="msSetSex('male')">Male</button>
-          <button class="ms-ftog" id="ms-sf-female" onclick="msSetSex('female')">Female</button>
+          <span class="ms-fgrp-lbl"><span data-en>Sex</span><span data-bm style="display:none">Jantina</span></span>
+          <button class="ms-ftog" id="ms-sf-male"   onclick="msSetSex('male')"><span data-en>Male</span><span data-bm style="display:none">Lelaki</span></button>
+          <button class="ms-ftog" id="ms-sf-female" onclick="msSetSex('female')"><span data-en>Female</span><span data-bm style="display:none">Perempuan</span></button>
         </div>
         <div class="ms-fgrp">
-          <span class="ms-fgrp-lbl">Age group</span>
+          <span class="ms-fgrp-lbl"><span data-en>Age group</span><span data-bm style="display:none">Kumpulan umur</span></span>
           <button class="ms-ftog on" id="ms-sa-all" onclick="msSetAge('all')">All</button>
           <button class="ms-ftog"    id="ms-sa-18"  onclick="msSetAge('18')">18&#8211;29</button>
           <button class="ms-ftog"    id="ms-sa-30"  onclick="msSetAge('30')">30&#8211;39</button>
@@ -1307,13 +1339,13 @@
           <canvas id="ms-sc" role="img" aria-label="Scatter chart showing your BMI and waist plotted against simulated Malaysian population from NHMS 2019 and 2023."></canvas>
         </div>
         <div class="ms-sleg">
-          <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(42,107,69,0.5)"></div>Healthy</div>
-          <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(184,112,0,0.5)"></div>One risk factor</div>
-          <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(200,36,10,0.5)"></div>Both elevated</div>
+          <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(42,107,69,0.5)"></div><span data-en>Healthy</span><span data-bm style="display:none">Sihat</span></div>
+          <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(184,112,0,0.5)"></div><span data-en>One risk factor</span><span data-bm style="display:none">Satu faktor risiko</span></div>
+          <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(200,36,10,0.5)"></div><span data-en>Both elevated</span><span data-bm style="display:none">Kedua-dua tinggi</span></div>
           <div class="ms-sl"><div class="ms-sl-dot" style="background:#C8440A;border:2px solid white;box-shadow:0 0 0 1px rgba(26,18,8,.2)"></div>You</div>
         </div>
         <div class="ms-percentile-badge" id="ms-percentile"></div>
-        <div class="ms-scatter-note">Population cloud seeded from NHMS 2019 &amp; 2023 published mean BMI and waist distributions by sex and age group (IKU/MOH Malaysia). Individual points are statistically simulated — not real survey respondents.</div>
+        <div class="ms-scatter-note"><span data-en>Population cloud seeded from NHMS 2019 &amp; 2023 published mean BMI and waist distributions by sex and age group (IKU/MOH Malaysia). Individual points are statistically simulated — not real survey respondents.</span><span data-bm style="display:none">Data populasi berdasarkan taburan min BMI dan pinggang NHMS 2019 &amp; 2023 mengikut jantina dan kumpulan umur (IKU/KKM Malaysia). Titik-titik adalah simulasi statistik — bukan responden sebenar.</span></div>
       </div>
     </div>
 
@@ -1331,18 +1363,20 @@
       <div class="action-links" id="actionLinks"></div>
     </div>
 
-    <button class="btn-reset" onclick="resetApp()">&#8592; Start Over</button>
+    <button class="btn-reset" onclick="resetApp()"><span data-en>&#8592; Start Over</span><span data-bm style="display:none">&#8592; Mulakan Semula</span></button>
 
     <div class="disclaimer">
-      For informational purposes only. Not a substitute for professional medical advice.<br/>
-      Please consult a qualified healthcare provider for diagnosis and treatment.
+      <span data-en>For informational purposes only. Not a substitute for professional medical advice.<br/>
+      Please consult a qualified healthcare provider for diagnosis and treatment.</span>
+      <span data-bm style="display:none">Untuk tujuan maklumat sahaja. Bukan pengganti nasihat perubatan profesional.<br/>
+      Sila berunding dengan pengamal kesihatan yang berkelayakan untuk diagnosis dan rawatan.</span>
     </div>
   </div>
 
   <!-- Sources section — collapsible -->
   <div class="sources-section">
     <button class="sources-toggle" aria-expanded="false" onclick="toggleSources(this)">
-      <span class="sources-toggle-label">About the data sources</span>
+      <span class="sources-toggle-label"><span data-en>About the data sources</span><span data-bm style="display:none">Tentang sumber data</span></span>
       <span class="sources-toggle-icon">▾</span>
     </button>
     <div class="sources-body" id="sourcesBody">
@@ -1379,19 +1413,20 @@
     </div>
   </div>
 
-  <!-- About me -->
-  <div class="about-section">
-    <div class="about-avatar">A</div>
-    <div>
-      <div class="about-name">Auf Ali</div>
-      <div class="about-handle">@theaufthority</div>
-      <p class="about-bio">I'm Auf Ali, known online as Aufthority — an evidence-based educator determined to create awareness and actionable tools for the public to make informed healthcare decisions daily. Cermin Diri is one of those tools: built not just to show numbers, but to help you understand what they mean for your life.</p>
+  <!-- About me — compact -->
+  <div class="about-compact">
+    <div class="about-compact-avatar">A</div>
+    <div class="about-compact-body">
+      <span class="about-compact-name">Auf Ali</span>
+      <a class="about-compact-handle" href="https://www.threads.net/@theaufthority" target="_blank" rel="noopener">@theaufthority</a>
+      <span class="about-compact-sep">·</span>
+      <span class="about-compact-desc">I create evidence-based health tools for Malaysians</span>
     </div>
   </div>
 
   <!-- Footer -->
   <footer class="site-footer">
-    <div class="footer-eyebrow">Find me on</div>
+    <div class="footer-eyebrow"><span data-en>Find me on</span><span data-bm style="display:none">Jumpa saya di</span></div>
     <div class="footer-links">
 
       <a class="footer-link" href="https://open.substack.com/pub/aufthority/p/neurohabit-a-habit-tracker-app-for?utm_campaign=post-expanded-share&utm_medium=web" target="_blank" rel="noopener">
@@ -1426,7 +1461,7 @@
       </svg>
       Fund Aufthority projects!
     </a>
-    <div class="footer-copy">© 2026 Aufthority · Built with care in Malaysia</div>
+    <div class="footer-copy"><span data-en>© 2026 Aufthority · Built with care in Malaysia</span><span data-bm style="display:none">© 2026 Aufthority · Dibina dengan penuh kasih di Malaysia</span></div>
   </footer>
 
 </div>
@@ -1733,13 +1768,13 @@
     const c = document.getElementById('ms-dc');
     const dpr = window.devicePixelRatio || 1;
     // Set canvas intrinsic size to match CSS display size * dpr for sharpness
-    const displayW = 260, displayH = 148;
+    const displayW = 260, displayH = 130;
     c.width  = displayW * dpr;
     c.height = displayH * dpr;
     const ctx = c.getContext('2d');
     ctx.scale(dpr, dpr);
 
-    const W=displayW, H=displayH, cx=W/2, cy=H-14, r=108;
+    const W=displayW, H=displayH, cx=W/2, cy=H-8, r=108;
     ctx.clearRect(0,0,W,H);
     const toRad = p => Math.PI + (p/100)*Math.PI;
 
@@ -2235,6 +2270,80 @@
     const expanded = btn.getAttribute('aria-expanded') === 'true';
     btn.setAttribute('aria-expanded', !expanded);
     body.classList.toggle('open', !expanded);
+  }
+
+  /* ── Language toggle ── */
+  function toggleLang() {
+    const html = document.documentElement;
+    const isBM = html.getAttribute('data-lang') === 'bm';
+    const next = isBM ? 'en' : 'bm';
+    html.setAttribute('data-lang', next);
+    html.setAttribute('lang', isBM ? 'en' : 'ms');
+
+    // Toggle button label
+    document.querySelector('.lang-en').style.display = isBM ? '' : 'none';
+    document.querySelector('.lang-bm').style.display = isBM ? 'none' : '';
+
+    // Yes/No buttons — handled by data attributes on the buttons themselves
+    // Update any dynamically rendered content
+    updateDynamicLang(next);
+  }
+
+  function updateDynamicLang(lang) {
+    // Update Yes/No toggles throughout the form
+    const yesNoMap = {
+      en: { yes: 'Yes', no: 'No' },
+      bm: { yes: 'Ya',  no: 'Tidak' }
+    };
+    const m = yesNoMap[lang];
+    document.querySelectorAll('[data-act], [data-diet], [data-bp], [data-glc], [data-gdm]').forEach(btn => {
+      const val = btn.getAttribute('data-act') || btn.getAttribute('data-diet') ||
+                  btn.getAttribute('data-bp')  || btn.getAttribute('data-glc')  ||
+                  btn.getAttribute('data-gdm');
+      if (val === 'yes') btn.textContent = m.yes;
+      if (val === 'no')  btn.textContent = m.no;
+    });
+
+    // Update metric card pills if results are showing
+    if (document.getElementById('results').style.display !== 'none') {
+      document.querySelectorAll('.ms-pill').forEach(p => {
+        const cls = p.className;
+        if (lang === 'bm') {
+          if (cls.includes('ms-pr')) p.textContent = 'Risiko tinggi';
+          else if (cls.includes('ms-pa')) p.textContent = 'Perlu perhatian';
+          else if (cls.includes('ms-pg')) p.textContent = 'Sihat';
+        } else {
+          if (cls.includes('ms-pr')) p.textContent = 'High risk';
+          else if (cls.includes('ms-pa')) p.textContent = 'Needs attention';
+          else if (cls.includes('ms-pg')) p.textContent = 'Healthy';
+        }
+      });
+
+      // Update dial zone labels by redrawing
+      const score = parseInt(document.getElementById('ms-dn').textContent);
+      const col = document.getElementById('ms-dv').style.color;
+      if (!isNaN(score)) msDrawDial(score, col || '#2A6B45');
+
+      // Update FINDRISC tick labels
+      const frTicks = document.querySelectorAll('.ms-fticks span');
+      const enTicks = ['Low','Slightly elevated','Moderate','High','Very high'];
+      const bmTicks = ['Rendah','Agak tinggi','Sederhana','Tinggi','Sangat tinggi'];
+      // The ticks now have data-en/data-bm children — handled by CSS
+    }
+
+    // Update percentile message
+    const badge = document.getElementById('ms-percentile');
+    if (badge && badge.style.display !== 'none') {
+      const cls = badge.className;
+      if (lang === 'bm') {
+        if (cls.includes('good'))  badge.textContent = badge.textContent.replace(/You are healthier than (\d+)%.*/, (_, p) => `Anda lebih sihat daripada ${p}% rakyat Malaysia dalam sampel ini. Teruskan!`);
+        else if (cls.includes('amber')) badge.textContent = 'Ukuran anda berada di sekitar pertengahan populasi Malaysia. Masih ada ruang untuk bertambah baik.';
+        else badge.textContent = 'Ukuran anda menunjukkan risiko yang lebih tinggi berbanding sampel populasi ini. Perubahan kecil yang konsisten boleh membuat perbezaan besar.';
+      } else {
+        // Re-trigger scatter to reset English text
+        msDrawScatter();
+      }
+    }
   }
 </script>
 </body>
