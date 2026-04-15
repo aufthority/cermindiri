@@ -339,8 +339,7 @@
       font-family: 'DM Sans', sans-serif;
     }
 
-    .info-icon:hover .tooltip,
-    .info-icon:focus .tooltip {
+    .info-icon.tip-open .tooltip {
       opacity: 1;
       pointer-events: auto;
       transform: translate(-50%, -50%) scale(1);
@@ -373,12 +372,11 @@
     .tooltip::after { display: none; }
 
     /* Dim overlay when tooltip is open */
-    .info-icon:hover::before,
-    .info-icon:focus::before {
+    .tip-open::before {
       content: '';
       position: fixed;
       inset: 0;
-      background: rgba(26,18,8,0.3);
+      background: rgba(26,18,8,0.35);
       z-index: 9998;
       pointer-events: none;
     }
@@ -907,7 +905,7 @@
       font-family: 'DM Sans', sans-serif; font-weight: 700;
       flex-shrink: 0; border: none; line-height: 1; position: relative;
     }
-    .ms-ibtn:hover .ms-tip { opacity: 1; pointer-events: auto; transform: translate(-50%,-50%) scale(1); }
+    .ms-ibtn.tip-open .ms-tip { opacity: 1; pointer-events: auto; transform: translate(-50%,-50%) scale(1); }
     .ms-tip {
       position: fixed; top: 50%; left: 50%;
       transform: translate(-50%, -50%) scale(0.95);
@@ -920,10 +918,7 @@
       box-shadow: 0 8px 32px rgba(26,18,8,0.25);
     }
     .ms-tip::after { display: none; }
-    .ms-ibtn:hover::before, .ms-ibtn:focus::before {
-      content: ''; position: fixed; inset: 0;
-      background: rgba(26,18,8,0.3); z-index: 9998; pointer-events: none;
-    }
+
     .ms-tip::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:var(--ink); }
     .ms-pill { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; letter-spacing: .04em; }
     .ms-pg { background: var(--green-light); color: var(--green); }
@@ -1042,14 +1037,20 @@
     }
     .lang-toggle:hover { background: var(--accent); }
 
-    /* BM strings — shown when body[data-lang="bm"] */
-    [data-lang="bm"] [data-en] { display: none !important; }
-    [data-lang="bm"] [data-bm] { display: block !important; }
-    [data-lang="en"] [data-bm] { display: none !important; }
-    [data-lang="en"] [data-en] { display: block !important; }
+    /* BM strings — CSS-driven language switching */
+    /* Default: hide all BM spans */
+    [data-bm] { display: none !important; }
+    [data-en] { display: inline !important; }
 
-    /* Inline spans need inline not block */
-    span[data-bm], span[data-en] { display: inline !important; }
+    /* When BM active: flip all */
+    [data-lang="bm"] [data-bm] { display: inline !important; }
+    [data-lang="bm"] [data-en] { display: none !important; }
+
+    /* Block-level elements (divs etc with data-bm/en) */
+    div[data-bm], p[data-bm], li[data-bm] { display: none !important; }
+    div[data-en], p[data-en], li[data-en] { display: block !important; }
+    [data-lang="bm"] div[data-bm], [data-lang="bm"] p[data-bm], [data-lang="bm"] li[data-bm] { display: block !important; }
+    [data-lang="bm"] div[data-en], [data-lang="bm"] p[data-en], [data-lang="bm"] li[data-en] { display: none !important; }
   </style>
 </head>
 <body>
@@ -1064,7 +1065,7 @@
     </button>
     <h1>Cermin<br/><em>Diri.</em></h1>
     <p class="byline">By Aufthority</p>
-    <p class="subtitle"><span data-en>Find out your metabolic health risk in minutes — calibrated for Malaysian bodies.</span><span data-bm style="display:none">Ketahui risiko kesihatan metabolik anda dalam minit — dikalibrasi untuk tubuh Malaysia.</span></p>
+    <p class="subtitle"><span data-en>Find out your metabolic health risk in minutes — calibrated for Malaysian bodies.</span><span data-bm>Ketahui risiko kesihatan metabolik anda dalam minit — dikalibrasi untuk tubuh Malaysia.</span></p>
     <div class="source-badge">📊 WHO · OWID · NHMS Malaysia</div>
   </header>
 
@@ -1072,18 +1073,18 @@
   <div class="form-card" id="formSection">
     <div class="form-grid">
 
-      <div class="section-label"><span data-en>About you</span><span data-bm style="display:none">Tentang anda</span></div>
+      <div class="section-label"><span data-en>About you</span><span data-bm>Tentang anda</span></div>
 
       <div class="form-group full">
-        <label><span data-en>Biological Sex</span><span data-bm style="display:none">Jantina</span></label>
+        <label><span data-en>Biological Sex</span><span data-bm>Jantina</span></label>
         <div class="sex-toggle">
-          <button class="sex-btn active" data-sex="male"   onclick="setSex('male')"><span data-en>&#9794; Male</span><span data-bm style="display:none">&#9794; Lelaki</span></button>
-          <button class="sex-btn"        data-sex="female" onclick="setSex('female')"><span data-en>&#9792; Female</span><span data-bm style="display:none">&#9792; Perempuan</span></button>
+          <button class="sex-btn active" data-sex="male"   onclick="setSex('male')"><span data-en>&#9794; Male</span><span data-bm>&#9794; Lelaki</span></button>
+          <button class="sex-btn"        data-sex="female" onclick="setSex('female')"><span data-en>&#9792; Female</span><span data-bm>&#9792; Perempuan</span></button>
         </div>
       </div>
 
       <div class="form-group full">
-        <label><span data-en>Age</span><span data-bm style="display:none">Umur</span></label>
+        <label><span data-en>Age</span><span data-bm>Umur</span></label>
         <div class="input-wrap">
           <input type="number" id="inAge" placeholder="e.g. 35" min="15" max="100" />
           <span class="unit">yrs</span>
@@ -1091,10 +1092,10 @@
       </div>
 
       <div class="form-divider"></div>
-      <div class="section-label"><span data-en>Measurements</span><span data-bm style="display:none">Ukuran</span></div>
+      <div class="section-label"><span data-en>Measurements</span><span data-bm>Ukuran</span></div>
 
       <div class="form-group">
-        <label><span data-en>Weight</span><span data-bm style="display:none">Berat</span></label>
+        <label><span data-en>Weight</span><span data-bm>Berat</span></label>
         <div class="input-wrap">
           <input type="number" id="inWeight" placeholder="e.g. 72" min="20" max="300" step="0.5" />
           <span class="unit">kg</span>
@@ -1102,7 +1103,7 @@
       </div>
 
       <div class="form-group">
-        <label><span data-en>Height</span><span data-bm style="display:none">Tinggi</span></label>
+        <label><span data-en>Height</span><span data-bm>Tinggi</span></label>
         <div class="input-wrap">
           <input type="number" id="inHeight" placeholder="e.g. 170" min="100" max="250" />
           <span class="unit">cm</span>
@@ -1110,7 +1111,7 @@
       </div>
 
       <div class="form-group">
-        <label><span data-en>Waist</span><span data-bm style="display:none">Pinggang</span></label>
+        <label><span data-en>Waist</span><span data-bm>Pinggang</span></label>
         <div class="input-wrap">
           <input type="number" id="inWaist" placeholder="e.g. 88" min="40" max="160" step="0.5" />
           <span class="unit">cm</span>
@@ -1126,10 +1127,10 @@
       </div>
 
       <div class="form-divider"></div>
-      <div class="section-label"><span data-en>Lifestyle &amp; history</span><span data-bm style="display:none">Gaya hidup &amp; sejarah</span></div>
+      <div class="section-label"><span data-en>Lifestyle &amp; history</span><span data-bm>Gaya hidup &amp; sejarah</span></div>
 
       <div class="form-group full">
-        <label><span data-en>At least 30 min moderate physical activity daily?</span><span data-bm style="display:none">Sekurang-kurangnya 30 min aktiviti fizikal sederhana setiap hari?</span></label>
+        <label><span data-en>At least 30 min moderate physical activity daily?</span><span data-bm>Sekurang-kurangnya 30 min aktiviti fizikal sederhana setiap hari?</span></label>
         <div class="sex-toggle">
           <button class="sex-btn active" data-act="yes" onclick="setAct('yes')">Yes</button>
           <button class="sex-btn"        data-act="no"  onclick="setAct('no')">No</button>
@@ -1137,7 +1138,7 @@
       </div>
 
       <div class="form-group full">
-        <label><span data-en>Eat vegetables or fruit every day?</span><span data-bm style="display:none">Makan sayur atau buah setiap hari?</span></label>
+        <label><span data-en>Eat vegetables or fruit every day?</span><span data-bm>Makan sayur atau buah setiap hari?</span></label>
         <div class="sex-toggle">
           <button class="sex-btn active" data-diet="yes" onclick="setDiet('yes')">Yes</button>
           <button class="sex-btn"        data-diet="no"  onclick="setDiet('no')">No</button>
@@ -1145,7 +1146,7 @@
       </div>
 
       <div class="form-group full">
-        <label><span data-en>Smoking status</span><span data-bm style="display:none">Status merokok</span></label>
+        <label><span data-en>Smoking status</span><span data-bm>Status merokok</span></label>
         <div class="sex-toggle" style="grid-template-columns:1fr 1fr 1fr">
           <button class="sex-btn active" data-smk="never"   onclick="setSmk('never')">Never</button>
           <button class="sex-btn"        data-smk="ex"      onclick="setSmk('ex')">Ex-smoker</button>
@@ -1154,7 +1155,7 @@
       </div>
 
       <div class="form-group">
-        <label><span data-en>Ever told you have high blood pressure or on BP medication?</span><span data-bm style="display:none">Pernah diberitahu mempunyai tekanan darah tinggi atau mengambil ubat?</span></label>
+        <label><span data-en>Ever told you have high blood pressure or on BP medication?</span><span data-bm>Pernah diberitahu mempunyai tekanan darah tinggi atau mengambil ubat?</span></label>
         <div class="sex-toggle">
           <button class="sex-btn active" data-bp="no"  onclick="setBp('no')">No</button>
           <button class="sex-btn"        data-bp="yes" onclick="setBp('yes')">Yes</button>
@@ -1162,7 +1163,7 @@
       </div>
 
       <div class="form-group">
-        <label><span data-en>Ever found to have high blood glucose?</span><span data-bm style="display:none">Pernah didapati mempunyai gula darah tinggi?</span></label>
+        <label><span data-en>Ever found to have high blood glucose?</span><span data-bm>Pernah didapati mempunyai gula darah tinggi?</span></label>
         <div class="sex-toggle">
           <button class="sex-btn active" data-glc="no"  onclick="setGlc('no')">No</button>
           <button class="sex-btn"        data-glc="yes" onclick="setGlc('yes')">Yes</button>
@@ -1170,7 +1171,7 @@
       </div>
 
       <div class="form-group full">
-        <label><span data-en>Family history of diabetes</span><span data-bm style="display:none">Sejarah keluarga diabetes</span></label>
+        <label><span data-en>Family history of diabetes</span><span data-bm>Sejarah keluarga diabetes</span></label>
         <div class="sex-toggle" style="grid-template-columns:1fr 1fr 1fr">
           <button class="sex-btn active" data-fam="none" onclick="setFam('none')">None</button>
           <button class="sex-btn"        data-fam="2nd"  onclick="setFam('2nd')">Grandparent / aunt / uncle</button>
@@ -1179,7 +1180,7 @@
       </div>
 
       <div class="form-group full" id="gdmRow" style="display:none">
-        <label><span data-en>Ever had gestational diabetes?</span><span data-bm style="display:none">Pernah menghidap diabetes semasa hamil?</span></label>
+        <label><span data-en>Ever had gestational diabetes?</span><span data-bm>Pernah menghidap diabetes semasa hamil?</span></label>
         <div class="sex-toggle">
           <button class="sex-btn active" data-gdm="no"  onclick="setGdm('no')">No</button>
           <button class="sex-btn"        data-gdm="yes" onclick="setGdm('yes')">Yes</button>
@@ -1194,7 +1195,7 @@
   <div id="results">
 
     <div class="results-header">
-      <h2><span data-en>Your Health Profile</span><span data-bm style="display:none">Profil Kesihatan Anda</span></h2>
+      <h2><span data-en>Your Health Profile</span><span data-bm>Profil Kesihatan Anda</span></h2>
       <p id="resultsSubtitle"></p>
     </div>
 
@@ -1211,7 +1212,7 @@
       </div>
       <div class="ms-dial-score-row">
         <div class="ms-dial-num" id="ms-dn">&#8212;</div>
-        <div class="ms-dial-lbl"><span data-en>Overall risk index &mdash; lower is better</span><span data-bm style="display:none">Indeks risiko keseluruhan &mdash; lebih rendah lebih baik</span></div>
+        <div class="ms-dial-lbl"><span data-en>Overall risk index &mdash; lower is better</span><span data-bm>Indeks risiko keseluruhan &mdash; lebih rendah lebih baik</span></div>
       </div>
       <div class="ms-dial-verdict" id="ms-dv">&#8212;</div>
       <div class="ms-dial-sub"     id="ms-ds">&#8212;</div>
@@ -1231,7 +1232,7 @@
         <div class="strip-risk"  id="sWaistcat"></div>
       </div>
       <div>
-        <div class="strip-label">WHtR <button class="info-icon" tabindex="0">i<span class="tooltip">Waist-to-Height Ratio (WHtR) divides your waist circumference by your height. A ratio above 0.5 means you are carrying more than half your height in waist size &#8212; linked to elevated cardiometabolic risk regardless of BMI.</span></button></div>
+        <div class="strip-label">WHtR <button class="info-icon" tabindex="0" onclick="showTip(this)">i<span class="tooltip">Waist-to-Height Ratio (WHtR) divides your waist circumference by your height. A ratio above 0.5 means you are carrying more than half your height in waist size &#8212; linked to elevated cardiometabolic risk regardless of BMI.</span></button></div>
         <div class="strip-value" id="sWHtR">&#8212;</div>
         <div class="strip-risk"  id="sWHtRcat"></div>
       </div>
@@ -1240,25 +1241,25 @@
     <!-- ── SECTION 3: Diabetes risk score ── -->
     <div class="ms-fr-card">
       <div class="ms-fr-top">
-        <div class="ms-fr-title"><span data-en>Diabetes risk score</span><span data-bm style="display:none">Skor risiko diabetes</span></div>
+        <div class="ms-fr-title"><span data-en>Diabetes risk score</span><span data-bm>Skor risiko diabetes</span></div>
         <div class="ms-fr-pill" id="ms-fr-pill">&#8212;</div>
       </div>
       <div class="ms-fr-sub" id="ms-fr-sub">&#8212;</div>
       <div class="ms-ftrack"><div class="ms-fthumb" id="ms-fthumb" style="left:0%"></div></div>
-      <div class="ms-fticks"><span data-en>Low</span><span data-bm style="display:none">Rendah</span><span data-en>Slightly elevated</span><span data-bm style="display:none">Agak tinggi</span><span data-en>Moderate</span><span data-bm style="display:none">Sederhana</span><span data-en>High</span><span data-bm style="display:none">Tinggi</span><span data-en>Very high</span><span data-bm style="display:none">Sangat tinggi</span></div>
+      <div class="ms-fticks"><span data-en>Low</span><span data-bm>Rendah</span><span data-en>Slightly elevated</span><span data-bm>Agak tinggi</span><span data-en>Moderate</span><span data-bm>Sederhana</span><span data-en>High</span><span data-bm>Tinggi</span><span data-en>Very high</span><span data-bm>Sangat tinggi</span></div>
     </div>
 
     <!-- ── SECTION 4: Metric cards ── -->
-    <div class="ms-cards-lbl"><span data-en>Your measurements &#8212; tap any card to explore</span><span data-bm style="display:none">Ukuran anda &#8212; ketik kad untuk maklumat lanjut</span></div>
+    <div class="ms-cards-lbl"><span data-en>Your measurements &#8212; tap any card to explore</span><span data-bm>Ukuran anda &#8212; ketik kad untuk maklumat lanjut</span></div>
     <div class="ms-cards-grid" id="ms-cards"></div>
 
     <!-- ── SECTION 5: What if I improve? (original slider chart) ── -->
     <div class="chart-card">
       <div class="chart-card-header">
-        <div class="chart-card-title">&#128205; <span data-en>BMI vs Waist &#8212; Goal planner</span><span data-bm style="display:none">BMI vs Pinggang &#8212; Perancang sasaran</span></div>
+        <div class="chart-card-title">&#128205; <span data-en>BMI vs Waist &#8212; Goal planner</span><span data-bm>BMI vs Pinggang &#8212; Perancang sasaran</span></div>
         <label class="pop-toggle">
           <input type="checkbox" id="chkPop" onchange="togglePop()" />
-          <span data-en>Show Malaysian population (NHMS 2019)</span><span data-bm style="display:none">Tunjuk populasi Malaysia (NHMS 2019)</span>
+          <span data-en>Show Malaysian population (NHMS 2019)</span><span data-bm>Tunjuk populasi Malaysia (NHMS 2019)</span>
         </label>
       </div>
       <div class="chart-wrap">
@@ -1280,8 +1281,8 @@
 
     <div class="slider-card">
       <div class="slider-card-header">
-        <h3><span data-en>What if I improve?</span><span data-bm style="display:none">Bagaimana jika saya bertambah baik?</span></h3>
-        <p><span data-en>Drag to simulate your goal &#8212; watch the green dot move on the chart above.</span><span data-bm style="display:none">Seret untuk mensimulasi sasaran anda &#8212; lihat titik hijau bergerak pada carta di atas.</span></p>
+        <h3><span data-en>What if I improve?</span><span data-bm>Bagaimana jika saya bertambah baik?</span></h3>
+        <p><span data-en>Drag to simulate your goal &#8212; watch the green dot move on the chart above.</span><span data-bm>Seret untuk mensimulasi sasaran anda &#8212; lihat titik hijau bergerak pada carta di atas.</span></p>
       </div>
       <div class="slider-group">
         <div class="slider-label-row">
@@ -1317,15 +1318,15 @@
 
     <!-- ── SECTION 6: Population scatter ── -->
     <div class="ms-scatter-card">
-      <div class="ms-scatter-head"><div class="ms-scatter-title">&#128205; <span data-en>Your position among Malaysians</span><span data-bm style="display:none">Kedudukan anda dalam kalangan rakyat Malaysia</span></div></div>
+      <div class="ms-scatter-head"><div class="ms-scatter-title">&#128205; <span data-en>Your position among Malaysians</span><span data-bm>Kedudukan anda dalam kalangan rakyat Malaysia</span></div></div>
       <div class="ms-scatter-filters">
         <div class="ms-fgrp">
-          <span class="ms-fgrp-lbl"><span data-en>Sex</span><span data-bm style="display:none">Jantina</span></span>
-          <button class="ms-ftog" id="ms-sf-male"   onclick="msSetSex('male')"><span data-en>Male</span><span data-bm style="display:none">Lelaki</span></button>
-          <button class="ms-ftog" id="ms-sf-female" onclick="msSetSex('female')"><span data-en>Female</span><span data-bm style="display:none">Perempuan</span></button>
+          <span class="ms-fgrp-lbl"><span data-en>Sex</span><span data-bm>Jantina</span></span>
+          <button class="ms-ftog" id="ms-sf-male"   onclick="msSetSex('male')"><span data-en>Male</span><span data-bm>Lelaki</span></button>
+          <button class="ms-ftog" id="ms-sf-female" onclick="msSetSex('female')"><span data-en>Female</span><span data-bm>Perempuan</span></button>
         </div>
         <div class="ms-fgrp">
-          <span class="ms-fgrp-lbl"><span data-en>Age group</span><span data-bm style="display:none">Kumpulan umur</span></span>
+          <span class="ms-fgrp-lbl"><span data-en>Age group</span><span data-bm>Kumpulan umur</span></span>
           <button class="ms-ftog on" id="ms-sa-all" onclick="msSetAge('all')">All</button>
           <button class="ms-ftog"    id="ms-sa-18"  onclick="msSetAge('18')">18&#8211;29</button>
           <button class="ms-ftog"    id="ms-sa-30"  onclick="msSetAge('30')">30&#8211;39</button>
@@ -1339,13 +1340,13 @@
           <canvas id="ms-sc" role="img" aria-label="Scatter chart showing your BMI and waist plotted against simulated Malaysian population from NHMS 2019 and 2023."></canvas>
         </div>
         <div class="ms-sleg">
-          <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(42,107,69,0.5)"></div><span data-en>Healthy</span><span data-bm style="display:none">Sihat</span></div>
-          <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(184,112,0,0.5)"></div><span data-en>One risk factor</span><span data-bm style="display:none">Satu faktor risiko</span></div>
-          <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(200,36,10,0.5)"></div><span data-en>Both elevated</span><span data-bm style="display:none">Kedua-dua tinggi</span></div>
+          <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(42,107,69,0.5)"></div><span data-en>Healthy</span><span data-bm>Sihat</span></div>
+          <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(184,112,0,0.5)"></div><span data-en>One risk factor</span><span data-bm>Satu faktor risiko</span></div>
+          <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(200,36,10,0.5)"></div><span data-en>Both elevated</span><span data-bm>Kedua-dua tinggi</span></div>
           <div class="ms-sl"><div class="ms-sl-dot" style="background:#C8440A;border:2px solid white;box-shadow:0 0 0 1px rgba(26,18,8,.2)"></div>You</div>
         </div>
         <div class="ms-percentile-badge" id="ms-percentile"></div>
-        <div class="ms-scatter-note"><span data-en>Population cloud seeded from NHMS 2019 &amp; 2023 published mean BMI and waist distributions by sex and age group (IKU/MOH Malaysia). Individual points are statistically simulated — not real survey respondents.</span><span data-bm style="display:none">Data populasi berdasarkan taburan min BMI dan pinggang NHMS 2019 &amp; 2023 mengikut jantina dan kumpulan umur (IKU/KKM Malaysia). Titik-titik adalah simulasi statistik — bukan responden sebenar.</span></div>
+        <div class="ms-scatter-note"><span data-en>Population cloud seeded from NHMS 2019 &amp; 2023 published mean BMI and waist distributions by sex and age group (IKU/MOH Malaysia). Individual points are statistically simulated — not real survey respondents.</span><span data-bm>Data populasi berdasarkan taburan min BMI dan pinggang NHMS 2019 &amp; 2023 mengikut jantina dan kumpulan umur (IKU/KKM Malaysia). Titik-titik adalah simulasi statistik — bukan responden sebenar.</span></div>
       </div>
     </div>
 
@@ -1363,12 +1364,12 @@
       <div class="action-links" id="actionLinks"></div>
     </div>
 
-    <button class="btn-reset" onclick="resetApp()"><span data-en>&#8592; Start Over</span><span data-bm style="display:none">&#8592; Mulakan Semula</span></button>
+    <button class="btn-reset" onclick="resetApp()"><span data-en>&#8592; Start Over</span><span data-bm>&#8592; Mulakan Semula</span></button>
 
     <div class="disclaimer">
       <span data-en>For informational purposes only. Not a substitute for professional medical advice.<br/>
       Please consult a qualified healthcare provider for diagnosis and treatment.</span>
-      <span data-bm style="display:none">Untuk tujuan maklumat sahaja. Bukan pengganti nasihat perubatan profesional.<br/>
+      <span data-bm>Untuk tujuan maklumat sahaja. Bukan pengganti nasihat perubatan profesional.<br/>
       Sila berunding dengan pengamal kesihatan yang berkelayakan untuk diagnosis dan rawatan.</span>
     </div>
   </div>
@@ -1376,7 +1377,7 @@
   <!-- Sources section — collapsible -->
   <div class="sources-section">
     <button class="sources-toggle" aria-expanded="false" onclick="toggleSources(this)">
-      <span class="sources-toggle-label"><span data-en>About the data sources</span><span data-bm style="display:none">Tentang sumber data</span></span>
+      <span class="sources-toggle-label"><span data-en>About the data sources</span><span data-bm>Tentang sumber data</span></span>
       <span class="sources-toggle-icon">▾</span>
     </button>
     <div class="sources-body" id="sourcesBody">
@@ -1426,7 +1427,7 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <div class="footer-eyebrow"><span data-en>Find me on</span><span data-bm style="display:none">Jumpa saya di</span></div>
+    <div class="footer-eyebrow"><span data-en>Find me on</span><span data-bm>Jumpa saya di</span></div>
     <div class="footer-links">
 
       <a class="footer-link" href="https://open.substack.com/pub/aufthority/p/neurohabit-a-habit-tracker-app-for?utm_campaign=post-expanded-share&utm_medium=web" target="_blank" rel="noopener">
@@ -1461,12 +1462,136 @@
       </svg>
       Fund Aufthority projects!
     </a>
-    <div class="footer-copy"><span data-en>© 2026 Aufthority · Built with care in Malaysia</span><span data-bm style="display:none">© 2026 Aufthority · Dibina dengan penuh kasih di Malaysia</span></div>
+    <div class="footer-copy"><span data-en>© 2026 Aufthority · Built with care in Malaysia</span><span data-bm>© 2026 Aufthority · Dibina dengan penuh kasih di Malaysia</span></div>
   </footer>
 
 </div>
 
 <script>
+  /* ── Language strings ── */
+  const LANG = {
+    en: {
+      metricNames: {
+        bmi:   'BMI',
+        wc:    'Belly size',
+        whtr:  'Belly vs your height',
+        absi:  'Body shape risk',
+        con:   'Abdominal fat pattern',
+        bai:   'Estimated body fat'
+      },
+      pills: { high:'High risk', mod:'Needs attention', low:'Healthy' },
+      tapHint: 'tap to explore',
+      actionCards: {
+        low: {
+          icon:'🌿', title:'Keep it up',
+          driver:'All three markers are in the healthy range.',
+          body:'Your measurements suggest low metabolic risk based on WHO Asia-Pacific thresholds for Malaysians. Focus on maintaining your current habits.',
+          steps:['Stay active — aim for 150 min moderate exercise per week','Continue eating plenty of vegetables, fruit, and whole grains','Schedule an annual check-up to monitor trends over time','Maintain a healthy sleep schedule (7–9 hours)'],
+          links:[{label:'MOH Malaysia',url:'https://www.moh.gov.my',sec:false},{label:'NHMS 2023 health data',url:'https://iku.nih.gov.my/nhms-2023',sec:true}]
+        },
+        mod: {
+          icon:'⚠️', title:'Some markers to watch',
+          driver:'One or more measurements are in the elevated risk zone.',
+          body:'Your results suggest elevated metabolic risk. This is common — and very manageable with targeted lifestyle changes.',
+          steps:['Reduce refined carbs: white rice, white bread, sugary drinks (teh tarik, air bandung)','Aim for 10,000 steps or 30 min brisk walking daily','Add more sayur and buah to your meals — aim for 5 portions a day','Book a blood test to check glucose and cholesterol levels'],
+          links:[{label:'Find a klinik (Carian Fasiliti)',url:'https://hfmd.moh.gov.my/hfmd2/index.php/ms/carian-fasiliti',sec:false},{label:'MOH Malaysia',url:'https://www.moh.gov.my',sec:true}]
+        },
+        high: {
+          icon:'🔴', title:'Elevated risk detected',
+          driver:'Multiple markers are in the high-risk zone.',
+          body:'Your measurements indicate significant metabolic risk. We recommend consulting a healthcare provider as soon as possible.',
+          steps:['Visit a klinik or hospital for a full metabolic panel (glucose, HbA1c, lipids, BP)','Discuss your results with a doctor — you may qualify for free screening under Peka B40','Make an immediate lifestyle change: eliminate sugary drinks and processed food','Join a structured programme — KOSPEN offers free community health support'],
+          links:[{label:'Peka B40 screening',url:'https://www.pekab40.com.my',sec:false},{label:'Find a klinik (Carian Fasiliti)',url:'https://hfmd.moh.gov.my/hfmd2/index.php/ms/carian-fasiliti',sec:true}]
+        }
+      },
+      dialVerdicts: {
+        high:{t:'Elevated metabolic risk', s:'Several markers are in the high-risk range. A blood panel at your nearest klinik would give a clearer picture.'},
+        mod: {t:'Some markers to watch',   s:'A few measurements are approaching risk thresholds. Consistent small changes can bring these back into range.'},
+        low: {t:'Metabolically healthy',   s:'Your measurements are within the healthy range for Malaysians. Keep up your current habits.'}
+      },
+      diabetesTitle: 'Diabetes risk score',
+      measurementsLabel: 'Your measurements — tap any card to explore',
+      scatterTitle: '📍 Your position among Malaysians',
+      goalPlannerTitle: '📍 BMI vs Waist — Goal planner',
+      whatIfTitle: 'What if I improve?',
+      whatIfSub: 'Drag to simulate your goal — watch the green dot move on the chart above.',
+      resetBtn: '← Start Over',
+      resultsHeader: 'Your Health Profile',
+      frTicks: ['Low','Slightly elevated','Moderate','High','Very high'],
+      percentile: {
+        good: (p) => `You are healthier than ${p}% of Malaysians in this population sample. Keep it up.`,
+        mid: 'Your measurements are around the middle of the Malaysian population. There is meaningful room to improve.',
+        bad: 'Your measurements put you in the higher-risk group compared to this population sample. Small consistent changes can shift this significantly.'
+      },
+      ctxNote: (s) => s <= 30 ? `Score ${s}/100 — You are in the healthy zone.`
+        : s <= 55 ? `Score ${s}/100 — A few areas worth improving.`
+        : s <= 70 ? `Score ${s}/100 — Multiple risk factors present.`
+        : `Score ${s}/100 — High risk detected across several markers.`
+    },
+    bm: {
+      metricNames: {
+        bmi:   'BMI',
+        wc:    'Saiz perut',
+        whtr:  'Perut berbanding tinggi badan',
+        absi:  'Risiko bentuk badan',
+        con:   'Taburan lemak abdomen',
+        bai:   'Anggaran lemak badan'
+      },
+      pills: { high:'Risiko tinggi', mod:'Perlu perhatian', low:'Sihat' },
+      tapHint: 'ketik untuk maklumat',
+      actionCards: {
+        low: {
+          icon:'🌿', title:'Teruskan usaha anda',
+          driver:'Ketiga-tiga penanda berada dalam julat sihat.',
+          body:'Ukuran anda menunjukkan risiko metabolik yang rendah berdasarkan ambang WHO Asia-Pasifik untuk rakyat Malaysia. Fokus pada mengekalkan tabiat semasa anda.',
+          steps:['Kekal aktif — sasarkan 150 min senaman sederhana seminggu','Teruskan makan banyak sayur, buah dan bijirin penuh','Jadualkan pemeriksaan tahunan untuk memantau trend','Kekalkan jadual tidur yang sihat (7–9 jam)'],
+          links:[{label:'KKM Malaysia',url:'https://www.moh.gov.my',sec:false},{label:'Data kesihatan NHMS 2023',url:'https://iku.nih.gov.my/nhms-2023',sec:true}]
+        },
+        mod: {
+          icon:'⚠️', title:'Beberapa penanda perlu diperhatikan',
+          driver:'Satu atau lebih ukuran berada dalam zon risiko tinggi.',
+          body:'Keputusan anda menunjukkan risiko metabolik yang meningkat. Ini biasa — dan sangat mudah diurus dengan perubahan gaya hidup yang tepat.',
+          steps:['Kurangkan karbohidrat halus: nasi putih, roti putih, minuman manis (teh tarik, air bandung)','Sasarkan 10,000 langkah atau 30 min berjalan pantas setiap hari','Tambah lebih banyak sayur dan buah dalam hidangan — sasarkan 5 hidangan sehari','Tempah ujian darah untuk semak glukosa dan kolesterol'],
+          links:[{label:'Cari klinik (Carian Fasiliti)',url:'https://hfmd.moh.gov.my/hfmd2/index.php/ms/carian-fasiliti',sec:false},{label:'KKM Malaysia',url:'https://www.moh.gov.my',sec:true}]
+        },
+        high: {
+          icon:'🔴', title:'Risiko tinggi dikesan',
+          driver:'Pelbagai penanda berada dalam zon risiko tinggi.',
+          body:'Ukuran anda menunjukkan risiko metabolik yang ketara. Kami mengesyorkan anda berjumpa dengan pengamal kesihatan secepat mungkin.',
+          steps:['Pergi ke klinik atau hospital untuk panel metabolik penuh (glukosa, HbA1c, lipid, BP)','Bincangkan keputusan anda dengan doktor — anda mungkin layak untuk saringan percuma Peka B40','Lakukan perubahan gaya hidup segera: elakkan minuman manis dan makanan diproses','Sertai program berstruktur — KOSPEN menawarkan sokongan kesihatan komuniti percuma'],
+          links:[{label:'Saringan Peka B40',url:'https://www.pekab40.com.my',sec:false},{label:'Cari klinik (Carian Fasiliti)',url:'https://hfmd.moh.gov.my/hfmd2/index.php/ms/carian-fasiliti',sec:true}]
+        }
+      },
+      dialVerdicts: {
+        high:{t:'Risiko metabolik tinggi', s:'Beberapa penanda berada dalam julat risiko tinggi. Panel darah di klinik berdekatan akan memberikan gambaran yang lebih jelas.'},
+        mod: {t:'Beberapa penanda perlu diperhatikan', s:'Beberapa ukuran menghampiri ambang risiko. Perubahan kecil yang konsisten boleh membawa balik ke julat normal.'},
+        low: {t:'Sihat dari segi metabolik', s:'Ukuran anda berada dalam julat sihat untuk rakyat Malaysia. Teruskan tabiat semasa anda.'}
+      },
+      diabetesTitle: 'Skor risiko diabetes',
+      measurementsLabel: 'Ukuran anda — ketik kad untuk maklumat lanjut',
+      scatterTitle: '📍 Kedudukan anda dalam kalangan rakyat Malaysia',
+      goalPlannerTitle: '📍 BMI vs Pinggang — Perancang sasaran',
+      whatIfTitle: 'Bagaimana jika saya bertambah baik?',
+      whatIfSub: 'Seret untuk simulasi sasaran anda — lihat titik hijau bergerak pada carta di atas.',
+      resetBtn: '← Mulakan Semula',
+      resultsHeader: 'Profil Kesihatan Anda',
+      frTicks: ['Rendah','Agak tinggi','Sederhana','Tinggi','Sangat tinggi'],
+      percentile: {
+        good: (p) => `Anda lebih sihat daripada ${p}% rakyat Malaysia dalam sampel ini. Teruskan!`,
+        mid: 'Ukuran anda berada di sekitar pertengahan populasi Malaysia. Masih ada ruang untuk bertambah baik.',
+        bad: 'Ukuran anda menunjukkan risiko yang lebih tinggi berbanding sampel populasi ini. Perubahan kecil yang konsisten boleh membuat perbezaan besar.'
+      },
+      ctxNote: (s) => s <= 30 ? `Skor ${s}/100 — Anda dalam zon sihat.`
+        : s <= 55 ? `Skor ${s}/100 — Beberapa aspek boleh diperbaiki.`
+        : s <= 70 ? `Skor ${s}/100 — Pelbagai faktor risiko dikesan.`
+        : `Skor ${s}/100 — Risiko tinggi dikesan merentasi beberapa penanda.`
+    }
+  };
+
+  function getLang() {
+    return document.documentElement.getAttribute('data-lang') === 'bm' ? LANG.bm : LANG.en;
+  }
+
   /* ── App state ── */
   let sex  = 'male';
   let act  = 'yes';
@@ -1721,15 +1846,16 @@
     const badge = document.getElementById('ms-percentile');
     if (badge) {
       badge.style.display = 'block';
+      const Lp = getLang().percentile;
       if (pctile >= 60) {
         badge.className = 'ms-percentile-badge good';
-        badge.textContent = `You are healthier than ${pctile}% of Malaysians in this population sample. Keep it up.`;
+        badge.textContent = Lp.good(pctile);
       } else if (pctile >= 35) {
         badge.className = 'ms-percentile-badge amber';
-        badge.textContent = `Your measurements are around the middle of the Malaysian population. There is meaningful room to improve.`;
+        badge.textContent = Lp.mid;
       } else {
         badge.className = 'ms-percentile-badge bad';
-        badge.textContent = `Your measurements put you in the higher-risk group compared to this population sample. Small consistent changes can shift this significantly.`;
+        badge.textContent = Lp.bad;
       }
     }
 
@@ -2039,26 +2165,7 @@
   function renderActionCard(bRisk, wRisk, wrRisk) {
     const dominant = bRisk==='high'||wRisk==='high'||wrRisk==='high' ? 'high'
                    : bRisk==='mod' ||wRisk==='mod' ||wrRisk==='mod'  ? 'mod' : 'low';
-    const cards = {
-      low: {
-        icon:'🌿', title:'Keep it up', driver:'All three markers are in the healthy range.',
-        body:'Your measurements suggest low metabolic risk based on WHO Asia-Pacific thresholds for Malaysians. Focus on maintaining your current habits.',
-        steps:['Stay active — aim for 150 min moderate exercise per week','Continue eating plenty of vegetables, fruit, and whole grains','Schedule an annual check-up to monitor trends over time','Maintain a healthy sleep schedule (7–9 hours)'],
-        links:[{label:'MOH Malaysia',url:'https://www.moh.gov.my',sec:false},{label:'NHMS 2023 health data',url:'https://iku.nih.gov.my/nhms-2023',sec:true}]
-      },
-      mod: {
-        icon:'⚠️', title:'Some markers to watch', driver:'One or more measurements are in the elevated risk zone.',
-        body:'Your results suggest elevated metabolic risk. This is common — and very manageable with targeted lifestyle changes.',
-        steps:['Reduce refined carbs: white rice, white bread, sugary drinks (teh tarik, air bandung)','Aim for 10,000 steps or 30 min brisk walking daily','Add more sayur and buah to your meals — aim for 5 portions a day','Book a blood test to check glucose and cholesterol levels'],
-        links:[{label:'Find a klinik (Carian Fasiliti)',url:'https://hfmd.moh.gov.my/hfmd2/index.php/ms/carian-fasiliti',sec:false},{label:'MOH Malaysia',url:'https://www.moh.gov.my',sec:true}]
-      },
-      high: {
-        icon:'🔴', title:'Elevated risk detected', driver:'Multiple markers are in the high-risk zone.',
-        body:'Your measurements indicate significant metabolic risk. We recommend consulting a healthcare provider as soon as possible.',
-        steps:['Visit a klinik or hospital for a full metabolic panel (glucose, HbA1c, lipids, BP)','Discuss your results with a doctor — you may qualify for free screening under Peka B40','Make an immediate lifestyle change: eliminate sugary drinks and processed food','Join a structured programme — MySihat and KOSPEN offer free community health support'],
-        links:[{label:'Peka B40 screening',url:'https://www.pekab40.com.my',sec:false},{label:'Find a klinik (Carian Fasiliti)',url:'https://hfmd.moh.gov.my/hfmd2/index.php/ms/carian-fasiliti',sec:true}]
-      }
-    };
+    const cards = getLang().actionCards;
     const d = cards[dominant];
     const ac = document.getElementById('actionCard');
     ac.className = `action-card tier-${dominant}`;
@@ -2128,19 +2235,12 @@
 
     /* Dial */
     document.getElementById('ms-dn').textContent = comp;
-    const vmap = {
-      high:{t:'Elevated metabolic risk',   s:'Several markers are in the high-risk range. A blood panel at your nearest klinik would give a clearer picture.'},
-      mod: {t:'Some markers to watch',     s:'A few measurements are approaching risk thresholds. Consistent small changes can bring these back into range.'},
-      low: {t:'Metabolically healthy',     s:'Your measurements are within the healthy range for Malaysians. Keep up your current habits.'}
-    };
+    const vmap = getLang().dialVerdicts;
     document.getElementById('ms-dv').textContent = vmap[worst].t;
     document.getElementById('ms-dv').style.color  = rCol;
     document.getElementById('ms-ds').textContent  = vmap[worst].s;
-    const ctxNote = comp <= 30 ? `Score ${comp}/100 — lower is better. You are in the healthy zone.`
-      : comp <= 55 ? `Score ${comp}/100 — lower is better. A few areas to improve.`
-      : comp <= 70 ? `Score ${comp}/100 — lower is better. Multiple risk factors present.`
-      : `Score ${comp}/100 — lower is better. High risk detected across several markers.`;
-    const ctxEl = document.getElementById('ms-dc-ctx'); if (ctxEl) ctxEl.textContent = ctxNote;
+    const ctxEl = document.getElementById('ms-dc-ctx');
+    if (ctxEl) ctxEl.textContent = getLang().ctxNote(comp);
     msDrawDial(comp, rCol);
 
     /* Summary strip */
@@ -2186,20 +2286,24 @@
       });
     }
 
+    const L = getLang();
     document.getElementById('ms-cards').innerHTML = allMetrics.map(m => {
       const v = allVals[m.key];
       if (v===null||v===undefined) return '';
       const risk=m.riskFn(v,sex);
+      const cardName = L.metricNames[m.key] || m.plain;
+      const pillText = L.pills[risk];
+      const hint     = L.tapHint;
       return `<div class="ms-mc" data-key="${m.key}" onclick="msToggleCard('${m.key}')">
         <div class="ms-mc-head">
-          <div class="ms-mc-name">${m.plain}
-            <button class="ms-ibtn" onclick="event.stopPropagation()">i<span class="ms-tip">${m.tip}</span></button>
+          <div class="ms-mc-name">${cardName}
+            <button class="ms-ibtn" onclick="event.stopPropagation();showTip(this)">i<span class="ms-tip">${m.tip}</span></button>
           </div>
-          <div class="ms-pill ${msPillCls(risk)}">${msPillLbl(risk)}</div>
+          <div class="ms-pill ${msPillCls(risk)}">${pillText}</div>
         </div>
         <div class="ms-mc-val">${m.dispFn(v)}<span class="ms-mc-unit"> ${m.unit}</span></div>
         <div class="ms-mc-expand">${msBuildBar(m,v,sex)}<div class="ms-eplain ${msEpCls(risk)}">${m.plainFn(v,sex)}</div></div>
-        <div class="ms-mc-hint">tap to explore</div>
+        <div class="ms-mc-hint">${hint}</div>
       </div>`;
     }).join('');
 
@@ -2265,6 +2369,19 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  /* ── Tooltip click toggle (works on mobile) ── */
+  function showTip(btn) {
+    event.stopPropagation();
+    const isOpen = btn.classList.contains('tip-open');
+    // Close all open tips first
+    document.querySelectorAll('.tip-open').forEach(el => el.classList.remove('tip-open'));
+    if (!isOpen) btn.classList.add('tip-open');
+  }
+  // Close on tap anywhere else
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.tip-open').forEach(el => el.classList.remove('tip-open'));
+  });
+
   function toggleSources(btn) {
     const body = document.getElementById('sourcesBody');
     const expanded = btn.getAttribute('aria-expanded') === 'true';
@@ -2290,11 +2407,10 @@
   }
 
   function updateDynamicLang(lang) {
-    // Update Yes/No toggles throughout the form
-    const yesNoMap = {
-      en: { yes: 'Yes', no: 'No' },
-      bm: { yes: 'Ya',  no: 'Tidak' }
-    };
+    const L = getLang();
+
+    // 1. Yes/No buttons
+    const yesNoMap = { en:{yes:'Yes',no:'No'}, bm:{yes:'Ya',no:'Tidak'} };
     const m = yesNoMap[lang];
     document.querySelectorAll('[data-act], [data-diet], [data-bp], [data-glc], [data-gdm]').forEach(btn => {
       const val = btn.getAttribute('data-act') || btn.getAttribute('data-diet') ||
@@ -2304,45 +2420,47 @@
       if (val === 'no')  btn.textContent = m.no;
     });
 
-    // Update metric card pills if results are showing
+    // 2. If results visible, re-render dynamic content
     if (document.getElementById('results').style.display !== 'none') {
+      // Metric card pills
       document.querySelectorAll('.ms-pill').forEach(p => {
-        const cls = p.className;
-        if (lang === 'bm') {
-          if (cls.includes('ms-pr')) p.textContent = 'Risiko tinggi';
-          else if (cls.includes('ms-pa')) p.textContent = 'Perlu perhatian';
-          else if (cls.includes('ms-pg')) p.textContent = 'Sihat';
-        } else {
-          if (cls.includes('ms-pr')) p.textContent = 'High risk';
-          else if (cls.includes('ms-pa')) p.textContent = 'Needs attention';
-          else if (cls.includes('ms-pg')) p.textContent = 'Healthy';
-        }
+        if (p.classList.contains('ms-pr')) p.textContent = L.pills.high;
+        else if (p.classList.contains('ms-pa')) p.textContent = L.pills.mod;
+        else if (p.classList.contains('ms-pg')) p.textContent = L.pills.low;
       });
-
-      // Update dial zone labels by redrawing
+      // Metric card names
+      document.querySelectorAll('.ms-mc').forEach(card => {
+        const key = card.getAttribute('data-key');
+        if (key && L.metricNames[key]) {
+          const nameEl = card.querySelector('.ms-mc-name');
+          if (nameEl) {
+            const ibtn = nameEl.querySelector('.ms-ibtn');
+            nameEl.childNodes[0].textContent = L.metricNames[key] + ' ';
+          }
+        }
+        // Tap hint
+        const hint = card.querySelector('.ms-mc-hint');
+        if (hint) hint.textContent = L.tapHint;
+      });
+      // Dial verdict + sub
       const score = parseInt(document.getElementById('ms-dn').textContent);
-      const col = document.getElementById('ms-dv').style.color;
-      if (!isNaN(score)) msDrawDial(score, col || '#2A6B45');
-
-      // Update FINDRISC tick labels
-      const frTicks = document.querySelectorAll('.ms-fticks span');
-      const enTicks = ['Low','Slightly elevated','Moderate','High','Very high'];
-      const bmTicks = ['Rendah','Agak tinggi','Sederhana','Tinggi','Sangat tinggi'];
-      // The ticks now have data-en/data-bm children — handled by CSS
-    }
-
-    // Update percentile message
-    const badge = document.getElementById('ms-percentile');
-    if (badge && badge.style.display !== 'none') {
-      const cls = badge.className;
-      if (lang === 'bm') {
-        if (cls.includes('good'))  badge.textContent = badge.textContent.replace(/You are healthier than (\d+)%.*/, (_, p) => `Anda lebih sihat daripada ${p}% rakyat Malaysia dalam sampel ini. Teruskan!`);
-        else if (cls.includes('amber')) badge.textContent = 'Ukuran anda berada di sekitar pertengahan populasi Malaysia. Masih ada ruang untuk bertambah baik.';
-        else badge.textContent = 'Ukuran anda menunjukkan risiko yang lebih tinggi berbanding sampel populasi ini. Perubahan kecil yang konsisten boleh membuat perbezaan besar.';
-      } else {
-        // Re-trigger scatter to reset English text
-        msDrawScatter();
+      const riskCol = document.getElementById('ms-dv').style.color || '#2A6B45';
+      const worst = riskCol === '#C8240A' ? 'high' : riskCol === '#B87000' ? 'mod' : 'low';
+      document.getElementById('ms-dv').textContent = L.dialVerdicts[worst].t;
+      document.getElementById('ms-ds').textContent = L.dialVerdicts[worst].s;
+      if (!isNaN(score)) {
+        document.getElementById('ms-dc-ctx').textContent = L.ctxNote(score);
+        msDrawDial(score, riskCol);
       }
+      // Diabetes risk sub text (leave pill untouched — its color is semantic)
+      // Percentile badge
+      const badge = document.getElementById('ms-percentile');
+      if (badge && badge.style.display !== 'none') {
+        msDrawScatter(); // redraws and re-sets percentile text in correct lang
+      }
+      // Static UI labels
+      document.getElementById('ms-fr-title') && (document.querySelector('.ms-fr-title').textContent = L.diabetesTitle);
+      document.querySelector('.ms-cards-lbl') && (document.querySelector('.ms-cards-lbl').textContent = L.measurementsLabel);
     }
   }
 </script>
