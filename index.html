@@ -317,69 +317,9 @@
       accent-color: var(--ink);
     }
 
-    /* WHtR info icon & tooltip */
-    .info-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 15px; height: 15px;
-      border-radius: 50%;
-      background: var(--border);
-      color: var(--ink-muted);
-      font-size: 10px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-left: 5px;
-      vertical-align: middle;
-      position: relative;
-      flex-shrink: 0;
-      font-style: normal;
-      line-height: 1;
-      border: none;
-      font-family: 'DM Sans', sans-serif;
-    }
+    /* tooltip and info-icon removed — clinical notes now live in card expand */
 
-    .info-icon.tip-open .tooltip {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translate(-50%, -50%) scale(1);
-    }
-
-    .tooltip {
-      position: fixed;
-      bottom: auto;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.95);
-      background: var(--ink);
-      color: var(--bg);
-      font-size: 13px;
-      font-weight: 400;
-      line-height: 1.7;
-      padding: 14px 18px;
-      border-radius: 12px;
-      width: min(280px, 80vw);
-      text-align: left;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s, transform 0.2s;
-      z-index: 9999;
-      letter-spacing: 0;
-      text-transform: none;
-      box-shadow: 0 8px 32px rgba(26,18,8,0.25);
-    }
-
-    .tooltip::after { display: none; }
-
-    /* Dim overlay when tooltip is open */
-    .tip-open::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: rgba(26,18,8,0.35);
-      z-index: 9998;
-      pointer-events: none;
-    }
+    /* tip overlay removed — info buttons removed */
 
     /* Sources section */
     .sources-section {
@@ -896,30 +836,7 @@
     .ms-mc:hover { border-color: var(--ink-muted); }
     .ms-mc.open  { border-color: var(--ink); }
     .ms-mc-head  { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; }
-    .ms-mc-name  { font-size: 13px; font-weight: 600; color: var(--ink); display: flex; align-items: center; gap: 4px; }
-    .ms-ibtn {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 15px; height: 15px; border-radius: 50%;
-      background: var(--border); color: var(--ink-muted);
-      font-size: 9px; cursor: pointer; font-style: italic;
-      font-family: 'DM Sans', sans-serif; font-weight: 700;
-      flex-shrink: 0; border: none; line-height: 1; position: relative;
-    }
-    .ms-ibtn.tip-open .ms-tip { opacity: 1; pointer-events: auto; transform: translate(-50%,-50%) scale(1); }
-    .ms-tip {
-      position: fixed; top: 50%; left: 50%;
-      transform: translate(-50%, -50%) scale(0.95);
-      background: var(--ink); color: var(--bg);
-      font-size: 13px; font-weight: 400; line-height: 1.7;
-      padding: 14px 18px; border-radius: 12px; width: min(280px, 80vw);
-      text-align: left; opacity: 0; pointer-events: none;
-      transition: opacity .2s, transform .2s; z-index: 9999;
-      letter-spacing: 0; text-transform: none; font-style: normal;
-      box-shadow: 0 8px 32px rgba(26,18,8,0.25);
-    }
-    .ms-tip::after { display: none; }
-
-    .ms-tip::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:var(--ink); }
+    .ms-mc-name  { font-size: 13px; font-weight: 600; color: var(--ink); }
     .ms-pill { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; letter-spacing: .04em; }
     .ms-pg { background: var(--green-light); color: var(--green); }
     .ms-pa { background: var(--amber-light); color: var(--amber); }
@@ -930,6 +847,16 @@
     .ms-mc.open .ms-mc-expand { display: block; }
     .ms-mc-hint { font-size: 11px; color: var(--ink-muted); margin-top: 8px; }
     .ms-mc.open .ms-mc-hint { display: none; }
+    .ms-clinical-note {
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      color: var(--ink-muted);
+      line-height: 1.55;
+      border-left: 2px solid var(--border);
+      background: var(--bg);
+    }
 
     /* Annotated bars inside cards */
     .ms-barw { padding-bottom: 22px; margin-bottom: 6px; }
@@ -1232,7 +1159,7 @@
         <div class="strip-risk"  id="sWaistcat"></div>
       </div>
       <div>
-        <div class="strip-label">WHtR <button class="info-icon" tabindex="0" onclick="showTip(this)">i<span class="tooltip">Waist-to-Height Ratio (WHtR) divides your waist circumference by your height. A ratio above 0.5 means you are carrying more than half your height in waist size &#8212; linked to elevated cardiometabolic risk regardless of BMI.</span></button></div>
+        <div class="strip-label">WHtR</div>
         <div class="strip-value" id="sWHtR">&#8212;</div>
         <div class="strip-risk"  id="sWHtRcat"></div>
       </div>
@@ -1421,7 +1348,7 @@
       <span class="about-compact-name">Auf Ali</span>
       <a class="about-compact-handle" href="https://www.threads.net/@theaufthority" target="_blank" rel="noopener">@theaufthority</a>
       <span class="about-compact-sep">·</span>
-      <span class="about-compact-desc">I create evidence-based health tools for Malaysians</span>
+      <span class="about-compact-desc">I create avidence-based health tools for Malaysians</span>
     </div>
   </div>
 
@@ -2296,13 +2223,15 @@
       const hint     = L.tapHint;
       return `<div class="ms-mc" data-key="${m.key}" onclick="msToggleCard('${m.key}')">
         <div class="ms-mc-head">
-          <div class="ms-mc-name">${cardName}
-            <button class="ms-ibtn" onclick="event.stopPropagation();showTip(this)">i<span class="ms-tip">${m.tip}</span></button>
-          </div>
+          <div class="ms-mc-name">${cardName}</div>
           <div class="ms-pill ${msPillCls(risk)}">${pillText}</div>
         </div>
         <div class="ms-mc-val">${m.dispFn(v)}<span class="ms-mc-unit"> ${m.unit}</span></div>
-        <div class="ms-mc-expand">${msBuildBar(m,v,sex)}<div class="ms-eplain ${msEpCls(risk)}">${m.plainFn(v,sex)}</div></div>
+        <div class="ms-mc-expand">
+          ${msBuildBar(m,v,sex)}
+          <div class="ms-eplain ${msEpCls(risk)}">${m.plainFn(v,sex)}</div>
+          <div class="ms-clinical-note">${m.tip}</div>
+        </div>
         <div class="ms-mc-hint">${hint}</div>
       </div>`;
     }).join('');
@@ -2428,17 +2357,13 @@
         else if (p.classList.contains('ms-pa')) p.textContent = L.pills.mod;
         else if (p.classList.contains('ms-pg')) p.textContent = L.pills.low;
       });
-      // Metric card names
+      // Metric card names + hints
       document.querySelectorAll('.ms-mc').forEach(card => {
         const key = card.getAttribute('data-key');
         if (key && L.metricNames[key]) {
           const nameEl = card.querySelector('.ms-mc-name');
-          if (nameEl) {
-            const ibtn = nameEl.querySelector('.ms-ibtn');
-            nameEl.childNodes[0].textContent = L.metricNames[key] + ' ';
-          }
+          if (nameEl) nameEl.textContent = L.metricNames[key];
         }
-        // Tap hint
         const hint = card.querySelector('.ms-mc-hint');
         if (hint) hint.textContent = L.tapHint;
       });
