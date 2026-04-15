@@ -880,99 +880,14 @@
       .chart-wrap { height: 300px; }
     }
 
-    /* ── Tool nav ── */
-    .tool-nav {
-      display: flex;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-      margin-bottom: 32px;
-      background: var(--surface);
-    }
-    .tool-tab {
-      flex: 1; padding: 14px 16px;
-      background: transparent; border: none;
-      cursor: pointer; text-align: left;
-      font-family: 'DM Sans', sans-serif;
-      transition: background .15s;
-      border-right: 1px solid var(--border);
-    }
-    .tool-tab:last-child { border-right: none; }
-    .tool-tab.act { background: var(--ink); }
-    .tool-tab-main { font-size: 13px; font-weight: 600; display: block;
-      color: var(--ink-muted); transition: color .15s; }
-    .tool-tab-sub  { font-size: 11px; display: block; margin-top: 2px;
-      color: var(--border); }
-    .tool-tab.act .tool-tab-main { color: var(--bg); }
-    .tool-tab.act .tool-tab-sub  { color: rgba(245,240,232,0.45); }
-
-    /* ── Metabolic screener ── */
-    .ms-section { display: none; }
-    .ms-section.active { display: block; }
-
-    .ms-fsec { margin-bottom: 1.5rem; }
-    .ms-ftitle {
-      font-family: 'DM Serif Display', serif;
-      font-size: 15px; color: var(--ink);
-      margin-bottom: 10px; padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
-    }
-    .ms-frow   { display: grid; gap: 10px; margin-bottom: 10px; }
-    .ms-frow-2 { grid-template-columns: 1fr 1fr; }
-    .ms-frow-3 { grid-template-columns: 1fr 1fr 1fr; }
-    .ms-fl label {
-      display: block; font-size: 11px; font-weight: 600;
-      letter-spacing: .08em; text-transform: uppercase;
-      color: var(--ink-muted); margin-bottom: 5px;
-    }
-    .ms-fl input, .ms-fl select {
-      width: 100%; padding: 11px 14px;
-      border: 1.5px solid var(--border); border-radius: 10px;
-      font-size: 15px; background: var(--bg);
-      color: var(--ink); font-family: 'DM Sans', sans-serif;
-      transition: border-color .2s;
-    }
-    .ms-fl input:focus, .ms-fl select:focus {
-      outline: none; border-color: var(--accent);
-    }
-    .ms-rbg { display: flex; gap: 6px; flex-wrap: wrap; }
-    .ms-rb {
-      padding: 9px 14px; border: 1.5px solid var(--border);
-      border-radius: 10px; font-size: 13px; cursor: pointer;
-      background: var(--bg); color: var(--ink-muted);
-      transition: all .15s; user-select: none;
-      font-family: 'DM Sans', sans-serif; font-weight: 500;
-    }
-    .ms-rb.on {
-      background: var(--ink); border-color: var(--ink);
-      color: var(--bg);
-    }
-    .ms-cbtn {
-      width: 100%; padding: 16px; margin-top: 8px;
-      background: var(--ink); color: var(--bg);
-      border: none; border-radius: 12px;
-      font-family: 'DM Serif Display', serif;
-      font-size: 20px; cursor: pointer;
-      transition: all .2s;
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-    }
-    .ms-cbtn:hover {
-      background: var(--accent);
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(200,68,10,0.25);
-    }
-
-    /* Results */
-    .ms-results { display: none; margin-top: 2rem; animation: fadeUp .5s ease both; }
-    .ms-results.show { display: block; }
+    /* ═══ Metabolic screener styles ═══ */
 
     /* Dial */
     .ms-dial-wrap {
       display: flex; flex-direction: column; align-items: center;
       margin-bottom: 20px; padding: 24px 20px 16px;
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: 0 2px 12px rgba(26,18,8,.06);
+      border-radius: var(--radius); box-shadow: 0 2px 12px rgba(26,18,8,.06);
     }
     .ms-dial-rel { position: relative; width: 260px; height: 148px; }
     #ms-dc { width: 260px; height: 148px; }
@@ -980,32 +895,20 @@
       position: absolute; bottom: 4px; left: 50%;
       transform: translateX(-50%); text-align: center; pointer-events: none;
     }
-    .ms-dial-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 40px; color: var(--ink); line-height: 1;
-    }
-    .ms-dial-lbl { font-size: 10px; color: var(--ink-muted); margin-top: 1px;
-      font-weight: 600; letter-spacing: .07em; text-transform: uppercase; }
+    .ms-dial-num { font-family: 'DM Serif Display', serif; font-size: 40px; color: var(--ink); line-height: 1; }
+    .ms-dial-lbl { font-size: 10px; color: var(--ink-muted); margin-top: 1px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; }
     .ms-dial-verdict { font-size: 16px; font-weight: 600; margin-top: 12px; }
-    .ms-dial-sub {
-      font-size: 13px; color: var(--ink-muted); text-align: center;
-      max-width: 400px; margin-top: 5px; line-height: 1.65;
-    }
+    .ms-dial-sub { font-size: 13px; color: var(--ink-muted); text-align: center; max-width: 420px; margin-top: 5px; line-height: 1.65; }
 
     /* Diabetes risk card */
     .ms-fr-card {
       border: 1px solid var(--border); border-radius: var(--radius);
       padding: 20px 24px; margin-bottom: 16px;
-      background: var(--surface);
-      box-shadow: 0 2px 12px rgba(26,18,8,.04);
+      background: var(--surface); box-shadow: 0 2px 12px rgba(26,18,8,.04);
     }
     .ms-fr-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
-    .ms-fr-title { font-size: 12px; font-weight: 600; letter-spacing: .08em;
-      text-transform: uppercase; color: var(--ink-muted); }
-    .ms-fr-pill {
-      font-size: 11px; font-weight: 600; padding: 3px 10px;
-      border-radius: 100px; letter-spacing: .04em;
-    }
+    .ms-fr-title { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); }
+    .ms-fr-pill { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 100px; letter-spacing: .04em; }
     .ms-fr-pill.low  { background: var(--green-light); color: var(--green); }
     .ms-fr-pill.mod  { background: var(--amber-light); color: var(--amber); }
     .ms-fr-pill.high { background: var(--red-light);   color: var(--red); }
@@ -1018,38 +921,30 @@
     .ms-fthumb {
       position: absolute; top: 50%; transform: translate(-50%,-50%);
       width: 16px; height: 16px; background: var(--surface);
-      border: 2px solid var(--ink); border-radius: 50%;
-      transition: left .4s ease;
+      border: 2px solid var(--ink); border-radius: 50%; transition: left .4s ease;
     }
-    .ms-fticks { display: flex; justify-content: space-between;
-      font-size: 9px; color: var(--ink-muted); font-weight: 500; letter-spacing: .03em; }
+    .ms-fticks { display: flex; justify-content: space-between; font-size: 9px; color: var(--ink-muted); font-weight: 500; letter-spacing: .03em; }
 
     /* Metric cards */
-    .ms-cards-lbl {
-      font-size: 11px; font-weight: 600; color: var(--ink-muted);
-      letter-spacing: .09em; text-transform: uppercase;
-      margin-bottom: 10px; margin-top: 20px;
-    }
+    .ms-cards-lbl { font-size: 11px; font-weight: 600; color: var(--ink-muted); letter-spacing: .09em; text-transform: uppercase; margin-bottom: 10px; margin-top: 20px; }
     .ms-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
     .ms-mc {
-      border: 1px solid var(--border); border-radius: 12px;
-      padding: 16px 18px; background: var(--surface);
-      cursor: pointer; transition: border-color .15s, box-shadow .15s;
+      border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px;
+      background: var(--surface); cursor: pointer;
+      transition: border-color .15s, box-shadow .15s;
       box-shadow: 0 1px 4px rgba(26,18,8,.04);
     }
     .ms-mc:hover { border-color: var(--ink-muted); }
-    .ms-mc.open { border-color: var(--ink); }
-    .ms-mc-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; }
-    .ms-mc-name { font-size: 13px; font-weight: 600; color: var(--ink);
-      display: flex; align-items: center; gap: 4px; }
+    .ms-mc.open  { border-color: var(--ink); }
+    .ms-mc-head  { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; }
+    .ms-mc-name  { font-size: 13px; font-weight: 600; color: var(--ink); display: flex; align-items: center; gap: 4px; }
     .ms-ibtn {
       display: inline-flex; align-items: center; justify-content: center;
       width: 15px; height: 15px; border-radius: 50%;
       background: var(--border); color: var(--ink-muted);
       font-size: 9px; cursor: pointer; font-style: italic;
       font-family: 'DM Sans', sans-serif; font-weight: 700;
-      flex-shrink: 0; border: none; line-height: 1;
-      position: relative;
+      flex-shrink: 0; border: none; line-height: 1; position: relative;
     }
     .ms-ibtn:hover .ms-tip { opacity: 1; pointer-events: auto; transform: translateY(0); }
     .ms-tip {
@@ -1062,100 +957,65 @@
       transition: opacity .2s, transform .2s; z-index: 100;
       letter-spacing: 0; text-transform: none; font-style: normal;
     }
-    .ms-tip::after {
-      content: ''; position: absolute; top: 100%; left: 50%;
-      transform: translateX(-50%);
-      border: 5px solid transparent; border-top-color: var(--ink);
-    }
-    .ms-pill {
-      font-size: 10px; font-weight: 600; padding: 2px 8px;
-      border-radius: 100px; white-space: nowrap; flex-shrink: 0;
-      letter-spacing: .04em;
-    }
+    .ms-tip::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:var(--ink); }
+    .ms-pill { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; letter-spacing: .04em; }
     .ms-pg { background: var(--green-light); color: var(--green); }
     .ms-pa { background: var(--amber-light); color: var(--amber); }
     .ms-pr { background: var(--red-light);   color: var(--red); }
-    .ms-mc-val {
-      font-family: 'DM Serif Display', serif; font-size: 24px;
-      color: var(--ink); margin-top: 6px;
-    }
+    .ms-mc-val { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--ink); margin-top: 6px; }
     .ms-mc-unit { font-size: 12px; color: var(--ink-muted); font-family: 'DM Sans', sans-serif; }
-    .ms-mc-expand { display: none; margin-top: 12px; padding-top: 12px;
-      border-top: 1px solid var(--border); }
+    .ms-mc-expand { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
     .ms-mc.open .ms-mc-expand { display: block; }
     .ms-mc-hint { font-size: 11px; color: var(--ink-muted); margin-top: 8px; }
     .ms-mc.open .ms-mc-hint { display: none; }
 
-    /* Annotation bar inside cards */
+    /* Annotated bars inside cards */
     .ms-barw { padding-bottom: 22px; margin-bottom: 6px; }
     .ms-btrack { height: 8px; border-radius: 4px; position: relative; width: 100%; }
     .ms-bseg { position: absolute; height: 8px; top: 0; }
     .ms-bseg.g { background: rgba(42,107,69,.35); border-radius: 4px 0 0 4px; }
     .ms-bseg.a { background: rgba(184,112,0,.35); }
     .ms-bseg.r { background: rgba(200,36,10,.35); border-radius: 0 4px 4px 0; }
-    .ms-btick { position: absolute; top: -3px; width: 1px; height: 14px;
-      background: var(--border); }
-    .ms-btlbl { position: absolute; top: 14px; font-size: 10px; color: var(--ink-muted);
-      transform: translateX(-50%); white-space: nowrap; font-weight: 500; }
-    .ms-bdot {
-      position: absolute; top: 50%; transform: translate(-50%,-50%);
-      width: 16px; height: 16px; border-radius: 50%;
-      border: 2.5px solid var(--surface); box-shadow: 0 0 0 1px rgba(26,18,8,.15); z-index: 2;
-    }
-    .ms-eplain {
-      font-size: 13px; line-height: 1.65; padding: 10px 12px;
-      border-radius: 10px; margin-top: 8px;
-    }
+    .ms-btick  { position: absolute; top: -3px; width: 1px; height: 14px; background: var(--border); }
+    .ms-btlbl  { position: absolute; top: 14px; font-size: 10px; color: var(--ink-muted); transform: translateX(-50%); white-space: nowrap; font-weight: 500; }
+    .ms-bdot   { position: absolute; top: 50%; transform: translate(-50%,-50%); width: 16px; height: 16px; border-radius: 50%; border: 2.5px solid var(--surface); box-shadow: 0 0 0 1px rgba(26,18,8,.15); z-index: 2; }
+    .ms-eplain { font-size: 13px; line-height: 1.65; padding: 10px 12px; border-radius: 10px; margin-top: 8px; }
     .ms-epg { background: var(--green-light); color: var(--green); }
     .ms-epa { background: var(--amber-light); color: var(--amber); }
     .ms-epr { background: var(--red-light);   color: var(--red); }
 
-    /* Scatter */
+    /* Population scatter card */
     .ms-scatter-card {
       margin-bottom: 16px; border: 1px solid var(--border);
       border-radius: var(--radius); overflow: hidden;
-      background: var(--surface);
-      box-shadow: 0 2px 12px rgba(26,18,8,.04);
+      background: var(--surface); box-shadow: 0 2px 12px rgba(26,18,8,.04);
     }
-    .ms-scatter-head { padding: 16px 20px 0; }
-    .ms-scatter-title { font-size: 12px; font-weight: 600; letter-spacing: .08em;
-      text-transform: uppercase; color: var(--ink-muted); }
-    .ms-scatter-filters {
-      display: flex; gap: 8px; flex-wrap: wrap;
-      padding: 10px 20px 12px; border-bottom: 1px solid var(--border);
-      align-items: center;
-    }
-    .ms-fgrp { display: flex; gap: 5px; align-items: center; }
-    .ms-fgrp-lbl { font-size: 11px; color: var(--ink-muted); font-weight: 500;
-      margin-right: 2px; }
+    .ms-scatter-head  { padding: 16px 20px 0; }
+    .ms-scatter-title { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); }
+    .ms-scatter-filters { display: flex; gap: 8px; flex-wrap: wrap; padding: 10px 20px 12px; border-bottom: 1px solid var(--border); align-items: center; }
+    .ms-fgrp     { display: flex; gap: 5px; align-items: center; }
+    .ms-fgrp-lbl { font-size: 11px; color: var(--ink-muted); font-weight: 500; margin-right: 2px; }
     .ms-ftog {
-      padding: 5px 11px; border: 1.5px solid var(--border);
-      border-radius: 100px; font-size: 12px; cursor: pointer;
-      background: var(--bg); color: var(--ink-muted);
-      font-family: 'DM Sans', sans-serif; font-weight: 500;
-      transition: all .15s;
+      padding: 5px 11px; border: 1.5px solid var(--border); border-radius: 100px;
+      font-size: 12px; cursor: pointer; background: var(--bg); color: var(--ink-muted);
+      font-family: 'DM Sans', sans-serif; font-weight: 500; transition: all .15s;
     }
     .ms-ftog.on { background: var(--ink); border-color: var(--ink); color: var(--bg); }
     .ms-scatter-inner { padding: 12px 16px 16px; }
-    #ms-sc { width: 100%; }
-    .ms-sleg { display: flex; gap: 14px; margin-top: 10px; flex-wrap: wrap;
-      font-size: 12px; color: var(--ink-muted); }
-    .ms-sl { display: flex; align-items: center; gap: 5px; }
-    .ms-sl-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-    .ms-scatter-note {
-      font-size: 11px; color: var(--ink-muted); margin-top: 8px;
-      line-height: 1.5; font-style: italic;
-    }
-
-    .ms-disclaimer {
-      text-align: center; margin-top: 24px;
-      font-size: 12px; color: var(--ink-muted); line-height: 1.7;
-    }
+    .ms-sleg  { display: flex; gap: 14px; margin-top: 10px; flex-wrap: wrap; font-size: 12px; color: var(--ink-muted); }
+    .ms-sl    { display: flex; align-items: center; gap: 5px; }
+    .ms-sl-dot{ width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .ms-scatter-note { font-size: 11px; color: var(--ink-muted); margin-top: 8px; line-height: 1.5; font-style: italic; }
 
     @media (max-width: 520px) {
-      .ms-frow-2, .ms-frow-3 { grid-template-columns: 1fr; }
       .ms-cards-grid { grid-template-columns: 1fr; }
       .ms-scatter-filters { gap: 6px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+      .summary-strip { grid-template-columns: repeat(3,1fr); gap: 10px; padding: 16px; }
+      .strip-value { font-size: 20px; }
+      .chart-wrap { height: 300px; }
+      .form-card, .chart-card, .slider-card { padding: 24px 18px; }
     }
   </style>
 </head>
@@ -1171,7 +1031,7 @@
     <div class="source-badge">📊 WHO · OWID · NHMS Malaysia</div>
   </header>
 
-  <!-- Form -->
+  <!-- Unified Form -->
   <div class="form-card" id="formSection">
     <div class="form-grid">
 
@@ -1180,8 +1040,8 @@
       <div class="form-group full">
         <label>Biological Sex</label>
         <div class="sex-toggle">
-          <button class="sex-btn active" data-sex="male"   onclick="setSex('male')">♂ Male</button>
-          <button class="sex-btn"        data-sex="female" onclick="setSex('female')">♀ Female</button>
+          <button class="sex-btn active" data-sex="male"   onclick="setSex('male')">&#9794; Male</button>
+          <button class="sex-btn"        data-sex="female" onclick="setSex('female')">&#9792; Female</button>
         </div>
       </div>
 
@@ -1194,7 +1054,7 @@
       </div>
 
       <div class="form-divider"></div>
-      <div class="section-label">Your measurements</div>
+      <div class="section-label">Measurements</div>
 
       <div class="form-group">
         <label>Weight</label>
@@ -1212,16 +1072,85 @@
         </div>
       </div>
 
-      <div class="form-group full">
-        <label>Waist Circumference</label>
+      <div class="form-group">
+        <label>Waist</label>
         <div class="input-wrap">
           <input type="number" id="inWaist" placeholder="e.g. 88" min="40" max="160" step="0.5" />
           <span class="unit">cm</span>
         </div>
       </div>
 
+      <div class="form-group">
+        <label>Hip <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:11px">(optional)</span></label>
+        <div class="input-wrap">
+          <input type="number" id="inHip" placeholder="e.g. 96" min="40" max="200" step="0.5" />
+          <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+      <div class="section-label">Lifestyle &amp; history</div>
+
+      <div class="form-group full">
+        <label>At least 30 min moderate physical activity daily?</label>
+        <div class="sex-toggle">
+          <button class="sex-btn active" data-act="yes" onclick="setAct('yes')">Yes</button>
+          <button class="sex-btn"        data-act="no"  onclick="setAct('no')">No</button>
+        </div>
+      </div>
+
+      <div class="form-group full">
+        <label>Eat vegetables or fruit every day?</label>
+        <div class="sex-toggle">
+          <button class="sex-btn active" data-diet="yes" onclick="setDiet('yes')">Yes</button>
+          <button class="sex-btn"        data-diet="no"  onclick="setDiet('no')">No</button>
+        </div>
+      </div>
+
+      <div class="form-group full">
+        <label>Smoking status</label>
+        <div class="sex-toggle" style="grid-template-columns:1fr 1fr 1fr">
+          <button class="sex-btn active" data-smk="never"   onclick="setSmk('never')">Never</button>
+          <button class="sex-btn"        data-smk="ex"      onclick="setSmk('ex')">Ex-smoker</button>
+          <button class="sex-btn"        data-smk="current" onclick="setSmk('current')">Current</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Ever told you have high blood pressure or on BP medication?</label>
+        <div class="sex-toggle">
+          <button class="sex-btn active" data-bp="no"  onclick="setBp('no')">No</button>
+          <button class="sex-btn"        data-bp="yes" onclick="setBp('yes')">Yes</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Ever found to have high blood glucose?</label>
+        <div class="sex-toggle">
+          <button class="sex-btn active" data-glc="no"  onclick="setGlc('no')">No</button>
+          <button class="sex-btn"        data-glc="yes" onclick="setGlc('yes')">Yes</button>
+        </div>
+      </div>
+
+      <div class="form-group full">
+        <label>Family history of diabetes</label>
+        <div class="sex-toggle" style="grid-template-columns:1fr 1fr 1fr">
+          <button class="sex-btn active" data-fam="none" onclick="setFam('none')">None</button>
+          <button class="sex-btn"        data-fam="2nd"  onclick="setFam('2nd')">Grandparent / aunt / uncle</button>
+          <button class="sex-btn"        data-fam="1st"  onclick="setFam('1st')">Parent / sibling / child</button>
+        </div>
+      </div>
+
+      <div class="form-group full" id="gdmRow" style="display:none">
+        <label>Ever had gestational diabetes?</label>
+        <div class="sex-toggle">
+          <button class="sex-btn active" data-gdm="no"  onclick="setGdm('no')">No</button>
+          <button class="sex-btn"        data-gdm="yes" onclick="setGdm('yes')">Yes</button>
+        </div>
+      </div>
+
     </div>
-    <button class="btn-primary" onclick="calculate()">Cermin Diri →</button>
+    <button class="btn-primary" onclick="calculate()">Cermin Diri &#8594;</button>
   </div>
 
   <!-- Results -->
@@ -1234,47 +1163,72 @@
 
     <!-- Age boundary callout -->
     <div class="age-callout" id="ageCallout">
-      <div class="age-callout-icon">⚠</div>
+      <div class="age-callout-icon">&#9888;</div>
       <div id="ageCalloutText"></div>
     </div>
 
-    <!-- Summary strip -->
+    <!-- ── SECTION 1: Metabolic risk dial + score ── -->
+    <div class="ms-dial-wrap" id="ms-dial-wrap">
+      <div class="ms-dial-rel">
+        <canvas id="ms-dc" width="520" height="296"></canvas>
+        <div class="ms-dial-center">
+          <div class="ms-dial-num" id="ms-dn">&#8212;</div>
+          <div class="ms-dial-lbl">Overall risk index</div>
+        </div>
+      </div>
+      <div class="ms-dial-verdict" id="ms-dv">&#8212;</div>
+      <div class="ms-dial-sub"     id="ms-ds">&#8212;</div>
+    </div>
+
+    <!-- ── SECTION 2: Summary strip (BMI / Waist / WHtR) ── -->
     <div class="summary-strip">
       <div>
         <div class="strip-label">BMI</div>
-        <div class="strip-value" id="sBMI">—</div>
+        <div class="strip-value" id="sBMI">&#8212;</div>
         <div class="strip-risk"  id="sBMIcat"></div>
       </div>
       <div>
         <div class="strip-label">Waist</div>
-        <div class="strip-value" id="sWaist">—</div>
+        <div class="strip-value" id="sWaist">&#8212;</div>
         <div class="strip-risk"  id="sWaistcat"></div>
       </div>
       <div>
-        <div class="strip-label">WHtR <button class="info-icon" tabindex="0">i<span class="tooltip">Waist-to-Height Ratio (WHtR) divides your waist circumference by your height. A ratio above 0.5 means you are carrying more than half your height in waist size — linked to elevated cardiometabolic risk regardless of BMI.</span></button></div>
-        <div class="strip-value" id="sWHtR">—</div>
+        <div class="strip-label">WHtR <button class="info-icon" tabindex="0">i<span class="tooltip">Waist-to-Height Ratio (WHtR) divides your waist circumference by your height. A ratio above 0.5 means you are carrying more than half your height in waist size &#8212; linked to elevated cardiometabolic risk regardless of BMI.</span></button></div>
+        <div class="strip-value" id="sWHtR">&#8212;</div>
         <div class="strip-risk"  id="sWHtRcat"></div>
       </div>
     </div>
 
-    <!-- Chart card -->
+    <!-- ── SECTION 3: Diabetes risk score ── -->
+    <div class="ms-fr-card">
+      <div class="ms-fr-top">
+        <div class="ms-fr-title">Diabetes risk score</div>
+        <div class="ms-fr-pill" id="ms-fr-pill">&#8212;</div>
+      </div>
+      <div class="ms-fr-sub" id="ms-fr-sub">&#8212;</div>
+      <div class="ms-ftrack"><div class="ms-fthumb" id="ms-fthumb" style="left:0%"></div></div>
+      <div class="ms-fticks"><span>Low</span><span>Slightly elevated</span><span>Moderate</span><span>High</span><span>Very high</span></div>
+    </div>
+
+    <!-- ── SECTION 4: Metric cards ── -->
+    <div class="ms-cards-lbl">Your measurements &#8212; tap any card to explore</div>
+    <div class="ms-cards-grid" id="ms-cards"></div>
+
+    <!-- ── SECTION 5: What if I improve? (original slider chart) ── -->
     <div class="chart-card">
       <div class="chart-card-header">
-        <div class="chart-card-title">📍 BMI vs Waist Risk Map</div>
+        <div class="chart-card-title">&#128205; BMI vs Waist &#8212; Goal planner</div>
         <label class="pop-toggle">
           <input type="checkbox" id="chkPop" onchange="togglePop()" />
           Show Malaysian population (NHMS 2019)
         </label>
       </div>
-
       <div class="chart-wrap">
         <canvas id="riskChart"
           role="img"
-          aria-label="Scatter chart of BMI vs waist circumference showing WHO Asia-Pacific risk zones. Green is healthy, amber is elevated risk, red is high risk. Blue dot marks your position.">
-          BMI vs waist risk chart — green = healthy, amber = elevated, red = high risk.
+          aria-label="Scatter chart of BMI vs waist circumference showing WHO Asia-Pacific risk zones. Green is healthy, amber is elevated risk, red is high risk.">
         </canvas>
       </div>
-
       <div class="chart-legend">
         <div class="legend-item"><div class="legend-swatch" style="background:rgba(99,153,34,0.35)"></div> Healthy zone</div>
         <div class="legend-item"><div class="legend-swatch" style="background:rgba(186,117,23,0.35)"></div> Elevated risk</div>
@@ -1286,18 +1240,16 @@
       <div class="age-zone-note" id="ageZoneNote"></div>
     </div>
 
-    <!-- Sliders -->
     <div class="slider-card">
       <div class="slider-card-header">
         <h3>What if I improve?</h3>
-        <p>Drag to simulate your goal — watch the green dot move on the chart above.</p>
+        <p>Drag to simulate your goal &#8212; watch the green dot move on the chart above.</p>
       </div>
-
       <div class="slider-group">
         <div class="slider-label-row">
           <span class="slider-label">Goal Weight</span>
           <div class="slider-val-wrap">
-            <span class="slider-val" id="slWeightVal">—</span>
+            <span class="slider-val" id="slWeightVal">&#8212;</span>
             <span class="slider-unit">kg</span>
             <span class="slider-delta" id="slWeightDelta"></span>
           </div>
@@ -1308,12 +1260,11 @@
         </div>
         <div class="context-note" id="ctxWeight"></div>
       </div>
-
       <div class="slider-group">
         <div class="slider-label-row">
           <span class="slider-label">Goal Waist</span>
           <div class="slider-val-wrap">
-            <span class="slider-val" id="slWaistVal">—</span>
+            <span class="slider-val" id="slWaistVal">&#8212;</span>
             <span class="slider-unit">cm</span>
             <span class="slider-delta" id="slWaistDelta"></span>
           </div>
@@ -1326,7 +1277,40 @@
       </div>
     </div>
 
-    <!-- What should I do? -->
+    <!-- ── SECTION 6: Population scatter ── -->
+    <div class="ms-scatter-card">
+      <div class="ms-scatter-head"><div class="ms-scatter-title">&#128205; Your position among Malaysians</div></div>
+      <div class="ms-scatter-filters">
+        <div class="ms-fgrp">
+          <span class="ms-fgrp-lbl">Sex</span>
+          <button class="ms-ftog" id="ms-sf-male"   onclick="msSetSex('male')">Male</button>
+          <button class="ms-ftog" id="ms-sf-female" onclick="msSetSex('female')">Female</button>
+        </div>
+        <div class="ms-fgrp">
+          <span class="ms-fgrp-lbl">Age group</span>
+          <button class="ms-ftog on" id="ms-sa-all" onclick="msSetAge('all')">All</button>
+          <button class="ms-ftog"    id="ms-sa-18"  onclick="msSetAge('18')">18&#8211;29</button>
+          <button class="ms-ftog"    id="ms-sa-30"  onclick="msSetAge('30')">30&#8211;39</button>
+          <button class="ms-ftog"    id="ms-sa-40"  onclick="msSetAge('40')">40&#8211;49</button>
+          <button class="ms-ftog"    id="ms-sa-50"  onclick="msSetAge('50')">50&#8211;59</button>
+          <button class="ms-ftog"    id="ms-sa-60"  onclick="msSetAge('60')">60+</button>
+        </div>
+      </div>
+      <div class="ms-scatter-inner">
+        <div style="position:relative;height:320px;width:100%">
+          <canvas id="ms-sc" role="img" aria-label="Scatter chart showing your BMI and waist plotted against simulated Malaysian population from NHMS 2019 and 2023."></canvas>
+        </div>
+        <div class="ms-sleg">
+          <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(42,107,69,0.5)"></div>Healthy</div>
+          <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(184,112,0,0.5)"></div>One risk factor</div>
+          <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(200,36,10,0.5)"></div>Both elevated</div>
+          <div class="ms-sl"><div class="ms-sl-dot" style="background:#C8440A;border:2px solid white;box-shadow:0 0 0 1px rgba(26,18,8,.2)"></div>You</div>
+        </div>
+        <div class="ms-scatter-note">Population cloud seeded from NHMS 2019 &amp; 2023 published mean BMI and waist distributions by sex and age group (IKU/MOH Malaysia). Individual points are statistically simulated &#8212; not real survey respondents.</div>
+      </div>
+    </div>
+
+    <!-- ── SECTION 7: What should I do? ── -->
     <div id="actionCard" class="action-card" style="display:none">
       <div class="action-card-header">
         <div class="action-icon" id="actionIcon"></div>
@@ -1340,185 +1324,11 @@
       <div class="action-links" id="actionLinks"></div>
     </div>
 
-    <button class="btn-reset" onclick="resetApp()">← Start Over</button>
+    <button class="btn-reset" onclick="resetApp()">&#8592; Start Over</button>
 
     <div class="disclaimer">
       For informational purposes only. Not a substitute for professional medical advice.<br/>
       Please consult a qualified healthcare provider for diagnosis and treatment.
-    </div>
-  </div>
-
-  <!-- ── Metabolic Screener ── -->
-  <div style="margin-top:52px;margin-bottom:8px">
-    <div class="tool-nav">
-      <button class="tool-tab act" id="tab-body" onclick="switchTool('body')">
-        <span class="tool-tab-main">No lab results needed</span>
-        <span class="tool-tab-sub">Body measurements + lifestyle</span>
-      </button>
-      <button class="tool-tab" id="tab-labs" onclick="switchTool('labs')">
-        <span class="tool-tab-main">Have lab results?</span>
-        <span class="tool-tab-sub">Add blood test values</span>
-      </button>
-    </div>
-  </div>
-
-  <div class="ms-section active" id="ms-t1">
-    <div class="form-card" style="animation:none">
-      <div class="ms-fsec">
-        <div class="ms-ftitle">Body measurements</div>
-        <div class="ms-frow ms-frow-2">
-          <div class="ms-fl"><label>Biological sex</label>
-            <div class="ms-rbg" id="ms-sex-g">
-              <div class="ms-rb on" data-v="male"   onclick="msPick('ms-sex-g',this)">♂ Male</div>
-              <div class="ms-rb"    data-v="female" onclick="msPick('ms-sex-g',this)">♀ Female</div>
-            </div>
-          </div>
-          <div class="ms-fl"><label>Age</label>
-            <input type="number" id="ms-age" placeholder="e.g. 35" min="18" max="99">
-          </div>
-        </div>
-        <div class="ms-frow ms-frow-3">
-          <div class="ms-fl"><label>Weight (kg)</label><input type="number" id="ms-wt" placeholder="e.g. 72" step="0.5"></div>
-          <div class="ms-fl"><label>Height (cm)</label><input type="number" id="ms-ht" placeholder="e.g. 170"></div>
-          <div class="ms-fl"><label>Waist (cm)</label><input type="number" id="ms-wc" placeholder="e.g. 88" step="0.5"></div>
-        </div>
-        <div class="ms-frow ms-frow-2">
-          <div class="ms-fl">
-            <label>Hip (cm) <span style="font-weight:400;text-transform:none;letter-spacing:0">optional</span></label>
-            <input type="number" id="ms-hip" placeholder="e.g. 96" step="0.5">
-          </div>
-        </div>
-      </div>
-      <div class="ms-fsec">
-        <div class="ms-ftitle">Lifestyle &amp; history</div>
-        <div class="ms-frow">
-          <div class="ms-fl"><label>At least 30 min moderate physical activity daily?</label>
-            <div class="ms-rbg" id="ms-act-g">
-              <div class="ms-rb on" data-v="yes" onclick="msPick('ms-act-g',this)">Yes</div>
-              <div class="ms-rb"    data-v="no"  onclick="msPick('ms-act-g',this)">No</div>
-            </div>
-          </div>
-        </div>
-        <div class="ms-frow">
-          <div class="ms-fl"><label>Eat vegetables or fruit every day?</label>
-            <div class="ms-rbg" id="ms-diet-g">
-              <div class="ms-rb on" data-v="yes" onclick="msPick('ms-diet-g',this)">Yes</div>
-              <div class="ms-rb"    data-v="no"  onclick="msPick('ms-diet-g',this)">No</div>
-            </div>
-          </div>
-        </div>
-        <div class="ms-frow">
-          <div class="ms-fl"><label>Smoking status</label>
-            <div class="ms-rbg" id="ms-smk-g">
-              <div class="ms-rb on" data-v="never"   onclick="msPick('ms-smk-g',this)">Never</div>
-              <div class="ms-rb"    data-v="ex"      onclick="msPick('ms-smk-g',this)">Ex-smoker</div>
-              <div class="ms-rb"    data-v="current" onclick="msPick('ms-smk-g',this)">Current smoker</div>
-            </div>
-          </div>
-        </div>
-        <div class="ms-frow ms-frow-2">
-          <div class="ms-fl"><label>Ever told you have high blood pressure or on BP medication?</label>
-            <div class="ms-rbg" id="ms-bp-g">
-              <div class="ms-rb on" data-v="no"  onclick="msPick('ms-bp-g',this)">No</div>
-              <div class="ms-rb"    data-v="yes" onclick="msPick('ms-bp-g',this)">Yes</div>
-            </div>
-          </div>
-          <div class="ms-fl"><label>Ever found to have high blood glucose?</label>
-            <div class="ms-rbg" id="ms-glc-g">
-              <div class="ms-rb on" data-v="no"  onclick="msPick('ms-glc-g',this)">No</div>
-              <div class="ms-rb"    data-v="yes" onclick="msPick('ms-glc-g',this)">Yes</div>
-            </div>
-          </div>
-        </div>
-        <div class="ms-frow">
-          <div class="ms-fl"><label>Family history of diabetes</label>
-            <div class="ms-rbg" id="ms-fam-g">
-              <div class="ms-rb on" data-v="none" onclick="msPick('ms-fam-g',this)">None</div>
-              <div class="ms-rb"    data-v="2nd"  onclick="msPick('ms-fam-g',this)">Grandparent / aunt / uncle</div>
-              <div class="ms-rb"    data-v="1st"  onclick="msPick('ms-fam-g',this)">Parent / sibling / child</div>
-            </div>
-          </div>
-        </div>
-        <div class="ms-frow" id="ms-gdm-row" style="display:none">
-          <div class="ms-fl"><label>Ever had gestational diabetes?</label>
-            <div class="ms-rbg" id="ms-gdm-g">
-              <div class="ms-rb on" data-v="no"  onclick="msPick('ms-gdm-g',this)">No</div>
-              <div class="ms-rb"    data-v="yes" onclick="msPick('ms-gdm-g',this)">Yes</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="ms-cbtn" onclick="msCalc()">Calculate metabolic risk →</button>
-    </div>
-
-    <div class="ms-results" id="ms-results">
-      <div class="ms-dial-wrap">
-        <div class="ms-dial-rel">
-          <canvas id="ms-dc" width="520" height="296"></canvas>
-          <div class="ms-dial-center">
-            <div class="ms-dial-num" id="ms-dn">—</div>
-            <div class="ms-dial-lbl">Overall risk index</div>
-          </div>
-        </div>
-        <div class="ms-dial-verdict" id="ms-dv">—</div>
-        <div class="ms-dial-sub"     id="ms-ds">—</div>
-      </div>
-
-      <div class="ms-fr-card">
-        <div class="ms-fr-top">
-          <div class="ms-fr-title">Diabetes risk score</div>
-          <div class="ms-fr-pill" id="ms-fr-pill">—</div>
-        </div>
-        <div class="ms-fr-sub" id="ms-fr-sub">—</div>
-        <div class="ms-ftrack"><div class="ms-fthumb" id="ms-fthumb" style="left:0%"></div></div>
-        <div class="ms-fticks"><span>Low</span><span>Slightly elevated</span><span>Moderate</span><span>High</span><span>Very high</span></div>
-      </div>
-
-      <div class="ms-cards-lbl">Your measurements — tap any card to explore</div>
-      <div class="ms-cards-grid" id="ms-cards"></div>
-
-      <div class="ms-scatter-card">
-        <div class="ms-scatter-head"><div class="ms-scatter-title">📍 Your position among Malaysians</div></div>
-        <div class="ms-scatter-filters">
-          <div class="ms-fgrp">
-            <span class="ms-fgrp-lbl">Sex</span>
-            <button class="ms-ftog" id="ms-sf-male"   onclick="msSetSex('male')">Male</button>
-            <button class="ms-ftog" id="ms-sf-female" onclick="msSetSex('female')">Female</button>
-          </div>
-          <div class="ms-fgrp">
-            <span class="ms-fgrp-lbl">Age group</span>
-            <button class="ms-ftog on" id="ms-sa-all" onclick="msSetAge('all')">All</button>
-            <button class="ms-ftog"    id="ms-sa-18"  onclick="msSetAge('18')">18–29</button>
-            <button class="ms-ftog"    id="ms-sa-30"  onclick="msSetAge('30')">30–39</button>
-            <button class="ms-ftog"    id="ms-sa-40"  onclick="msSetAge('40')">40–49</button>
-            <button class="ms-ftog"    id="ms-sa-50"  onclick="msSetAge('50')">50–59</button>
-            <button class="ms-ftog"    id="ms-sa-60"  onclick="msSetAge('60')">60+</button>
-          </div>
-        </div>
-        <div class="ms-scatter-inner">
-          <canvas id="ms-sc" width="636" height="300" role="img"
-            aria-label="Scatter chart of BMI vs waist circumference showing your position among simulated Malaysian population data from NHMS 2019 and 2023."></canvas>
-          <div class="ms-sleg">
-            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(42,107,69,0.5)"></div>Healthy</div>
-            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(184,112,0,0.5)"></div>One risk factor</div>
-            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(200,36,10,0.5)"></div>Both elevated</div>
-            <div class="ms-sl"><div class="ms-sl-dot" style="background:#C8440A;border:2px solid white;box-shadow:0 0 0 1px rgba(26,18,8,.2)"></div>You</div>
-          </div>
-          <div class="ms-scatter-note">Population cloud seeded from NHMS 2019 &amp; 2023 published mean BMI and waist distributions by sex and age group (IKU/MOH Malaysia). Individual points are statistically simulated — not real survey respondents.</div>
-        </div>
-      </div>
-
-      <div class="ms-disclaimer">
-        For informational purposes only. Not a substitute for professional medical advice.<br/>
-        Please consult a qualified healthcare provider for diagnosis and treatment.
-      </div>
-    </div>
-  </div>
-
-  <div class="ms-section" id="ms-t2">
-    <div class="form-card" style="text-align:center;padding:48px 32px;animation:none">
-      <div style="font-family:'DM Serif Display',serif;font-size:24px;color:var(--ink);margin-bottom:10px">Coming soon</div>
-      <div style="font-size:15px;color:var(--ink-muted);line-height:1.7;max-width:380px;margin:0 auto">Tier 2 will add blood pressure, fasting glucose, HbA1c, triglycerides, and HDL cholesterol to complete your metabolic syndrome profile.</div>
     </div>
   </div>
 
@@ -1615,23 +1425,41 @@
 </div>
 
 <script>
-  /* ── State ─────────────────────────────────────────────── */
-  let sex = 'male';
-  let S = {};          // current session inputs
-  let chart = null;
-  let showPop = false;
+  /* ── App state ── */
+  let sex  = 'male';
+  let act  = 'yes';
+  let diet = 'yes';
+  let smk  = 'never';
+  let bp   = 'no';
+  let glc  = 'no';
+  let fam  = 'none';
+  let gdm  = 'no';
+  let S    = {};
+  let chart     = null;
+  let showPop   = false;
+  let msScatterChart = null;
+  let msSFilter = {sex:'male', age:'all'};
+  let msUserPt  = {bmi:22, wc:80};
 
-  /* ── Sex toggle ────────────────────────────────────────── */
+  /* ── Toggle helpers ── */
   function setSex(s) {
     sex = s;
-    document.querySelectorAll('.sex-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('[data-sex]').forEach(b => b.classList.remove('active'));
     document.querySelector(`[data-sex="${s}"]`).classList.add('active');
+    document.getElementById('gdmRow').style.display = s === 'female' ? '' : 'none';
   }
+  function setAct(v)  { act  = v; document.querySelectorAll('[data-act]').forEach(b=>b.classList.remove('active'));  document.querySelector(`[data-act="${v}"]`).classList.add('active'); }
+  function setDiet(v) { diet = v; document.querySelectorAll('[data-diet]').forEach(b=>b.classList.remove('active')); document.querySelector(`[data-diet="${v}"]`).classList.add('active'); }
+  function setSmk(v)  { smk  = v; document.querySelectorAll('[data-smk]').forEach(b=>b.classList.remove('active'));  document.querySelector(`[data-smk="${v}"]`).classList.add('active'); }
+  function setBp(v)   { bp   = v; document.querySelectorAll('[data-bp]').forEach(b=>b.classList.remove('active'));   document.querySelector(`[data-bp="${v}"]`).classList.add('active'); }
+  function setGlc(v)  { glc  = v; document.querySelectorAll('[data-glc]').forEach(b=>b.classList.remove('active'));  document.querySelector(`[data-glc="${v}"]`).classList.add('active'); }
+  function setFam(v)  { fam  = v; document.querySelectorAll('[data-fam]').forEach(b=>b.classList.remove('active'));  document.querySelector(`[data-fam="${v}"]`).classList.add('active'); }
+  function setGdm(v)  { gdm  = v; document.querySelectorAll('[data-gdm]').forEach(b=>b.classList.remove('active'));  document.querySelector(`[data-gdm="${v}"]`).classList.add('active'); }
 
-  /* ── Calculations ───────────────────────────────────────── */
-  function calcBMI(w, h) { return w / ((h / 100) ** 2); }
+  /* ── Core calculations ── */
+  function calcBMI(w, h)    { return w / ((h / 100) ** 2); }
+  function whtR(waist, h)   { const r = (waist / h).toFixed(2); return { val: r, risk: r >= 0.6 ? 'high' : r >= 0.5 ? 'mod' : 'low', cat: r >= 0.6 ? 'High risk' : r >= 0.5 ? 'Elevated' : 'Healthy' }; }
 
-  /* Age-adjusted BMI thresholds (WHO Asia-Pacific + geriatric evidence) */
   function bmiThresholds(age) {
     if (age >= 70) return { low: 18.5, healthy: [22.0, 26.9], overweight: 27.0, label: '70+' };
     if (age >= 60) return { low: 18.5, healthy: [20.0, 24.9], overweight: 25.0, label: '60–69' };
@@ -1640,10 +1468,10 @@
 
   function bmiCat(b, age) {
     const t = bmiThresholds(age || 35);
-    if (b < t.low)          return { cat: 'Underweight', risk: 'mod' };
-    if (b <= t.healthy[1])  return { cat: 'Healthy',     risk: 'low' };
-    if (b < t.overweight + 4.5) return { cat: 'Overweight', risk: 'mod' };
-    return                       { cat: 'Obese',         risk: 'high' };
+    if (b < t.low)               return { cat: 'Underweight', risk: 'mod' };
+    if (b <= t.healthy[1])       return { cat: 'Healthy',     risk: 'low' };
+    if (b < t.overweight + 4.5)  return { cat: 'Overweight',  risk: 'mod' };
+    return                              { cat: 'Obese',        risk: 'high' };
   }
 
   function waistCat(w, s) {
@@ -1651,482 +1479,10 @@
     const t2 = s === 'male' ? 100 : 90;
     if (w < t1) return { cat: 'Normal',   risk: 'low' };
     if (w < t2) return { cat: 'Elevated', risk: 'mod' };
-    return             { cat: 'High',     risk: 'high' };
+    return             { cat: 'High risk', risk: 'high' };
   }
 
-  function whtR(waist, height) {
-    const r = waist / height;
-    if (r < 0.4) return { val: r.toFixed(3), cat: 'Low',       risk: 'low' };
-    if (r < 0.5) return { val: r.toFixed(3), cat: 'Healthy',   risk: 'low' };
-    if (r < 0.6) return { val: r.toFixed(3), cat: 'Elevated',  risk: 'mod' };
-    return              { val: r.toFixed(3), cat: 'High risk',  risk: 'high' };
-  }
-
-  function riskZone(bmiVal, waistVal, s, age) {
-    const t  = s === 'male' ? 90 : 80;
-    const th = bmiThresholds(age || 35);
-    if (bmiVal < th.low)                                      return 'amber'; // underweight
-    if (bmiVal <= th.healthy[1] && waistVal < t)              return 'green'; // healthy
-    if (bmiVal > th.healthy[1] + 4.5 && waistVal >= t)        return 'red';   // both elevated
-    return 'amber';
-  }
-
-  /* ── Seeded population cloud ────────────────────────────── */
-  function seededRand(seed) {
-    let s = seed;
-    return () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
-  }
-
-  function buildPopCloud(s) {
-    const rand = seededRand(s === 'male' ? 42 : 99);
-    const meanBMI   = s === 'male' ? 26.8 : 27.6;
-    const meanWaist = s === 'male' ? 85.5 : 78.0;
-    const sdBMI = 4.2, sdWaist = 10.5;
-    const pts = [];
-    for (let i = 0; i < 220; i++) {
-      const u1 = rand() + 0.001, u2 = rand();
-      const z1 = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
-      const u3 = rand() + 0.001, u4 = rand();
-      const z2 = Math.sqrt(-2 * Math.log(u3)) * Math.cos(2 * Math.PI * u4);
-      pts.push({ x: +(meanWaist + z2 * sdWaist).toFixed(1), y: +(meanBMI + z1 * sdBMI).toFixed(1) });
-    }
-    return pts;
-  }
-
-  /* ── Context notes ──────────────────────────────────────── */
-  const CTX_WEIGHT = {
-    low:  'You\'re within a healthy BMI range. Only ~29% of Malaysian adults maintain this — keep it up.',
-    mod:  'Around 50% of Malaysian adults are overweight or obese (OWID 2022). Each kg lost reduces cardiovascular risk.',
-    high: 'Obesity in Malaysia has tripled since 1990 (OWID). Losing even 5–10% of body weight significantly reduces risk.'
-  };
-  const CTX_WAIST = {
-    low:  'Waist within safe limits — a strong protective factor against metabolic disease.',
-    mod:  'Abdominal obesity affects ~35–40% of Malaysian adults (NHMS 2019). Even 4–5 cm off your waist improves outcomes.',
-    high: 'Abdominal obesity drives Malaysia\'s diabetes & hypertension burden — highest in ASEAN. Reducing waist is the most impactful change.'
-  };
-
-  /* ── Action card content ────────────────────────────────── */
-  const ACTION = {
-    low: {
-      icon: '✅',
-      title: 'You\'re on the right track.',
-      driver: (d) => `All three metrics within healthy range.`,
-      body: `Your BMI, waist circumference, and waist-to-height ratio are all within healthy limits for your age group. This puts you in a minority — fewer than 30% of Malaysian adults maintain all three metrics in the healthy zone. The goal now is to stay here.`,
-      steps: [
-        'Keep up your current activity level — at minimum 150 minutes of moderate activity per week, such as brisk walking or cycling.',
-        'Get a free health screening annually at your nearest Klinik Kesihatan to track blood pressure, glucose, and cholesterol alongside your body metrics.',
-        'Watch your sodium and sugar intake — teh tarik and high-salt dishes are fine occasionally, but daily consumption adds up quickly.'
-      ],
-      links: [
-        { label: 'MySejahtera health screening', url: 'https://www.moh.gov.my/index.php/pages/view/3388', primary: true },
-        { label: 'Find Klinik Kesihatan', url: 'https://www.moh.gov.my/index.php/pages/view/56', primary: false }
-      ]
-    },
-    mod: {
-      icon: '⚠️',
-      title: 'Time to make some changes.',
-      driver: (d) => `Elevated risk detected: ${d}`,
-      body: `One or more of your metrics is above the healthy threshold for Asian adults. This is the most important moment to act — elevated BMI and waist size at this stage respond well to lifestyle changes, and you do not need medication or a specialist to start.`,
-      steps: [
-        'Swap one high-calorie drink per day: replace teh tarik (≈180 kcal) with teh o kosong or plain water. Over a month, this alone reduces intake by roughly 5,000 kcal.',
-        'Reduce white rice portions by one-third and fill that space with vegetables. Nasi lemak and nasi campur are fine — the portion size is the lever to pull.',
-        'Walk 30 minutes daily. A 10-minute walk after each meal is clinically shown to lower post-meal blood glucose and is easier to sustain than a single long session.',
-        'Visit a Klinik Kesihatan for a free or low-cost (RM1 for citizens) health assessment. Ask your doctor about your blood pressure and fasting glucose — these are often elevated before you feel any symptoms.'
-      ],
-      links: [
-        { label: 'Find Klinik Kesihatan near you', url: 'https://www.moh.gov.my/index.php/pages/view/56', primary: true },
-        { label: 'MySejahtera screening', url: 'https://www.moh.gov.my/index.php/pages/view/3388', primary: false },
-        { label: 'MOH Malaysia healthy lifestyle guide', url: 'https://www.moh.gov.my/index.php/pages/view/169', primary: false }
-      ]
-    },
-    high: {
-      icon: '🔴',
-      title: 'Please see a doctor.',
-      driver: (d) => `High risk detected: ${d}`,
-      body: `Your results show multiple metrics in the high-risk zone. This does not mean something is wrong right now — but it does mean your risk of developing type 2 diabetes, hypertension, or cardiovascular disease is significantly elevated. A doctor visit is not optional at this stage; it is the most important thing you can do today.`,
-      steps: [
-        'Book an appointment at your nearest Klinik Kesihatan this week. The consultation costs RM1 for Malaysian citizens. Ask for a full metabolic panel: blood pressure, fasting glucose, HbA1c, and lipid profile.',
-        'Do not wait for symptoms. High blood sugar, high blood pressure, and high cholesterol are largely symptom-free until they cause serious events like heart attack or stroke.',
-        'Start reducing sugar and sodium immediately: cut out sweetened drinks entirely, reduce roti canai to once or twice per week, and avoid adding kicap or salt at the table.',
-        'Walk every day — even 15–20 minutes. Any movement reduces cardiovascular risk meaningfully at this level.'
-      ],
-      links: [
-        { label: 'Find Klinik Kesihatan', url: 'https://www.moh.gov.my/index.php/pages/view/56', primary: true },
-        { label: 'National Heart Association of Malaysia', url: 'https://www.nham.org.my', primary: false },
-        { label: 'Malaysia Diabetes Association', url: 'https://www.mda.org.my', primary: false },
-        { label: 'MOH Malaysia NCD resources', url: 'https://www.moh.gov.my/index.php/pages/view/169', primary: false }
-      ]
-    }
-  };
-
-  function renderActionCard(bmiRisk, waistRisk, whtRisk) {
-    /* Dominant risk: high > mod > low */
-    const risks  = [bmiRisk, waistRisk, whtRisk];
-    const tier   = risks.includes('high') ? 'high' : risks.includes('mod') ? 'mod' : 'low';
-
-    /* Which metrics are driving the risk */
-    const drivers = [];
-    if (bmiRisk   === tier && tier !== 'low') drivers.push('BMI');
-    if (waistRisk === tier && tier !== 'low') drivers.push('Waist');
-    if (whtRisk   === tier && tier !== 'low') drivers.push('WHtR');
-    const driverStr = drivers.length ? drivers.join(', ') : 'all metrics healthy';
-
-    const content = ACTION[tier];
-    const card    = document.getElementById('actionCard');
-
-    card.className      = `action-card tier-${tier === 'high' ? 'red' : tier === 'mod' ? 'amber' : 'green'}`;
-    card.style.display  = 'block';
-
-    document.getElementById('actionIcon').textContent   = content.icon;
-    document.getElementById('actionTitle').textContent  = content.title;
-    document.getElementById('actionDriver').textContent = content.driver(driverStr);
-    document.getElementById('actionBody').textContent   = content.body;
-
-    /* Steps */
-    const stepsEl = document.getElementById('actionSteps');
-    stepsEl.innerHTML = content.steps.map((s, i) =>
-      `<li class="action-step">
-        <span class="action-step-num">${i + 1}</span>
-        <span>${s}</span>
-      </li>`
-    ).join('');
-
-    /* Links */
-    const linksEl = document.getElementById('actionLinks');
-    linksEl.innerHTML = content.links.map(l =>
-      `<a class="action-link${l.primary ? '' : ' secondary'}" href="${l.url}" target="_blank" rel="noopener">${l.label} →</a>`
-    ).join('');
-  }
-  function renderChart() {
-    const t = sex === 'male' ? 90 : 80;
-    const curBMI  = calcBMI(S.weight, S.height);
-    const goalBMI = calcBMI(S.goalW, S.height);
-    const goalChanged = S.goalW !== S.weight || S.goalWt !== S.waist;
-    const th = bmiThresholds(S.age);
-
-    /* Age-adjusted zone note */
-    const zoneNoteEl = document.getElementById('ageZoneNote');
-    if (S.age >= 60) {
-      zoneNoteEl.textContent = `Green zone adjusted for age ${S.age}: healthy BMI range is ${th.healthy[0]}–${th.healthy[1]} for your age group.`;
-    } else {
-      zoneNoteEl.textContent = '';
-    }
-
-    /* Zone background bubbles */
-    const bgGreen = [], bgAmber = [], bgRed = [];
-    const step = 1;
-    for (let w = 50; w < 130; w += step) {
-      for (let b = 14; b < 45; b += step) {
-        const z = riskZone(b + step / 2, w + step / 2, sex, S.age);
-        const pt = { x: w + step / 2, y: b + step / 2, r: step * 4.5 };
-        if      (z === 'green') bgGreen.push(pt);
-        else if (z === 'amber') bgAmber.push(pt);
-        else                    bgRed.push(pt);
-      }
-    }
-
-    const datasets = [
-      { label: 'Healthy zone',   data: bgGreen, type: 'bubble', backgroundColor: 'rgba(99,153,34,0.18)',  borderColor: 'transparent', borderWidth: 0, order: 5 },
-      { label: 'Elevated zone',  data: bgAmber, type: 'bubble', backgroundColor: 'rgba(186,117,23,0.18)', borderColor: 'transparent', borderWidth: 0, order: 4 },
-      { label: 'High risk zone', data: bgRed,   type: 'bubble', backgroundColor: 'rgba(226,75,74,0.18)',  borderColor: 'transparent', borderWidth: 0, order: 3 },
-    ];
-
-    if (showPop) {
-      datasets.push({
-        label: 'Malaysian adults (NHMS 2019)',
-        data: buildPopCloud(sex),
-        type: 'scatter',
-        pointRadius: 3, pointStyle: 'circle',
-        backgroundColor: 'rgba(136,135,128,0.2)',
-        borderColor: 'rgba(136,135,128,0.3)',
-        borderWidth: 0.5, order: 2
-      });
-    }
-
-    if (goalChanged) {
-      datasets.push({
-        label: 'Your goal',
-        data: [{ x: S.goalWt, y: goalBMI }],
-        type: 'scatter',
-        pointRadius: 10, pointStyle: 'circle',
-        backgroundColor: 'rgba(59,109,17,0.3)',
-        borderColor: '#3B6D11', borderWidth: 2, order: 1
-      });
-    }
-
-    datasets.push({
-      label: 'Your position',
-      data: [{ x: S.waist, y: curBMI }],
-      type: 'scatter',
-      pointRadius: 12, pointStyle: 'circle',
-      backgroundColor: 'rgba(55,138,221,0.85)',
-      borderColor: '#185FA5', borderWidth: 2, order: 0
-    });
-
-    const gridColor  = 'rgba(0,0,0,0.07)';
-    const tickColor  = 'rgba(0,0,0,0.45)';
-    const labelColor = 'rgba(0,0,0,0.55)';
-
-    if (chart) chart.destroy();
-
-    chart = new Chart(document.getElementById('riskChart'), {
-      type: 'bubble',
-      data: { datasets },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        animation: { duration: 380 },
-        layout: { padding: { top: 18, right: 18, bottom: 8, left: 4 } },
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            filter: item => ['Your position', 'Your goal', 'Malaysian adults (NHMS 2019)'].includes(item.dataset.label),
-            callbacks: {
-              title: item => item[0].dataset.label,
-              label: item => {
-                const b = +item.raw.y.toFixed(1);
-                const w = +item.raw.x.toFixed(1);
-                return [
-                  `Waist: ${w} cm (${waistCat(w, sex).cat})`,
-                  `BMI: ${b} (${bmiCat(b, S.age).cat})`
-                ];
-              }
-            }
-          }
-        },
-        scales: {
-          x: {
-            min: 50, max: 130,
-            title: { display: true, text: 'Waist circumference (cm)', color: labelColor, font: { size: 12, family: "'DM Sans', sans-serif" } },
-            grid: { color: gridColor },
-            ticks: { color: tickColor, stepSize: 10, callback: v => v + ' cm' }
-          },
-          y: {
-            min: 14, max: 45,
-            title: { display: true, text: 'BMI', color: labelColor, font: { size: 12, family: "'DM Sans', sans-serif" } },
-            grid: { color: gridColor },
-            ticks: { color: tickColor, stepSize: 5 }
-          }
-        }
-      }
-    });
-
-    /* Draw threshold lines + arrow after chart renders */
-    setTimeout(() => drawAnnotations(curBMI, goalBMI, goalChanged, t, th), 420);
-  }
-
-  function drawAnnotations(curBMI, goalBMI, goalChanged, waistThreshold, th) {
-    if (!chart) return;
-    const ctx    = chart.ctx;
-    const xScale = chart.scales.x;
-    const yScale = chart.scales.y;
-    const tickColor = 'rgba(0,0,0,0.35)';
-
-    ctx.save();
-
-    /* Threshold lines — use age-adjusted BMI boundaries */
-    ctx.setLineDash([5, 4]);
-    ctx.strokeStyle = 'rgba(0,0,0,0.15)';
-    ctx.lineWidth = 1;
-
-    [[waistThreshold, 'x'], [th.healthy[1], 'y'], [th.healthy[1] + 4.5, 'y']].forEach(([val, axis]) => {
-      ctx.beginPath();
-      if (axis === 'x') {
-        const px = xScale.getPixelForValue(val);
-        ctx.moveTo(px, yScale.top);
-        ctx.lineTo(px, yScale.bottom);
-      } else {
-        const py = yScale.getPixelForValue(val);
-        ctx.moveTo(xScale.left, py);
-        ctx.lineTo(xScale.right, py);
-      }
-      ctx.stroke();
-    });
-
-    ctx.setLineDash([]);
-    ctx.font = "11px 'DM Sans', sans-serif";
-    ctx.fillStyle = tickColor;
-    ctx.textAlign = 'right';
-    ctx.fillText(`BMI ${th.healthy[1]}`,        xScale.right - 4, yScale.getPixelForValue(th.healthy[1]) - 5);
-    ctx.fillText(`BMI ${th.healthy[1] + 4.5}`,  xScale.right - 4, yScale.getPixelForValue(th.healthy[1] + 4.5) - 5);
-    ctx.textAlign = 'left';
-    ctx.fillText(`Waist ${waistThreshold}cm`, xScale.getPixelForValue(waistThreshold) + 4, yScale.top + 14);
-
-    /* Arrow from current to goal */
-    if (goalChanged) {
-      const x1 = xScale.getPixelForValue(S.waist);
-      const y1 = yScale.getPixelForValue(curBMI);
-      const x2 = xScale.getPixelForValue(S.goalWt);
-      const y2 = yScale.getPixelForValue(goalBMI);
-      const dx = x2 - x1, dy = y2 - y1;
-      const len = Math.sqrt(dx * dx + dy * dy);
-      if (len > 16) {
-        const ux = dx / len, uy = dy / len;
-        ctx.beginPath();
-        ctx.setLineDash([5, 4]);
-        ctx.strokeStyle = '#3B6D11';
-        ctx.lineWidth = 1.5;
-        ctx.moveTo(x1 + ux * 14, y1 + uy * 14);
-        ctx.lineTo(x2 - ux * 14, y2 - uy * 14);
-        ctx.stroke();
-        ctx.setLineDash([]);
-        ctx.fillStyle = '#3B6D11';
-        ctx.beginPath();
-        ctx.moveTo(x2 - ux * 14,            y2 - uy * 14);
-        ctx.lineTo(x2 - ux * 23 + uy * 5,   y2 - uy * 23 - ux * 5);
-        ctx.lineTo(x2 - ux * 23 - uy * 5,   y2 - uy * 23 + ux * 5);
-        ctx.closePath();
-        ctx.fill();
-      }
-    }
-
-    ctx.restore();
-  }
-
-  /* ── Slider interaction ─────────────────────────────────── */
-  function onSlide() {
-    S.goalW  = parseFloat(document.getElementById('slWeight').value);
-    S.goalWt = parseFloat(document.getElementById('slWaist').value);
-
-    document.getElementById('slWeightVal').textContent = S.goalW.toFixed(1);
-    document.getElementById('slWaistVal').textContent  = S.goalWt.toFixed(1);
-
-    const dW = +(S.weight - S.goalW).toFixed(1);
-    const dC = +(S.waist  - S.goalWt).toFixed(1);
-    document.getElementById('slWeightDelta').textContent = dW > 0 ? `−${dW} kg` : dW < 0 ? `+${Math.abs(dW)} kg` : '';
-    document.getElementById('slWaistDelta').textContent  = dC > 0 ? `−${dC} cm` : dC < 0 ? `+${Math.abs(dC)} cm` : '';
-
-    const goalBMI   = calcBMI(S.goalW, S.height);
-    const goalBMIc  = bmiCat(goalBMI, S.age);
-    const goalWaistC = waistCat(S.goalWt, sex);
-    document.getElementById('ctxWeight').textContent = CTX_WEIGHT[goalBMIc.risk];
-    document.getElementById('ctxWaist').textContent  = CTX_WAIST[goalWaistC.risk];
-
-    renderChart();
-  }
-
-  function togglePop() {
-    showPop = document.getElementById('chkPop').checked;
-    renderChart();
-  }
-
-  /* ── Main calculate ─────────────────────────────────────── */
-  function calculate() {
-    const age    = parseInt(document.getElementById('inAge').value);
-    const weight = parseFloat(document.getElementById('inWeight').value);
-    const height = parseFloat(document.getElementById('inHeight').value);
-    const waist  = parseFloat(document.getElementById('inWaist').value);
-
-    if (!age || !weight || !height || !waist) {
-      alert('Please fill in all fields to continue.');
-      return;
-    }
-
-    const b  = calcBMI(weight, height);
-    const bc = bmiCat(b, age);
-    const wc = waistCat(waist, sex);
-    const wr = whtR(waist, height);
-
-    /* Age boundary callout */
-    const callout     = document.getElementById('ageCallout');
-    const calloutText = document.getElementById('ageCalloutText');
-    if (age < 18) {
-      calloutText.innerHTML = '<strong>Under 18 detected.</strong> These thresholds are calibrated for adults aged 18 and above. Results may not accurately reflect health risk for children and adolescents — please consult a paediatrician.';
-      callout.classList.add('visible');
-    } else if (age >= 70) {
-      calloutText.innerHTML = '<strong>Age 70+ detected.</strong> Healthy BMI range has been adjusted to 22.0–26.9 for your age group — evidence shows that higher BMI carries protective benefit in older adults. Waist thresholds remain unchanged.';
-      callout.classList.add('visible');
-    } else if (age >= 60) {
-      calloutText.innerHTML = '<strong>Age 60–69 detected.</strong> Healthy BMI range has been adjusted to 20.0–24.9 for your age group, reflecting increased underweight risk in older adults. Waist thresholds remain unchanged.';
-      callout.classList.add('visible');
-    } else {
-      callout.classList.remove('visible');
-    }
-
-    /* Summary strip */
-    document.getElementById('sBMI').textContent    = b.toFixed(1);
-    document.getElementById('sBMIcat').textContent = bc.cat;
-    document.getElementById('sBMIcat').className   = 'strip-risk r-' + bc.risk;
-
-    document.getElementById('sWaist').textContent    = waist + ' cm';
-    document.getElementById('sWaistcat').textContent = wc.cat;
-    document.getElementById('sWaistcat').className   = 'strip-risk r-' + wc.risk;
-
-    document.getElementById('sWHtR').textContent    = wr.val;
-    document.getElementById('sWHtRcat').textContent = wr.cat;
-    document.getElementById('sWHtRcat').className   = 'strip-risk r-' + wr.risk;
-
-    const th = bmiThresholds(age);
-    document.getElementById('resultsSubtitle').textContent =
-      `${sex === 'male' ? 'Male' : 'Female'}, ${age} years old · BMI thresholds calibrated for age group ${th.label}`;
-
-    /* Set state */
-    S = { age, weight, height, waist, goalW: weight, goalWt: waist };
-
-    /* Setup sliders */
-    const sw = document.getElementById('slWeight');
-    sw.min = Math.max(30, Math.round(weight * 0.72 * 2) / 2);
-    sw.max = Math.round(weight * 1.08 * 2) / 2;
-    sw.value = weight;
-    document.getElementById('slWeightMin').textContent = sw.min + ' kg';
-    document.getElementById('slWeightMax').textContent = sw.max + ' kg';
-    document.getElementById('slWeightVal').textContent = weight.toFixed(1);
-
-    const sc = document.getElementById('slWaist');
-    sc.min = Math.max(40, Math.round(waist * 0.72 * 2) / 2);
-    sc.max = Math.round(waist * 1.08 * 2) / 2;
-    sc.value = waist;
-    document.getElementById('slWaistMin').textContent = sc.min + ' cm';
-    document.getElementById('slWaistMax').textContent = sc.max + ' cm';
-    document.getElementById('slWaistVal').textContent = waist.toFixed(1);
-
-    /* Initial context notes */
-    document.getElementById('ctxWeight').textContent = CTX_WEIGHT[bc.risk];
-    document.getElementById('ctxWaist').textContent  = CTX_WAIST[wc.risk];
-
-    /* Action card */
-    renderActionCard(bc.risk, wc.risk, wr.risk);
-
-    /* Show results */
-    document.getElementById('formSection').style.display = 'none';
-    document.getElementById('results').style.display     = 'block';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    setTimeout(() => renderChart(), 80);
-  }
-
-  /* ── Reset ──────────────────────────────────────────────── */
-  function resetApp() {
-    if (chart) { chart.destroy(); chart = null; }
-    document.getElementById('results').style.display     = 'none';
-    document.getElementById('formSection').style.display = 'block';
-    document.getElementById('chkPop').checked = false;
-    document.getElementById('ageCallout').classList.remove('visible');
-    document.getElementById('actionCard').style.display = 'none';
-    showPop = false;
-    S = {};
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  /* ── Collapsible sources ────────────────────────────────── */
-  function toggleSources(btn) {
-    const body = document.getElementById('sourcesBody');
-    const expanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', !expanded);
-    body.classList.toggle('open', !expanded);
-  }
-
-  /* ══════════════════════════════════════════════════════════
-     METABOLIC SCREENER — Tier 1
-  ══════════════════════════════════════════════════════════ */
-
-  function switchTool(tool) {
-    document.getElementById('tab-body').classList.toggle('act', tool==='body');
-    document.getElementById('tab-labs').classList.toggle('act', tool==='labs');
-    document.getElementById('ms-t1').classList.toggle('active', tool==='body');
-    document.getElementById('ms-t2').classList.toggle('active', tool==='labs');
-  }
-
+  /* ── NHMS reference data ── */
   const MS_BMI = {
     male:   {18:23.8,30:25.6,40:26.1,50:25.8,60:24.9},
     female: {18:23.2,30:25.8,40:27.4,50:28.1,60:26.8}
@@ -2137,23 +1493,26 @@
   };
   const MS_AGE_BANDS = [18,30,40,50,60];
 
-  const msBMI  = (w,h)       => w / ((h/100)**2);
-  const msWHtR = (wc,h)      => wc / h;
-  const msABSI = (wc,B,h)    => (wc/100) / (Math.pow(B,2/3) * Math.pow(h/100,0.5));
-  const msConi = (wc,w,h)    => 0.109 * ((wc/100) / Math.sqrt(w/(h/100)));
-  const msBAI  = (hip_cm,h_cm) => (hip_cm / Math.pow(h_cm/100, 1.5)) - 18;
+  /* ── Metabolic scoring ── */
+  const msBMI  = (w,h)        => w / ((h/100)**2);
+  const msWHtR = (wc,h)       => wc / h;
+  const msABSI = (wc,B,h)     => (wc/100) / (Math.pow(B,2/3) * Math.pow(h/100,0.5));
+  const msConi = (wc,w,h)     => 0.109 * ((wc/100) / Math.sqrt(w/(h/100)));
+  const msBAI  = (hip_cm,h_cm)=> (hip_cm / Math.pow(h_cm/100, 1.5)) - 18;
 
   function msFINDRISC(p) {
-    const {age,B,wc,msex,act,diet,bp,glc,fam,gdm} = p;
+    const {age,B,wc,msex,pAct,pDiet,pBp,pGlc,pFam,pGdm} = p;
     let s = 0;
     if (age>=65) s+=4; else if (age>=55) s+=3; else if (age>=45) s+=2;
     if (B>=27.5) s+=3; else if (B>=23) s+=1;
-    if (msex==='male')   { if (wc>99) s+=4; else if (wc>=90) s+=3; }
-    else                 { if (wc>87) s+=4; else if (wc>=80) s+=3; }
-    if (act==='no')  s+=2; if (diet==='no') s+=1;
-    if (bp==='yes')  s+=2; if (glc==='yes') s+=5;
-    if (fam==='1st') s+=5; else if (fam==='2nd') s+=3;
-    if (msex==='female' && gdm==='yes') s+=5;
+    if (msex==='male') { if (wc>99) s+=4; else if (wc>=90) s+=3; }
+    else               { if (wc>87) s+=4; else if (wc>=80) s+=3; }
+    if (pAct==='no')  s+=2;
+    if (pDiet==='no') s+=1;
+    if (pBp==='yes')  s+=2;
+    if (pGlc==='yes') s+=5;
+    if (pFam==='1st') s+=5; else if (pFam==='2nd') s+=3;
+    if (msex==='female' && pGdm==='yes') s+=5;
     return s;
   }
 
@@ -2168,8 +1527,16 @@
   const msNorm = (v,mn,mx) => Math.max(0,Math.min(1,(v-mn)/(mx-mn)));
   const msToS  = (v,mn,mx) => Math.round(msNorm(v,mn,mx)*100);
 
+  /* FIX: weights are fractions (sum to 1.0), each score is 0-100, result is 0-100 */
   function msComposite(sc) {
-    return Math.round(sc.wc*25 + sc.fr*25 + sc.bmi*20 + sc.whtr*15 + sc.absi*10 + sc.con*5);
+    return Math.round(
+      sc.wc   * 0.25 +
+      sc.fr   * 0.25 +
+      sc.bmi  * 0.20 +
+      sc.whtr * 0.15 +
+      sc.absi * 0.10 +
+      sc.con  * 0.05
+    );
   }
 
   const msRCol    = r => r==='high'?'#C8240A':r==='mod'?'#B87000':'#2A6B45';
@@ -2179,29 +1546,29 @@
 
   const MS_METRICS = [
     { key:'bmi', plain:'BMI',
-      tip:'Body Mass Index. Asian obesity threshold is 27.5, not the global 30. Malaysians develop metabolic risk at lower BMI than Western populations.',
-      unit:'kg/m2', min:15, max:42, t1:23, t2:27.5, t1l:'23', t2l:'27.5',
+      tip:'Body Mass Index. Asian obesity threshold is 27.5 — lower than the Western standard of 30. Malaysians develop metabolic risk at lower BMI.',
+      unit:'kg/m²', min:15, max:42, t1:23, t2:27.5, t1l:'23', t2l:'27.5',
       riskFn: v => v>=27.5?'high':v>=23?'mod':'low',
       dispFn: v => v.toFixed(1),
       plainFn: v => v>=27.5
         ? `Your BMI of ${v.toFixed(1)} is above the Asian obesity threshold of 27.5. Malaysians face higher metabolic risk at lower BMI than Western populations.`
         : v>=23
-        ? `Your BMI of ${v.toFixed(1)} is in the overweight range for Malaysians. The healthy ceiling here is 23.`
+        ? `Your BMI of ${v.toFixed(1)} is in the overweight range for Malaysians. The healthy ceiling is 23.`
         : `Your BMI of ${v.toFixed(1)} is in the healthy range for Malaysians.`
     },
     { key:'wc', plain:'Belly size',
       tip:'Waist circumference at the navel. The single strongest predictor of metabolic disease in Asian populations — more predictive than BMI alone.',
       unit:'cm', min:55, max:130,
       t1fn: s=>s==='male'?90:80, t2fn: s=>s==='male'?100:88,
-      t1lFn: s=>s==='male'?'90 cm':'80 cm', t2lFn: s=>s==='male'?'100 cm':'88 cm',
+      t1lFn:s=>s==='male'?'90 cm':'80 cm', t2lFn:s=>s==='male'?'100 cm':'88 cm',
       riskFn:(v,sx)=>sx==='male'?(v>=100?'high':v>=90?'mod':'low'):(v>=88?'high':v>=80?'mod':'low'),
       dispFn: v => Math.round(v),
-      plainFn:(v,sx) => { const t=sx==='male'?90:80, t2=sx==='male'?100:88;
+      plainFn:(v,sx) => { const t=sx==='male'?90:80,t2=sx==='male'?100:88;
         return v>=t2
           ? `At ${Math.round(v)} cm your waist significantly exceeds the risk threshold for ${sx==='male'?'Malaysian men (90 cm)':'Malaysian women (80 cm)'}.`
           : v>=t
           ? `At ${Math.round(v)} cm your waist is above the healthy threshold for ${sx==='male'?'Malaysian men (90 cm)':'Malaysian women (80 cm)'}.`
-          : `At ${Math.round(v)} cm your waist is within the healthy range for ${sx==='male'?'Malaysian men':'Malaysian women'}.`;
+          : `At ${Math.round(v)} cm your waist is within the healthy range.`;
       }
     },
     { key:'whtr', plain:'Belly vs your height',
@@ -2216,33 +1583,32 @@
     { key:'absi', plain:'Body shape risk',
       tip:'A Body Shape Index (ABSI). Reveals visceral fat risk after accounting for height and BMI — capturing risk that BMI alone misses.',
       unit:'', min:0.065, max:0.115,
-      t1fn: s=>s==='male'?0.087:0.083, t2fn: s=>s==='male'?0.100:0.095,
+      t1fn:s=>s==='male'?0.087:0.083, t2fn:s=>s==='male'?0.100:0.095,
       t1lFn:()=>'moderate', t2lFn:()=>'high',
       riskFn:(v,sx)=>{ const n=sx==='male'?0.087:0.083,h=sx==='male'?0.100:0.095; return v>=h?'high':v>=n?'mod':'low'; },
       dispFn: v => v.toFixed(4),
       plainFn:(v,sx)=>{ const n=sx==='male'?0.087:0.083,h=sx==='male'?0.100:0.095;
-        return v>=h
-          ? 'Your body shape suggests significant abdominal fat beyond what your weight implies — the hidden risk ABSI captures.'
-          : v>=n
-          ? 'Your body shape shows moderately elevated central fat risk, even accounting for your weight and height.'
-          : 'Your body shape indicates fat is not disproportionately concentrated around your abdomen.';
+        return v>=h ? 'Your body shape suggests significant abdominal fat beyond what your weight implies.'
+          : v>=n   ? 'Your body shape shows moderately elevated central fat risk.'
+          :          'Your body shape indicates fat is not disproportionately concentrated around your abdomen.';
       }
     },
     { key:'con', plain:'Abdominal fat pattern',
       tip:'Conicity Index. Compares body shape to a cylinder. Higher values indicate apple-shaped fat distribution (more around the middle) — linked to insulin resistance.',
       unit:'', min:0.9, max:1.6,
-      t1fn: s=>s==='male'?1.25:1.18, t2fn: s=>s==='male'?1.38:1.30,
+      t1fn:s=>s==='male'?1.25:1.18, t2fn:s=>s==='male'?1.38:1.30,
       t1lFn:s=>s==='male'?'1.25':'1.18', t2lFn:s=>s==='male'?'1.38':'1.30',
-      riskFn:(v,sx)=>{ const t=sx==='male'?1.25:1.18, t2=sx==='male'?1.38:1.30; return v>=t2?'high':v>=t?'mod':'low'; },
+      riskFn:(v,sx)=>{ const t=sx==='male'?1.25:1.18,t2=sx==='male'?1.38:1.30; return v>=t2?'high':v>=t?'mod':'low'; },
       dispFn: v => v.toFixed(2),
       plainFn:(v,sx)=>{ const t=sx==='male'?1.25:1.18;
         return v>=t
-          ? `An index of ${v.toFixed(2)} indicates apple-shaped fat distribution — more fat around the middle than the hips. Associated with insulin resistance.`
+          ? `An index of ${v.toFixed(2)} indicates apple-shaped fat distribution — more fat around the middle than the hips.`
           : `An index of ${v.toFixed(2)} indicates a healthier fat distribution pattern.`;
       }
     }
   ];
 
+  /* ── Population scatter ── */
   let msPopCache = {};
   function msGetPop(pSex, pAge) {
     const key = pSex + pAge;
@@ -2251,26 +1617,23 @@
     const bands = pAge==='all' ? MS_AGE_BANDS : [parseInt(pAge)];
     const n = pAge==='all' ? 300 : 220;
     const pts = [];
-    for (let i=0; i<n; i++) {
+    for (let i=0;i<n;i++) {
       const ab = bands[Math.floor(Math.random()*bands.length)];
-      const b  = Math.max(15,Math.min(44,gauss(MS_BMI[pSex][ab],3.8)));
-      const w  = Math.max(56,Math.min(128,gauss(MS_WC[pSex][ab],9.5)));
-      pts.push({b,w});
+      pts.push({
+        b: Math.max(15,Math.min(44,gauss(MS_BMI[pSex][ab],3.8))),
+        w: Math.max(56,Math.min(128,gauss(MS_WC[pSex][ab],9.5)))
+      });
     }
     msPopCache[key] = pts;
     return pts;
   }
 
   function msPtColor(b,w,pSex) {
-    const bR = b>=27.5, wR = pSex==='male'?w>=90:w>=80;
+    const bR=b>=27.5, wR=pSex==='male'?w>=90:w>=80;
     if (bR&&wR) return 'rgba(200,36,10,0.45)';
     if (bR||wR) return 'rgba(184,112,0,0.45)';
     return 'rgba(42,107,69,0.45)';
   }
-
-  let msScatterChart = null;
-  let msSFilter = {sex:'male', age:'all'};
-  let msUserPt  = {bmi:22, wc:80};
 
   function msSetSex(s) {
     msSFilter.sex = s;
@@ -2289,7 +1652,8 @@
   function msDrawScatter() {
     const pts = msGetPop(msSFilter.sex, msSFilter.age);
     const wcT = msSFilter.sex==='male' ? 90 : 80;
-    const lc  = '#6B5E47', gc = 'rgba(26,18,8,0.06)', tc = '#6B5E47';
+    const lc='#6B5E47', gc='rgba(26,18,8,0.06)', tc='#6B5E47';
+
     const zones = { id:'ms-zones', beforeDraw(chart) {
       const {ctx:c, chartArea:{left,right,top,bottom}, scales:{x,y}} = chart;
       if (!x||!y) return;
@@ -2297,34 +1661,42 @@
       c.save();
       c.fillStyle='rgba(42,107,69,0.06)';  c.fillRect(left,bL,wcL-left,bottom-bL);
       c.fillStyle='rgba(184,112,0,0.06)';
-      c.fillRect(wcL,bL,right-wcL,bottom-bL); c.fillRect(left,top,wcL-left,bL-top);
+      c.fillRect(wcL,bL,right-wcL,bottom-bL);
+      c.fillRect(left,top,wcL-left,bL-top);
       c.fillStyle='rgba(200,36,10,0.06)';  c.fillRect(wcL,top,right-wcL,bL-top);
       c.strokeStyle='rgba(26,18,8,0.1)'; c.lineWidth=1; c.setLineDash([4,3]);
       c.beginPath(); c.moveTo(wcL,top); c.lineTo(wcL,bottom); c.stroke();
       c.beginPath(); c.moveTo(left,bL); c.lineTo(right,bL); c.stroke();
       c.setLineDash([]); c.restore();
     }};
+
     if (msScatterChart) msScatterChart.destroy();
-    const ctx = document.getElementById('ms-sc').getContext('2d');
-    msScatterChart = new Chart(ctx, {
+    const canvas = document.getElementById('ms-sc');
+    msScatterChart = new Chart(canvas.getContext('2d'), {
       type:'scatter',
       data:{ datasets:[
         { label:'Population', data:pts.map(p=>({x:p.w,y:p.b})),
-          backgroundColor:pts.map(p=>msPtColor(p.b,p.w,msSFilter.sex)), pointRadius:4, pointHoverRadius:5 },
-        { label:'You', data:[{x:msUserPt.wc,y:msUserPt.bmi}],
-          backgroundColor:'#C8440A', borderColor:'white', borderWidth:2.5, pointRadius:10, pointHoverRadius:12 }
+          backgroundColor:pts.map(p=>msPtColor(p.b,p.w,msSFilter.sex)),
+          pointRadius:4, pointHoverRadius:5 },
+        { label:'You', data:[{x:msUserPt.wc, y:msUserPt.bmi}],
+          backgroundColor:'#C8440A', borderColor:'white',
+          borderWidth:2.5, pointRadius:10, pointHoverRadius:12 }
       ]},
-      options:{ responsive:true, maintainAspectRatio:false,
+      options:{
+        responsive:true, maintainAspectRatio:false,
         scales:{
           x:{title:{display:true,text:'Waist (cm)',color:lc,font:{size:11,family:"'DM Sans',sans-serif"}},min:55,max:130,grid:{color:gc},ticks:{color:tc,font:{size:10}}},
           y:{title:{display:true,text:'BMI',color:lc,font:{size:11,family:"'DM Sans',sans-serif"}},min:15,max:43,grid:{color:gc},ticks:{color:tc,font:{size:10}}}
         },
-        plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{const{x,y}=c.raw;return c.datasetIndex===1?`You — BMI ${y.toFixed(1)}, Waist ${Math.round(x)} cm`:`BMI ${y.toFixed(1)}, Waist ${Math.round(x)} cm`;}}}}
+        plugins:{legend:{display:false},tooltip:{callbacks:{
+          label:c=>{const{x,y}=c.raw;return c.datasetIndex===1?`You — BMI ${y.toFixed(1)}, Waist ${Math.round(x)} cm`:`BMI ${y.toFixed(1)}, Waist ${Math.round(x)} cm`;}
+        }}}
       },
       plugins:[zones]
     });
   }
 
+  /* ── Dial drawing ── */
   function msDrawDial(score, riskCol) {
     const c=document.getElementById('ms-dc'), ctx=c.getContext('2d');
     const W=520,H=296,cx=W/2,cy=H-30,r=190;
@@ -2352,6 +1724,7 @@
     ctx.beginPath(); ctx.arc(cx,cy,4,0,Math.PI*2); ctx.fillStyle='#FDFAF4'; ctx.fill();
   }
 
+  /* ── Bar builder ── */
   function msBuildBar(def, value, sx) {
     const t1  = def.t1fn  ? def.t1fn(sx)  : def.t1;
     const t2  = def.t2fn  ? def.t2fn(sx)  : def.t2;
@@ -2374,57 +1747,272 @@
     </div>`;
   }
 
-  function msPick(gid, el) {
-    document.querySelectorAll('#'+gid+' .ms-rb').forEach(b=>b.classList.remove('on'));
-    el.classList.add('on');
-    if (gid==='ms-sex-g') {
-      document.getElementById('ms-gdm-row').style.display = el.dataset.v==='female'?'block':'none';
+  /* ── Original chart helpers ── */
+  const CTX_WEIGHT = {
+    low:  'Your weight is in the healthy range for your age group.',
+    mod:  'Reducing weight gradually — even 5–10% — significantly lowers metabolic risk.',
+    high: 'Weight loss of 10–15% has been shown to substantially reduce diabetes and cardiovascular risk.'
+  };
+  const CTX_WAIST = {
+    low:  'Your waist circumference is within the healthy range for Malaysians.',
+    mod:  'Reducing waist circumference by 5–10 cm meaningfully reduces visceral fat and metabolic risk.',
+    high: 'Central obesity is a primary driver of metabolic disease. Prioritise waist reduction.'
+  };
+
+  function renderChart() {
+    if (!S.weight) return;
+    const b  = calcBMI(S.weight, S.height);
+    const bc = bmiCat(b, S.age);
+    const wc = waistCat(S.waist, sex);
+    const th = bmiThresholds(S.age);
+    const t  = sex === 'male' ? 90 : 80;
+    const goalBMI = calcBMI(S.goalW, S.height);
+    const goalChanged = S.goalW !== S.weight || S.goalWt !== S.waist;
+
+    const labelColor = 'rgba(26,18,8,0.45)';
+    const gridColor  = 'rgba(26,18,8,0.06)';
+    const tickColor  = 'rgba(26,18,8,0.35)';
+
+    const zones = {
+      id: 'riskZones',
+      beforeDraw(chart) {
+        const { ctx, chartArea: { left, right, top, bottom }, scales: { x, y } } = chart;
+        const healthyTop = y.getPixelForValue(th.healthy[1] + 4.5);
+        const healthyBot = y.getPixelForValue(th.healthy[0]);
+        const waistLine  = x.getPixelForValue(t);
+        ctx.save();
+        ctx.fillStyle = 'rgba(99,153,34,0.2)';
+        ctx.fillRect(left, healthyTop, waistLine - left, healthyBot - healthyTop);
+        ctx.fillStyle = 'rgba(186,117,23,0.18)';
+        ctx.fillRect(left, top, right - left, healthyTop - top);
+        ctx.fillRect(left, healthyBot, waistLine - left, bottom - healthyBot);
+        ctx.fillRect(waistLine, healthyTop, right - waistLine, healthyBot - healthyTop);
+        ctx.fillStyle = 'rgba(226,75,74,0.18)';
+        ctx.fillRect(waistLine, top, right - waistLine, healthyTop - top);
+        ctx.fillRect(waistLine, healthyBot, right - waistLine, bottom - healthyBot);
+        ctx.restore();
+      }
+    };
+
+    if (chart) chart.destroy();
+    const ctx = document.getElementById('riskChart').getContext('2d');
+    const datasets = [
+      { type: 'scatter', label: 'You', data: [{ x: S.waist, y: b }],
+        backgroundColor: '#378ADD', borderColor: '#fff', borderWidth: 2,
+        pointRadius: 10, pointHoverRadius: 13, order: 1 }
+    ];
+    if (goalChanged) {
+      datasets.push({ type: 'scatter', label: 'Your goal', data: [{ x: S.goalWt, y: goalBMI }],
+        backgroundColor: '#3B6D11', borderColor: '#fff', borderWidth: 2,
+        pointRadius: 8, pointHoverRadius: 11, order: 2 });
     }
+    if (showPop) {
+      const pop = getPopData();
+      datasets.push({ type: 'scatter', label: 'MY population', data: pop,
+        backgroundColor: 'rgba(136,135,128,0.35)', pointRadius: 3, pointHoverRadius: 5, order: 3 });
+    }
+
+    chart = new Chart(ctx, {
+      type: 'scatter', data: { datasets },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        animation: { duration: 300 },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: ctx => {
+                const { x, y } = ctx.raw;
+                return `BMI ${y.toFixed(1)}, Waist ${x} cm`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: { min: 50, max: 130,
+            title: { display: true, text: 'Waist circumference (cm)', color: labelColor, font: { size: 12, family: "'DM Sans', sans-serif" } },
+            grid: { color: gridColor }, ticks: { color: tickColor, stepSize: 10, callback: v => v + ' cm' } },
+          y: { min: 14, max: 45,
+            title: { display: true, text: 'BMI', color: labelColor, font: { size: 12, family: "'DM Sans', sans-serif" } },
+            grid: { color: gridColor }, ticks: { color: tickColor, stepSize: 5 } }
+        }
+      },
+      plugins: [zones]
+    });
+    setTimeout(() => drawAnnotations(b, goalBMI, goalChanged, t, th), 420);
   }
-  function msGetV(id) { const s=document.querySelector('#'+id+' .ms-rb.on'); return s?s.dataset.v:null; }
-  function msToggleCard(k) {
-    const c=document.querySelector(`.ms-mc[data-key="${k}"]`); if(!c)return;
-    const was=c.classList.contains('open');
-    document.querySelectorAll('.ms-mc').forEach(x=>x.classList.remove('open'));
-    if (!was) c.classList.add('open');
+
+  function getPopData() {
+    const mu_bmi = sex === 'male' ? 26.0 : 27.2;
+    const mu_wc  = sex === 'male' ? 88.5 : 83.4;
+    const data   = [];
+    for (let i = 0; i < 120; i++) {
+      const g = (mu, sd) => { let s = 0; for (let j = 0; j < 6; j++) s += Math.random(); return mu + sd * (s - 3); };
+      data.push({ x: Math.max(55, Math.min(130, g(mu_wc, 10))), y: Math.max(15, Math.min(45, g(mu_bmi, 4))) });
+    }
+    return data;
   }
 
-  function msCalc() {
-    const msex = msGetV('ms-sex-g') || 'male';
-    const age  = parseInt(document.getElementById('ms-age').value);
-    const wt   = parseFloat(document.getElementById('ms-wt').value);
-    const ht   = parseFloat(document.getElementById('ms-ht').value);
-    const wc   = parseFloat(document.getElementById('ms-wc').value);
-    const hipRaw = document.getElementById('ms-hip').value;
-    const hip  = hipRaw ? parseFloat(hipRaw) : null;
-    if (!age||!wt||!ht||!wc) { alert('Please fill in all required fields to continue.'); return; }
+  function drawAnnotations(curBMI, goalBMI, goalChanged, t, th) {
+    if (!chart) return;
+    const ctx    = chart.ctx;
+    const xScale = chart.scales.x;
+    const yScale = chart.scales.y;
+    const tickColor = 'rgba(0,0,0,0.35)';
+    ctx.save();
+    ctx.setLineDash([5, 4]);
+    ctx.strokeStyle = 'rgba(0,0,0,0.15)';
+    ctx.lineWidth = 1;
+    [[t, 'x'], [th.healthy[1], 'y'], [th.healthy[1] + 4.5, 'y']].forEach(([val, axis]) => {
+      ctx.beginPath();
+      if (axis === 'x') { const px = xScale.getPixelForValue(val); ctx.moveTo(px, yScale.top); ctx.lineTo(px, yScale.bottom); }
+      else              { const py = yScale.getPixelForValue(val); ctx.moveTo(xScale.left, py); ctx.lineTo(xScale.right, py); }
+      ctx.stroke();
+    });
+    ctx.setLineDash([]);
+    ctx.font = "11px 'DM Sans', sans-serif";
+    ctx.fillStyle = tickColor;
+    ctx.textAlign = 'right';
+    ctx.fillText(`BMI ${th.healthy[1]}`,        xScale.right - 4, yScale.getPixelForValue(th.healthy[1]) - 5);
+    ctx.fillText(`BMI ${th.healthy[1] + 4.5}`,  xScale.right - 4, yScale.getPixelForValue(th.healthy[1] + 4.5) - 5);
+    ctx.textAlign = 'left';
+    ctx.fillText(`Waist ${t}cm`, xScale.getPixelForValue(t) + 4, yScale.top + 14);
+    if (goalChanged) {
+      const x1 = xScale.getPixelForValue(S.waist);
+      const y1 = yScale.getPixelForValue(curBMI);
+      const x2 = xScale.getPixelForValue(S.goalWt);
+      const y2 = yScale.getPixelForValue(goalBMI);
+      const dx = x2 - x1, dy = y2 - y1;
+      const len = Math.sqrt(dx*dx+dy*dy);
+      if (len > 16) {
+        const ux=dx/len,uy=dy/len;
+        ctx.beginPath(); ctx.setLineDash([5,4]); ctx.strokeStyle='#3B6D11'; ctx.lineWidth=1.5;
+        ctx.moveTo(x1+ux*14,y1+uy*14); ctx.lineTo(x2-ux*14,y2-uy*14); ctx.stroke();
+        ctx.setLineDash([]); ctx.fillStyle='#3B6D11';
+        ctx.beginPath();
+        ctx.moveTo(x2-ux*14,y2-uy*14);
+        ctx.lineTo(x2-ux*23+uy*5,y2-uy*23-ux*5);
+        ctx.lineTo(x2-ux*23-uy*5,y2-uy*23+ux*5);
+        ctx.closePath(); ctx.fill();
+      }
+    }
+    ctx.restore();
+  }
 
-    const act  = msGetV('ms-act-g')  || 'yes';
-    const diet = msGetV('ms-diet-g') || 'yes';
-    const bp   = msGetV('ms-bp-g')   || 'no';
-    const glc  = msGetV('ms-glc-g')  || 'no';
-    const fam  = msGetV('ms-fam-g')  || 'none';
-    const gdm  = msGetV('ms-gdm-g')  || 'no';
+  function onSlide() {
+    S.goalW  = parseFloat(document.getElementById('slWeight').value);
+    S.goalWt = parseFloat(document.getElementById('slWaist').value);
+    document.getElementById('slWeightVal').textContent = S.goalW.toFixed(1);
+    document.getElementById('slWaistVal').textContent  = S.goalWt.toFixed(1);
+    const dW = +(S.weight - S.goalW).toFixed(1);
+    const dC = +(S.waist  - S.goalWt).toFixed(1);
+    document.getElementById('slWeightDelta').textContent = dW > 0 ? `−${dW} kg` : dW < 0 ? `+${Math.abs(dW)} kg` : '';
+    document.getElementById('slWaistDelta').textContent  = dC > 0 ? `−${dC} cm` : dC < 0 ? `+${Math.abs(dC)} cm` : '';
+    const goalBMI   = calcBMI(S.goalW, S.height);
+    const goalBMIc  = bmiCat(goalBMI, S.age);
+    const goalWaistC = waistCat(S.goalWt, sex);
+    document.getElementById('ctxWeight').textContent = CTX_WEIGHT[goalBMIc.risk];
+    document.getElementById('ctxWaist').textContent  = CTX_WAIST[goalWaistC.risk];
+    renderChart();
+  }
 
-    const B   = msBMI(wt,ht);
-    const WR  = msWHtR(wc,ht);
-    const A   = msABSI(wc,B,ht);
-    const CO  = msConi(wc,wt,ht);
-    const BAI = hip ? msBAI(hip,ht) : null;
+  function togglePop() {
+    showPop = document.getElementById('chkPop').checked;
+    renderChart();
+  }
 
-    const fr  = msFINDRISC({age,B,wc,msex,act,diet,bp,glc,fam,gdm});
+  /* ── Action card ── */
+  function renderActionCard(bRisk, wRisk, wrRisk) {
+    const dominant = bRisk==='high'||wRisk==='high'||wrRisk==='high' ? 'high'
+                   : bRisk==='mod' ||wRisk==='mod' ||wrRisk==='mod'  ? 'mod' : 'low';
+    const cards = {
+      low: {
+        icon:'🌿', title:'Keep it up', driver:'All three markers are in the healthy range.',
+        body:'Your measurements suggest low metabolic risk based on WHO Asia-Pacific thresholds for Malaysians. Focus on maintaining your current habits.',
+        steps:['Stay active — aim for 150 min moderate exercise per week','Continue eating plenty of vegetables, fruit, and whole grains','Schedule an annual check-up to monitor trends over time','Maintain a healthy sleep schedule (7–9 hours)'],
+        links:[{label:'MOH Malaysia health tips',url:'https://www.moh.gov.my'},{label:'MySihat lifestyle resources',url:'https://www.mysihat.gov.my',sec:true}]
+      },
+      mod: {
+        icon:'⚠️', title:'Some markers to watch', driver:'One or more measurements are in the elevated risk zone.',
+        body:'Your results suggest elevated metabolic risk. This is common — and very manageable with targeted lifestyle changes.',
+        steps:['Reduce refined carbs: white rice, white bread, sugary drinks (teh tarik, air bandung)','Aim for 10,000 steps or 30 min brisk walking daily','Add more sayur and buah to your meals — aim for 5 portions a day','Book a blood test to check glucose and cholesterol levels'],
+        links:[{label:'Find a klinik near you',url:'https://www.moh.gov.my/index.php/pages/view/48'},{label:'MySihat diet guide',url:'https://www.mysihat.gov.my',sec:true}]
+      },
+      high: {
+        icon:'🔴', title:'Elevated risk detected', driver:'Multiple markers are in the high-risk zone.',
+        body:'Your measurements indicate significant metabolic risk. We recommend consulting a healthcare provider as soon as possible.',
+        steps:['Visit a klinik or hospital for a full metabolic panel (glucose, HbA1c, lipids, BP)','Discuss your results with a doctor — you may qualify for free screening under Peka B40','Make an immediate lifestyle change: eliminate sugary drinks and processed food','Join a structured programme — MySihat and KOSPEN offer free community health support'],
+        links:[{label:'Peka B40 screening',url:'https://pekab40.com.my'},{label:'KOSPEN community programme',url:'https://www.moh.gov.my',sec:true}]
+      }
+    };
+    const d = cards[dominant];
+    const ac = document.getElementById('actionCard');
+    ac.className = `action-card tier-${dominant}`;
+    document.getElementById('actionIcon').textContent   = d.icon;
+    document.getElementById('actionTitle').textContent  = d.title;
+    document.getElementById('actionDriver').textContent = d.driver;
+    document.getElementById('actionBody').textContent   = d.body;
+    document.getElementById('actionSteps').innerHTML    = d.steps.map(s =>
+      `<li class="action-step"><div class="action-step-num">${d.steps.indexOf(s)+1}</div><span>${s}</span></li>`).join('');
+    document.getElementById('actionLinks').innerHTML    = d.links.map(l =>
+      `<a href="${l.url}" target="_blank" rel="noopener" class="action-link${l.sec?' secondary':''}">${l.label}</a>`).join('');
+    ac.style.display = 'block';
+  }
+
+  /* ── Main calculate ── */
+  function calculate() {
+    const age    = parseInt(document.getElementById('inAge').value);
+    const weight = parseFloat(document.getElementById('inWeight').value);
+    const height = parseFloat(document.getElementById('inHeight').value);
+    const waist  = parseFloat(document.getElementById('inWaist').value);
+    const hipRaw = document.getElementById('inHip').value;
+    const hip    = hipRaw ? parseFloat(hipRaw) : null;
+
+    if (!age||!weight||!height||!waist) { alert('Please fill in age, weight, height, and waist to continue.'); return; }
+
+    const B   = calcBMI(weight, height);
+    const bc  = bmiCat(B, age);
+    const wc  = waistCat(waist, sex);
+    const wr  = whtR(waist, height);
+    const WR  = msWHtR(waist, height);
+    const A   = msABSI(waist, B, height);
+    const CO  = msConi(waist, weight, height);
+    const BAI = hip ? msBAI(hip, height) : null;
+    const th  = bmiThresholds(age);
+    const fr  = msFINDRISC({age,B,wc:waist,msex:sex,pAct:act,pDiet:diet,pBp:bp,pGlc:glc,pFam:fam,pGdm:gdm});
     const frT = msFrTier(fr);
+
     const scores = {
-      bmi:msToS(B,15,42), wc:msToS(wc,55,130), whtr:msToS(WR,0.3,0.8),
-      absi:msToS(A,0.065,0.115), con:msToS(CO,0.9,1.6), fr:msToS(fr,0,26)
+      bmi:  msToS(B,    15,   42),
+      wc:   msToS(waist,55,  130),
+      whtr: msToS(WR,   0.3,  0.8),
+      absi: msToS(A,    0.065,0.115),
+      con:  msToS(CO,   0.9,  1.6),
+      fr:   msToS(fr,   0,    26)
     };
     const comp = msComposite(scores);
 
-    const metricVals = {bmi:B,wc,whtr:WR,absi:A,con:CO};
-    const mRisks = MS_METRICS.map(m=>m.riskFn(metricVals[m.key],msex));
-    const worst  = [...mRisks,frT.col].includes('high')?'high':[...mRisks,frT.col].includes('mod')?'mod':'low';
-    const rCol   = msRCol(worst);
+    const metricRisks = MS_METRICS.map(m => m.riskFn({bmi:B,wc:waist,whtr:WR,absi:A,con:CO}[m.key], sex));
+    const worst = [...metricRisks, frT.col].includes('high')?'high':[...metricRisks, frT.col].includes('mod')?'mod':'low';
+    const rCol  = msRCol(worst);
 
+    /* Age callout */
+    const callout = document.getElementById('ageCallout');
+    const calloutText = document.getElementById('ageCalloutText');
+    if (age < 18) {
+      calloutText.innerHTML = '<strong>Under 18 detected.</strong> Thresholds are calibrated for adults. Results may not accurately reflect risk for children — consult a paediatrician.';
+      callout.classList.add('visible');
+    } else if (age >= 70) {
+      calloutText.innerHTML = '<strong>Age 70+ detected.</strong> Healthy BMI range adjusted to 22.0–26.9, reflecting protective benefit of higher BMI in older adults.';
+      callout.classList.add('visible');
+    } else if (age >= 60) {
+      calloutText.innerHTML = '<strong>Age 60–69 detected.</strong> Healthy BMI range adjusted to 20.0–24.9 for your age group.';
+      callout.classList.add('visible');
+    } else {
+      callout.classList.remove('visible');
+    }
+
+    /* Dial */
     document.getElementById('ms-dn').textContent = comp;
     const vmap = {
       high:{t:'Elevated metabolic risk',   s:'Several markers are in the high-risk range. A blood panel at your nearest klinik would give a clearer picture.'},
@@ -2436,6 +2024,20 @@
     document.getElementById('ms-ds').textContent  = vmap[worst].s;
     msDrawDial(comp, rCol);
 
+    /* Summary strip */
+    document.getElementById('sBMI').textContent    = B.toFixed(1);
+    document.getElementById('sBMIcat').textContent = bc.cat;
+    document.getElementById('sBMIcat').className   = 'strip-risk r-' + bc.risk;
+    document.getElementById('sWaist').textContent    = waist + ' cm';
+    document.getElementById('sWaistcat').textContent = wc.cat;
+    document.getElementById('sWaistcat').className   = 'strip-risk r-' + wc.risk;
+    document.getElementById('sWHtR').textContent    = wr.val;
+    document.getElementById('sWHtRcat').textContent = wr.cat;
+    document.getElementById('sWHtRcat').className   = 'strip-risk r-' + wr.risk;
+    document.getElementById('resultsSubtitle').textContent =
+      `${sex==='male'?'Male':'Female'}, ${age} years old · BMI thresholds calibrated for age group ${th.label}`;
+
+    /* Diabetes risk */
     document.getElementById('ms-fr-pill').textContent = frT.label;
     document.getElementById('ms-fr-pill').className   = 'ms-fr-pill ' + frT.col;
     document.getElementById('ms-fr-sub').textContent  =
@@ -2445,29 +2047,30 @@
       : 'We recommend seeking a fasting blood glucose test at your nearest klinik or hospital.');
     document.getElementById('ms-fthumb').style.left = Math.min(97,(fr/26*100))+'%';
 
+    /* Metric cards */
     const allMetrics = [...MS_METRICS];
-    const allVals    = {bmi:B,wc,whtr:WR,absi:A,con:CO,bai:BAI};
+    const allVals    = {bmi:B, wc:waist, whtr:WR, absi:A, con:CO, bai:BAI};
     if (BAI !== null) {
-      const bsx = msex;
+      const bsx = sex;
       allMetrics.push({
         key:'bai', plain:'Estimated body fat',
-        tip:'Body Adiposity Index (BAI) — estimates body fat % using hip circumference (cm) and height. Hip stays in cm; height is converted to metres internally.',
+        tip:'Body Adiposity Index (BAI) — estimates body fat % from hip circumference (cm) and height.',
         unit:'%', min:5, max:55,
         t1:bsx==='male'?22:30, t2:bsx==='male'?28:36,
         t1l:bsx==='male'?'22%':'30%', t2l:bsx==='male'?'28%':'36%',
         riskFn: v=>v>=(bsx==='male'?28:36)?'high':v>=(bsx==='male'?22:30)?'mod':'low',
         dispFn: v=>v.toFixed(1),
-        plainFn: v=>{ const hi=bsx==='male'?28:36, lo=bsx==='male'?22:30;
-          return v>=hi?`Your estimated body fat of ${v.toFixed(1)}% exceeds the healthy threshold for ${bsx==='male'?'men':'women'}.`
+        plainFn: v=>{ const hi=bsx==='male'?28:36,lo=bsx==='male'?22:30;
+          return v>=hi?`Your estimated body fat of ${v.toFixed(1)}% exceeds the healthy threshold.`
             :v>=lo?`Your estimated body fat of ${v.toFixed(1)}% is approaching the upper healthy limit.`
             :`Your estimated body fat of ${v.toFixed(1)}% is within the healthy range.`; }
       });
     }
 
-    document.getElementById('ms-cards').innerHTML = allMetrics.map(m=>{
-      const v=allVals[m.key];
+    document.getElementById('ms-cards').innerHTML = allMetrics.map(m => {
+      const v = allVals[m.key];
       if (v===null||v===undefined) return '';
-      const risk=m.riskFn(v,msex);
+      const risk=m.riskFn(v,sex);
       return `<div class="ms-mc" data-key="${m.key}" onclick="msToggleCard('${m.key}')">
         <div class="ms-mc-head">
           <div class="ms-mc-name">${m.plain}
@@ -2476,21 +2079,78 @@
           <div class="ms-pill ${msPillCls(risk)}">${msPillLbl(risk)}</div>
         </div>
         <div class="ms-mc-val">${m.dispFn(v)}<span class="ms-mc-unit"> ${m.unit}</span></div>
-        <div class="ms-mc-expand">${msBuildBar(m,v,msex)}<div class="ms-eplain ${msEpCls(risk)}">${m.plainFn(v,msex)}</div></div>
+        <div class="ms-mc-expand">${msBuildBar(m,v,sex)}<div class="ms-eplain ${msEpCls(risk)}">${m.plainFn(v,sex)}</div></div>
         <div class="ms-mc-hint">tap to explore</div>
       </div>`;
     }).join('');
 
-    msUserPt = {bmi:B, wc};
-    msSFilter.sex = msex; msSFilter.age = 'all';
-    document.getElementById('ms-sf-male').classList.toggle('on',   msex==='male');
-    document.getElementById('ms-sf-female').classList.toggle('on', msex==='female');
-    ['all','18','30','40','50','60'].forEach(v=>document.getElementById('ms-sa-'+v).classList.toggle('on',v==='all'));
-    msPopCache = {};
-    msDrawScatter();
+    /* Sliders */
+    S = { age, weight, height, waist, goalW: weight, goalWt: waist };
+    const sw = document.getElementById('slWeight');
+    sw.min = Math.max(30, Math.round(weight*0.72*2)/2);
+    sw.max = Math.round(weight*1.08*2)/2;
+    sw.value = weight;
+    document.getElementById('slWeightMin').textContent = sw.min + ' kg';
+    document.getElementById('slWeightMax').textContent = sw.max + ' kg';
+    document.getElementById('slWeightVal').textContent = weight.toFixed(1);
+    const sc = document.getElementById('slWaist');
+    sc.min = Math.max(40, Math.round(waist*0.72*2)/2);
+    sc.max = Math.round(waist*1.08*2)/2;
+    sc.value = waist;
+    document.getElementById('slWaistMin').textContent = sc.min + ' cm';
+    document.getElementById('slWaistMax').textContent = sc.max + ' cm';
+    document.getElementById('slWaistVal').textContent = waist.toFixed(1);
+    document.getElementById('ctxWeight').textContent = CTX_WEIGHT[bc.risk];
+    document.getElementById('ctxWaist').textContent  = CTX_WAIST[wc.risk];
 
-    document.getElementById('ms-results').classList.add('show');
-    setTimeout(()=>document.getElementById('ms-results').scrollIntoView({behavior:'smooth',block:'start'}),120);
+    /* Scatter defaults to user sex, all ages */
+    msUserPt = {bmi:B, wc:waist};
+    msSFilter.sex = sex; msSFilter.age = 'all';
+    document.getElementById('ms-sf-male').classList.toggle('on',   sex==='male');
+    document.getElementById('ms-sf-female').classList.toggle('on', sex==='female');
+    ['all','18','30','40','50','60'].forEach(v =>
+      document.getElementById('ms-sa-'+v).classList.toggle('on', v==='all')
+    );
+    msPopCache = {};
+
+    /* Action card */
+    renderActionCard(bc.risk, wc.risk, wr.risk);
+
+    /* Show results */
+    document.getElementById('formSection').style.display = 'none';
+    document.getElementById('results').style.display     = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    setTimeout(() => {
+      renderChart();
+      msDrawScatter();
+    }, 80);
+  }
+
+  function msToggleCard(k) {
+    const c=document.querySelector(`.ms-mc[data-key="${k}"]`); if(!c)return;
+    const was=c.classList.contains('open');
+    document.querySelectorAll('.ms-mc').forEach(x=>x.classList.remove('open'));
+    if (!was) c.classList.add('open');
+  }
+
+  function resetApp() {
+    if (chart) { chart.destroy(); chart = null; }
+    if (msScatterChart) { msScatterChart.destroy(); msScatterChart = null; }
+    document.getElementById('results').style.display     = 'none';
+    document.getElementById('formSection').style.display = 'block';
+    document.getElementById('chkPop').checked = false;
+    document.getElementById('ageCallout').classList.remove('visible');
+    document.getElementById('actionCard').style.display = 'none';
+    showPop = false; S = {}; msPopCache = {};
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleSources(btn) {
+    const body = document.getElementById('sourcesBody');
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !expanded);
+    body.classList.toggle('open', !expanded);
   }
 </script>
 </body>
