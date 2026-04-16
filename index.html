@@ -50,6 +50,67 @@
       opacity: 0.5;
     }
 
+    /* ── Site-wide nav ── */
+    .site-nav {
+      background: var(--ink);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .site-nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .site-nav-brand {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--bg);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: opacity 0.2s;
+    }
+    .site-nav-brand:hover { opacity: 0.75; }
+
+    .site-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .site-nav-links a {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.6);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .site-nav-links a:hover {
+      color: var(--bg);
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* Mobile nav */
+    @media (max-width: 520px) {
+      .site-nav-inner { padding: 0 16px; height: 48px; }
+      .site-nav-brand { font-size: 13px; }
+      .site-nav-links a { font-size: 10px; letter-spacing: 0.07em; padding: 5px 8px; }
+      .site-nav-links { gap: 0; }
+    }
+
     .container {
       max-width: 700px;
       margin: 0 auto;
@@ -975,7 +1036,7 @@
       .ms-scatter-filters { gap: 5px; }
       .ms-ftog { padding: 4px 9px; font-size: 11px; }
       .about-compact { padding: 10px 14px; }
-      .lang-toggle { top: 12px; right: 12px; padding: 5px 11px; font-size: 11px; }
+      .lang-toggle { top: 60px; right: 12px; padding: 5px 11px; font-size: 11px; }
     }
 
     /* ── About compact ── */
@@ -1008,7 +1069,7 @@
 
     /* ── Language toggle ── */
     .lang-toggle {
-      position: fixed; top: 16px; right: 16px; z-index: 999;
+      position: fixed; top: 64px; right: 16px; z-index: 99;
       background: var(--ink); color: var(--bg);
       border: none; border-radius: 100px;
       padding: 6px 14px; font-family: 'DM Sans', sans-serif;
@@ -1029,6 +1090,20 @@
   </style>
 </head>
 <body>
+
+<!-- ── Site-wide navigation ── -->
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="site-nav-inner">
+    <a class="site-nav-brand" href="https://aufthority.com" target="_blank" rel="noopener">Aufthority</a>
+    <ul class="site-nav-links">
+      <li><a href="https://aufthority.com/about" target="_blank" rel="noopener">About</a></li>
+      <li><a href="https://aufthority.com/apps" target="_blank" rel="noopener">Apps</a></li>
+      <li><a href="https://open.substack.com/pub/aufthority" target="_blank" rel="noopener">Newsletter</a></li>
+      <li><a href="mailto:the.aufthority@gmail.com">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
 <div class="container">
 
   <!-- Header -->
@@ -1364,9 +1439,6 @@
     <div class="sources-body" id="sourcesBody">
       <div class="sources-inner">
 
-        <!-- ══════════════════════════════════════════
-             SECTION A — DATA SOURCES
-        ══════════════════════════════════════════ -->
         <div class="method-section-label">Data Sources</div>
 
         <div class="source-card">
@@ -1424,12 +1496,8 @@
           <a class="source-link" href="https://ourworldindata.org/obesity" target="_blank" rel="noopener">OWID obesity data →</a>
         </div>
 
-        <!-- ══════════════════════════════════════════
-             SECTION B — FORMULAS & SCORING ENGINES
-        ══════════════════════════════════════════ -->
         <div class="method-section-label" style="margin-top:36px">Formulas &amp; Scoring Engines</div>
 
-        <!-- 1. Anthropometric metrics -->
         <div class="source-card">
           <div class="source-card-header">
             <span class="source-pill" style="background:var(--ink-muted)">Metrics</span>
@@ -1458,7 +1526,6 @@
           <p class="formula-note">Result approximates body fat percentage (%). Note: hip stays in cm; only height converts to metres.</p>
         </div>
 
-        <!-- 2. Risk classification thresholds -->
         <div class="source-card">
           <div class="source-card-header">
             <span class="source-pill" style="background:var(--ink-muted)">Thresholds</span>
@@ -1485,7 +1552,6 @@
           </table>
         </div>
 
-        <!-- 3. FINDRISC scoring -->
         <div class="source-card">
           <div class="source-card-header">
             <span class="source-pill" style="background:var(--ink-muted)">FINDRISC</span>
@@ -1528,7 +1594,6 @@
           </table>
         </div>
 
-        <!-- 4. Composite risk index -->
         <div class="source-card">
           <div class="source-card-header">
             <span class="source-pill" style="background:var(--ink-muted)">Composite</span>
@@ -1573,7 +1638,6 @@
           <p class="formula-note" style="margin-top:10px"><strong>Floor-rule callout:</strong> If any single metric is classified as High risk but the composite score remains in the healthy zone (0–30), a separate callout is shown beneath the dial naming that specific metric. The dial verdict and action card are not overridden — the composite score is preserved as the primary output.</p>
         </div>
 
-        <!-- 5. Population scatter -->
         <div class="source-card">
           <div class="source-card-header">
             <span class="source-pill" style="background:var(--ink-muted)">Scatter</span>
@@ -1608,7 +1672,6 @@
           </table>
         </div>
 
-        <!-- 6. Limitations -->
         <div class="source-card" style="border-color:var(--amber);background:var(--amber-light)">
           <div class="source-card-header">
             <span class="source-pill" style="background:var(--amber);color:#fff">Limitations</span>
@@ -1643,6 +1706,12 @@
   <footer class="site-footer">
     <div class="footer-eyebrow"><span data-en>Find me on</span><span data-bm>Jumpa saya di</span></div>
     <div class="footer-links">
+
+      <!-- Website link — new addition -->
+      <a class="footer-link" href="https://aufthority.com" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        aufthority.com
+      </a>
 
       <a class="footer-link" href="https://open.substack.com/pub/aufthority/p/neurohabit-a-habit-tracker-app-for?utm_campaign=post-expanded-share&utm_medium=web" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
@@ -1695,7 +1764,6 @@
       },
       pills: { high:'High risk', mod:'Needs attention', low:'Healthy' },
       tapHint: 'tap to explore',
-      // ── Floor-rule callout copy ──
       floorCallout: {
         label: (metricName) => `Just one thing to keep in mind — your ${metricName} is a little higher than we'd like. Everything else looks good — just something to be aware of and maybe mention to your doctor next time you visit.`
       },
@@ -1757,7 +1825,6 @@
       },
       pills: { high:'Risiko tinggi', mod:'Perlu perhatian', low:'Sihat' },
       tapHint: 'ketik untuk maklumat',
-      // ── Floor-rule callout copy (BM) ──
       floorCallout: {
         label: (metricName) => `Satu perkara kena check — ${metricName} anda tinggi sikit dari yang sepatutnya. Keseluruhannya nampak okay — tak perlu risau sangat, tapi lebih afdal dibincangkan dengan doktor.`
       },
@@ -2216,6 +2283,7 @@
     const b  = calcBMI(S.weight, S.height);
     const bc = bmiCat(b, S.age);
     const wc = waistCat(S.waist, sex);
+    const wr = whtR(S.waist, S.height);
     const th = bmiThresholds(S.age);
     const t  = sex === 'male' ? 90 : 80;
     const goalBMI = calcBMI(S.goalW, S.height);
@@ -2425,25 +2493,18 @@
     };
     const comp = msComposite(scores);
 
-    // ── OPTION B: Separate composite verdict from individual metric flags ──
-    // compositeVerdict drives the dial label, sub-text and action card
     const compositeVerdict = comp >= 71 ? 'high' : comp >= 31 ? 'mod' : 'low';
 
-    // worstMetric is used only to decide whether to show the floor callout
     const metricRisks = MS_METRICS.map(m => m.riskFn({bmi:B,wc:waist,whtr:WR,absi:A,con:CO}[m.key], sex));
     const allRisks    = [...metricRisks, frT.col];
     const worstMetric = allRisks.includes('high') ? 'high' : allRisks.includes('mod') ? 'mod' : 'low';
 
-    // Dial and action card colour follow the composite score
     const worst = compositeVerdict;
     const rCol  = msRCol(worst);
 
-    // ── Floor-rule callout: only fires when a metric is flagged high
-    //    but the composite score is still in the green/healthy zone ──
     const floorCallout     = document.getElementById('ms-floor-callout');
     const floorCalloutText = document.getElementById('ms-floor-callout-text');
     if (worstMetric === 'high' && compositeVerdict === 'low') {
-      // Find the single worst metric — prefer the first 'high' metric in the list
       const highMetricIdx = metricRisks.findIndex(r => r === 'high');
       const highMetricKey = highMetricIdx >= 0 ? MS_METRICS[highMetricIdx].key : null;
       const isFRHigh      = frT.col === 'high';
@@ -2456,7 +2517,6 @@
         worstName = null;
       }
       if (worstName) {
-        // Store the metric key so updateDynamicLang() can re-render in the correct language
         floorCallout.setAttribute('data-metric-key', highMetricKey || 'diabetes');
         floorCalloutText.textContent = getLang().floorCallout.label(worstName);
         floorCallout.classList.add('visible');
@@ -2588,7 +2648,7 @@
     );
     msPopCache = {};
 
-    /* Action card — driven by composite verdict, not floor rule */
+    /* Action card */
     renderActionCard(bc.risk, wc.risk, wr.risk);
 
     /* Show results */
@@ -2622,7 +2682,6 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  /* ── Tooltip click toggle ── */
   function showTip(btn) {
     event.stopPropagation();
     const isOpen = btn.classList.contains('tip-open');
@@ -2657,7 +2716,6 @@
   function updateDynamicLang(lang) {
     const L = getLang();
 
-    // 1. Yes/No buttons
     const yesNoMap = { en:{yes:'Yes',no:'No'}, bm:{yes:'Ya',no:'Tidak'} };
     const m = yesNoMap[lang];
     document.querySelectorAll('[data-act], [data-diet], [data-bp], [data-glc], [data-gdm]').forEach(btn => {
@@ -2668,15 +2726,12 @@
       if (val === 'no')  btn.textContent = m.no;
     });
 
-    // 2. If results visible, re-render dynamic content
     if (document.getElementById('results').style.display !== 'none') {
-      // Metric card pills
       document.querySelectorAll('.ms-pill').forEach(p => {
         if (p.classList.contains('ms-pr')) p.textContent = L.pills.high;
         else if (p.classList.contains('ms-pa')) p.textContent = L.pills.mod;
         else if (p.classList.contains('ms-pg')) p.textContent = L.pills.low;
       });
-      // Metric card names + hints
       document.querySelectorAll('.ms-mc').forEach(card => {
         const key = card.getAttribute('data-key');
         if (key && L.metricNames[key]) {
@@ -2687,7 +2742,6 @@
         if (hint) hint.textContent = L.tapHint;
       });
 
-      // Floor callout — re-render in new language if visible
       const fc  = document.getElementById('ms-floor-callout');
       const fct = document.getElementById('ms-floor-callout-text');
       if (fc && fc.classList.contains('visible') && fct) {
@@ -2700,7 +2754,6 @@
         }
       }
 
-      // Dial verdict + sub
       const score = parseInt(document.getElementById('ms-dn').textContent);
       const riskCol = document.getElementById('ms-dv').style.color || '#2A6B45';
       const worst = riskCol === '#C8240A' ? 'high' : riskCol === '#B87000' ? 'mod' : 'low';
@@ -2710,12 +2763,10 @@
         document.getElementById('ms-dc-ctx').textContent = L.ctxNote(score);
         msDrawDial(score, riskCol);
       }
-      // Percentile badge
       const badge = document.getElementById('ms-percentile');
       if (badge && badge.style.display !== 'none') {
         msDrawScatter();
       }
-      // Static UI labels
       document.getElementById('ms-fr-title') && (document.querySelector('.ms-fr-title').textContent = L.diabetesTitle);
       document.querySelector('.ms-cards-lbl') && (document.querySelector('.ms-cards-lbl').textContent = L.measurementsLabel);
     }
