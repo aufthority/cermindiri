@@ -452,7 +452,64 @@
       transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .sources-body.open { max-height: 1200px; }
+    .sources-body.open { max-height: 6000px; }
+
+    /* ── Methodology / formula styles inside sources ── */
+    .method-section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin: 28px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .formula-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin: 8px 0 10px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 14px;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+    .formula-note {
+      font-size: 12px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+      margin-bottom: 4px;
+    }
+    .scoring-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin: 8px 0 10px;
+    }
+    .scoring-table th {
+      text-align: left;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      padding: 6px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .scoring-table td {
+      padding: 7px 10px;
+      border-bottom: 1px solid var(--border);
+      color: var(--ink);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .scoring-table tr:last-child td { border-bottom: none; }
+    .scoring-table tr:nth-child(even) td { background: var(--bg); }
+    .tag-low  { display:inline-block; padding:2px 7px; border-radius:100px; font-size:10px; font-weight:600; background:var(--green-light); color:var(--green); }
+    .tag-mod  { display:inline-block; padding:2px 7px; border-radius:100px; font-size:10px; font-weight:600; background:var(--amber-light); color:var(--amber); }
+    .tag-high { display:inline-block; padding:2px 7px; border-radius:100px; font-size:10px; font-weight:600; background:var(--red-light);   color:var(--red); }
 
     .sources-inner { padding-top: 20px; }
 
@@ -983,7 +1040,7 @@
     </button>
     <h1>Cermin<br/><em>Diri.</em></h1>
     <p class="byline">By Aufthority</p>
-    <p class="subtitle"><span data-en>Find out your metabolic health risk in minutes — calibrated for Malaysian bodies.</span><span data-bm>Check risiko kesihatan metabolik anda sepantas kilat — ikut formula orang Malaysia!.</span></p>
+    <p class="subtitle"><span data-en>Find out your metabolic health risk in minutes — calibrated for Malaysian bodies.</span><span data-bm>Check risiko kesihatan metabolik anda sepantas kilat — ikut formula orang Malaysia!</span></p>
     <div class="source-badge">📊 WHO · OWID · NHMS Malaysia</div>
   </header>
 
@@ -1307,13 +1364,55 @@
     <div class="sources-body" id="sourcesBody">
       <div class="sources-inner">
 
+        <!-- ══════════════════════════════════════════
+             SECTION A — DATA SOURCES
+        ══════════════════════════════════════════ -->
+        <div class="method-section-label">Data Sources</div>
+
         <div class="source-card">
           <div class="source-card-header">
             <span class="source-pill">WHO</span>
-            <span class="source-name">World Health Organization — Asia-Pacific Guidelines</span>
+            <span class="source-name">World Health Organization — Asia-Pacific Guidelines (2004)</span>
           </div>
-          <p class="source-desc">The WHO published specific BMI cutoffs for Asian populations in 2004, recognising that Asians develop metabolic risk at lower BMI levels than Western populations. This app uses the WHO Asia-Pacific thresholds: healthy BMI 18.5–22.9, overweight ≥23, obese ≥27.5. Waist circumference thresholds for Asian adults are ≥90 cm for men and ≥80 cm for women — lower than the global WHO cutoffs.</p>
+          <p class="source-desc">The WHO published Asia-Pacific-specific BMI and waist circumference cutoffs in 2004, recognising that Asians develop cardiometabolic risk at lower body mass than Western populations. These thresholds underpin the BMI classification, waist circumference risk categorisation, and risk zone shading in the BMI vs Waist chart throughout this app.</p>
           <a class="source-link" href="https://www.who.int/publications/i/item/9789241517836" target="_blank" rel="noopener">WHO Expert Consultation report →</a>
+        </div>
+
+        <div class="source-card">
+          <div class="source-card-header">
+            <span class="source-pill">NHMS</span>
+            <span class="source-name">National Health & Morbidity Survey 2019 & 2023 — Malaysia</span>
+          </div>
+          <p class="source-desc">Malaysia's national health survey conducted by the Institute for Public Health (IKU) under the Ministry of Health (MOH). The 2019 edition surveyed over 10,000 adults and reported prevalence of overweight, obesity, abdominal obesity, hypertension, and diabetes by sex and age group. This app uses published mean BMI and waist circumference values from NHMS 2019 and 2023 as seed data for the Malaysian population scatter chart. Individual data points in that chart are statistically simulated from those means using Gaussian noise — they are not real survey respondents.</p>
+          <a class="source-link" href="https://iku.nih.gov.my/nhms-2019" target="_blank" rel="noopener">NHMS 2019 full report →</a>
+          <a class="source-link" href="https://iku.nih.gov.my/nhms-2023" target="_blank" rel="noopener" style="margin-left:12px">NHMS 2023 full report →</a>
+        </div>
+
+        <div class="source-card">
+          <div class="source-card-header">
+            <span class="source-pill">FINDRISC</span>
+            <span class="source-name">Finnish Diabetes Risk Score — Asian Calibration</span>
+          </div>
+          <p class="source-desc">FINDRISC is a validated, non-invasive diabetes risk screening tool developed by Lindström & Tuomilehto (2003). This app uses an Asian-calibrated version that adjusts waist circumference thresholds for Asian body proportions: men ≥90 cm (standard) / &gt;99 cm (high), women ≥80 cm (standard) / &gt;87 cm (high), consistent with WHO Asia-Pacific and JADE (Joint Asia Diabetes Evaluation) programme recommendations. The score produces a 10-year risk estimate for type 2 diabetes.</p>
+          <a class="source-link" href="https://doi.org/10.2337/diacare.26.3.725" target="_blank" rel="noopener">Lindström & Tuomilehto 2003 (original FINDRISC) →</a>
+        </div>
+
+        <div class="source-card">
+          <div class="source-card-header">
+            <span class="source-pill">ABSI</span>
+            <span class="source-name">A Body Shape Index — Krakauer & Krakauer (2012)</span>
+          </div>
+          <p class="source-desc">ABSI was introduced by Krakauer NY & Krakauer JC (2012) as a measure of abdominal obesity that accounts for height and BMI, capturing visceral fat risk that BMI alone misses. Higher ABSI values indicate a more apple-shaped fat distribution pattern independently associated with all-cause mortality risk.</p>
+          <a class="source-link" href="https://doi.org/10.1371/journal.pone.0039504" target="_blank" rel="noopener">Krakauer & Krakauer 2012 (PLOS ONE) →</a>
+        </div>
+
+        <div class="source-card">
+          <div class="source-card-header">
+            <span class="source-pill">BAI</span>
+            <span class="source-name">Body Adiposity Index — Bergman et al. (2011)</span>
+          </div>
+          <p class="source-desc">BAI was developed by Bergman RN et al. (2011) as a surrogate measure of body fat percentage derived from hip circumference and height — without requiring weight. It was validated primarily in Hispanic and African-American populations and is included here as an optional supplementary metric when hip circumference is entered. Users should note its validation basis differs from Malaysian populations.</p>
+          <a class="source-link" href="https://doi.org/10.1038/oby.2011.38" target="_blank" rel="noopener">Bergman et al. 2011 (Obesity) →</a>
         </div>
 
         <div class="source-card">
@@ -1321,17 +1420,208 @@
             <span class="source-pill">OWID</span>
             <span class="source-name">Our World in Data — Global Obesity & NCD Trends</span>
           </div>
-          <p class="source-desc">Our World in Data aggregates long-run health statistics from the Global Burden of Disease study and WHO. The population context figures used in this app — including Malaysia's overweight prevalence (~50% of adults) and the tripling of obesity rates since 1990 — are drawn from OWID's published country-level data for Malaysia.</p>
+          <p class="source-desc">Our World in Data aggregates long-run health statistics from the Global Burden of Disease study and WHO. Population context figures referenced in this app — including Malaysia's overweight prevalence (~50% of adults) and the global tripling of obesity rates since 1990 — are drawn from OWID's published country-level data.</p>
           <a class="source-link" href="https://ourworldindata.org/obesity" target="_blank" rel="noopener">OWID obesity data →</a>
         </div>
 
+        <!-- ══════════════════════════════════════════
+             SECTION B — FORMULAS & SCORING ENGINES
+        ══════════════════════════════════════════ -->
+        <div class="method-section-label" style="margin-top:36px">Formulas &amp; Scoring Engines</div>
+
+        <!-- 1. Anthropometric metrics -->
         <div class="source-card">
           <div class="source-card-header">
-            <span class="source-pill">NHMS</span>
-            <span class="source-name">National Health & Morbidity Survey 2019 — Malaysia</span>
+            <span class="source-pill" style="background:var(--ink-muted)">Metrics</span>
+            <span class="source-name">Six Anthropometric Indices</span>
           </div>
-          <p class="source-desc">The NHMS is Malaysia's most comprehensive national health survey, conducted by the Institute for Public Health under the Ministry of Health Malaysia. The 2019 edition surveyed over 10,000 adults and reported national prevalence of overweight, obesity, abdominal obesity, hypertension, and diabetes. The Malaysian population distribution shown in this app's chart uses NHMS 2019 mean BMI and waist circumference figures by sex as the basis for the simulated reference cloud.</p>
-          <a class="source-link" href="https://iku.nih.gov.my/nhms-2019" target="_blank" rel="noopener">NHMS 2019 full report →</a>
+          <p class="source-desc" style="margin-bottom:10px">All six indices are computed from raw inputs (weight in kg, height in cm, waist in cm, hip in cm). Height and waist are converted to metres where the formula requires it.</p>
+
+          <p class="formula-note"><strong>1. Body Mass Index (BMI)</strong></p>
+          <div class="formula-block">BMI = weight (kg) ÷ height (m)²</div>
+
+          <p class="formula-note"><strong>2. Waist Circumference (WC)</strong> — used directly as entered in cm. No formula applied; classified against WHO Asia-Pacific cutoffs.</p>
+
+          <p class="formula-note"><strong>3. Waist-to-Height Ratio (WHtR)</strong></p>
+          <div class="formula-block">WHtR = waist (cm) ÷ height (cm)</div>
+          <p class="formula-note" style="margin-bottom:10px">Boundary: ≥0.50 = elevated risk; ≥0.60 = high risk. Universal across ethnicities.</p>
+
+          <p class="formula-note"><strong>4. A Body Shape Index (ABSI)</strong> — Krakauer & Krakauer (2012)</p>
+          <div class="formula-block">ABSI = waist (m) ÷ (BMI^(2/3) × height (m)^(1/2))</div>
+
+          <p class="formula-note"><strong>5. Conicity Index</strong></p>
+          <div class="formula-block">Conicity = 0.109 × waist (m) ÷ √(weight (kg) ÷ height (m))</div>
+          <p class="formula-note" style="margin-bottom:10px">Values &gt;1.25 (men) or &gt;1.18 (women) indicate apple-shaped fat distribution.</p>
+
+          <p class="formula-note"><strong>6. Body Adiposity Index (BAI)</strong> — Bergman et al. (2011) — optional, requires hip measurement</p>
+          <div class="formula-block">BAI = hip (cm) ÷ height (m)^1.5 − 18</div>
+          <p class="formula-note">Result approximates body fat percentage (%). Note: hip stays in cm; only height converts to metres.</p>
+        </div>
+
+        <!-- 2. Risk classification thresholds -->
+        <div class="source-card">
+          <div class="source-card-header">
+            <span class="source-pill" style="background:var(--ink-muted)">Thresholds</span>
+            <span class="source-name">Risk Classification Cutoffs per Metric</span>
+          </div>
+          <p class="source-desc" style="margin-bottom:12px">Each metric is assigned one of three risk tiers — Healthy, Needs attention, or High risk — based on the following cutoffs. Sex-specific values are shown where applicable.</p>
+
+          <table class="scoring-table">
+            <thead><tr><th>Metric</th><th>Healthy</th><th>Needs attention</th><th>High risk</th></tr></thead>
+            <tbody>
+              <tr><td><strong>BMI</strong> (age 18–59)</td><td>18.5 – 22.9</td><td>23.0 – 27.4</td><td>≥ 27.5</td></tr>
+              <tr><td><strong>BMI</strong> (age 60–69)</td><td>20.0 – 24.9</td><td>25.0 – 29.4</td><td>≥ 29.5</td></tr>
+              <tr><td><strong>BMI</strong> (age 70+)</td><td>22.0 – 26.9</td><td>27.0 – 31.4</td><td>≥ 31.5</td></tr>
+              <tr><td><strong>Waist</strong> — men</td><td>&lt; 90 cm</td><td>90 – 99 cm</td><td>≥ 100 cm</td></tr>
+              <tr><td><strong>Waist</strong> — women</td><td>&lt; 80 cm</td><td>80 – 87 cm</td><td>≥ 88 cm</td></tr>
+              <tr><td><strong>WHtR</strong></td><td>&lt; 0.50</td><td>0.50 – 0.59</td><td>≥ 0.60</td></tr>
+              <tr><td><strong>ABSI</strong> — men</td><td>&lt; 0.087</td><td>0.087 – 0.099</td><td>≥ 0.100</td></tr>
+              <tr><td><strong>ABSI</strong> — women</td><td>&lt; 0.083</td><td>0.083 – 0.094</td><td>≥ 0.095</td></tr>
+              <tr><td><strong>Conicity</strong> — men</td><td>&lt; 1.25</td><td>1.25 – 1.37</td><td>≥ 1.38</td></tr>
+              <tr><td><strong>Conicity</strong> — women</td><td>&lt; 1.18</td><td>1.18 – 1.29</td><td>≥ 1.30</td></tr>
+              <tr><td><strong>BAI</strong> — men</td><td>&lt; 22%</td><td>22 – 27%</td><td>≥ 28%</td></tr>
+              <tr><td><strong>BAI</strong> — women</td><td>&lt; 30%</td><td>30 – 35%</td><td>≥ 36%</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 3. FINDRISC scoring -->
+        <div class="source-card">
+          <div class="source-card-header">
+            <span class="source-pill" style="background:var(--ink-muted)">FINDRISC</span>
+            <span class="source-name">Asian-Calibrated Diabetes Risk Score (0 – 26 points)</span>
+          </div>
+          <p class="source-desc" style="margin-bottom:12px">Points are summed across all applicable questions. Maximum score is 26.</p>
+
+          <table class="scoring-table">
+            <thead><tr><th>Question</th><th>Condition</th><th>Points</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Age</strong></td><td>45 – 54 years</td><td>+2</td></tr>
+              <tr><td></td><td>55 – 64 years</td><td>+3</td></tr>
+              <tr><td></td><td>≥ 65 years</td><td>+4</td></tr>
+              <tr><td><strong>BMI</strong></td><td>23.0 – 27.4</td><td>+1</td></tr>
+              <tr><td></td><td>≥ 27.5</td><td>+3</td></tr>
+              <tr><td><strong>Waist — men</strong></td><td>90 – 99 cm</td><td>+3</td></tr>
+              <tr><td></td><td>≥ 100 cm</td><td>+4</td></tr>
+              <tr><td><strong>Waist — women</strong></td><td>80 – 87 cm</td><td>+3</td></tr>
+              <tr><td></td><td>≥ 88 cm</td><td>+4</td></tr>
+              <tr><td><strong>Physical activity</strong></td><td>&lt; 30 min/day moderate activity</td><td>+2</td></tr>
+              <tr><td><strong>Diet</strong></td><td>Does not eat vegetables or fruit daily</td><td>+1</td></tr>
+              <tr><td><strong>Blood pressure</strong></td><td>Diagnosed or on medication</td><td>+2</td></tr>
+              <tr><td><strong>Blood glucose</strong></td><td>Previously found elevated</td><td>+5</td></tr>
+              <tr><td><strong>Family history</strong></td><td>2nd-degree relative (grandparent / aunt / uncle)</td><td>+3</td></tr>
+              <tr><td></td><td>1st-degree relative (parent / sibling / child)</td><td>+5</td></tr>
+              <tr><td><strong>Gestational diabetes</strong></td><td>Women only — history of GDM</td><td>+5</td></tr>
+            </tbody>
+          </table>
+
+          <p class="formula-note" style="margin-top:12px"><strong>Score interpretation:</strong></p>
+          <table class="scoring-table">
+            <thead><tr><th>Score</th><th>Risk level</th><th>Estimated 10-year T2DM risk</th></tr></thead>
+            <tbody>
+              <tr><td>0 – 7</td><td><span class="tag-low">Low</span></td><td>~1%</td></tr>
+              <tr><td>8 – 11</td><td><span class="tag-mod">Slightly elevated</span></td><td>~4%</td></tr>
+              <tr><td>12 – 14</td><td><span class="tag-mod">Moderate</span></td><td>~17%</td></tr>
+              <tr><td>15 – 20</td><td><span class="tag-high">High</span></td><td>~33%</td></tr>
+              <tr><td>21 – 26</td><td><span class="tag-high">Very high</span></td><td>~50%</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 4. Composite risk index -->
+        <div class="source-card">
+          <div class="source-card-header">
+            <span class="source-pill" style="background:var(--ink-muted)">Composite</span>
+            <span class="source-name">Overall Risk Index — Weighting &amp; Normalisation</span>
+          </div>
+          <p class="source-desc" style="margin-bottom:10px">Each metric is first normalised to a 0–100 scale using its reference range, then weighted and summed to produce a single composite score (0 = lowest risk, 100 = highest risk).</p>
+
+          <p class="formula-note"><strong>Step 1 — Normalise each metric to 0–100:</strong></p>
+          <div class="formula-block">Normalised score = (value − min) ÷ (max − min) × 100</div>
+
+          <p class="formula-note" style="margin-top:10px"><strong>Step 2 — Normalisation ranges:</strong></p>
+          <table class="scoring-table">
+            <thead><tr><th>Metric</th><th>Min (score = 0)</th><th>Max (score = 100)</th></tr></thead>
+            <tbody>
+              <tr><td>BMI</td><td>15</td><td>42</td></tr>
+              <tr><td>Waist circumference</td><td>55 cm</td><td>130 cm</td></tr>
+              <tr><td>WHtR</td><td>0.30</td><td>0.80</td></tr>
+              <tr><td>ABSI</td><td>0.065</td><td>0.115</td></tr>
+              <tr><td>Conicity Index</td><td>0.90</td><td>1.60</td></tr>
+              <tr><td>FINDRISC score</td><td>0</td><td>26</td></tr>
+            </tbody>
+          </table>
+
+          <p class="formula-note" style="margin-top:10px"><strong>Step 3 — Weighted composite:</strong></p>
+          <div class="formula-block">
+            Composite = (WC × 0.25) + (FINDRISC × 0.25)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ (BMI × 0.20) + (WHtR × 0.15)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ (ABSI × 0.10) + (Conicity × 0.05)
+          </div>
+          <p class="formula-note">Waist circumference and FINDRISC carry the highest weight (25% each) as the strongest independent predictors of cardiometabolic risk in Asian populations. BAI is excluded from the composite as it is an optional supplementary metric.</p>
+
+          <p class="formula-note" style="margin-top:12px"><strong>Step 4 — Composite score tiers:</strong></p>
+          <table class="scoring-table">
+            <thead><tr><th>Composite score</th><th>Verdict</th></tr></thead>
+            <tbody>
+              <tr><td>0 – 30</td><td><span class="tag-low">Metabolically healthy</span></td></tr>
+              <tr><td>31 – 70</td><td><span class="tag-mod">Some markers to watch</span></td></tr>
+              <tr><td>71 – 100</td><td><span class="tag-high">Elevated risk</span></td></tr>
+            </tbody>
+          </table>
+
+          <p class="formula-note" style="margin-top:10px"><strong>Floor-rule callout:</strong> If any single metric is classified as High risk but the composite score remains in the healthy zone (0–30), a separate callout is shown beneath the dial naming that specific metric. The dial verdict and action card are not overridden — the composite score is preserved as the primary output.</p>
+        </div>
+
+        <!-- 5. Population scatter -->
+        <div class="source-card">
+          <div class="source-card-header">
+            <span class="source-pill" style="background:var(--ink-muted)">Scatter</span>
+            <span class="source-name">Malaysian Population Reference Cloud</span>
+          </div>
+          <p class="source-desc" style="margin-bottom:10px">The population scatter chart is seeded from NHMS 2019 and 2023 published mean BMI and waist circumference values by sex and age band. Individual points are generated at runtime using a 6-sample Gaussian approximation:</p>
+          <div class="formula-block">value = μ + σ × (Σ6 uniform samples − 3) × 0.9</div>
+          <p class="formula-note" style="margin-bottom:10px">Standard deviations used: σ(BMI) = 3.8, σ(WC) = 9.5. n = 300 points (all ages) or 220 (single age band). Points are clamped to physiologically plausible ranges. These are <strong>simulated reference points</strong>, not individual survey respondents.</p>
+
+          <p class="formula-note"><strong>NHMS seed means used (BMI):</strong></p>
+          <table class="scoring-table">
+            <thead><tr><th>Age band</th><th>Men (mean BMI)</th><th>Women (mean BMI)</th></tr></thead>
+            <tbody>
+              <tr><td>18 – 29</td><td>23.8</td><td>23.2</td></tr>
+              <tr><td>30 – 39</td><td>25.6</td><td>25.8</td></tr>
+              <tr><td>40 – 49</td><td>26.1</td><td>27.4</td></tr>
+              <tr><td>50 – 59</td><td>25.8</td><td>28.1</td></tr>
+              <tr><td>60+</td><td>24.9</td><td>26.8</td></tr>
+            </tbody>
+          </table>
+
+          <p class="formula-note" style="margin-top:10px"><strong>NHMS seed means used (Waist circumference, cm):</strong></p>
+          <table class="scoring-table">
+            <thead><tr><th>Age band</th><th>Men (mean WC)</th><th>Women (mean WC)</th></tr></thead>
+            <tbody>
+              <tr><td>18 – 29</td><td>82.0</td><td>77.5</td></tr>
+              <tr><td>30 – 39</td><td>88.5</td><td>81.2</td></tr>
+              <tr><td>40 – 49</td><td>91.2</td><td>85.6</td></tr>
+              <tr><td>50 – 59</td><td>90.8</td><td>87.3</td></tr>
+              <tr><td>60+</td><td>89.4</td><td>85.9</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 6. Limitations -->
+        <div class="source-card" style="border-color:var(--amber);background:var(--amber-light)">
+          <div class="source-card-header">
+            <span class="source-pill" style="background:var(--amber);color:#fff">Limitations</span>
+            <span class="source-name" style="color:var(--amber)">Important Caveats for Clinical Use</span>
+          </div>
+          <p class="source-desc">This tool is a <strong>screening aid</strong>, not a diagnostic instrument. Results should be interpreted alongside clinical history, blood investigations, and professional judgement. Specific limitations to note:</p>
+          <ul style="font-size:13px;color:var(--ink-muted);line-height:1.75;padding-left:18px;margin-top:8px">
+            <li>The composite risk index weighting is based on published epidemiological evidence but has not been independently validated as a combined score in Malaysian populations.</li>
+            <li>BAI validation data originates from Hispanic and African-American cohorts — its accuracy for Malaysian users is not confirmed.</li>
+            <li>The population scatter uses simulated data seeded from NHMS means — it does not represent a random sample of the Malaysian population.</li>
+            <li>FINDRISC was originally developed for Finnish populations. Asian calibration adjusts waist thresholds but other score components retain their original weightings.</li>
+            <li>Age-adjusted BMI thresholds for older adults are based on existing literature but are not yet universally adopted in Malaysian clinical guidelines.</li>
+          </ul>
         </div>
 
       </div>
