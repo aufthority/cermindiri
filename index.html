@@ -281,6 +281,25 @@
       font-style: italic;
     }
 
+    /* ── Floor-rule callout (one metric high, overall composite still healthy) ── */
+    .ms-floor-callout {
+      display: none;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--amber-light);
+      border: 1.5px solid var(--amber);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.65;
+      max-width: 100%;
+      text-align: left;
+    }
+    .ms-floor-callout.visible { display: flex; }
+    .ms-floor-callout-icon { font-size: 17px; flex-shrink: 0; margin-top: 2px; }
+
     /* Chart card */
     .chart-card {
       background: var(--surface);
@@ -316,10 +335,6 @@
       width: 14px; height: 14px; cursor: pointer;
       accent-color: var(--ink);
     }
-
-    /* tooltip and info-icon removed — clinical notes now live in card expand */
-
-    /* tip overlay removed — info buttons removed */
 
     /* Sources section */
     .sources-section {
@@ -391,12 +406,6 @@
     .source-link:hover { text-decoration: underline; }
 
     /* ── Collapsible sources ── */
-    .sources-section {
-      margin-top: 48px;
-      padding-top: 32px;
-      border-top: 1px solid var(--border);
-    }
-
     .sources-toggle {
       display: flex;
       align-items: center;
@@ -560,20 +569,9 @@
       border: 1.5px solid transparent;
     }
 
-    .tier-green .action-link {
-      background: var(--green);
-      color: #fff;
-    }
-
-    .tier-amber .action-link {
-      background: var(--amber);
-      color: #fff;
-    }
-
-    .tier-red .action-link {
-      background: var(--red);
-      color: #fff;
-    }
+    .tier-green .action-link { background: var(--green); color: #fff; }
+    .tier-amber .action-link { background: var(--amber); color: #fff; }
+    .tier-red   .action-link { background: var(--red);   color: #fff; }
 
     .action-link:hover { opacity: 0.85; transform: translateY(-1px); }
 
@@ -585,8 +583,6 @@
     .tier-green .action-link.secondary { color: var(--green); }
     .tier-amber .action-link.secondary { color: var(--amber); }
     .tier-red   .action-link.secondary { color: var(--red); }
-
-    /* about-section replaced by about-compact */
 
     .site-footer {
       margin-top: 48px;
@@ -965,15 +961,10 @@
     .lang-toggle:hover { background: var(--accent); }
 
     /* BM strings — CSS-driven language switching */
-    /* Default: hide all BM spans */
     [data-bm] { display: none !important; }
     [data-en] { display: inline !important; }
-
-    /* When BM active: flip all */
     [data-lang="bm"] [data-bm] { display: inline !important; }
     [data-lang="bm"] [data-en] { display: none !important; }
-
-    /* Block-level elements (divs etc with data-bm/en) */
     div[data-bm], p[data-bm], li[data-bm] { display: none !important; }
     div[data-en], p[data-en], li[data-en] { display: block !important; }
     [data-lang="bm"] div[data-bm], [data-lang="bm"] p[data-bm], [data-lang="bm"] li[data-bm] { display: block !important; }
@@ -1144,6 +1135,12 @@
       <div class="ms-dial-verdict" id="ms-dv">&#8212;</div>
       <div class="ms-dial-sub"     id="ms-ds">&#8212;</div>
       <div class="ms-dial-context" id="ms-dc-ctx"></div>
+    </div>
+
+    <!-- ── Floor-rule callout: one high metric but overall composite score is healthy ── -->
+    <div class="ms-floor-callout" id="ms-floor-callout">
+      <div class="ms-floor-callout-icon">⚠️</div>
+      <div id="ms-floor-callout-text"></div>
     </div>
 
     <!-- ── SECTION 2: Summary strip (BMI / Waist / WHtR) ── -->
@@ -1408,6 +1405,10 @@
       },
       pills: { high:'High risk', mod:'Needs attention', low:'Healthy' },
       tapHint: 'tap to explore',
+      // ── Floor-rule callout copy ──
+      floorCallout: {
+        label: (metricName) => `Just one thing to keep in mind — your ${metricName} is a little higher than we'd like. Everything else looks good — just something to be aware of and maybe mention to your doctor next time you visit.`
+      },
       actionCards: {
         low: {
           icon:'🌿', title:'Keep it up',
@@ -1466,6 +1467,10 @@
       },
       pills: { high:'Risiko tinggi', mod:'Perlu perhatian', low:'Sihat' },
       tapHint: 'ketik untuk maklumat',
+      // ── Floor-rule callout copy (BM) ──
+      floorCallout: {
+        label: (metricName) => `Satu perkara kena check — ${metricName} anda tinggi sikit dari yang sepatutnya. Keseluruhannya nampak okay — tak perlu risau sangat, tapi lebih afdal dibincangkan dengan doktor.`
+      },
       actionCards: {
         low: {
           icon:'🌿', title:'Teruskan usaha anda',
@@ -1621,7 +1626,6 @@
   const msNorm = (v,mn,mx) => Math.max(0,Math.min(1,(v-mn)/(mx-mn)));
   const msToS  = (v,mn,mx) => Math.round(msNorm(v,mn,mx)*100);
 
-  /* FIX: weights are fractions (sum to 1.0), each score is 0-100, result is 0-100 */
   function msComposite(sc) {
     return Math.round(
       sc.wc   * 0.25 +
@@ -1764,8 +1768,6 @@
       c.setLineDash([]); c.restore();
     }};
 
-    // Compute percentile: what % of population is "worse" (higher composite risk proxy)
-    // Use distance from origin of risk space: higher BMI + higher waist = worse
     const userScore = msUserPt.bmi * 0.5 + msUserPt.wc * 0.5;
     const popScores = pts.map(p => p.b * 0.5 + p.w * 0.5);
     const betterThan = popScores.filter(s => s > userScore).length;
@@ -1820,7 +1822,6 @@
   function msDrawDial(score, riskCol) {
     const c = document.getElementById('ms-dc');
     const dpr = window.devicePixelRatio || 1;
-    // Set canvas intrinsic size to match CSS display size * dpr for sharpness
     const displayW = 260, displayH = 130;
     c.width  = displayW * dpr;
     c.height = displayH * dpr;
@@ -1831,7 +1832,6 @@
     ctx.clearRect(0,0,W,H);
     const toRad = p => Math.PI + (p/100)*Math.PI;
 
-    // Arc segments
     const segs = [
       {f:0,  t:40,  col:'#2A6B45', alpha:0.7},
       {f:40, t:70,  col:'#B87000', alpha:0.7},
@@ -1843,7 +1843,6 @@
       ctx.lineCap='butt'; ctx.stroke(); ctx.globalAlpha=1;
     });
 
-    // Divider ticks at 40% and 70%
     [40,70].forEach(p => {
       const a = toRad(p);
       ctx.beginPath();
@@ -1853,7 +1852,6 @@
       ctx.globalAlpha=1; ctx.stroke();
     });
 
-    // Zone labels: Low / Moderate / High along the arc
     ctx.font = "500 9px 'DM Sans', sans-serif";
     ctx.globalAlpha = 0.7;
     const labelAngle = (f,t) => toRad((f+t)/2);
@@ -1871,7 +1869,6 @@
     });
     ctx.globalAlpha = 1;
 
-    // Score range labels at arc ends
     ctx.font = "500 8px 'DM Sans', sans-serif";
     ctx.fillStyle = 'rgba(26,18,8,0.4)';
     ctx.textAlign = 'right';   ctx.textBaseline = 'top';
@@ -1879,14 +1876,12 @@
     ctx.textAlign = 'left';
     ctx.fillText('100', cx + (r+18)*Math.cos(Math.PI*2),   cy + (r+18)*Math.sin(Math.PI*2) + 2);
 
-    // Needle
     const na = toRad(Math.min(Math.max(score,0),100));
     ctx.beginPath();
     ctx.moveTo(cx + 8*Math.cos(na+Math.PI), cy + 8*Math.sin(na+Math.PI));
     ctx.lineTo(cx + (r-8)*Math.cos(na),     cy + (r-8)*Math.sin(na));
     ctx.lineWidth=2.5; ctx.strokeStyle=riskCol; ctx.lineCap='round'; ctx.stroke();
 
-    // Pivot dot
     ctx.beginPath(); ctx.arc(cx,cy,6,0,Math.PI*2); ctx.fillStyle=riskCol; ctx.fill();
     ctx.beginPath(); ctx.arc(cx,cy,3,0,Math.PI*2); ctx.fillStyle='#FDFAF4'; ctx.fill();
   }
@@ -2140,9 +2135,47 @@
     };
     const comp = msComposite(scores);
 
+    // ── OPTION B: Separate composite verdict from individual metric flags ──
+    // compositeVerdict drives the dial label, sub-text and action card
+    const compositeVerdict = comp >= 71 ? 'high' : comp >= 31 ? 'mod' : 'low';
+
+    // worstMetric is used only to decide whether to show the floor callout
     const metricRisks = MS_METRICS.map(m => m.riskFn({bmi:B,wc:waist,whtr:WR,absi:A,con:CO}[m.key], sex));
-    const worst = [...metricRisks, frT.col].includes('high')?'high':[...metricRisks, frT.col].includes('mod')?'mod':'low';
+    const allRisks    = [...metricRisks, frT.col];
+    const worstMetric = allRisks.includes('high') ? 'high' : allRisks.includes('mod') ? 'mod' : 'low';
+
+    // Dial and action card colour follow the composite score
+    const worst = compositeVerdict;
     const rCol  = msRCol(worst);
+
+    // ── Floor-rule callout: only fires when a metric is flagged high
+    //    but the composite score is still in the green/healthy zone ──
+    const floorCallout     = document.getElementById('ms-floor-callout');
+    const floorCalloutText = document.getElementById('ms-floor-callout-text');
+    if (worstMetric === 'high' && compositeVerdict === 'low') {
+      // Find the single worst metric — prefer the first 'high' metric in the list
+      const highMetricIdx = metricRisks.findIndex(r => r === 'high');
+      const highMetricKey = highMetricIdx >= 0 ? MS_METRICS[highMetricIdx].key : null;
+      const isFRHigh      = frT.col === 'high';
+      let worstName;
+      if (highMetricKey) {
+        worstName = getLang().metricNames[highMetricKey] || MS_METRICS[highMetricIdx].plain;
+      } else if (isFRHigh) {
+        worstName = getLang().diabetesTitle;
+      } else {
+        worstName = null;
+      }
+      if (worstName) {
+        // Store the metric key so updateDynamicLang() can re-render in the correct language
+        floorCallout.setAttribute('data-metric-key', highMetricKey || 'diabetes');
+        floorCalloutText.textContent = getLang().floorCallout.label(worstName);
+        floorCallout.classList.add('visible');
+      } else {
+        floorCallout.classList.remove('visible');
+      }
+    } else {
+      floorCallout.classList.remove('visible');
+    }
 
     /* Age callout */
     const callout = document.getElementById('ageCallout');
@@ -2265,7 +2298,7 @@
     );
     msPopCache = {};
 
-    /* Action card */
+    /* Action card — driven by composite verdict, not floor rule */
     renderActionCard(bc.risk, wc.risk, wr.risk);
 
     /* Show results */
@@ -2293,20 +2326,19 @@
     document.getElementById('formSection').style.display = 'block';
     document.getElementById('chkPop').checked = false;
     document.getElementById('ageCallout').classList.remove('visible');
+    document.getElementById('ms-floor-callout').classList.remove('visible');
     document.getElementById('actionCard').style.display = 'none';
     showPop = false; S = {}; msPopCache = {};
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  /* ── Tooltip click toggle (works on mobile) ── */
+  /* ── Tooltip click toggle ── */
   function showTip(btn) {
     event.stopPropagation();
     const isOpen = btn.classList.contains('tip-open');
-    // Close all open tips first
     document.querySelectorAll('.tip-open').forEach(el => el.classList.remove('tip-open'));
     if (!isOpen) btn.classList.add('tip-open');
   }
-  // Close on tap anywhere else
   document.addEventListener('click', () => {
     document.querySelectorAll('.tip-open').forEach(el => el.classList.remove('tip-open'));
   });
@@ -2326,12 +2358,9 @@
     html.setAttribute('data-lang', next);
     html.setAttribute('lang', isBM ? 'en' : 'ms');
 
-    // Toggle button label
     document.querySelector('.lang-en').style.display = isBM ? '' : 'none';
     document.querySelector('.lang-bm').style.display = isBM ? 'none' : '';
 
-    // Yes/No buttons — handled by data attributes on the buttons themselves
-    // Update any dynamically rendered content
     updateDynamicLang(next);
   }
 
@@ -2367,6 +2396,20 @@
         const hint = card.querySelector('.ms-mc-hint');
         if (hint) hint.textContent = L.tapHint;
       });
+
+      // Floor callout — re-render in new language if visible
+      const fc  = document.getElementById('ms-floor-callout');
+      const fct = document.getElementById('ms-floor-callout-text');
+      if (fc && fc.classList.contains('visible') && fct) {
+        const metricKey = fc.getAttribute('data-metric-key');
+        if (metricKey && metricKey !== 'diabetes') {
+          const mName = L.metricNames[metricKey] || metricKey;
+          fct.textContent = L.floorCallout.label(mName);
+        } else if (metricKey === 'diabetes') {
+          fct.textContent = L.floorCallout.label(L.diabetesTitle);
+        }
+      }
+
       // Dial verdict + sub
       const score = parseInt(document.getElementById('ms-dn').textContent);
       const riskCol = document.getElementById('ms-dv').style.color || '#2A6B45';
@@ -2377,11 +2420,10 @@
         document.getElementById('ms-dc-ctx').textContent = L.ctxNote(score);
         msDrawDial(score, riskCol);
       }
-      // Diabetes risk sub text (leave pill untouched — its color is semantic)
       // Percentile badge
       const badge = document.getElementById('ms-percentile');
       if (badge && badge.style.display !== 'none') {
-        msDrawScatter(); // redraws and re-sets percentile text in correct lang
+        msDrawScatter();
       }
       // Static UI labels
       document.getElementById('ms-fr-title') && (document.querySelector('.ms-fr-title').textContent = L.diabetesTitle);
