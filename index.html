@@ -2,75 +2,91 @@
 <html lang="en" data-lang="en">
 <head>
   <!-- Open Graph / Link Preview -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://cermindiri.aufthority.com/" />
-<meta property="og:title" content="CerminDiri — Get Your Health Profile at Home" />
-<meta property="og:description" content="Check your body fat, diabetes risk, overall metabolic and cardiovascular health. A clinically validated calculator for Malaysians (and Southeast Asians)." />
-<meta property="og:image" content="https://cermindiri.aufthority.com/cermindiri_preview.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cermindiri.aufthority.com/" />
+  <meta property="og:title" content="CerminDiri — Get Your Health Profile at Home" />
+  <meta property="og:description" content="Check your body fat, diabetes risk, overall metabolic and cardiovascular health. A clinically validated calculator for Malaysians (and Southeast Asians)." />
+  <meta property="og:image" content="https://cermindiri.aufthority.com/cermindiri_preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://cermindiri.aufthority.com/" />
+  <meta name="twitter:title" content="CerminDiri — Get Your Health Profile at Home" />
+  <meta name="twitter:description" content="Check your body fat, diabetes risk, overall metabolic and cardiovascular health. A clinically validated calculator for Malaysians (and Southeast Asians)." />
+  <meta name="twitter:image" content="https://cermindiri.aufthority.com/cermindiri_preview.png" />
 
-<!-- Twitter / X Card -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content="https://cermindiri.aufthority.com/" />
-<meta name="twitter:title" content="CerminDiri — Get Your Health Profile at Home" />
-<meta name="twitter:description" content="Check your body fat, diabetes risk, overall metabolic and cardiovascular health. A clinically validated calculator for Malaysians (and Southeast Asians)." />
-<meta name="twitter:image" content="https://cermindiri.aufthority.com/cermindiri_preview.png" />
-  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cermin Diri — Know Your Numbers</title>
+
+  <!-- Google Fonts — Inter as StabilGrotesk stand-in -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;600;700&display=swap" rel="stylesheet" />
+
   <script defer src="https://cloud.umami.is/script.js" data-website-id="7c961c49-4871-4b9d-b031-d9b95d4e4a68"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+
   <style>
+    /* ═══════════════════════════════════════════════
+       RAW MATERIALS DESIGN SYSTEM — CERMINDIRI
+       de Stijl · color-blocked · graphic typography
+    ═══════════════════════════════════════════════ */
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #F5F0E8;
-      --surface: #FDFAF4;
-      --ink: #1A1208;
-      --ink-muted: #6B5E47;
-      --accent: #C8440A;
-      --accent-light: #F4DDD3;
-      --green: #2A6B45;
-      --green-light: #D4EBE0;
-      --amber: #B87000;
-      --amber-light: #FDF0D0;
-      --red: #C8240A;
-      --red-light: #FCDDD8;
-      --border: #DDD5C4;
-      --radius: 16px;
+      /* Raw Materials palette */
+      --canvas:        #f4e9e1;
+      --ink:           #0e0e0e;
+      --charcoal:      #242320;
+      --snow:          #ffffff;
+      --coral:         #ff3d00;
+      --yellow:        #ffff00;
+      --neon:          #05ff00;
+      --violet:        #5900cc;
+      --royal:         #2835f8;
+      --alert:         #ff003d;
+      --leaf:          #20db70;
+      --mint:          #cee4cd;
+      --pink:          #e4d0cd;
+
+      /* Semantic aliases */
+      --bg:            var(--canvas);
+      --surface:       var(--snow);
+      --border:        var(--ink);
+      --border-light:  rgba(14,14,14,0.12);
+
+      /* Risk colours */
+      --risk-low:      #20db70;
+      --risk-low-bg:   #d4f4e4;
+      --risk-mod:      #ff8c00;
+      --risk-mod-bg:   #fff3dc;
+      --risk-high:     #ff003d;
+      --risk-high-bg:  #ffe0e8;
+
+      --radius-btn:    44px;
+      --radius-card:   16px;
+      --radius-badge:  24px;
+      --font:          'Inter', ui-sans-serif, system-ui, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
     html, body { overscroll-behavior: none; }
 
     body {
-      background: var(--bg);
+      background: var(--canvas);
       color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font);
       font-weight: 400;
-      line-height: 1.6;
+      line-height: 1.5;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.5;
-    }
-
-    /* ── Site-wide nav ── */
+    /* ── SITE NAV ── */
     .site-nav {
       background: var(--ink);
       position: sticky;
       top: 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      z-index: 200;
     }
     .site-nav-inner {
       max-width: 1100px;
@@ -82,181 +98,205 @@
       justify-content: space-between;
     }
     .site-nav-brand {
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font);
       font-weight: 600;
-      font-size: 15px;
-      color: var(--bg);
+      font-size: 14px;
+      color: var(--canvas);
       text-decoration: none;
       letter-spacing: -0.01em;
       transition: opacity 0.2s;
     }
-    .site-nav-brand:hover { opacity: 0.75; }
+    .site-nav-brand:hover { opacity: 0.6; }
     .site-nav-links {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 2px;
       list-style: none;
     }
     .site-nav-links a {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,0.6);
-      text-decoration: none;
-      padding: 6px 12px;
-      border-radius: 6px;
-      transition: color 0.15s, background 0.15s;
-    }
-    .site-nav-links a:hover { color: var(--bg); background: rgba(255,255,255,0.08); }
-
-    @media (max-width: 520px) {
-      .site-nav-inner { padding: 0 16px; height: 48px; }
-      .site-nav-brand { font-size: 13px; }
-      .site-nav-links a { font-size: 10px; letter-spacing: 0.07em; padding: 5px 8px; }
-      .site-nav-links { gap: 0; }
-    }
-
-    .container {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 32px 20px 60px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ── Header ── */
-    header {
-      text-align: center;
-      margin-bottom: 32px;
-      animation: fadeUp 0.6s ease both;
-    }
-    .logo-mark {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--ink);
-      color: var(--bg);
-      padding: 8px 18px;
-      border-radius: 100px;
-      font-size: 12px;
+      font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 16px;
+      color: rgba(244,233,225,0.5);
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
     }
-    .logo-dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; }
-    h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(32px, 8vw, 56px);
-      line-height: 1.0;
-      letter-spacing: -0.02em;
-      margin-bottom: 10px;
-    }
-    h1 em { font-style: italic; color: var(--accent); }
-    .byline {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: var(--ink-muted);
-      margin-bottom: 8px;
+    .site-nav-links a:hover { color: var(--canvas); background: rgba(255,255,255,0.1); }
+
+    /* ── LANG TOGGLE ── */
+    .lang-toggle {
+      position: fixed;
+      top: 62px;
+      right: 16px;
+      z-index: 199;
+      background: var(--yellow);
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+      border-radius: var(--radius-btn);
+      padding: 6px 16px;
+      font-family: var(--font);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      cursor: pointer;
+      transition: all 0.15s;
       text-transform: uppercase;
     }
-    .subtitle {
-      color: var(--ink-muted);
-      font-size: 14px;
-      max-width: 380px;
+    .lang-toggle:hover { background: var(--ink); color: var(--yellow); }
+
+    /* ── CONTAINER ── */
+    .container {
+      max-width: 720px;
       margin: 0 auto;
-      line-height: 1.6;
+      padding: 40px 20px 80px;
     }
-    .source-badge {
+
+    /* ── HERO HEADER ── */
+    header {
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .app-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--ink);
+      color: var(--canvas);
+      padding: 5px 14px;
+      border-radius: var(--radius-btn);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--coral);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-size: clamp(52px, 12vw, 88px);
+      font-weight: 700;
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .hero-title .accent { color: var(--coral); }
+
+    .hero-byline {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(14,14,14,0.4);
+      margin-bottom: 12px;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--charcoal);
+      max-width: 400px;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .source-strip {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      margin-top: 10px;
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--ink-muted);
-      letter-spacing: 0.06em;
+      background: var(--pink);
+      border: 1.5px solid var(--ink);
+      border-radius: var(--radius-btn);
+      padding: 5px 14px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      border: 1px solid var(--border);
-      padding: 4px 12px;
-      border-radius: 100px;
     }
 
-    /* ── Step-by-step form ── */
-    .form-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 12px rgba(26,18,8,0.06);
-      animation: fadeUp 0.6s 0.1s ease both;
-    }
-
-    /* Progress dots */
+    /* ── STEP PROGRESS ── */
     .step-progress {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 24px;
+      gap: 6px;
+      margin-bottom: 28px;
     }
     .step-dot {
-      width: 8px; height: 8px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background: var(--border);
-      transition: all 0.25s ease;
-      cursor: default;
+      background: var(--border-light);
+      border: 1.5px solid transparent;
+      transition: all 0.25s;
     }
     .step-dot.active {
-      background: var(--accent);
-      transform: scale(1.35);
+      background: var(--coral);
+      border-color: var(--coral);
+      transform: scale(1.4);
     }
     .step-dot.done {
-      background: var(--ink-muted);
+      background: var(--ink);
+      border-color: var(--ink);
     }
 
-    /* Step panels */
+    /* ── FORM CARD ── */
+    .form-card {
+      background: var(--snow);
+      border: 2px solid var(--ink);
+      border-radius: var(--radius-card);
+      padding: 28px 24px;
+      margin-bottom: 24px;
+    }
+
     .step-panel { display: none; }
     .step-panel.active { display: block; }
 
     .step-title {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-bottom: 18px;
+      color: rgba(14,14,14,0.4);
+      margin-bottom: 22px;
     }
 
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .form-group { display: flex; flex-direction: column; gap: 6px; }
     .form-group.full { grid-column: 1 / -1; }
 
     label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: var(--ink-muted);
+      color: var(--charcoal);
     }
     .label-optional {
       font-weight: 400;
       text-transform: none;
       letter-spacing: 0;
       font-size: 11px;
-      color: var(--ink-muted);
+      color: rgba(14,14,14,0.4);
     }
 
     input[type="number"] {
-      background: var(--bg);
-      border: 1.5px solid var(--border);
+      background: var(--canvas);
+      border: 2px solid var(--border-light);
       border-radius: 10px;
-      padding: 10px 14px;
-      font-family: 'DM Sans', sans-serif;
+      padding: 11px 14px;
+      font-family: var(--font);
       font-size: 15px;
+      font-weight: 500;
       color: var(--ink);
       width: 100%;
       transition: border-color 0.2s, box-shadow 0.2s;
@@ -265,215 +305,443 @@
     }
     input[type="number"]:focus {
       outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-light);
+      border-color: var(--coral);
+      box-shadow: 0 0 0 3px rgba(255,61,0,0.12);
     }
     .input-wrap { position: relative; }
-    .input-wrap input { padding-right: 48px; }
+    .input-wrap input { padding-right: 50px; }
     .unit {
       position: absolute;
       right: 14px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 13px;
-      color: var(--ink-muted);
-      font-weight: 500;
+      font-size: 12px;
+      color: rgba(14,14,14,0.4);
+      font-weight: 600;
       pointer-events: none;
+      letter-spacing: 0.04em;
     }
 
     /* Toggle buttons */
     .sex-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .sex-btn {
-      display: flex; align-items: center; justify-content: center; gap: 6px;
-      padding: 9px 12px;
-      background: var(--bg);
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 12px;
+      background: var(--canvas);
+      border: 2px solid var(--border-light);
+      border-radius: 10px;
       cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px; font-weight: 500;
-      color: var(--ink-muted);
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(14,14,14,0.5);
       transition: all 0.15s;
     }
-    .sex-btn:hover { border-color: var(--ink-muted); }
-    .sex-btn.active { background: var(--ink); border-color: var(--ink); color: var(--bg); }
-
-    .form-divider { grid-column: 1 / -1; height: 1px; background: var(--border); margin: 4px 0; }
+    .sex-btn:hover { border-color: var(--ink); color: var(--ink); }
+    .sex-btn.active {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--canvas);
+    }
 
     /* Step nav buttons */
-    .step-nav {
-      display: flex;
-      gap: 10px;
-      margin-top: 22px;
-    }
+    .step-nav { display: flex; gap: 10px; margin-top: 24px; }
     .btn-back {
-      padding: 11px 20px;
+      padding: 12px 20px;
       background: transparent;
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--ink-muted);
+      border: 2px solid var(--border-light);
+      border-radius: var(--radius-btn);
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(14,14,14,0.4);
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.15s;
       flex-shrink: 0;
+      letter-spacing: 0.03em;
     }
     .btn-back:hover { border-color: var(--ink); color: var(--ink); }
     .btn-next {
       flex: 1;
-      padding: 11px;
+      padding: 12px;
       background: var(--ink);
-      color: var(--bg);
-      border: none;
-      border-radius: 10px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
+      color: var(--canvas);
+      border: 2px solid var(--ink);
+      border-radius: var(--radius-btn);
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.2s;
+      letter-spacing: 0.04em;
     }
-    .btn-next:hover { background: var(--accent); transform: translateY(-1px); }
+    .btn-next:hover { background: var(--coral); border-color: var(--coral); color: var(--snow); }
 
     .btn-primary {
-      width: 100%; padding: 13px; margin-top: 20px;
-      background: var(--ink); color: var(--bg);
-      border: none; border-radius: 12px;
-      font-family: 'DM Serif Display', serif;
-      font-size: 18px; cursor: pointer;
+      width: 100%;
+      padding: 16px;
+      margin-top: 22px;
+      background: var(--coral);
+      color: var(--snow);
+      border: 2px solid var(--ink);
+      border-radius: var(--radius-btn);
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
       transition: all 0.2s;
-      display: flex; align-items: center; justify-content: center; gap: 10px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
     .btn-primary:hover {
-      background: var(--accent);
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(200,68,10,0.25);
+      background: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 4px 4px 0 var(--ink);
     }
 
-    /* SBP optional unlock hint */
     .sbp-hint {
       font-size: 12px;
-      color: var(--ink-muted);
-      margin-top: 6px;
-      line-height: 1.5;
-      padding: 8px 12px;
-      background: var(--bg);
-      border-radius: 8px;
-      border: 1px solid var(--border);
+      color: rgba(14,14,14,0.5);
+      margin-top: 8px;
+      line-height: 1.6;
+      padding: 10px 14px;
+      background: var(--canvas);
+      border-radius: 10px;
+      border: 1.5px solid var(--border-light);
     }
-    .sbp-hint strong { color: var(--accent); }
+    .sbp-hint strong { color: var(--coral); }
 
-    /* ── Results ── */
-    #results { display: none; animation: fadeUp 0.5s ease both; }
+    /* ── RESULTS ── */
+    #results { display: none; }
 
-    .results-header { text-align: center; margin-bottom: 24px; }
+    .results-header {
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 2px solid var(--ink);
+    }
     .results-header h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 32px; letter-spacing: -0.02em; margin-bottom: 6px;
+      font-size: clamp(36px, 8vw, 56px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 8px;
     }
-    .results-header p { color: var(--ink-muted); font-size: 15px; }
+    .results-header p {
+      font-size: 13px;
+      color: rgba(14,14,14,0.4);
+      font-weight: 500;
+    }
 
-    /* ── Tab switcher ── */
+    /* ── TAB BAR ── */
     .tab-bar {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      background: var(--snow);
+      border: 2px solid var(--ink);
+      border-radius: var(--radius-card);
       padding: 4px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       gap: 4px;
     }
     .tab-btn {
-      padding: 10px 12px;
+      padding: 11px 12px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       background: transparent;
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font);
       font-size: 13px;
-      font-weight: 600;
-      color: var(--ink-muted);
+      font-weight: 700;
+      color: rgba(14,14,14,0.4);
       cursor: pointer;
       transition: all 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      letter-spacing: 0.01em;
+      gap: 8px;
+      letter-spacing: 0.02em;
     }
     .tab-btn:hover { color: var(--ink); }
     .tab-btn.active {
       background: var(--ink);
-      color: var(--bg);
-      box-shadow: 0 2px 8px rgba(26,18,8,0.15);
+      color: var(--canvas);
     }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    /* Summary strip */
-    .summary-strip {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px 24px;
+    /* ── AGE CALLOUT ── */
+    .age-callout {
+      display: none;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--risk-mod-bg);
+      border: 2px solid var(--risk-mod);
+      border-radius: var(--radius-card);
+      padding: 14px 18px;
       margin-bottom: 20px;
+      font-size: 13px;
+      color: var(--risk-mod);
+      line-height: 1.6;
+    }
+    .age-callout.visible { display: flex; }
+    .age-callout strong { font-weight: 700; display: block; margin-bottom: 2px; }
+    .age-zone-note { font-size: 11px; color: rgba(14,14,14,0.4); margin-top: 10px; font-style: italic; }
+
+    /* ── FLOOR CALLOUT ── */
+    .ms-floor-callout {
+      display: none;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--risk-mod-bg);
+      border: 2px solid var(--risk-mod);
+      border-radius: var(--radius-card);
+      padding: 16px 20px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.65;
+    }
+    .ms-floor-callout.visible { display: flex; }
+
+    /* ── DIAL WRAP ── */
+    .ms-dial-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 32px 24px 24px;
+      background: var(--snow);
+      border: 2px solid var(--ink);
+      border-radius: var(--radius-card);
+    }
+    .ms-dial-rel { position: relative; width: 260px; height: 130px; }
+    #ms-dc { width: 260px; height: 130px; display: block; }
+    .ms-dial-score-row { text-align: center; margin-top: 12px; }
+    .ms-dial-num {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+      display: block;
+      letter-spacing: -0.04em;
+    }
+    .ms-dial-lbl {
+      font-size: 10px;
+      color: rgba(14,14,14,0.4);
+      margin-top: 4px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: block;
+    }
+    .ms-dial-verdict {
+      font-size: 18px;
+      font-weight: 700;
+      margin-top: 14px;
+      letter-spacing: -0.02em;
+    }
+    .ms-dial-sub {
+      font-size: 14px;
+      color: rgba(14,14,14,0.55);
+      text-align: center;
+      max-width: 400px;
+      margin-top: 6px;
+      line-height: 1.65;
+    }
+    .ms-dial-context {
+      font-size: 11px;
+      color: rgba(14,14,14,0.4);
+      text-align: center;
+      margin-top: 8px;
+      padding: 5px 14px;
+      background: var(--canvas);
+      border-radius: var(--radius-btn);
+      letter-spacing: 0.04em;
+      font-weight: 500;
+      border: 1px solid var(--border-light);
+    }
+
+    /* ── SUMMARY STRIP ── */
+    .summary-strip {
+      background: var(--snow);
+      border: 2px solid var(--ink);
+      border-radius: var(--radius-card);
+      padding: 20px 24px;
+      margin-bottom: 16px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       text-align: center;
     }
-    .strip-label { font-size: 10px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px; }
-    .strip-value { font-family: 'DM Serif Display', serif; font-size: 26px; letter-spacing: -0.02em; }
-    .strip-risk { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; margin-top: 2px; }
-    .r-low  { color: var(--green); }
-    .r-mod  { color: var(--amber); }
-    .r-high { color: var(--red); }
+    .strip-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(14,14,14,0.4);
+      margin-bottom: 4px;
+    }
+    .strip-value {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    .strip-risk {
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 2px;
+      letter-spacing: 0.04em;
+    }
+    .r-low  { color: #16a34a; }
+    .r-mod  { color: var(--risk-mod); }
+    .r-high { color: var(--alert); }
 
-    /* Age boundary callout */
-    .age-callout {
-      display: none;
-      align-items: flex-start;
-      gap: 10px;
-      background: var(--amber-light);
-      border: 1px solid var(--amber);
-      border-radius: 10px;
-      padding: 12px 16px;
+    /* ── FINDRISC CARD ── */
+    .ms-fr-card {
+      border: 2px solid var(--ink);
+      border-radius: var(--radius-card);
+      padding: 22px 24px;
       margin-bottom: 16px;
-      font-size: 13px;
-      color: var(--amber);
-      line-height: 1.6;
+      background: var(--snow);
     }
-    .age-callout.visible { display: flex; }
-    .age-callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-    .age-callout strong { font-weight: 600; display: block; margin-bottom: 2px; }
-    .age-zone-note { font-size: 11px; color: var(--ink-muted); margin-top: 8px; font-style: italic; }
-
-    /* Floor-rule callout */
-    .ms-floor-callout {
-      display: none;
+    .ms-fr-top {
+      display: flex;
+      justify-content: space-between;
       align-items: flex-start;
-      gap: 10px;
-      background: var(--amber-light);
-      border: 1.5px solid var(--amber);
-      border-radius: 12px;
-      padding: 14px 18px;
-      margin-top: 14px;
-      font-size: 13px;
-      color: var(--ink);
-      line-height: 1.65;
-      max-width: 100%;
-      text-align: left;
+      margin-bottom: 10px;
     }
-    .ms-floor-callout.visible { display: flex; }
-    .ms-floor-callout-icon { font-size: 17px; flex-shrink: 0; margin-top: 2px; }
+    .ms-fr-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(14,14,14,0.4);
+    }
+    .ms-fr-pill {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: var(--radius-btn);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1.5px solid transparent;
+    }
+    .ms-fr-pill.low  { background: var(--risk-low-bg); color: #16a34a; border-color: #16a34a; }
+    .ms-fr-pill.mod  { background: var(--risk-mod-bg); color: var(--risk-mod); border-color: var(--risk-mod); }
+    .ms-fr-pill.high { background: var(--risk-high-bg); color: var(--alert); border-color: var(--alert); }
+    .ms-fr-sub { font-size: 13px; color: rgba(14,14,14,0.55); margin-bottom: 16px; line-height: 1.65; }
+    .ms-ftrack {
+      height: 8px;
+      border-radius: 4px;
+      background: linear-gradient(to right, #16a34a 0%, #16a34a 30%, var(--risk-mod) 55%, var(--alert) 75%, #8B0000 100%);
+      position: relative;
+      margin-bottom: 8px;
+    }
+    .ms-fthumb {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      background: var(--snow);
+      border: 2.5px solid var(--ink);
+      border-radius: 50%;
+      transition: left 0.4s ease;
+    }
+    .ms-fticks {
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      color: rgba(14,14,14,0.4);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
 
-    /* Chart card */
+    /* ── METRIC CARDS LABEL ── */
+    .ms-cards-lbl {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(14,14,14,0.4);
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      margin-top: 22px;
+    }
+    .ms-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+
+    /* Metric card */
+    .ms-mc {
+      border: 2px solid var(--border-light);
+      border-radius: var(--radius-card);
+      padding: 18px;
+      background: var(--snow);
+      cursor: pointer;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .ms-mc:hover { border-color: var(--ink); }
+    .ms-mc.open { border-color: var(--ink); }
+    .ms-mc-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; }
+    .ms-mc-name { font-size: 13px; font-weight: 700; color: var(--ink); }
+    .ms-pill {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: var(--radius-btn);
+      white-space: nowrap;
+      flex-shrink: 0;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1.5px solid transparent;
+    }
+    .ms-pg { background: var(--risk-low-bg); color: #16a34a; border-color: #16a34a; }
+    .ms-pa { background: var(--risk-mod-bg); color: var(--risk-mod); border-color: var(--risk-mod); }
+    .ms-pr { background: var(--risk-high-bg); color: var(--alert); border-color: var(--alert); }
+    .ms-mc-val {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 8px;
+      letter-spacing: -0.03em;
+    }
+    .ms-mc-unit { font-size: 13px; color: rgba(14,14,14,0.4); font-family: var(--font); font-weight: 500; }
+    .ms-mc-expand { display: none; margin-top: 14px; padding-top: 14px; border-top: 1.5px solid var(--border-light); }
+    .ms-mc.open .ms-mc-expand { display: block; }
+    .ms-mc-hint { font-size: 11px; color: rgba(14,14,14,0.35); margin-top: 6px; font-weight: 500; }
+    .ms-mc.open .ms-mc-hint { display: none; }
+    .ms-clinical-note {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      color: rgba(14,14,14,0.4);
+      line-height: 1.55;
+      border-left: 3px solid var(--border-light);
+      background: var(--canvas);
+    }
+
+    /* bar */
+    .ms-barw { padding-bottom: 24px; margin-bottom: 6px; }
+    .ms-btrack { height: 8px; border-radius: 4px; position: relative; width: 100%; }
+    .ms-bseg { position: absolute; height: 8px; top: 0; }
+    .ms-bseg.g { background: rgba(22,163,74,0.3); border-radius: 4px 0 0 4px; }
+    .ms-bseg.a { background: rgba(255,140,0,0.3); }
+    .ms-bseg.r { background: rgba(255,0,61,0.3); border-radius: 0 4px 4px 0; }
+    .ms-btick { position: absolute; top: -3px; width: 1px; height: 14px; background: var(--border-light); }
+    .ms-btlbl { position: absolute; top: 15px; font-size: 10px; color: rgba(14,14,14,0.4); transform: translateX(-50%); white-space: nowrap; font-weight: 600; }
+    .ms-bdot { position: absolute; top: 50%; transform: translate(-50%,-50%); width: 16px; height: 16px; border-radius: 50%; border: 2.5px solid var(--snow); box-shadow: 0 0 0 1.5px rgba(14,14,14,0.2); z-index: 2; }
+    .ms-eplain { font-size: 13px; line-height: 1.65; padding: 10px 14px; border-radius: 10px; margin-top: 8px; font-weight: 500; }
+    .ms-epg { background: var(--risk-low-bg); color: #16a34a; }
+    .ms-epa { background: var(--risk-mod-bg); color: var(--risk-mod); }
+    .ms-epr { background: var(--risk-high-bg); color: var(--alert); }
+
+    /* ── CHART CARD ── */
     .chart-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px 28px 20px;
-      box-shadow: 0 2px 12px rgba(26,18,8,0.06);
+      background: var(--snow);
+      border: 2px solid var(--ink);
+      border-radius: var(--radius-card);
+      padding: 28px 24px 20px;
       margin-bottom: 20px;
     }
     .chart-card-header {
@@ -484,140 +752,279 @@
       gap: 12px;
       margin-bottom: 20px;
     }
-    .chart-card-title { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
-    .pop-toggle { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--ink-muted); cursor: pointer; user-select: none; }
+    .chart-card-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(14,14,14,0.4);
+    }
+    .pop-toggle {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: rgba(14,14,14,0.4);
+      cursor: pointer;
+      user-select: none;
+      font-weight: 500;
+    }
     .pop-toggle input[type="checkbox"] { width: 14px; height: 14px; cursor: pointer; accent-color: var(--ink); }
+    .chart-wrap { position: relative; width: 100%; height: 380px; }
+    .chart-legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(14,14,14,0.4); font-weight: 500; }
+    .legend-swatch { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+    .legend-swatch.circle { border-radius: 50%; }
 
-    /* Sources section */
-    .sources-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
-    .source-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; }
-    .source-card:last-child { margin-bottom: 0; }
-    .source-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-    .source-pill { display: inline-block; padding: 3px 10px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: var(--ink); color: var(--bg); flex-shrink: 0; }
-    .source-name { font-size: 14px; font-weight: 500; color: var(--ink); }
-    .source-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.65; }
-    .source-link { display: inline-block; margin-top: 6px; font-size: 12px; color: var(--accent); text-decoration: none; font-weight: 500; }
-    .source-link:hover { text-decoration: underline; }
-
-    .sources-toggle {
-      display: flex; align-items: center; justify-content: space-between;
-      cursor: pointer; user-select: none; padding: 4px 0;
-      background: none; border: none; width: 100%; text-align: left;
-      font-family: 'DM Sans', sans-serif;
+    /* ── SLIDER CARD ── */
+    .slider-card {
+      background: var(--ink);
+      border-radius: var(--radius-card);
+      padding: 32px 28px;
+      margin-bottom: 20px;
+      border: 2px solid var(--ink);
     }
-    .sources-toggle-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
-    .sources-toggle-icon {
-      width: 20px; height: 20px; border-radius: 50%; background: var(--border);
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-      transition: transform 0.3s, background 0.2s; color: var(--ink-muted); font-size: 11px; font-weight: 600;
+    .slider-card-header { margin-bottom: 28px; }
+    .slider-card-header h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--canvas);
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
     }
-    .sources-toggle[aria-expanded="true"] .sources-toggle-icon { transform: rotate(180deg); background: var(--ink); color: var(--bg); }
-    .sources-body { overflow: hidden; max-height: 0; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-    .sources-body.open { max-height: 6000px; }
+    .slider-card-header p { font-size: 13px; color: rgba(244,233,225,0.4); }
+    .slider-group { margin-bottom: 28px; }
+    .slider-group:last-child { margin-bottom: 0; }
+    .slider-label-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+    .slider-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(244,233,225,0.4);
+    }
+    .slider-val-wrap { display: flex; align-items: baseline; gap: 6px; }
+    .slider-val {
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--canvas);
+      letter-spacing: -0.03em;
+    }
+    .slider-unit { font-size: 14px; color: rgba(244,233,225,0.35); }
+    .slider-delta { font-size: 13px; font-weight: 700; color: var(--neon); }
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 5px;
+      border-radius: 3px;
+      background: rgba(244,233,225,0.15);
+      outline: none;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--canvas);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+    .slider-range-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 11px;
+      color: rgba(244,233,225,0.2);
+      font-weight: 500;
+    }
+    .context-note { font-size: 12px; color: rgba(244,233,225,0.35); margin-top: 8px; line-height: 1.6; }
 
-    .method-section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
-    .formula-block { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; margin: 8px 0 10px; font-family: 'DM Serif Display', serif; font-size: 14px; color: var(--ink); line-height: 1.7; }
-    .formula-note { font-size: 12px; color: var(--ink-muted); line-height: 1.6; margin-bottom: 4px; }
-    .scoring-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 8px 0 10px; }
-    .scoring-table th { text-align: left; font-size: 10px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-muted); padding: 6px 10px; border-bottom: 1px solid var(--border); }
-    .scoring-table td { padding: 7px 10px; border-bottom: 1px solid var(--border); color: var(--ink); vertical-align: top; line-height: 1.5; }
-    .scoring-table tr:last-child td { border-bottom: none; }
-    .scoring-table tr:nth-child(even) td { background: var(--bg); }
-    .tag-low  { display:inline-block; padding:2px 7px; border-radius:100px; font-size:10px; font-weight:600; background:var(--green-light); color:var(--green); }
-    .tag-mod  { display:inline-block; padding:2px 7px; border-radius:100px; font-size:10px; font-weight:600; background:var(--amber-light); color:var(--amber); }
-    .tag-high { display:inline-block; padding:2px 7px; border-radius:100px; font-size:10px; font-weight:600; background:var(--red-light); color:var(--red); }
-    .sources-inner { padding-top: 20px; }
+    /* ── POPULATION SCATTER ── */
+    .ms-scatter-card {
+      margin-bottom: 16px;
+      border: 2px solid var(--ink);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      background: var(--snow);
+    }
+    .ms-scatter-head { padding: 16px 20px 0; }
+    .ms-scatter-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(14,14,14,0.4);
+    }
+    .ms-scatter-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 12px 20px 14px;
+      border-bottom: 1.5px solid var(--border-light);
+      align-items: center;
+    }
+    .ms-fgrp { display: flex; gap: 5px; align-items: center; }
+    .ms-fgrp-lbl { font-size: 11px; color: rgba(14,14,14,0.4); font-weight: 600; margin-right: 2px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .ms-ftog {
+      padding: 5px 12px;
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-btn);
+      font-size: 11px;
+      cursor: pointer;
+      background: var(--canvas);
+      color: rgba(14,14,14,0.5);
+      font-family: var(--font);
+      font-weight: 600;
+      transition: all 0.15s;
+    }
+    .ms-ftog.on { background: var(--ink); border-color: var(--ink); color: var(--canvas); }
+    .ms-scatter-inner { padding: 14px 18px 18px; }
+    .ms-sleg { display: flex; gap: 14px; margin-top: 10px; flex-wrap: wrap; font-size: 12px; color: rgba(14,14,14,0.4); font-weight: 500; }
+    .ms-sl { display: flex; align-items: center; gap: 5px; }
+    .ms-sl-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .ms-scatter-note { font-size: 11px; color: rgba(14,14,14,0.35); margin-top: 8px; line-height: 1.5; }
+    .ms-percentile-badge {
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.5;
+      display: none;
+    }
+    .ms-percentile-badge.good  { background: var(--risk-low-bg); color: #16a34a; }
+    .ms-percentile-badge.amber { background: var(--risk-mod-bg); color: var(--risk-mod); }
+    .ms-percentile-badge.bad   { background: var(--risk-high-bg); color: var(--alert); }
 
-    /* Action card */
-    .action-card { border-radius: var(--radius); padding: 32px; margin-bottom: 20px; border: 1.5px solid var(--border); }
-    .action-card.tier-green { background: var(--green-light); border-color: var(--green); }
-    .action-card.tier-amber { background: var(--amber-light); border-color: var(--amber); }
-    .action-card.tier-red   { background: var(--red-light);   border-color: var(--red); }
-    .action-card-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+    /* ── ACTION CARD ── */
+    .action-card {
+      border-radius: var(--radius-card);
+      padding: 28px;
+      margin-bottom: 20px;
+      border: 2px solid var(--ink);
+    }
+    .action-card.tier-green { background: var(--mint); }
+    .action-card.tier-amber { background: var(--risk-mod-bg); }
+    .action-card.tier-red   { background: var(--risk-high-bg); }
+    .action-card-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 18px; }
     .action-icon { font-size: 28px; flex-shrink: 0; line-height: 1; }
-    .action-title { font-family: 'DM Serif Display', serif; font-size: 22px; letter-spacing: -0.01em; margin-bottom: 4px; }
-    .tier-green .action-title { color: var(--green); }
-    .tier-amber .action-title { color: var(--amber); }
-    .tier-red   .action-title { color: var(--red); }
-    .action-driver { font-size: 13px; font-weight: 500; color: var(--ink-muted); }
-    .action-body { font-size: 14px; color: var(--ink); line-height: 1.75; margin-bottom: 20px; }
-    .action-steps { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .action-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .tier-green .action-title { color: #16a34a; }
+    .tier-amber .action-title { color: var(--risk-mod); }
+    .tier-red   .action-title { color: var(--alert); }
+    .action-driver { font-size: 13px; font-weight: 500; color: rgba(14,14,14,0.5); }
+    .action-body { font-size: 14px; color: var(--ink); line-height: 1.75; margin-bottom: 18px; }
+    .action-steps { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; }
     .action-step { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--ink); line-height: 1.6; }
-    .action-step-num { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 1px; }
-    .tier-green .action-step-num { background: var(--green); color: #fff; }
-    .tier-amber .action-step-num { background: var(--amber); color: #fff; }
-    .tier-red   .action-step-num { background: var(--red);   color: #fff; }
+    .action-step-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+      border: 1.5px solid transparent;
+    }
+    .tier-green .action-step-num { background: #16a34a; color: #fff; }
+    .tier-amber .action-step-num { background: var(--risk-mod); color: #fff; }
+    .tier-red   .action-step-num { background: var(--alert);     color: #fff; }
     .action-links { display: flex; flex-wrap: wrap; gap: 8px; }
-    .action-link { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; text-decoration: none; transition: all 0.2s; border: 1.5px solid transparent; }
-    .tier-green .action-link { background: var(--green); color: #fff; }
-    .tier-amber .action-link { background: var(--amber); color: #fff; }
-    .tier-red   .action-link { background: var(--red);   color: #fff; }
-    .action-link:hover { opacity: 0.85; transform: translateY(-1px); }
-    .action-link.secondary { background: transparent; border-color: currentColor; }
-    .tier-green .action-link.secondary { color: var(--green); }
-    .tier-amber .action-link.secondary { color: var(--amber); }
-    .tier-red   .action-link.secondary { color: var(--red); }
+    .action-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: var(--radius-btn);
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.15s;
+      border: 2px solid var(--ink);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .tier-green .action-link { background: var(--ink); color: var(--canvas); }
+    .tier-amber .action-link { background: var(--ink); color: var(--canvas); }
+    .tier-red   .action-link { background: var(--ink); color: var(--canvas); }
+    .action-link:hover { background: var(--coral); border-color: var(--coral); transform: translateY(-1px); }
+    .action-link.secondary { background: transparent; color: var(--ink); }
+    .action-link.secondary:hover { background: var(--ink); color: var(--canvas); }
 
-    /* ── INTERHEART result card ── */
+    /* ── INTERHEART CARD ── */
     .ih-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+      background: var(--snow);
+      border: 2px solid var(--ink);
+      border-radius: var(--radius-card);
       padding: 24px;
       margin-bottom: 16px;
-      box-shadow: 0 2px 12px rgba(26,18,8,0.04);
     }
     .ih-card-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       gap: 12px;
     }
     .ih-card-title {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: var(--ink-muted);
+      color: rgba(14,14,14,0.4);
     }
     .ih-tier-pill {
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 700;
       padding: 4px 12px;
-      border-radius: 100px;
-      letter-spacing: 0.04em;
+      border-radius: var(--radius-btn);
+      letter-spacing: 0.05em;
       flex-shrink: 0;
+      text-transform: uppercase;
+      border: 1.5px solid transparent;
     }
-    .ih-tier-pill.low  { background: var(--green-light); color: var(--green); }
-    .ih-tier-pill.mod  { background: var(--amber-light); color: var(--amber); }
-    .ih-tier-pill.high { background: var(--red-light);   color: var(--red); }
+    .ih-tier-pill.low  { background: var(--risk-low-bg); color: #16a34a; border-color: #16a34a; }
+    .ih-tier-pill.mod  { background: var(--risk-mod-bg); color: var(--risk-mod); border-color: var(--risk-mod); }
+    .ih-tier-pill.high { background: var(--risk-high-bg); color: var(--alert); border-color: var(--alert); }
     .ih-score-row {
       display: flex;
       align-items: baseline;
       gap: 8px;
-      margin: 10px 0 4px;
+      margin: 12px 0 4px;
     }
     .ih-score-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 36px;
-      letter-spacing: -0.02em;
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
     }
-    .ih-score-denom { font-size: 14px; color: var(--ink-muted); }
+    .ih-score-denom { font-size: 16px; color: rgba(14,14,14,0.4); font-weight: 500; }
     .ih-track {
       height: 8px;
       border-radius: 4px;
-      background: linear-gradient(to right, var(--green) 0%, var(--green) 20%, var(--amber) 35%, var(--red) 35%, var(--red) 100%);
+      background: linear-gradient(to right, #16a34a 0%, #16a34a 20%, var(--risk-mod) 35%, var(--alert) 35%, var(--alert) 100%);
       position: relative;
-      margin: 10px 0 6px;
+      margin: 12px 0 6px;
     }
     .ih-thumb {
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
-      width: 16px; height: 16px;
-      background: var(--surface);
-      border: 2px solid var(--ink);
+      width: 16px;
+      height: 16px;
+      background: var(--snow);
+      border: 2.5px solid var(--ink);
       border-radius: 50%;
       transition: left 0.4s ease;
     }
@@ -625,16 +1032,16 @@
       display: flex;
       justify-content: space-between;
       font-size: 10px;
-      color: var(--ink-muted);
-      font-weight: 500;
-      margin-bottom: 14px;
+      color: rgba(14,14,14,0.4);
+      font-weight: 600;
+      margin-bottom: 16px;
     }
     .ih-factors-title {
       font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.07em;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--ink-muted);
+      color: rgba(14,14,14,0.4);
       margin-bottom: 8px;
       margin-top: 16px;
     }
@@ -644,219 +1051,337 @@
       align-items: center;
       justify-content: space-between;
       gap: 8px;
-      padding: 8px 12px;
-      background: var(--bg);
+      padding: 9px 14px;
+      background: var(--canvas);
       border-radius: 8px;
       font-size: 13px;
+      font-weight: 500;
     }
     .ih-factor-name { color: var(--ink); }
     .ih-factor-pts {
-      font-weight: 600;
+      font-weight: 700;
       font-size: 12px;
-      padding: 2px 8px;
-      border-radius: 100px;
+      padding: 3px 10px;
+      border-radius: var(--radius-btn);
+      border: 1.5px solid transparent;
     }
-    .ih-factor-pts.pts-high { background: var(--red-light); color: var(--red); }
-    .ih-factor-pts.pts-mod  { background: var(--amber-light); color: var(--amber); }
-    .ih-sub {
-      font-size: 13px;
-      color: var(--ink-muted);
-      line-height: 1.6;
-      margin-top: 4px;
-    }
+    .ih-factor-pts.pts-high { background: var(--risk-high-bg); color: var(--alert); border-color: var(--alert); }
+    .ih-factor-pts.pts-mod  { background: var(--risk-mod-bg); color: var(--risk-mod); border-color: var(--risk-mod); }
+    .ih-sub { font-size: 13px; color: rgba(14,14,14,0.5); line-height: 1.6; margin-top: 4px; font-weight: 500; }
 
-    /* ── FRS result card ── */
+    /* ── FRS CARD ── */
     .frs-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+      background: var(--snow);
+      border: 2px solid var(--ink);
+      border-radius: var(--radius-card);
       padding: 24px;
       margin-bottom: 16px;
-      box-shadow: 0 2px 12px rgba(26,18,8,0.04);
     }
     .frs-card-title {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-bottom: 12px;
+      color: rgba(14,14,14,0.4);
+      margin-bottom: 14px;
     }
     .frs-pct {
-      font-family: 'DM Serif Display', serif;
-      font-size: 48px;
-      letter-spacing: -0.03em;
+      font-size: 52px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
       line-height: 1;
       margin-bottom: 4px;
     }
-    .frs-pct-label { font-size: 13px; color: var(--ink-muted); margin-bottom: 12px; }
+    .frs-pct-label { font-size: 13px; color: rgba(14,14,14,0.4); margin-bottom: 12px; font-weight: 500; }
     .frs-tier-pill {
       display: inline-block;
       font-size: 11px;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 100px;
-      letter-spacing: 0.04em;
-      margin-bottom: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: var(--radius-btn);
+      letter-spacing: 0.05em;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      border: 1.5px solid transparent;
     }
-    .frs-tier-pill.low  { background: var(--green-light); color: var(--green); }
-    .frs-tier-pill.mod  { background: var(--amber-light); color: var(--amber); }
-    .frs-tier-pill.high { background: var(--red-light);   color: var(--red); }
+    .frs-tier-pill.low  { background: var(--risk-low-bg); color: #16a34a; border-color: #16a34a; }
+    .frs-tier-pill.mod  { background: var(--risk-mod-bg); color: var(--risk-mod); border-color: var(--risk-mod); }
+    .frs-tier-pill.high { background: var(--risk-high-bg); color: var(--alert); border-color: var(--alert); }
     .frs-bar-wrap { margin: 12px 0 6px; }
     .frs-bar-track {
       height: 8px;
       border-radius: 4px;
-      background: linear-gradient(to right, var(--green), var(--amber) 30%, var(--red) 60%);
+      background: linear-gradient(to right, #16a34a, var(--risk-mod) 30%, var(--alert) 60%);
       position: relative;
     }
     .frs-bar-thumb {
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
-      width: 16px; height: 16px;
-      background: var(--surface);
-      border: 2px solid var(--ink);
+      width: 16px;
+      height: 16px;
+      background: var(--snow);
+      border: 2.5px solid var(--ink);
       border-radius: 50%;
       transition: left 0.4s ease;
     }
-    .frs-bar-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--ink-muted); margin-top: 5px; }
-    .frs-sub { font-size: 13px; color: var(--ink-muted); line-height: 1.65; margin-top: 10px; }
-    .frs-unlock {
-      text-align: center;
-      padding: 28px 20px;
+    .frs-bar-labels { display: flex; justify-content: space-between; font-size: 10px; color: rgba(14,14,14,0.35); margin-top: 5px; font-weight: 600; }
+    .frs-sub { font-size: 13px; color: rgba(14,14,14,0.45); line-height: 1.65; margin-top: 12px; font-weight: 500; }
+    .frs-unlock { text-align: center; padding: 28px 20px; }
+    .frs-unlock-icon { font-size: 28px; margin-bottom: 10px; }
+    .frs-unlock-title { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
+    .frs-unlock-sub { font-size: 13px; color: rgba(14,14,14,0.45); line-height: 1.6; }
+
+    /* ── SOURCES ── */
+    .sources-section {
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 2px solid var(--ink);
     }
-    .frs-unlock-icon { font-size: 28px; margin-bottom: 8px; }
-    .frs-unlock-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--ink); margin-bottom: 6px; }
-    .frs-unlock-sub { font-size: 13px; color: var(--ink-muted); line-height: 1.6; }
+    .sources-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+      padding: 4px 0;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-family: var(--font);
+    }
+    .sources-toggle-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(14,14,14,0.4);
+    }
+    .sources-toggle-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.3s, background 0.2s;
+      color: rgba(14,14,14,0.4);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .sources-toggle[aria-expanded="true"] .sources-toggle-icon {
+      transform: rotate(180deg);
+      background: var(--ink);
+      color: var(--canvas);
+    }
+    .sources-body { overflow: hidden; max-height: 0; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .sources-body.open { max-height: 7000px; }
 
-    /* Footer */
-    .site-footer { margin-top: 48px; padding: 32px 0 16px; border-top: 1px solid var(--border); text-align: center; }
-    .footer-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 20px; }
-    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 24px; }
-    .footer-link { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border: 1px solid var(--border); border-radius: 100px; text-decoration: none; color: var(--ink); font-size: 13px; font-weight: 500; background: var(--surface); transition: all 0.2s; white-space: nowrap; }
-    .footer-link:hover { border-color: var(--ink); background: var(--ink); color: var(--bg); }
-    .footer-link svg { width: 15px; height: 15px; flex-shrink: 0; fill: currentColor; }
-    .footer-copy { font-size: 12px; color: var(--ink-muted); }
-    .toyyib-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; margin-bottom: 16px; background: var(--ink); color: var(--bg); border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.2s; border: none; letter-spacing: 0.01em; }
-    .toyyib-btn:hover { background: var(--accent); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(200,68,10,0.3); }
+    .source-card {
+      background: var(--snow);
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-card);
+      padding: 20px 24px;
+      margin-bottom: 10px;
+    }
+    .source-card:last-child { margin-bottom: 0; }
+    .source-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .source-pill {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: var(--radius-btn);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--canvas);
+      flex-shrink: 0;
+    }
+    .source-name { font-size: 14px; font-weight: 600; color: var(--ink); }
+    .source-desc { font-size: 13px; color: rgba(14,14,14,0.5); line-height: 1.65; }
+    .source-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--coral);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .source-link:hover { text-decoration: underline; }
 
-    .chart-wrap { position: relative; width: 100%; height: 420px; }
-    .chart-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; }
-    .legend-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--ink-muted); }
-    .legend-swatch { width: 12px; height: 12px; border-radius: 2px; flex-shrink: 0; }
-    .legend-swatch.circle { border-radius: 50%; }
+    .method-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(14,14,14,0.4);
+      margin: 28px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 1.5px solid var(--border-light);
+    }
+    .scoring-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 8px 0 10px; }
+    .scoring-table th {
+      text-align: left;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(14,14,14,0.4);
+      padding: 6px 10px;
+      border-bottom: 1.5px solid var(--border-light);
+    }
+    .scoring-table td { padding: 7px 10px; border-bottom: 1px solid var(--border-light); color: var(--ink); vertical-align: top; line-height: 1.5; }
+    .scoring-table tr:last-child td { border-bottom: none; }
+    .scoring-table tr:nth-child(even) td { background: var(--canvas); }
+    .tag-low  { display:inline-block; padding:3px 10px; border-radius:var(--radius-btn); font-size:10px; font-weight:700; background:var(--risk-low-bg); color:#16a34a; border:1px solid #16a34a; }
+    .tag-mod  { display:inline-block; padding:3px 10px; border-radius:var(--radius-btn); font-size:10px; font-weight:700; background:var(--risk-mod-bg); color:var(--risk-mod); border:1px solid var(--risk-mod); }
+    .tag-high { display:inline-block; padding:3px 10px; border-radius:var(--radius-btn); font-size:10px; font-weight:700; background:var(--risk-high-bg); color:var(--alert); border:1px solid var(--alert); }
+    .sources-inner { padding-top: 20px; }
 
-    /* Slider card */
-    .slider-card { background: var(--ink); border-radius: var(--radius); padding: 32px; margin-bottom: 20px; box-shadow: 0 4px 24px rgba(26,18,8,0.15); }
-    .slider-card-header { margin-bottom: 28px; }
-    .slider-card-header h3 { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--bg); margin-bottom: 4px; }
-    .slider-card-header p { font-size: 13px; color: rgba(245,240,232,0.45); }
-    .slider-group { margin-bottom: 28px; }
-    .slider-group:last-child { margin-bottom: 0; }
-    .slider-label-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
-    .slider-label { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,240,232,0.45); }
-    .slider-val-wrap { display: flex; align-items: baseline; gap: 6px; }
-    .slider-val { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--bg); letter-spacing: -0.02em; }
-    .slider-unit { font-size: 13px; color: rgba(245,240,232,0.4); }
-    .slider-delta { font-size: 12px; font-weight: 600; color: #7ED4A4; }
-    input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 5px; border-radius: 3px; background: rgba(245,240,232,0.15); outline: none; cursor: pointer; }
-    input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--bg); box-shadow: 0 2px 10px rgba(0,0,0,0.3); cursor: pointer; transition: transform 0.15s; }
-    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
-    .slider-range-labels { display: flex; justify-content: space-between; margin-top: 8px; font-size: 11px; color: rgba(245,240,232,0.25); }
-    .context-note { font-size: 12px; color: rgba(245,240,232,0.38); margin-top: 8px; line-height: 1.6; }
-
-    .btn-reset { display: block; width: 100%; margin-top: 8px; padding: 14px; background: transparent; border: 1.5px solid var(--border); border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; color: var(--ink-muted); cursor: pointer; transition: all 0.2s; }
+    /* ── RESET BTN ── */
+    .btn-reset {
+      display: block;
+      width: 100%;
+      margin-top: 8px;
+      padding: 14px;
+      background: transparent;
+      border: 2px solid var(--border-light);
+      border-radius: var(--radius-btn);
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(14,14,14,0.4);
+      cursor: pointer;
+      transition: all 0.15s;
+      letter-spacing: 0.04em;
+    }
     .btn-reset:hover { border-color: var(--ink); color: var(--ink); }
 
-    .disclaimer { text-align: center; margin-top: 28px; font-size: 12px; color: var(--ink-muted); line-height: 1.7; }
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 12px;
+      color: rgba(14,14,14,0.35);
+      line-height: 1.75;
+      font-weight: 500;
+    }
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* ═══ Metabolic screener styles ═══ */
-    .ms-dial-wrap { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; padding: 24px 20px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: 0 2px 12px rgba(26,18,8,.06); }
-    .ms-dial-rel { position: relative; width: 260px; height: 130px; }
-    #ms-dc { width: 260px; height: 130px; display: block; }
-    .ms-dial-score-row { text-align: center; margin-top: 10px; }
-    .ms-dial-num { font-family: 'DM Serif Display', serif; font-size: 40px; color: var(--ink); line-height: 1; display: block; }
-    .ms-dial-lbl { font-size: 10px; color: var(--ink-muted); margin-top: 2px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; display: block; }
-    .ms-dial-verdict { font-size: 16px; font-weight: 600; margin-top: 12px; }
-    .ms-dial-sub { font-size: 13px; color: var(--ink-muted); text-align: center; max-width: 420px; margin-top: 5px; line-height: 1.65; }
-    .ms-dial-context { font-size: 11px; color: var(--ink-muted); text-align: center; margin-top: 6px; padding: 5px 12px; background: var(--bg); border-radius: 100px; letter-spacing: 0.03em; }
-
-    .ms-fr-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 16px; background: var(--surface); box-shadow: 0 2px 12px rgba(26,18,8,.04); }
-    .ms-fr-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
-    .ms-fr-title { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); }
-    .ms-fr-pill { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 100px; letter-spacing: .04em; }
-    .ms-fr-pill.low  { background: var(--green-light); color: var(--green); }
-    .ms-fr-pill.mod  { background: var(--amber-light); color: var(--amber); }
-    .ms-fr-pill.high { background: var(--red-light);   color: var(--red); }
-    .ms-fr-sub { font-size: 13px; color: var(--ink-muted); margin-bottom: 14px; line-height: 1.65; }
-    .ms-ftrack { height: 8px; border-radius: 4px; background: linear-gradient(to right,#2A6B45 0%,#2A6B45 30%,#B87000 55%,#C8240A 75%,#8B0000 100%); position: relative; margin-bottom: 6px; }
-    .ms-fthumb { position: absolute; top: 50%; transform: translate(-50%,-50%); width: 16px; height: 16px; background: var(--surface); border: 2px solid var(--ink); border-radius: 50%; transition: left .4s ease; }
-    .ms-fticks { display: flex; justify-content: space-between; font-size: 9px; color: var(--ink-muted); font-weight: 500; letter-spacing: .03em; }
-
-    .ms-cards-lbl { font-size: 11px; font-weight: 600; color: var(--ink-muted); letter-spacing: .09em; text-transform: uppercase; margin-bottom: 10px; margin-top: 20px; }
-    .ms-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
-    .ms-mc { border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; background: var(--surface); cursor: pointer; transition: border-color .15s, box-shadow .15s; box-shadow: 0 1px 4px rgba(26,18,8,.04); }
-    .ms-mc:hover { border-color: var(--ink-muted); }
-    .ms-mc.open { border-color: var(--ink); }
-    .ms-mc-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; }
-    .ms-mc-name { font-size: 13px; font-weight: 600; color: var(--ink); }
-    .ms-pill { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; letter-spacing: .04em; }
-    .ms-pg { background: var(--green-light); color: var(--green); }
-    .ms-pa { background: var(--amber-light); color: var(--amber); }
-    .ms-pr { background: var(--red-light);   color: var(--red); }
-    .ms-mc-val { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--ink); margin-top: 6px; }
-    .ms-mc-unit { font-size: 12px; color: var(--ink-muted); font-family: 'DM Sans', sans-serif; }
-    .ms-mc-expand { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
-    .ms-mc.open .ms-mc-expand { display: block; }
-    .ms-mc-hint { font-size: 11px; color: var(--ink-muted); margin-top: 8px; }
-    .ms-mc.open .ms-mc-hint { display: none; }
-    .ms-clinical-note { margin-top: 10px; padding: 8px 10px; border-radius: 6px; font-size: 11px; color: var(--ink-muted); line-height: 1.55; border-left: 2px solid var(--border); background: var(--bg); }
-
-    .ms-barw { padding-bottom: 22px; margin-bottom: 6px; }
-    .ms-btrack { height: 8px; border-radius: 4px; position: relative; width: 100%; }
-    .ms-bseg { position: absolute; height: 8px; top: 0; }
-    .ms-bseg.g { background: rgba(42,107,69,.35); border-radius: 4px 0 0 4px; }
-    .ms-bseg.a { background: rgba(184,112,0,.35); }
-    .ms-bseg.r { background: rgba(200,36,10,.35); border-radius: 0 4px 4px 0; }
-    .ms-btick { position: absolute; top: -3px; width: 1px; height: 14px; background: var(--border); }
-    .ms-btlbl { position: absolute; top: 14px; font-size: 10px; color: var(--ink-muted); transform: translateX(-50%); white-space: nowrap; font-weight: 500; }
-    .ms-bdot { position: absolute; top: 50%; transform: translate(-50%,-50%); width: 16px; height: 16px; border-radius: 50%; border: 2.5px solid var(--surface); box-shadow: 0 0 0 1px rgba(26,18,8,.15); z-index: 2; }
-    .ms-eplain { font-size: 13px; line-height: 1.65; padding: 10px 12px; border-radius: 10px; margin-top: 8px; }
-    .ms-epg { background: var(--green-light); color: var(--green); }
-    .ms-epa { background: var(--amber-light); color: var(--amber); }
-    .ms-epr { background: var(--red-light);   color: var(--red); }
-
-    .ms-scatter-card { margin-bottom: 16px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--surface); box-shadow: 0 2px 12px rgba(26,18,8,.04); }
-    .ms-scatter-head { padding: 16px 20px 0; }
-    .ms-scatter-title { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); }
-    .ms-scatter-filters { display: flex; gap: 8px; flex-wrap: wrap; padding: 10px 20px 12px; border-bottom: 1px solid var(--border); align-items: center; }
-    .ms-fgrp { display: flex; gap: 5px; align-items: center; }
-    .ms-fgrp-lbl { font-size: 11px; color: var(--ink-muted); font-weight: 500; margin-right: 2px; }
-    .ms-ftog { padding: 5px 11px; border: 1.5px solid var(--border); border-radius: 100px; font-size: 12px; cursor: pointer; background: var(--bg); color: var(--ink-muted); font-family: 'DM Sans', sans-serif; font-weight: 500; transition: all .15s; }
-    .ms-ftog.on { background: var(--ink); border-color: var(--ink); color: var(--bg); }
-    .ms-scatter-inner { padding: 12px 16px 16px; }
-    .ms-sleg { display: flex; gap: 14px; margin-top: 10px; flex-wrap: wrap; font-size: 12px; color: var(--ink-muted); }
-    .ms-sl { display: flex; align-items: center; gap: 5px; }
-    .ms-sl-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-    .ms-scatter-note { font-size: 11px; color: var(--ink-muted); margin-top: 8px; line-height: 1.5; font-style: italic; }
-    .ms-percentile-badge { margin-top: 10px; padding: 10px 14px; border-radius: 10px; font-size: 13px; font-weight: 500; line-height: 1.5; display: none; }
-    .ms-percentile-badge.good  { background: var(--green-light); color: var(--green); }
-    .ms-percentile-badge.amber { background: var(--amber-light); color: var(--amber); }
-    .ms-percentile-badge.bad   { background: var(--red-light);   color: var(--red); }
-
-    .about-compact { margin-top: 24px; padding: 14px 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; gap: 12px; }
-    .about-compact-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: var(--bg); display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display', serif; font-size: 14px; flex-shrink: 0; }
-    .about-compact-body { font-size: 12px; color: var(--ink-muted); display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
-    .about-compact-name { font-weight: 600; color: var(--ink); }
-    .about-compact-handle { color: var(--accent); font-weight: 500; text-decoration: none; }
+    /* ── ABOUT COMPACT ── */
+    .about-compact {
+      margin-top: 28px;
+      padding: 16px 20px;
+      background: var(--snow);
+      border: 2px solid var(--ink);
+      border-radius: var(--radius-card);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .about-compact-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--canvas);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .about-compact-body {
+      font-size: 13px;
+      color: rgba(14,14,14,0.5);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 5px;
+    }
+    .about-compact-name { font-weight: 700; color: var(--ink); }
+    .about-compact-handle {
+      color: var(--coral);
+      font-weight: 600;
+      text-decoration: none;
+    }
     .about-compact-handle:hover { text-decoration: underline; }
-    .about-compact-sep { color: var(--border); }
+    .about-compact-sep { color: var(--border-light); }
 
-    .lang-toggle { position: fixed; top: 64px; right: 16px; z-index: 99; background: var(--ink); color: var(--bg); border: none; border-radius: 100px; padding: 6px 14px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; cursor: pointer; transition: all 0.2s; }
-    .lang-toggle:hover { background: var(--accent); }
+    /* ── FOOTER ── */
+    .site-footer {
+      margin-top: 48px;
+      padding: 32px 0 20px;
+      border-top: 2px solid var(--ink);
+      text-align: center;
+    }
+    .footer-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(14,14,14,0.35);
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .footer-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 16px;
+      border: 2px solid var(--border-light);
+      border-radius: var(--radius-btn);
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 600;
+      background: var(--snow);
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .footer-link:hover {
+      border-color: var(--ink);
+      background: var(--ink);
+      color: var(--canvas);
+    }
+    .footer-link svg { width: 14px; height: 14px; flex-shrink: 0; fill: currentColor; }
+    .footer-copy { font-size: 12px; color: rgba(14,14,14,0.35); font-weight: 500; }
+    .toyyib-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      margin-bottom: 20px;
+      background: var(--yellow);
+      color: var(--ink);
+      border-radius: var(--radius-btn);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 2px solid var(--ink);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .toyyib-btn:hover {
+      background: var(--ink);
+      color: var(--yellow);
+      transform: translateY(-2px);
+      box-shadow: 4px 4px 0 rgba(14,14,14,0.2);
+    }
 
+    /* ── BILINGUAL ── */
     [data-bm] { display: none !important; }
     [data-en] { display: inline !important; }
     [data-lang="bm"] [data-bm] { display: inline !important; }
@@ -866,31 +1391,43 @@
     [data-lang="bm"] div[data-bm], [data-lang="bm"] p[data-bm], [data-lang="bm"] li[data-bm] { display: block !important; }
     [data-lang="bm"] div[data-en], [data-lang="bm"] p[data-en], [data-lang="bm"] li[data-en] { display: none !important; }
 
+    /* ── ANIMATION ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .container > * { animation: fadeUp 0.5s ease both; }
+    header          { animation-delay: 0.05s; }
+    .form-card      { animation-delay: 0.12s; }
+
+    /* ── MOBILE ── */
     @media (max-width: 520px) {
-      .container { padding: 20px 16px 48px; }
-      header { margin-bottom: 20px; }
-      .logo-mark { margin-bottom: 12px; padding: 6px 14px; font-size: 11px; }
-      h1 { font-size: 30px; margin-bottom: 6px; }
-      .form-card { padding: 18px 16px; }
+      .container { padding: 24px 16px 60px; }
+      header { margin-bottom: 28px; padding-bottom: 28px; }
+      .hero-title { font-size: 46px; }
+      .form-card { padding: 20px 16px; }
       .form-grid { grid-template-columns: 1fr; gap: 12px; }
       .form-group.full { grid-column: 1; }
-      .sex-btn { padding: 8px 10px; font-size: 12px; }
-      input[type="number"] { padding: 9px 12px; font-size: 14px; }
-      .btn-primary { padding: 12px; font-size: 17px; margin-top: 16px; }
+      .sex-btn { padding: 9px 10px; font-size: 12px; }
+      input[type="number"] { padding: 10px 12px; font-size: 14px; }
+      .btn-primary { padding: 13px; font-size: 14px; }
       .summary-strip { grid-template-columns: repeat(3,1fr); gap: 8px; padding: 14px 12px; }
-      .strip-value { font-size: 18px; }
+      .strip-value { font-size: 20px; }
       .chart-wrap { height: 280px; }
       .chart-card, .slider-card { padding: 18px 14px; }
       .ms-cards-grid { grid-template-columns: 1fr; }
       .ms-scatter-filters { gap: 5px; }
-      .ms-ftog { padding: 4px 9px; font-size: 11px; }
-      .lang-toggle { top: 60px; right: 12px; padding: 5px 11px; font-size: 11px; }
-      .tab-btn { font-size: 12px; padding: 9px 8px; }
+      .ms-ftog { padding: 4px 8px; font-size: 10px; }
+      .lang-toggle { top: 62px; right: 10px; padding: 5px 12px; font-size: 10px; }
+      .tab-btn { font-size: 11px; padding: 9px 8px; }
+      .site-nav-links { gap: 0; }
+      .site-nav-links a { padding: 5px 7px; font-size: 9px; }
     }
   </style>
 </head>
 <body>
 
+<!-- SITE NAV -->
 <nav class="site-nav" aria-label="Site navigation">
   <div class="site-nav-inner">
     <a class="site-nav-brand" href="https://www.aufthority.com" target="_blank" rel="noopener">Aufthority</a>
@@ -903,27 +1440,29 @@
   </div>
 </nav>
 
+<!-- LANG TOGGLE -->
+<button class="lang-toggle" id="langToggle" onclick="toggleLang()" aria-label="Toggle language">
+  <span class="lang-en">BM</span>
+  <span class="lang-bm" style="display:none">EN</span>
+</button>
+
 <div class="container">
 
+  <!-- ═══ HEADER ═══ -->
   <header>
-    <div class="logo-mark"><div class="logo-dot"></div> Health Tool</div>
-    <button class="lang-toggle" id="langToggle" onclick="toggleLang()" aria-label="Toggle language">
-      <span class="lang-en">BM</span>
-      <span class="lang-bm" style="display:none">EN</span>
-    </button>
-    <h1>Cermin<br/><em>Diri.</em></h1>
-    <p class="byline">By Aufthority</p>
-    <p class="subtitle">
+    <div class="app-eyebrow"><div class="eyebrow-dot"></div> Health Tool</div>
+    <h1 class="hero-title">Cermin<br><span class="accent">Diri.</span></h1>
+    <p class="hero-byline">By Aufthority</p>
+    <p class="hero-sub">
       <span data-en>Find out your metabolic and cardiovascular health risk — calibrated for Malaysian bodies.</span>
       <span data-bm>Semak risiko kesihatan metabolik dan kardiovaskular anda — ikut formula orang Malaysia!</span>
     </p>
-    <div class="source-badge">📊 WHO · NHMS Malaysia · INTERHEART · FRS</div>
+    <div class="source-strip">WHO &nbsp;·&nbsp; NHMS Malaysia &nbsp;·&nbsp; INTERHEART &nbsp;·&nbsp; FRS</div>
   </header>
 
   <!-- ═══ STEP-BY-STEP FORM ═══ -->
   <div class="form-card" id="formSection">
 
-    <!-- Progress dots -->
     <div class="step-progress">
       <div class="step-dot active" id="dot-1"></div>
       <div class="step-dot" id="dot-2"></div>
@@ -932,7 +1471,7 @@
       <div class="step-dot" id="dot-5"></div>
     </div>
 
-    <!-- Step 1: About You -->
+    <!-- Step 1 -->
     <div class="step-panel active" id="step-1">
       <div class="step-title"><span data-en>Step 1 of 5 — About You</span><span data-bm>Langkah 1 / 5 — Tentang Anda</span></div>
       <div class="form-grid">
@@ -956,37 +1495,25 @@
       </div>
     </div>
 
-    <!-- Step 2: Body Measurements -->
+    <!-- Step 2 -->
     <div class="step-panel" id="step-2">
       <div class="step-title"><span data-en>Step 2 of 5 — Body Measurements</span><span data-bm>Langkah 2 / 5 — Ukuran Badan</span></div>
       <div class="form-grid">
         <div class="form-group">
           <label><span data-en>Weight</span><span data-bm>Berat</span></label>
-          <div class="input-wrap">
-            <input type="number" id="inWeight" placeholder="e.g. 72" min="20" max="300" step="0.5" />
-            <span class="unit">kg</span>
-          </div>
+          <div class="input-wrap"><input type="number" id="inWeight" placeholder="e.g. 72" min="20" max="300" step="0.5" /><span class="unit">kg</span></div>
         </div>
         <div class="form-group">
           <label><span data-en>Height</span><span data-bm>Tinggi</span></label>
-          <div class="input-wrap">
-            <input type="number" id="inHeight" placeholder="e.g. 170" min="100" max="250" />
-            <span class="unit">cm</span>
-          </div>
+          <div class="input-wrap"><input type="number" id="inHeight" placeholder="e.g. 170" min="100" max="250" /><span class="unit">cm</span></div>
         </div>
         <div class="form-group">
           <label><span data-en>Waist</span><span data-bm>Pinggang</span></label>
-          <div class="input-wrap">
-            <input type="number" id="inWaist" placeholder="e.g. 88" min="40" max="160" step="0.5" />
-            <span class="unit">cm</span>
-          </div>
+          <div class="input-wrap"><input type="number" id="inWaist" placeholder="e.g. 88" min="40" max="160" step="0.5" /><span class="unit">cm</span></div>
         </div>
         <div class="form-group">
           <label>Hip <span class="label-optional">(<span data-en>optional</span><span data-bm>pilihan</span>)</span></label>
-          <div class="input-wrap">
-            <input type="number" id="inHip" placeholder="e.g. 96" min="40" max="200" step="0.5" />
-            <span class="unit">cm</span>
-          </div>
+          <div class="input-wrap"><input type="number" id="inHip" placeholder="e.g. 96" min="40" max="200" step="0.5" /><span class="unit">cm</span></div>
         </div>
       </div>
       <div class="step-nav">
@@ -995,11 +1522,10 @@
       </div>
     </div>
 
-    <!-- Step 3: Medical History -->
+    <!-- Step 3 -->
     <div class="step-panel" id="step-3">
       <div class="step-title"><span data-en>Step 3 of 5 — Medical History</span><span data-bm>Langkah 3 / 5 — Sejarah Perubatan</span></div>
       <div class="form-grid">
-
         <div class="form-group full">
           <label><span data-en>Ever told you have high blood pressure or on BP medication?</span><span data-bm>Pernah diberitahu mempunyai tekanan darah tinggi atau mengambil ubat?</span></label>
           <div class="sex-toggle">
@@ -1007,7 +1533,6 @@
             <button class="sex-btn"        data-bp="yes" onclick="setBp('yes')"><span data-en>Yes</span><span data-bm>Ya</span></button>
           </div>
         </div>
-
         <div class="form-group full">
           <label><span data-en>Ever found to have high blood glucose or diabetes?</span><span data-bm>Pernah didapati mempunyai gula darah tinggi atau diabetes?</span></label>
           <div class="sex-toggle">
@@ -1015,7 +1540,6 @@
             <button class="sex-btn"        data-glc="yes" onclick="setGlc('yes')"><span data-en>Yes</span><span data-bm>Ya</span></button>
           </div>
         </div>
-
         <div class="form-group full">
           <label><span data-en>Family history of diabetes</span><span data-bm>Sejarah keluarga diabetes</span></label>
           <div class="sex-toggle" style="grid-template-columns:1fr 1fr 1fr">
@@ -1024,15 +1548,13 @@
             <button class="sex-btn"        data-fam="1st"  onclick="setFam('1st')"><span data-en>Parent / sibling / child</span><span data-bm>Ibu bapa / adik-beradik / anak</span></button>
           </div>
         </div>
-
         <div class="form-group full">
-          <label><span data-en>Family history of heart attack before age 60?</span><span data-bm>Adakah ahli keluarga (ibu/ayah/adik-beradik) pernah diserang jantung sebelum umur 60?</span></label>
+          <label><span data-en>Family history of heart attack before age 60?</span><span data-bm>Adakah ahli keluarga pernah diserang jantung sebelum umur 60?</span></label>
           <div class="sex-toggle">
             <button class="sex-btn active" data-fhx="no"  onclick="setFhx('no')"><span data-en>No</span><span data-bm>Tidak</span></button>
             <button class="sex-btn"        data-fhx="yes" onclick="setFhx('yes')"><span data-en>Yes</span><span data-bm>Ya</span></button>
           </div>
         </div>
-
         <div class="form-group full" id="gdmRow" style="display:none">
           <label><span data-en>Ever had gestational diabetes?</span><span data-bm>Pernah menghidap diabetes semasa hamil?</span></label>
           <div class="sex-toggle">
@@ -1040,7 +1562,6 @@
             <button class="sex-btn"        data-gdm="yes" onclick="setGdm('yes')"><span data-en>Yes</span><span data-bm>Ya</span></button>
           </div>
         </div>
-
       </div>
       <div class="step-nav">
         <button class="btn-back" onclick="goStep(2)">← <span data-en>Back</span><span data-bm>Kembali</span></button>
@@ -1048,11 +1569,10 @@
       </div>
     </div>
 
-    <!-- Step 4: Lifestyle -->
+    <!-- Step 4 -->
     <div class="step-panel" id="step-4">
       <div class="step-title"><span data-en>Step 4 of 5 — Lifestyle</span><span data-bm>Langkah 4 / 5 — Gaya Hidup</span></div>
       <div class="form-grid">
-
         <div class="form-group full">
           <label><span data-en>Smoking status</span><span data-bm>Status merokok</span></label>
           <div class="sex-toggle" style="grid-template-columns:1fr 1fr 1fr">
@@ -1061,16 +1581,14 @@
             <button class="sex-btn"        data-smk="current" onclick="setSmk('current')"><span data-en>Current</span><span data-bm>Perokok</span></button>
           </div>
         </div>
-
         <div class="form-group full">
           <label><span data-en>Physical activity level</span><span data-bm>Tahap aktiviti fizikal</span></label>
           <div class="sex-toggle" style="grid-template-columns:1fr 1fr 1fr">
             <button class="sex-btn" data-act="sedentary" onclick="setAct('sedentary')"><span data-en>Low (&lt;3×/week)</span><span data-bm>Rendah (&lt;3×/minggu)</span></button>
             <button class="sex-btn" data-act="moderate"  onclick="setAct('moderate')"><span data-en>Moderate (3–4×/week)</span><span data-bm>Sederhana (3–4×/minggu)</span></button>
-            <button class="sex-btn active" data-act="active"   onclick="setAct('active')"><span data-en>Active (&gt;4×/week)</span><span data-bm>Aktif (&gt;4×/minggu)</span></button>
+            <button class="sex-btn active" data-act="active" onclick="setAct('active')"><span data-en>Active (&gt;4×/week)</span><span data-bm>Aktif (&gt;4×/minggu)</span></button>
           </div>
         </div>
-
         <div class="form-group full">
           <label><span data-en>Eat vegetables or fruit every day?</span><span data-bm>Makan sayur atau buah setiap hari?</span></label>
           <div class="sex-toggle">
@@ -1078,15 +1596,13 @@
             <button class="sex-btn"        data-diet="no"  onclick="setDiet('no')"><span data-en>No</span><span data-bm>Tidak</span></button>
           </div>
         </div>
-
         <div class="form-group full">
           <label><span data-en>Eat fried, fatty, or heavily salted food daily?</span><span data-bm>Makan makanan goreng, berlemak, atau masin setiap hari?</span></label>
           <div class="sex-toggle">
             <button class="sex-btn" data-junk="yes" onclick="setJunk('yes')"><span data-en>Yes</span><span data-bm>Ya</span></button>
-            <button class="sex-btn active" data-junk="no"  onclick="setJunk('no')"><span data-en>No</span><span data-bm>Tidak</span></button>
+            <button class="sex-btn active" data-junk="no" onclick="setJunk('no')"><span data-en>No</span><span data-bm>Tidak</span></button>
           </div>
         </div>
-
         <div class="form-group full">
           <label><span data-en>How often do you feel stressed, anxious, or low in mood?</span><span data-bm>Seberapa kerap anda rasa tertekan, cemas, atau sedih?</span></label>
           <div class="sex-toggle" style="grid-template-columns:1fr 1fr 1fr">
@@ -1095,7 +1611,6 @@
             <button class="sex-btn"        data-stress="often"     onclick="setStress('often')"><span data-en>Often</span><span data-bm>Kerap</span></button>
           </div>
         </div>
-
       </div>
       <div class="step-nav">
         <button class="btn-back" onclick="goStep(3)">← <span data-en>Back</span><span data-bm>Kembali</span></button>
@@ -1103,7 +1618,7 @@
       </div>
     </div>
 
-    <!-- Step 5: Calculate -->
+    <!-- Step 5 -->
     <div class="step-panel" id="step-5">
       <div class="step-title"><span data-en>Step 5 of 5 — Almost done!</span><span data-bm>Langkah 5 / 5 — Hampir siap!</span></div>
       <div class="form-grid">
@@ -1118,15 +1633,17 @@
           </div>
           <div class="sbp-hint">
             <strong data-en>Where to find this:</strong><strong data-bm>Di mana nak cari:</strong>
-            <span data-en> Check your last clinic slip, blood pressure machine reading, or home BP monitor. It's the top number (e.g. 125/80 — use 125).</span>
-            <span data-bm> Semak slip klinik terakhir anda atau bacaan mesin tekanan darah. Ia nombor atas (contoh: 125/80 — masukkan 125).</span>
+            <span data-en> Check your last clinic slip or BP machine. It's the top number (e.g. 125/80 — use 125).</span>
+            <span data-bm> Semak slip klinik atau mesin tekanan darah. Ia nombor atas (contoh: 125/80 — masukkan 125).</span>
           </div>
         </div>
       </div>
       <div class="step-nav">
         <button class="btn-back" onclick="goStep(4)">← <span data-en>Back</span><span data-bm>Kembali</span></button>
       </div>
-      <button class="btn-primary" onclick="calculate()">Cermin Diri →</button>
+      <button class="btn-primary" onclick="calculate()">
+        <span data-en>Cermin Diri →</span><span data-bm>Cermin Diri →</span>
+      </button>
     </div>
 
   </div><!-- /form-card -->
@@ -1139,19 +1656,19 @@
       <p id="resultsSubtitle"></p>
     </div>
 
-    <!-- Age boundary callout -->
+    <!-- Age callout -->
     <div class="age-callout" id="ageCallout">
-      <div class="age-callout-icon">⚠</div>
+      <div>&#9888;</div>
       <div id="ageCalloutText"></div>
     </div>
 
-    <!-- Tab switcher -->
+    <!-- Tabs -->
     <div class="tab-bar">
       <button class="tab-btn active" id="tab-metabolik" onclick="switchTab('metabolik')">
-        🫀 <span data-en>Metabolic Health</span><span data-bm>Kesihatan Metabolik</span>
+        &#128147; <span data-en>Metabolic Health</span><span data-bm>Kesihatan Metabolik</span>
       </button>
       <button class="tab-btn" id="tab-kardio" onclick="switchTab('kardio')">
-        ❤️ <span data-en>Cardiovascular Health</span><span data-bm>Kesihatan Kardiovaskular</span>
+        &#10084;&#65039; <span data-en>Cardiovascular Health</span><span data-bm>Kesihatan Kardiovaskular</span>
       </button>
     </div>
 
@@ -1164,8 +1681,8 @@
           <canvas id="ms-dc" width="260" height="130"></canvas>
         </div>
         <div class="ms-dial-score-row">
-          <div class="ms-dial-num" id="ms-dn">—</div>
-          <div class="ms-dial-lbl"><span data-en>Overall risk index — lower is better</span><span data-bm>Indeks risiko keseluruhan — lebih rendah lebih baik</span></div>
+          <span class="ms-dial-num" id="ms-dn">—</span>
+          <span class="ms-dial-lbl"><span data-en>Overall risk index — lower is better</span><span data-bm>Indeks risiko keseluruhan — lebih rendah lebih baik</span></span>
         </div>
         <div class="ms-dial-verdict" id="ms-dv">—</div>
         <div class="ms-dial-sub"     id="ms-ds">—</div>
@@ -1174,7 +1691,7 @@
 
       <!-- Floor-rule callout -->
       <div class="ms-floor-callout" id="ms-floor-callout">
-        <div class="ms-floor-callout-icon">⚠️</div>
+        <div>&#9888;&#65039;</div>
         <div id="ms-floor-callout-text"></div>
       </div>
 
@@ -1218,10 +1735,10 @@
       <div class="ms-cards-lbl"><span data-en>Your measurements — tap any card to explore</span><span data-bm>Ukuran anda — ketik kad untuk maklumat lanjut</span></div>
       <div class="ms-cards-grid" id="ms-cards"></div>
 
-      <!-- Goal planner chart -->
+      <!-- Chart -->
       <div class="chart-card">
         <div class="chart-card-header">
-          <div class="chart-card-title">📍 <span data-en>BMI vs Waist — Goal planner</span><span data-bm>BMI vs Pinggang — Perancang sasaran</span></div>
+          <div class="chart-card-title">&#128205; <span data-en>BMI vs Waist — Goal planner</span><span data-bm>BMI vs Pinggang — Perancang sasaran</span></div>
           <label class="pop-toggle">
             <input type="checkbox" id="chkPop" onchange="togglePop()" />
             <span data-en>Show Malaysian population (NHMS 2019)</span><span data-bm>Tunjuk populasi Malaysia (NHMS 2019)</span>
@@ -1245,7 +1762,7 @@
       <div class="slider-card">
         <div class="slider-card-header">
           <h3><span data-en>What if I improve?</span><span data-bm>Bagaimana jika saya bertambah baik?</span></h3>
-          <p><span data-en>Drag to simulate your goal — watch the green dot move on the chart above.</span><span data-bm>Seret untuk simulasi sasaran anda — lihat titik hijau bergerak pada carta di atas.</span></p>
+          <p><span data-en>Drag to simulate your goal — watch the green dot move on the chart above.</span><span data-bm>Seret untuk simulasi sasaran anda.</span></p>
         </div>
         <div class="slider-group">
           <div class="slider-label-row">
@@ -1277,7 +1794,9 @@
 
       <!-- Population scatter -->
       <div class="ms-scatter-card">
-        <div class="ms-scatter-head"><div class="ms-scatter-title">📍 <span data-en>Your position among Malaysians</span><span data-bm>Kedudukan anda dalam kalangan rakyat Malaysia</span></div></div>
+        <div class="ms-scatter-head">
+          <div class="ms-scatter-title">&#128205; <span data-en>Your position among Malaysians</span><span data-bm>Kedudukan anda dalam kalangan rakyat Malaysia</span></div>
+        </div>
         <div class="ms-scatter-filters">
           <div class="ms-fgrp">
             <span class="ms-fgrp-lbl"><span data-en>Sex</span><span data-bm>Jantina</span></span>
@@ -1296,13 +1815,13 @@
         </div>
         <div class="ms-scatter-inner">
           <div style="position:relative;height:320px;width:100%">
-            <canvas id="ms-sc" role="img" aria-label="Scatter chart showing your BMI and waist plotted against simulated Malaysian population from NHMS 2019 and 2023."></canvas>
+            <canvas id="ms-sc" role="img" aria-label="Scatter chart showing your BMI and waist plotted against simulated Malaysian population."></canvas>
           </div>
           <div class="ms-sleg">
-            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(42,107,69,0.5)"></div><span data-en>Healthy</span><span data-bm>Sihat</span></div>
-            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(184,112,0,0.5)"></div><span data-en>One risk factor</span><span data-bm>Satu faktor risiko</span></div>
-            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(200,36,10,0.5)"></div><span data-en>Both elevated</span><span data-bm>Kedua-dua tinggi</span></div>
-            <div class="ms-sl"><div class="ms-sl-dot" style="background:#C8440A;border:2px solid white;box-shadow:0 0 0 1px rgba(26,18,8,.2)"></div>You</div>
+            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(22,163,74,0.5)"></div><span data-en>Healthy</span><span data-bm>Sihat</span></div>
+            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(255,140,0,0.5)"></div><span data-en>One risk factor</span><span data-bm>Satu faktor risiko</span></div>
+            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(255,0,61,0.5)"></div><span data-en>Both elevated</span><span data-bm>Kedua-dua tinggi</span></div>
+            <div class="ms-sl"><div class="ms-sl-dot" style="background:#ff3d00;border:2px solid white;box-shadow:0 0 0 1px rgba(14,14,14,.2)"></div>You</div>
           </div>
           <div class="ms-percentile-badge" id="ms-percentile"></div>
           <div class="ms-scatter-note"><span data-en>Population cloud seeded from NHMS 2019 &amp; 2023 published mean BMI and waist distributions by sex and age group (IKU/MOH Malaysia). Individual points are statistically simulated — not real survey respondents.</span><span data-bm>Data populasi berdasarkan taburan min BMI dan pinggang NHMS 2019 &amp; 2023 mengikut jantina dan kumpulan umur (IKU/KKM Malaysia). Titik-titik adalah simulasi statistik — bukan responden sebenar.</span></div>
@@ -1328,7 +1847,6 @@
     <!-- ═══ CARDIOVASCULAR TAB ═══ -->
     <div class="tab-panel" id="panel-kardio">
 
-      <!-- INTERHEART card -->
       <div class="ih-card">
         <div class="ih-card-header">
           <div class="ih-card-title">INTERHEART <span data-en>Self-Assessment Score</span><span data-bm>Skor Penilaian Kendiri</span></div>
@@ -1350,13 +1868,11 @@
         <div class="ih-factors" id="ih-factors"></div>
       </div>
 
-      <!-- FRS card -->
       <div class="frs-card">
         <div class="frs-card-title"><span data-en>10-Year Cardiovascular Risk (Framingham)</span><span data-bm>Risiko Kardiovaskular 10 Tahun (Framingham)</span></div>
         <div id="frs-content"></div>
       </div>
 
-      <!-- Cardio action card -->
       <div id="cardioActionCard" class="action-card" style="display:none">
         <div class="action-card-header">
           <div class="action-icon" id="cardioActionIcon"></div>
@@ -1385,11 +1901,11 @@
     </div>
   </div><!-- /results -->
 
-  <!-- Sources section -->
+  <!-- ═══ SOURCES ═══ -->
   <div class="sources-section">
     <button class="sources-toggle" aria-expanded="false" onclick="toggleSources(this)">
       <span class="sources-toggle-label"><span data-en>About the data sources</span><span data-bm>Tentang sumber data</span></span>
-      <span class="sources-toggle-icon">▾</span>
+      <span class="sources-toggle-icon">&#9660;</span>
     </button>
     <div class="sources-body" id="sourcesBody">
       <div class="sources-inner">
@@ -1403,7 +1919,7 @@
         </div>
 
         <div class="source-card">
-          <div class="source-card-header"><span class="source-pill">NHMS</span><span class="source-name">National Health & Morbidity Survey 2019 & 2023 — Malaysia</span></div>
+          <div class="source-card-header"><span class="source-pill">NHMS</span><span class="source-name">National Health &amp; Morbidity Survey 2019 &amp; 2023 — Malaysia</span></div>
           <p class="source-desc">Malaysia's national health survey by the Institute for Public Health (IKU/MOH). Used as seed data for population scatter charts.</p>
           <a class="source-link" href="https://iku.nih.gov.my/nhms-2019" target="_blank" rel="noopener">NHMS 2019 →</a>
           <a class="source-link" href="https://iku.nih.gov.my/nhms-2023" target="_blank" rel="noopener" style="margin-left:12px">NHMS 2023 →</a>
@@ -1418,19 +1934,19 @@
 
         <div class="source-card">
           <div class="source-card-header"><span class="source-pill">FRS</span><span class="source-name">Framingham Risk Score (BMI version) — D'Agostino et al. 2008</span></div>
-          <p class="source-desc">The BMI-based Framingham General CVD Risk Score requires no cholesterol values, making it viable as a non-laboratory tool. Validated for use in Malaysian populations (Selvarajah et al. 2014, Int J Cardiol; Chia et al. 2015, BMJ Open). Outputs 10-year absolute CVD event risk percentage. Requires systolic blood pressure to calculate.</p>
+          <p class="source-desc">The BMI-based Framingham General CVD Risk Score requires no cholesterol values. Validated for use in Malaysian populations (Selvarajah et al. 2014; Chia et al. 2015). Outputs 10-year absolute CVD event risk percentage. Requires systolic blood pressure to calculate.</p>
           <a class="source-link" href="https://doi.org/10.1161/CIRCULATIONAHA.107.699579" target="_blank" rel="noopener">D'Agostino et al. 2008 (Circulation) →</a>
         </div>
 
         <div class="source-card">
           <div class="source-card-header"><span class="source-pill">FINDRISC</span><span class="source-name">Finnish Diabetes Risk Score — Asian Calibration</span></div>
-          <p class="source-desc">FINDRISC validated by Lindström & Tuomilehto (2003), used here with Asian waist circumference thresholds consistent with WHO Asia-Pacific and JADE programme recommendations.</p>
-          <a class="source-link" href="https://doi.org/10.2337/diacare.26.3.725" target="_blank" rel="noopener">Lindström & Tuomilehto 2003 →</a>
+          <p class="source-desc">FINDRISC validated by Lindström &amp; Tuomilehto (2003), used here with Asian waist circumference thresholds consistent with WHO Asia-Pacific and JADE programme recommendations.</p>
+          <a class="source-link" href="https://doi.org/10.2337/diacare.26.3.725" target="_blank" rel="noopener">Lindström &amp; Tuomilehto 2003 →</a>
         </div>
 
         <div class="method-section-label" style="margin-top:36px">Scoring — INTERHEART NL-IHRS</div>
         <div class="source-card">
-          <div class="source-card-header"><span class="source-pill" style="background:var(--ink-muted)">Algorithm</span><span class="source-name">INTERHEART Score Components (0–48 points total)</span></div>
+          <div class="source-card-header"><span class="source-pill" style="background:rgba(14,14,14,0.4)">Algorithm</span><span class="source-name">INTERHEART Score Components (0–48 points total)</span></div>
           <table class="scoring-table">
             <thead><tr><th>Factor</th><th>Condition</th><th>Points</th></tr></thead>
             <tbody>
@@ -1461,16 +1977,16 @@
 
         <div class="method-section-label">Scoring — Framingham Risk Score (BMI version)</div>
         <div class="source-card">
-          <div class="source-card-header"><span class="source-pill" style="background:var(--ink-muted)">Algorithm</span><span class="source-name">FRS BMI-based 10-year CVD Risk</span></div>
-          <p class="source-desc" style="margin-bottom:10px">Point totals are summed from sex-specific tables for age, BMI, systolic BP (treated/untreated), smoking, and diabetes status. The sum is converted to a 10-year risk percentage via the D'Agostino 2008 lookup table. Risk tiers: Low &lt;10%, Intermediate 10–19%, High ≥20%.</p>
+          <div class="source-card-header"><span class="source-pill" style="background:rgba(14,14,14,0.4)">Algorithm</span><span class="source-name">FRS BMI-based 10-year CVD Risk</span></div>
+          <p class="source-desc">Point totals are summed from sex-specific tables for age, BMI, systolic BP (treated/untreated), smoking, and diabetes status. The sum is converted to a 10-year risk percentage via the D'Agostino 2008 lookup table. Risk tiers: Low &lt;10%, Intermediate 10–19%, High ≥20%.</p>
         </div>
 
-        <div class="source-card" style="border-color:var(--amber);background:var(--amber-light)">
-          <div class="source-card-header"><span class="source-pill" style="background:var(--amber);color:#fff">Limitations</span><span class="source-name" style="color:var(--amber)">Important Caveats</span></div>
-          <ul style="font-size:13px;color:var(--ink-muted);line-height:1.75;padding-left:18px;margin-top:8px">
+        <div class="source-card" style="border-color:var(--risk-mod);background:var(--risk-mod-bg)">
+          <div class="source-card-header"><span class="source-pill" style="background:var(--risk-mod);color:#fff">Limitations</span><span class="source-name" style="color:var(--risk-mod)">Important Caveats</span></div>
+          <ul style="font-size:13px;color:rgba(14,14,14,0.6);line-height:1.75;padding-left:18px;margin-top:8px">
             <li>All tools are screening aids, not diagnostic instruments.</li>
             <li>INTERHEART was originally derived from a MI case-control study. The NL-IHRS version has been validated in Southeast Asia but regional recalibration improves accuracy further.</li>
-            <li>FRS was developed in a predominantly White American cohort. It has been validated in Malaysia but tends to overestimate risk in some Asian subgroups.</li>
+            <li>FRS was developed in a predominantly White American cohort. Validated in Malaysia but may overestimate risk in some Asian subgroups.</li>
             <li>FINDRISC was developed for Finnish populations; Asian waist thresholds are applied here.</li>
             <li>Population scatter uses simulated data seeded from NHMS means — not real survey respondents.</li>
           </ul>
@@ -1486,7 +2002,7 @@
       <span class="about-compact-name">Auf Ali</span>
       <a class="about-compact-handle" href="https://www.threads.net/@theaufthority" target="_blank" rel="noopener">@theaufthority</a>
       <span class="about-compact-sep">·</span>
-      <span class="about-compact-desc">I create evidence-based health tools for Malaysians</span>
+      <span>I create evidence-based health tools for Malaysians</span>
     </div>
   </div>
 
@@ -1528,7 +2044,11 @@
 </div><!-- /container -->
 
 <script>
-/* ── Language strings ── */
+/* ══════════════════════════════════════
+   ALL LOGIC PRESERVED FROM ORIGINAL
+   (unchanged from v1 — only CSS classes updated)
+══════════════════════════════════════ */
+
 const LANG = {
   en: {
     metricNames: { bmi:'BMI', wc:'Belly size', whtr:'Belly vs your height', absi:'Body shape risk', con:'Abdominal fat pattern', bai:'Estimated body fat' },
@@ -1552,7 +2072,7 @@ const LANG = {
     cardioActionCards: {
       low: { icon:'💚', title:'Low cardiovascular risk', driver:'INTERHEART score is in the low range.',
         body:'Your cardiovascular risk profile looks reassuring. Keep up your current habits and monitor regularly.',
-        steps:['Maintain your current physical activity level','Continue eating vegetables and fruit daily','Avoid taking up smoking','Schedule a heart check-up every 2–3 years'] ,
+        steps:['Maintain your current physical activity level','Continue eating vegetables and fruit daily','Avoid taking up smoking','Schedule a heart check-up every 2–3 years'],
         links:[{label:'Malaysian Heart Association',url:'https://www.malaysianheart.org',sec:false}] },
       mod: { icon:'🫀', title:'Moderate cardiovascular risk', driver:'INTERHEART score is in the moderate range.',
         body:'Some lifestyle factors are elevating your cardiovascular risk. Targeted changes now can significantly reduce your long-term risk.',
@@ -1614,261 +2134,126 @@ const LANG = {
 
 function getLang() { return document.documentElement.getAttribute('data-lang')==='bm' ? LANG.bm : LANG.en; }
 
-/* ── App state ── */
 let sex='male', act='active', diet='yes', smk='never', bp='no', glc='no', fam='none', gdm='no', fhx='no', junk='no', stress='rarely';
 let S={}, chart=null, showPop=false, msScatterChart=null;
 let msSFilter={sex:'male',age:'all'}, msUserPt={bmi:22,wc:80};
-
-/* ── Step navigation ── */
 let currentStep = 1;
 
 function goStep(n) {
-  if (n > currentStep) {
-    if (!validateStep(currentStep)) return;
-  }
+  if (n > currentStep) { if (!validateStep(currentStep)) return; }
   document.getElementById('step-'+currentStep).classList.remove('active');
   document.getElementById('dot-'+currentStep).classList.remove('active');
   document.getElementById('dot-'+currentStep).classList.add('done');
   currentStep = n;
   document.getElementById('step-'+n).classList.add('active');
   document.querySelectorAll('.step-dot').forEach((d,i)=>{
-    const sn = i+1;
-    d.classList.remove('active','done');
-    if (sn===n) d.classList.add('active');
-    else if (sn<n) d.classList.add('done');
+    const sn=i+1; d.classList.remove('active','done');
+    if(sn===n) d.classList.add('active'); else if(sn<n) d.classList.add('done');
   });
   document.querySelector('.form-card').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 function validateStep(n) {
-  if (n===1) {
-    const age = parseInt(document.getElementById('inAge').value);
-    if (!age || age<10 || age>110) { alert('Please enter a valid age.'); return false; }
-  }
-  if (n===2) {
-    const w=parseFloat(document.getElementById('inWeight').value);
-    const h=parseFloat(document.getElementById('inHeight').value);
-    const wc=parseFloat(document.getElementById('inWaist').value);
-    if (!w||!h||!wc) { alert('Please enter weight, height, and waist circumference.'); return false; }
-  }
+  if(n===1){const age=parseInt(document.getElementById('inAge').value);if(!age||age<10||age>110){alert('Please enter a valid age.');return false;}}
+  if(n===2){const w=parseFloat(document.getElementById('inWeight').value),h=parseFloat(document.getElementById('inHeight').value),wc=parseFloat(document.getElementById('inWaist').value);if(!w||!h||!wc){alert('Please enter weight, height, and waist circumference.');return false;}}
   return true;
 }
 
-/* ── Tab switcher ── */
 function switchTab(tab) {
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   document.getElementById('tab-'+tab).classList.add('active');
   document.getElementById('panel-'+tab).classList.add('active');
-  if (tab==='metabolik' && !chart) { setTimeout(()=>{ renderChart(); msDrawScatter(); },80); }
+  if(tab==='metabolik'&&!chart){setTimeout(()=>{renderChart();msDrawScatter();},80);}
 }
 
-/* ── Toggle helpers ── */
-function setSex(s) {
-  sex=s;
-  document.querySelectorAll('[data-sex]').forEach(b=>b.classList.remove('active'));
-  document.querySelector(`[data-sex="${s}"]`).classList.add('active');
-  document.getElementById('gdmRow').style.display=s==='female'?'':'none';
-}
-function setAct(v)    { act=v;    document.querySelectorAll('[data-act]').forEach(b=>b.classList.remove('active'));    document.querySelector(`[data-act="${v}"]`).classList.add('active'); }
-function setDiet(v)   { diet=v;   document.querySelectorAll('[data-diet]').forEach(b=>b.classList.remove('active'));   document.querySelector(`[data-diet="${v}"]`).classList.add('active'); }
-function setJunk(v)   { junk=v;   document.querySelectorAll('[data-junk]').forEach(b=>b.classList.remove('active'));   document.querySelector(`[data-junk="${v}"]`).classList.add('active'); }
-function setStress(v) { stress=v; document.querySelectorAll('[data-stress]').forEach(b=>b.classList.remove('active')); document.querySelector(`[data-stress="${v}"]`).classList.add('active'); }
-function setSmk(v)    { smk=v;    document.querySelectorAll('[data-smk]').forEach(b=>b.classList.remove('active'));    document.querySelector(`[data-smk="${v}"]`).classList.add('active'); }
-function setBp(v)     { bp=v;     document.querySelectorAll('[data-bp]').forEach(b=>b.classList.remove('active'));     document.querySelector(`[data-bp="${v}"]`).classList.add('active'); }
-function setGlc(v)    { glc=v;    document.querySelectorAll('[data-glc]').forEach(b=>b.classList.remove('active'));    document.querySelector(`[data-glc="${v}"]`).classList.add('active'); }
-function setFam(v)    { fam=v;    document.querySelectorAll('[data-fam]').forEach(b=>b.classList.remove('active'));    document.querySelector(`[data-fam="${v}"]`).classList.add('active'); }
-function setFhx(v)    { fhx=v;    document.querySelectorAll('[data-fhx]').forEach(b=>b.classList.remove('active'));    document.querySelector(`[data-fhx="${v}"]`).classList.add('active'); }
-function setGdm(v)    { gdm=v;    document.querySelectorAll('[data-gdm]').forEach(b=>b.classList.remove('active'));    document.querySelector(`[data-gdm="${v}"]`).classList.add('active'); }
+function setSex(s){sex=s;document.querySelectorAll('[data-sex]').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-sex="${s}"]`).classList.add('active');document.getElementById('gdmRow').style.display=s==='female'?'':'none';}
+function setAct(v){act=v;document.querySelectorAll('[data-act]').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-act="${v}"]`).classList.add('active');}
+function setDiet(v){diet=v;document.querySelectorAll('[data-diet]').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-diet="${v}"]`).classList.add('active');}
+function setJunk(v){junk=v;document.querySelectorAll('[data-junk]').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-junk="${v}"]`).classList.add('active');}
+function setStress(v){stress=v;document.querySelectorAll('[data-stress]').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-stress="${v}"]`).classList.add('active');}
+function setSmk(v){smk=v;document.querySelectorAll('[data-smk]').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-smk="${v}"]`).classList.add('active');}
+function setBp(v){bp=v;document.querySelectorAll('[data-bp]').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-bp="${v}"]`).classList.add('active');}
+function setGlc(v){glc=v;document.querySelectorAll('[data-glc]').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-glc="${v}"]`).classList.add('active');}
+function setFam(v){fam=v;document.querySelectorAll('[data-fam]').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-fam="${v}"]`).classList.add('active');}
+function setFhx(v){fhx=v;document.querySelectorAll('[data-fhx]').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-fhx="${v}"]`).classList.add('active');}
+function setGdm(v){gdm=v;document.querySelectorAll('[data-gdm]').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-gdm="${v}"]`).classList.add('active');}
 
-/* ── Core metric calculations ── */
-function calcBMI(w,h)  { return w/((h/100)**2); }
-function whtR(waist,h) { const r=(waist/h).toFixed(2); return {val:r, risk:r>=0.6?'high':r>=0.5?'mod':'low', cat:r>=0.6?'High risk':r>=0.5?'Elevated':'Healthy'}; }
-function bmiThresholds(age) {
-  if (age>=70) return {low:18.5,healthy:[22.0,26.9],overweight:27.0,label:'70+'};
-  if (age>=60) return {low:18.5,healthy:[20.0,24.9],overweight:25.0,label:'60–69'};
-  return             {low:18.5,healthy:[18.5,22.9],overweight:23.0,label:'18–59'};
-}
-function bmiCat(b,age) {
-  const t=bmiThresholds(age||35);
-  if (b<t.low) return {cat:'Underweight',risk:'mod'};
-  if (b<=t.healthy[1]) return {cat:'Healthy',risk:'low'};
-  if (b<t.overweight+4.5) return {cat:'Overweight',risk:'mod'};
-  return {cat:'Obese',risk:'high'};
-}
-function waistCat(w,s) {
-  const t1=s==='male'?90:80, t2=s==='male'?100:90;
-  if (w<t1) return {cat:'Normal',risk:'low'};
-  if (w<t2) return {cat:'Elevated',risk:'mod'};
-  return {cat:'High risk',risk:'high'};
-}
+function calcBMI(w,h){return w/((h/100)**2);}
+function whtR(waist,h){const r=(waist/h).toFixed(2);return{val:r,risk:r>=0.6?'high':r>=0.5?'mod':'low',cat:r>=0.6?'High risk':r>=0.5?'Elevated':'Healthy'};}
+function bmiThresholds(age){if(age>=70)return{low:18.5,healthy:[22.0,26.9],overweight:27.0,label:'70+'};if(age>=60)return{low:18.5,healthy:[20.0,24.9],overweight:25.0,label:'60–69'};return{low:18.5,healthy:[18.5,22.9],overweight:23.0,label:'18–59'};}
+function bmiCat(b,age){const t=bmiThresholds(age||35);if(b<t.low)return{cat:'Underweight',risk:'mod'};if(b<=t.healthy[1])return{cat:'Healthy',risk:'low'};if(b<t.overweight+4.5)return{cat:'Overweight',risk:'mod'};return{cat:'Obese',risk:'high'};}
+function waistCat(w,s){const t1=s==='male'?90:80,t2=s==='male'?100:90;if(w<t1)return{cat:'Normal',risk:'low'};if(w<t2)return{cat:'Elevated',risk:'mod'};return{cat:'High risk',risk:'high'};}
 
-/* ── NHMS reference data ── */
 const MS_BMI={male:{18:23.8,30:25.6,40:26.1,50:25.8,60:24.9},female:{18:23.2,30:25.8,40:27.4,50:28.1,60:26.8}};
-const MS_WC ={male:{18:82.0,30:88.5,40:91.2,50:90.8,60:89.4},female:{18:77.5,30:81.2,40:85.6,50:87.3,60:85.9}};
+const MS_WC={male:{18:82.0,30:88.5,40:91.2,50:90.8,60:89.4},female:{18:77.5,30:81.2,40:85.6,50:87.3,60:85.9}};
 const MS_AGE_BANDS=[18,30,40,50,60];
 
-/* ── Metabolic indices ── */
 const msWHtR=(wc,h)=>wc/h;
 const msABSI=(wc,B,h)=>(wc/100)/(Math.pow(B,2/3)*Math.pow(h/100,0.5));
 const msConi=(wc,w,h)=>0.109*((wc/100)/Math.sqrt(w/(h/100)));
-const msBAI =(hip,h)=>(hip/Math.pow(h/100,1.5))-18;
+const msBAI=(hip,h)=>(hip/Math.pow(h/100,1.5))-18;
 
-/* ── FINDRISC (Asian calibrated) ── */
-function msFINDRISC(p) {
-  const {age,B,wc,msex,pAct,pDiet,pBp,pGlc,pFam,pGdm}=p;
-  let s=0;
-  if (age>=65) s+=4; else if (age>=55) s+=3; else if (age>=45) s+=2;
-  if (B>=27.5) s+=3; else if (B>=23) s+=1;
-  if (msex==='male') { if (wc>99) s+=4; else if (wc>=90) s+=3; }
-  else               { if (wc>87) s+=4; else if (wc>=80) s+=3; }
-  if (pAct==='sedentary') s+=2;
-  if (pDiet==='no') s+=1;
-  if (pBp==='yes')  s+=2;
-  if (pGlc==='yes') s+=5;
-  if (pFam==='1st') s+=5; else if (pFam==='2nd') s+=3;
-  if (msex==='female'&&pGdm==='yes') s+=5;
+function msFINDRISC(p){
+  const{age,B,wc,msex,pAct,pDiet,pBp,pGlc,pFam,pGdm}=p;let s=0;
+  if(age>=65)s+=4;else if(age>=55)s+=3;else if(age>=45)s+=2;
+  if(B>=27.5)s+=3;else if(B>=23)s+=1;
+  if(msex==='male'){if(wc>99)s+=4;else if(wc>=90)s+=3;}else{if(wc>87)s+=4;else if(wc>=80)s+=3;}
+  if(pAct==='sedentary')s+=2;if(pDiet==='no')s+=1;if(pBp==='yes')s+=2;if(pGlc==='yes')s+=5;
+  if(pFam==='1st')s+=5;else if(pFam==='2nd')s+=3;
+  if(msex==='female'&&pGdm==='yes')s+=5;
   return s;
 }
-function msFrTier(s) {
-  if (s<=7)  return {label:'Low',              prob:'~1%', col:'low'};
-  if (s<=11) return {label:'Slightly elevated', prob:'~4%', col:'mod'};
-  if (s<=14) return {label:'Moderate',          prob:'~17%',col:'mod'};
-  if (s<=20) return {label:'High',              prob:'~33%',col:'high'};
-  return           {label:'Very high',          prob:'~50%',col:'high'};
+function msFrTier(s){
+  if(s<=7)return{label:'Low',prob:'~1%',col:'low'};
+  if(s<=11)return{label:'Slightly elevated',prob:'~4%',col:'mod'};
+  if(s<=14)return{label:'Moderate',prob:'~17%',col:'mod'};
+  if(s<=20)return{label:'High',prob:'~33%',col:'high'};
+  return{label:'Very high',prob:'~50%',col:'high'};
 }
 
-/* ── INTERHEART NL-IHRS (0–48) ── */
-function calcINTERHEART({age,msex,smk,bp,glc,fhx,whr,stress,junk,diet,act}) {
-  let score=0; const factors=[];
-  // Age & sex
-  if ((msex==='male'&&age>=55)||(msex==='female'&&age>=65)) {
-    score+=2; factors.push({name:msex==='male'?'Age ≥55 (male)':'Age ≥65 (female)',pts:2});
-  }
-  // Smoking
-  if (smk==='current') { score+=2; factors.push({name:'Current smoker',pts:2}); }
-  else if (smk==='ex') { score+=1; factors.push({name:'Ex-smoker',pts:1}); }
-  // Hypertension
-  if (bp==='yes') { score+=2; factors.push({name:'High blood pressure',pts:2}); }
-  // Diabetes
-  if (glc==='yes') { score+=2; factors.push({name:'Diabetes / high glucose',pts:2}); }
-  // Family history heart attack
-  if (fhx==='yes') { score+=2; factors.push({name:'Family history of heart attack <60',pts:2}); }
-  // WHR
+function calcINTERHEART({age,msex,smk,bp,glc,fhx,whr,stress,junk,diet,act}){
+  let score=0;const factors=[];
+  if((msex==='male'&&age>=55)||(msex==='female'&&age>=65)){score+=2;factors.push({name:msex==='male'?'Age ≥55 (male)':'Age ≥65 (female)',pts:2});}
+  if(smk==='current'){score+=2;factors.push({name:'Current smoker',pts:2});}else if(smk==='ex'){score+=1;factors.push({name:'Ex-smoker',pts:1});}
+  if(bp==='yes'){score+=2;factors.push({name:'High blood pressure',pts:2});}
+  if(glc==='yes'){score+=2;factors.push({name:'Diabetes / high glucose',pts:2});}
+  if(fhx==='yes'){score+=2;factors.push({name:'Family history of heart attack <60',pts:2});}
   const whrThresh=msex==='male'?0.90:0.85;
-  if (whr>=whrThresh) { score+=4; factors.push({name:`Waist-hip ratio ≥${whrThresh}`,pts:4}); }
-  // Psychosocial stress
-  if (stress==='often') { score+=4; factors.push({name:'Frequent stress / low mood',pts:4}); }
-  else if (stress==='sometimes') { score+=2; factors.push({name:'Occasional stress / low mood',pts:2}); }
-  // Diet unhealthy
-  if (junk==='yes') { score+=2; factors.push({name:'Daily fried / fatty / salty food',pts:2}); }
-  // Diet protective
-  if (diet==='no') { score+=2; factors.push({name:'No daily veg or fruit',pts:2}); }
-  // Physical activity
-  if (act==='sedentary') { score+=2; factors.push({name:'Low physical activity',pts:2}); }
-  else if (act==='moderate') { score+=1; factors.push({name:'Moderate physical activity',pts:1}); }
-
-  const tier = score>=16?'high':score>=10?'mod':'low';
-  return {score, tier, factors};
+  if(whr>=whrThresh){score+=4;factors.push({name:`Waist-hip ratio ≥${whrThresh}`,pts:4});}
+  if(stress==='often'){score+=4;factors.push({name:'Frequent stress / low mood',pts:4});}else if(stress==='sometimes'){score+=2;factors.push({name:'Occasional stress / low mood',pts:2});}
+  if(junk==='yes'){score+=2;factors.push({name:'Daily fried / fatty / salty food',pts:2});}
+  if(diet==='no'){score+=2;factors.push({name:'No daily veg or fruit',pts:2});}
+  if(act==='sedentary'){score+=2;factors.push({name:'Low physical activity',pts:2});}else if(act==='moderate'){score+=1;factors.push({name:'Moderate physical activity',pts:1});}
+  const tier=score>=16?'high':score>=10?'mod':'low';
+  return{score,tier,factors};
 }
 
-/* ── Framingham Risk Score BMI version (D'Agostino 2008) ── */
-function calcFRS({age, msex, bmi, sbp, smk, glc, bpMed}) {
-  // Point tables from D'Agostino et al. 2008 Circulation
-  // Returns 10-year CVD risk %
-  if (!sbp) return null;
-
-  let pts = 0;
-
-  if (msex==='male') {
-    // Age
-    if      (age<35)  pts+=-9;
-    else if (age<40)  pts+=-4;
-    else if (age<45)  pts+=0;
-    else if (age<50)  pts+=3;
-    else if (age<55)  pts+=6;
-    else if (age<60)  pts+=8;
-    else if (age<65)  pts+=10;
-    else if (age<70)  pts+=11;
-    else if (age<75)  pts+=12;
-    else              pts+=13;
-    // BMI
-    if      (bmi<25)  pts+=-1;
-    else if (bmi<30)  pts+=0;
-    else              pts+=1;
-    // SBP untreated
-    if (!bpMed) {
-      if      (sbp<120) pts+=-2;
-      else if (sbp<130) pts+=0;
-      else if (sbp<140) pts+=1;
-      else if (sbp<150) pts+=2;
-      else if (sbp<160) pts+=2;
-      else              pts+=3;
-    } else {
-      if      (sbp<120) pts+=0;
-      else if (sbp<130) pts+=2;
-      else if (sbp<140) pts+=3;
-      else if (sbp<150) pts+=4;
-      else if (sbp<160) pts+=4;
-      else              pts+=5;
-    }
-    // Smoking
-    if (smk==='current') pts+=4;
-    // Diabetes
-    if (glc==='yes') pts+=3;
-    // Risk lookup
+function calcFRS({age,msex,bmi,sbp,smk,glc,bpMed}){
+  if(!sbp)return null;let pts=0;
+  if(msex==='male'){
+    if(age<35)pts+=-9;else if(age<40)pts+=-4;else if(age<45)pts+=0;else if(age<50)pts+=3;else if(age<55)pts+=6;else if(age<60)pts+=8;else if(age<65)pts+=10;else if(age<70)pts+=11;else if(age<75)pts+=12;else pts+=13;
+    if(bmi<25)pts+=-1;else if(bmi<30)pts+=0;else pts+=1;
+    if(!bpMed){if(sbp<120)pts+=-2;else if(sbp<130)pts+=0;else if(sbp<140)pts+=1;else if(sbp<150)pts+=2;else if(sbp<160)pts+=2;else pts+=3;}
+    else{if(sbp<120)pts+=0;else if(sbp<130)pts+=2;else if(sbp<140)pts+=3;else if(sbp<150)pts+=4;else if(sbp<160)pts+=4;else pts+=5;}
+    if(smk==='current')pts+=4;if(glc==='yes')pts+=3;
     const mRisk=[[-3,1],[-2,1.1],[-1,1.4],[0,1.6],[1,1.9],[2,2.3],[3,2.8],[4,3.3],[5,3.9],[6,4.7],[7,5.6],[8,6.7],[9,7.9],[10,9.4],[11,11.2],[12,13.2],[13,15.6],[14,18.4],[15,21.6],[16,25.3],[17,29.4]];
-    let risk=30;
-    for (const [p,r] of mRisk) { if (pts<=p) { risk=r; break; } }
-    return risk;
-  } else {
-    // Female tables
-    if      (age<35)  pts+=-7;
-    else if (age<40)  pts+=-3;
-    else if (age<45)  pts+=0;
-    else if (age<50)  pts+=3;
-    else if (age<55)  pts+=6;
-    else if (age<60)  pts+=8;
-    else if (age<65)  pts+=10;
-    else if (age<70)  pts+=12;
-    else if (age<75)  pts+=14;
-    else              pts+=16;
-    // BMI
-    if      (bmi<25)  pts+=-2;
-    else if (bmi<30)  pts+=0;
-    else              pts+=2;
-    // SBP
-    if (!bpMed) {
-      if      (sbp<120) pts+=-3;
-      else if (sbp<130) pts+=0;
-      else if (sbp<140) pts+=1;
-      else if (sbp<150) pts+=2;
-      else if (sbp<160) pts+=4;
-      else              pts+=5;
-    } else {
-      if      (sbp<120) pts+=-1;
-      else if (sbp<130) pts+=2;
-      else if (sbp<140) pts+=3;
-      else if (sbp<150) pts+=5;
-      else if (sbp<160) pts+=6;
-      else              pts+=7;
-    }
-    if (smk==='current') pts+=3;
-    if (glc==='yes') pts+=4;
+    let risk=30;for(const[p,r]of mRisk){if(pts<=p){risk=r;break;}}return risk;
+  }else{
+    if(age<35)pts+=-7;else if(age<40)pts+=-3;else if(age<45)pts+=0;else if(age<50)pts+=3;else if(age<55)pts+=6;else if(age<60)pts+=8;else if(age<65)pts+=10;else if(age<70)pts+=12;else if(age<75)pts+=14;else pts+=16;
+    if(bmi<25)pts+=-2;else if(bmi<30)pts+=0;else pts+=2;
+    if(!bpMed){if(sbp<120)pts+=-3;else if(sbp<130)pts+=0;else if(sbp<140)pts+=1;else if(sbp<150)pts+=2;else if(sbp<160)pts+=4;else pts+=5;}
+    else{if(sbp<120)pts+=-1;else if(sbp<130)pts+=2;else if(sbp<140)pts+=3;else if(sbp<150)pts+=5;else if(sbp<160)pts+=6;else pts+=7;}
+    if(smk==='current')pts+=3;if(glc==='yes')pts+=4;
     const fRisk=[[-2,1],[-1,1.0],[0,1.2],[1,1.5],[2,1.7],[3,2.0],[4,2.4],[5,2.8],[6,3.3],[7,3.9],[8,4.5],[9,5.3],[10,6.3],[11,7.3],[12,8.6],[13,10.0],[14,11.7],[15,13.7],[16,15.9],[17,18.5],[18,21.5],[19,24.8],[20,28.5]];
-    let risk=30;
-    for (const [p,r] of fRisk) { if (pts<=p) { risk=r; break; } }
-    return risk;
+    let risk=30;for(const[p,r]of fRisk){if(pts<=p){risk=r;break;}}return risk;
   }
 }
 
-/* ── Composite metabolic score ── */
 const msNorm=(v,mn,mx)=>Math.max(0,Math.min(1,(v-mn)/(mx-mn)));
-const msToS =(v,mn,mx)=>Math.round(msNorm(v,mn,mx)*100);
-function msComposite(sc) {
-  return Math.round(sc.wc*0.25+sc.fr*0.25+sc.bmi*0.20+sc.whtr*0.15+sc.absi*0.10+sc.con*0.05);
-}
-const msRCol   =r=>r==='high'?'#C8240A':r==='mod'?'#B87000':'#2A6B45';
+const msToS=(v,mn,mx)=>Math.round(msNorm(v,mn,mx)*100);
+function msComposite(sc){return Math.round(sc.wc*0.25+sc.fr*0.25+sc.bmi*0.20+sc.whtr*0.15+sc.absi*0.10+sc.con*0.05);}
+const msRCol=r=>r==='high'?'#ff003d':r==='mod'?'#ff8c00':'#16a34a';
 const msPillCls=r=>r==='high'?'ms-pr':r==='mod'?'ms-pa':'ms-pg';
 
 const MS_METRICS=[
@@ -1892,37 +2277,28 @@ const MS_METRICS=[
     plainFn:(v,sx)=>{const t=sx==='male'?1.25:1.18;return v>=t?`An index of ${v.toFixed(2)} indicates apple-shaped fat distribution.`:`An index of ${v.toFixed(2)} indicates a healthier fat distribution.`;}}
 ];
 
-/* ── Population scatter ── */
 let msPopCache={};
-function msGetPop(pSex,pAge) {
-  const key=pSex+pAge;
-  if (msPopCache[key]) return msPopCache[key];
-  const gauss=(mu,sd)=>{let v=0;for(let i=0;i<6;i++) v+=Math.random();return mu+sd*(v-3)*0.9;};
-  const bands=pAge==='all'?MS_AGE_BANDS:[parseInt(pAge)];
-  const n=pAge==='all'?300:220;
-  const pts=[];
-  for(let i=0;i<n;i++){
-    const ab=bands[Math.floor(Math.random()*bands.length)];
-    pts.push({b:Math.max(15,Math.min(44,gauss(MS_BMI[pSex][ab],3.8))),w:Math.max(56,Math.min(128,gauss(MS_WC[pSex][ab],9.5)))});
-  }
-  msPopCache[key]=pts; return pts;
+function msGetPop(pSex,pAge){
+  const key=pSex+pAge;if(msPopCache[key])return msPopCache[key];
+  const gauss=(mu,sd)=>{let v=0;for(let i=0;i<6;i++)v+=Math.random();return mu+sd*(v-3)*0.9;};
+  const bands=pAge==='all'?MS_AGE_BANDS:[parseInt(pAge)];const n=pAge==='all'?300:220;const pts=[];
+  for(let i=0;i<n;i++){const ab=bands[Math.floor(Math.random()*bands.length)];pts.push({b:Math.max(15,Math.min(44,gauss(MS_BMI[pSex][ab],3.8))),w:Math.max(56,Math.min(128,gauss(MS_WC[pSex][ab],9.5)))});}
+  msPopCache[key]=pts;return pts;
 }
-function msPtColor(b,w,pSex){const bR=b>=27.5,wR=pSex==='male'?w>=90:w>=80;if(bR&&wR)return'rgba(200,36,10,0.45)';if(bR||wR)return'rgba(184,112,0,0.45)';return'rgba(42,107,69,0.45)';}
+function msPtColor(b,w,pSex){const bR=b>=27.5,wR=pSex==='male'?w>=90:w>=80;if(bR&&wR)return'rgba(255,0,61,0.45)';if(bR||wR)return'rgba(255,140,0,0.45)';return'rgba(22,163,74,0.45)';}
 function msSetSex(s){msSFilter.sex=s;document.getElementById('ms-sf-male').classList.toggle('on',s==='male');document.getElementById('ms-sf-female').classList.toggle('on',s==='female');msDrawScatter();}
 function msSetAge(a){msSFilter.age=a;['all','18','30','40','50','60'].forEach(v=>document.getElementById('ms-sa-'+v).classList.toggle('on',v===a));msDrawScatter();}
 
-function msDrawScatter() {
+function msDrawScatter(){
   const pts=msGetPop(msSFilter.sex,msSFilter.age);
   const wcT=msSFilter.sex==='male'?90:80;
   const zones={id:'ms-zones',beforeDraw(chart){
-    const{ctx:c,chartArea:{left,right,top,bottom},scales:{x,y}}=chart;
-    if(!x||!y)return;
-    const wcL=x.getPixelForValue(wcT),bL=y.getPixelForValue(23);
-    c.save();
-    c.fillStyle='rgba(42,107,69,0.06)';c.fillRect(left,bL,wcL-left,bottom-bL);
-    c.fillStyle='rgba(184,112,0,0.06)';c.fillRect(wcL,bL,right-wcL,bottom-bL);c.fillRect(left,top,wcL-left,bL-top);
-    c.fillStyle='rgba(200,36,10,0.06)';c.fillRect(wcL,top,right-wcL,bL-top);
-    c.strokeStyle='rgba(26,18,8,0.1)';c.lineWidth=1;c.setLineDash([4,3]);
+    const{ctx:c,chartArea:{left,right,top,bottom},scales:{x,y}}=chart;if(!x||!y)return;
+    const wcL=x.getPixelForValue(wcT),bL=y.getPixelForValue(23);c.save();
+    c.fillStyle='rgba(22,163,74,0.06)';c.fillRect(left,bL,wcL-left,bottom-bL);
+    c.fillStyle='rgba(255,140,0,0.06)';c.fillRect(wcL,bL,right-wcL,bottom-bL);c.fillRect(left,top,wcL-left,bL-top);
+    c.fillStyle='rgba(255,0,61,0.06)';c.fillRect(wcL,top,right-wcL,bL-top);
+    c.strokeStyle='rgba(14,14,14,0.1)';c.lineWidth=1;c.setLineDash([4,3]);
     c.beginPath();c.moveTo(wcL,top);c.lineTo(wcL,bottom);c.stroke();
     c.beginPath();c.moveTo(left,bL);c.lineTo(right,bL);c.stroke();
     c.setLineDash([]);c.restore();
@@ -1934,7 +2310,6 @@ function msDrawScatter() {
   const badge=document.getElementById('ms-percentile');
   if(badge){
     badge.style.display='block';
-    const L=getLang();
     if(pctile>=60){badge.className='ms-percentile-badge good';badge.textContent=`You are healthier than ${pctile}% of Malaysians in this sample. Keep it up.`;}
     else if(pctile>=35){badge.className='ms-percentile-badge amber';badge.textContent='Your measurements are around the middle of the Malaysian population.';}
     else{badge.className='ms-percentile-badge bad';badge.textContent='Your measurements put you in the higher-risk group compared to this sample.';}
@@ -1946,44 +2321,38 @@ function msDrawScatter() {
     type:'scatter',
     data:{datasets:[
       {label:'Population',data:pts.map(p=>({x:p.w,y:p.b})),backgroundColor:pts.map(p=>msPtColor(p.b,p.w,msSFilter.sex)),pointRadius:isMobile?3:4,pointHoverRadius:isMobile?5:6},
-      {label:'You',data:[{x:msUserPt.wc,y:msUserPt.bmi}],backgroundColor:'#C8440A',borderColor:'white',borderWidth:2.5,pointRadius:isMobile?8:10,pointHoverRadius:12}
+      {label:'You',data:[{x:msUserPt.wc,y:msUserPt.bmi}],backgroundColor:'#ff3d00',borderColor:'white',borderWidth:2.5,pointRadius:isMobile?8:10,pointHoverRadius:12}
     ]},
     options:{responsive:true,maintainAspectRatio:false,
-      scales:{x:{title:{display:true,text:'Waist (cm)',color:'#6B5E47',font:{size:11}},min:55,max:130,grid:{color:'rgba(26,18,8,0.06)'},ticks:{color:'#6B5E47',font:{size:10}}},
-              y:{title:{display:true,text:'BMI',color:'#6B5E47',font:{size:11}},min:15,max:43,grid:{color:'rgba(26,18,8,0.06)'},ticks:{color:'#6B5E47',font:{size:10}}}},
+      scales:{x:{title:{display:true,text:'Waist (cm)',color:'rgba(14,14,14,0.4)',font:{size:11}},min:55,max:130,grid:{color:'rgba(14,14,14,0.06)'},ticks:{color:'rgba(14,14,14,0.4)',font:{size:10}}},
+              y:{title:{display:true,text:'BMI',color:'rgba(14,14,14,0.4)',font:{size:11}},min:15,max:43,grid:{color:'rgba(14,14,14,0.06)'},ticks:{color:'rgba(14,14,14,0.4)',font:{size:10}}}},
       plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{const{x,y}=c.raw;return c.datasetIndex===1?`You — BMI ${y.toFixed(1)}, Waist ${Math.round(x)} cm`:`BMI ${y.toFixed(1)}, Waist ${Math.round(x)} cm`;}}}}
     },plugins:[zones]
   });
 }
 
-/* ── Dial ── */
 function msDrawDial(score,riskCol){
-  const c=document.getElementById('ms-dc');
-  const dpr=window.devicePixelRatio||1;
-  c.width=260*dpr;c.height=130*dpr;
-  const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
-  const W=260,H=130,cx=W/2,cy=H-8,r=108;
-  ctx.clearRect(0,0,W,H);
+  const c=document.getElementById('ms-dc');const dpr=window.devicePixelRatio||1;
+  c.width=260*dpr;c.height=130*dpr;const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
+  const W=260,H=130,cx=W/2,cy=H-8,r=108;ctx.clearRect(0,0,W,H);
   const toRad=p=>Math.PI+(p/100)*Math.PI;
-  [{f:0,t:40,col:'#2A6B45'},{f:40,t:70,col:'#B87000'},{f:70,t:100,col:'#C8240A'}].forEach(s=>{
-    ctx.beginPath();ctx.arc(cx,cy,r,toRad(s.f),toRad(s.t));ctx.lineWidth=14;ctx.strokeStyle=s.col;ctx.globalAlpha=0.7;ctx.lineCap='butt';ctx.stroke();ctx.globalAlpha=1;
+  [{f:0,t:40,col:'#16a34a'},{f:40,t:70,col:'#ff8c00'},{f:70,t:100,col:'#ff003d'}].forEach(s=>{
+    ctx.beginPath();ctx.arc(cx,cy,r,toRad(s.f),toRad(s.t));ctx.lineWidth=14;ctx.strokeStyle=s.col;ctx.globalAlpha=0.75;ctx.lineCap='butt';ctx.stroke();ctx.globalAlpha=1;
   });
   [40,70].forEach(p=>{
-    const a=toRad(p);ctx.beginPath();ctx.moveTo(cx+(r-10)*Math.cos(a),cy+(r-10)*Math.sin(a));ctx.lineTo(cx+(r+1)*Math.cos(a),cy+(r+1)*Math.sin(a));ctx.lineWidth=2;ctx.strokeStyle='rgba(253,250,244,0.9)';ctx.stroke();
+    const a=toRad(p);ctx.beginPath();ctx.moveTo(cx+(r-10)*Math.cos(a),cy+(r-10)*Math.sin(a));ctx.lineTo(cx+(r+1)*Math.cos(a),cy+(r+1)*Math.sin(a));ctx.lineWidth=2;ctx.strokeStyle='rgba(255,255,255,0.9)';ctx.stroke();
   });
-  ctx.font="500 9px 'DM Sans',sans-serif";ctx.globalAlpha=0.7;
-  const lr=r-22;
-  [{f:0,t:40,txt:'Low',col:'#2A6B45'},{f:40,t:70,txt:'Moderate',col:'#B87000'},{f:70,t:100,txt:'High',col:'#C8240A'}].forEach(s=>{
+  ctx.font="600 9px 'Inter',sans-serif";ctx.globalAlpha=0.7;const lr=r-22;
+  [{f:0,t:40,txt:'Low',col:'#16a34a'},{f:40,t:70,txt:'Moderate',col:'#ff8c00'},{f:70,t:100,txt:'High',col:'#ff003d'}].forEach(s=>{
     const a=toRad((s.f+s.t)/2);ctx.fillStyle=s.col;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(s.txt,cx+lr*Math.cos(a),cy+lr*Math.sin(a));
   });
   ctx.globalAlpha=1;
   const na=toRad(Math.min(Math.max(score,0),100));
   ctx.beginPath();ctx.moveTo(cx+8*Math.cos(na+Math.PI),cy+8*Math.sin(na+Math.PI));ctx.lineTo(cx+(r-8)*Math.cos(na),cy+(r-8)*Math.sin(na));ctx.lineWidth=2.5;ctx.strokeStyle=riskCol;ctx.lineCap='round';ctx.stroke();
   ctx.beginPath();ctx.arc(cx,cy,6,0,Math.PI*2);ctx.fillStyle=riskCol;ctx.fill();
-  ctx.beginPath();ctx.arc(cx,cy,3,0,Math.PI*2);ctx.fillStyle='#FDFAF4';ctx.fill();
+  ctx.beginPath();ctx.arc(cx,cy,3,0,Math.PI*2);ctx.fillStyle='#f4e9e1';ctx.fill();
 }
 
-/* ── Bar builder ── */
 function msBuildBar(def,value,sx){
   const t1=def.t1fn?def.t1fn(sx):def.t1,t2=def.t2fn?def.t2fn(sx):def.t2;
   const t1l=def.t1lFn?def.t1lFn(sx):String(t1),t2l=def.t2lFn?def.t2lFn(sx):String(t2);
@@ -2001,15 +2370,14 @@ function msBuildBar(def,value,sx){
   </div></div>`;
 }
 
-/* ── Goal chart ── */
 const CTX_WEIGHT={low:'Your weight is in the healthy range.',mod:'Reducing weight by 5–10% significantly lowers metabolic risk.',high:'Weight loss of 10–15% substantially reduces diabetes and cardiovascular risk.'};
 const CTX_WAIST={low:'Your waist circumference is within the healthy range.',mod:'Reducing waist by 5–10 cm meaningfully reduces visceral fat.',high:'Central obesity is a primary driver of metabolic disease. Prioritise waist reduction.'};
 
 function renderChart(){
-  if(!S.weight) return;
+  if(!S.weight)return;
   const b=calcBMI(S.weight,S.height),bc=bmiCat(b,S.age),wc=waistCat(S.waist,sex),th=bmiThresholds(S.age),t=sex==='male'?90:80;
   const goalBMI=calcBMI(S.goalW,S.height),goalChanged=S.goalW!==S.weight||S.goalWt!==S.waist;
-  const lc='rgba(26,18,8,0.45)',gc='rgba(26,18,8,0.06)',tc='rgba(26,18,8,0.35)';
+  const lc='rgba(14,14,14,0.45)',gc='rgba(14,14,14,0.06)',tc='rgba(14,14,14,0.35)';
   const zones={id:'riskZones',beforeDraw(chart){
     const{ctx,chartArea:{left,right,top,bottom},scales:{x,y}}=chart;
     const hTop=y.getPixelForValue(th.healthy[1]+4.5),hBot=y.getPixelForValue(th.healthy[0]),wL=x.getPixelForValue(t);
@@ -2022,7 +2390,7 @@ function renderChart(){
   if(chart){chart.destroy();chart=null;}
   const ctx=document.getElementById('riskChart').getContext('2d');
   const datasets=[{type:'scatter',label:'You',data:[{x:S.waist,y:b}],backgroundColor:'#378ADD',borderColor:'#fff',borderWidth:2,pointRadius:10,pointHoverRadius:13,order:1}];
-  if(goalChanged) datasets.push({type:'scatter',label:'Goal',data:[{x:S.goalWt,y:goalBMI}],backgroundColor:'#3B6D11',borderColor:'#fff',borderWidth:2,pointRadius:8,pointHoverRadius:11,order:2});
+  if(goalChanged)datasets.push({type:'scatter',label:'Goal',data:[{x:S.goalWt,y:goalBMI}],backgroundColor:'#3B6D11',borderColor:'#fff',borderWidth:2,pointRadius:8,pointHoverRadius:11,order:2});
   if(showPop){const pop=getPopData();datasets.push({type:'scatter',label:'Population',data:pop,backgroundColor:'rgba(136,135,128,0.35)',pointRadius:3,pointHoverRadius:5,order:3});}
   chart=new Chart(ctx,{type:'scatter',data:{datasets},options:{responsive:true,maintainAspectRatio:false,animation:{duration:300},plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{const{x,y}=ctx.raw;return `BMI ${y.toFixed(1)}, Waist ${x} cm`;}}}},
     scales:{x:{min:50,max:130,title:{display:true,text:'Waist circumference (cm)',color:lc,font:{size:12}},grid:{color:gc},ticks:{color:tc,stepSize:10,callback:v=>v+' cm'}},
@@ -2041,12 +2409,10 @@ function drawAnnotations(curBMI,goalBMI,goalChanged,t,th){
   const ctx=chart.ctx,xS=chart.scales.x,yS=chart.scales.y,tc='rgba(0,0,0,0.35)';
   ctx.save();ctx.setLineDash([5,4]);ctx.strokeStyle='rgba(0,0,0,0.15)';ctx.lineWidth=1;
   [[t,'x'],[th.healthy[1],'y'],[th.healthy[1]+4.5,'y']].forEach(([val,axis])=>{
-    ctx.beginPath();
-    if(axis==='x'){const px=xS.getPixelForValue(val);ctx.moveTo(px,yS.top);ctx.lineTo(px,yS.bottom);}
-    else{const py=yS.getPixelForValue(val);ctx.moveTo(xS.left,py);ctx.lineTo(xS.right,py);}
-    ctx.stroke();
+    ctx.beginPath();if(axis==='x'){const px=xS.getPixelForValue(val);ctx.moveTo(px,yS.top);ctx.lineTo(px,yS.bottom);}
+    else{const py=yS.getPixelForValue(val);ctx.moveTo(xS.left,py);ctx.lineTo(xS.right,py);}ctx.stroke();
   });
-  ctx.setLineDash([]);ctx.font="11px 'DM Sans',sans-serif";ctx.fillStyle=tc;
+  ctx.setLineDash([]);ctx.font="11px 'Inter',sans-serif";ctx.fillStyle=tc;
   ctx.textAlign='right';ctx.fillText(`BMI ${th.healthy[1]}`,xS.right-4,yS.getPixelForValue(th.healthy[1])-5);ctx.fillText(`BMI ${th.healthy[1]+4.5}`,xS.right-4,yS.getPixelForValue(th.healthy[1]+4.5)-5);
   ctx.textAlign='left';ctx.fillText(`Waist ${t}cm`,xS.getPixelForValue(t)+4,yS.top+14);
   if(goalChanged){
@@ -2069,7 +2435,6 @@ function onSlide(){
 }
 function togglePop(){showPop=document.getElementById('chkPop').checked;renderChart();}
 
-/* ── Action card renderer ── */
 function renderActionCard(tier,iconEl,titleEl,driverEl,bodyEl,stepsEl,linksEl,cardEl,cards){
   const d=cards[tier];
   cardEl.className=`action-card tier-${tier==='low'?'green':tier==='mod'?'amber':'red'}`;
@@ -2079,7 +2444,6 @@ function renderActionCard(tier,iconEl,titleEl,driverEl,bodyEl,stepsEl,linksEl,ca
   cardEl.style.display='block';
 }
 
-/* ── MAIN CALCULATE ── */
 function calculate(){
   const age=parseInt(document.getElementById('inAge').value);
   const weight=parseFloat(document.getElementById('inWeight').value);
@@ -2089,7 +2453,6 @@ function calculate(){
   const hip=hipRaw?parseFloat(hipRaw):null;
   const sbpRaw=document.getElementById('inSBP').value;
   const sbp=sbpRaw?parseFloat(sbpRaw):null;
-
   if(!age||!weight||!height||!waist){alert('Please complete all required fields.');return;}
 
   const B=calcBMI(weight,height),bc=bmiCat(B,age),wc=waistCat(waist,sex),wr=whtR(waist,height);
@@ -2099,24 +2462,18 @@ function calculate(){
   const fr=msFINDRISC({age,B,wc:waist,msex:sex,pAct:act,pDiet:diet,pBp:bp,pGlc:glc,pFam:fam,pGdm:gdm});
   const frT=msFrTier(fr);
 
-  // Composite metabolic score
   const scores={bmi:msToS(B,15,42),wc:msToS(waist,55,130),whtr:msToS(WR,0.3,0.8),absi:msToS(A,0.065,0.115),con:msToS(CO,0.9,1.6),fr:msToS(fr,0,26)};
   const comp=msComposite(scores);
   const compositeVerdict=comp>=71?'high':comp>=31?'mod':'low';
 
-  // INTERHEART
   const whr=hip?(waist/hip):null;
-  const ihWhr=whr!==null?whr:(sex==='male'?0.88:0.82); // fallback if no hip
+  const ihWhr=whr!==null?whr:(sex==='male'?0.88:0.82);
   const ih=calcINTERHEART({age,msex:sex,smk,bp,glc,fhx,whr:ihWhr,stress,junk,diet,act});
-
-  // FRS
   const frsRisk=calcFRS({age,msex:sex,bmi:B,sbp,smk,glc,bpMed:bp==='yes'});
 
-  // ── Metabolic results ──
   const worst=compositeVerdict;
   const rCol=msRCol(worst);
 
-  // Floor-rule callout
   const metricRisks=MS_METRICS.map(m=>m.riskFn(({bmi:B,wc:waist,whtr:WR,absi:A,con:CO})[m.key],sex));
   const allRisks=[...metricRisks,frT.col];
   const worstMetric=allRisks.includes('high')?'high':allRisks.includes('mod')?'mod':'low';
@@ -2126,16 +2483,14 @@ function calculate(){
     const nm=hi>=0?getLang().metricNames[MS_METRICS[hi].key]:(frT.col==='high'?'Diabetes risk':'');
     if(nm){fc.setAttribute('data-metric-key',hi>=0?MS_METRICS[hi].key:'diabetes');fct.textContent=getLang().floorCallout.label(nm);fc.classList.add('visible');}
     else fc.classList.remove('visible');
-  } else fc.classList.remove('visible');
+  }else fc.classList.remove('visible');
 
-  // Age callout
   const callout=document.getElementById('ageCallout'),calloutText=document.getElementById('ageCalloutText');
   if(age<18){calloutText.innerHTML='<strong>Under 18 detected.</strong> Thresholds are calibrated for adults.';callout.classList.add('visible');}
   else if(age>=70){calloutText.innerHTML='<strong>Age 70+ detected.</strong> Healthy BMI range adjusted to 22.0–26.9.';callout.classList.add('visible');}
   else if(age>=60){calloutText.innerHTML='<strong>Age 60–69 detected.</strong> Healthy BMI range adjusted to 20.0–24.9.';callout.classList.add('visible');}
   else callout.classList.remove('visible');
 
-  // Dial
   document.getElementById('ms-dn').textContent=comp;
   const vmap=getLang().dialVerdicts;
   document.getElementById('ms-dv').textContent=vmap[worst].t;document.getElementById('ms-dv').style.color=rCol;
@@ -2143,18 +2498,15 @@ function calculate(){
   const ctxEl=document.getElementById('ms-dc-ctx');if(ctxEl)ctxEl.textContent=getLang().ctxNote(comp);
   msDrawDial(comp,rCol);
 
-  // Summary strip
   document.getElementById('sBMI').textContent=B.toFixed(1);document.getElementById('sBMIcat').textContent=bc.cat;document.getElementById('sBMIcat').className='strip-risk r-'+bc.risk;
   document.getElementById('sWaist').textContent=waist+' cm';document.getElementById('sWaistcat').textContent=wc.cat;document.getElementById('sWaistcat').className='strip-risk r-'+wc.risk;
   document.getElementById('sWHtR').textContent=wr.val;document.getElementById('sWHtRcat').textContent=wr.cat;document.getElementById('sWHtRcat').className='strip-risk r-'+wr.risk;
   document.getElementById('resultsSubtitle').textContent=`${sex==='male'?'Male':'Female'}, ${age} years old · BMI thresholds: age group ${th.label}`;
 
-  // FINDRISC
   document.getElementById('ms-fr-pill').textContent=frT.label;document.getElementById('ms-fr-pill').className='ms-fr-pill '+frT.col;
   document.getElementById('ms-fr-sub').textContent=`Score ${fr} out of 26 — estimated ${frT.prob} chance of developing type 2 diabetes within 10 years. ${frT.col==='low'?'Your lifestyle and measurements suggest low risk.':frT.col==='mod'?'Consider discussing your risk at your next medical check-up.':'We recommend seeking a fasting blood glucose test at your nearest klinik or hospital.'}`;
   document.getElementById('ms-fthumb').style.left=Math.min(97,(fr/26*100))+'%';
 
-  // Metric cards
   const allMetrics=[...MS_METRICS];
   const allVals={bmi:B,wc:waist,whtr:WR,absi:A,con:CO,bai:BAI};
   if(BAI!==null){
@@ -2175,7 +2527,6 @@ function calculate(){
     </div>`;
   }).join('');
 
-  // Sliders
   S={age,weight,height,waist,goalW:weight,goalWt:waist};
   const sw=document.getElementById('slWeight');sw.min=Math.max(30,Math.round(weight*0.72*2)/2);sw.max=Math.round(weight*1.08*2)/2;sw.value=weight;
   document.getElementById('slWeightMin').textContent=sw.min+' kg';document.getElementById('slWeightMax').textContent=sw.max+' kg';document.getElementById('slWeightVal').textContent=weight.toFixed(1);
@@ -2183,33 +2534,27 @@ function calculate(){
   document.getElementById('slWaistMin').textContent=sc.min+' cm';document.getElementById('slWaistMax').textContent=sc.max+' cm';document.getElementById('slWaistVal').textContent=waist.toFixed(1);
   document.getElementById('ctxWeight').textContent=CTX_WEIGHT[bc.risk];document.getElementById('ctxWaist').textContent=CTX_WAIST[wc.risk];
 
-  // Population scatter
   msUserPt={bmi:B,wc:waist};msSFilter.sex=sex;msSFilter.age='all';msPopCache={};
   document.getElementById('ms-sf-male').classList.toggle('on',sex==='male');document.getElementById('ms-sf-female').classList.toggle('on',sex==='female');
   ['all','18','30','40','50','60'].forEach(v=>document.getElementById('ms-sa-'+v).classList.toggle('on',v==='all'));
 
-  // Metabolic action card
   renderActionCard(worst,document.getElementById('actionIcon'),document.getElementById('actionTitle'),document.getElementById('actionDriver'),document.getElementById('actionBody'),document.getElementById('actionSteps'),document.getElementById('actionLinks'),document.getElementById('actionCard'),L.actionCards);
 
-  // ── INTERHEART results ──
   document.getElementById('ih-score-num').textContent=ih.score;
   const tierPill=document.getElementById('ih-tier-pill');
   tierPill.textContent=ih.tier==='low'?'Low risk':ih.tier==='mod'?'Moderate risk':'High risk';
   tierPill.className='ih-tier-pill '+ih.tier;
   document.getElementById('ih-thumb').style.left=Math.min(97,(ih.score/48*100))+'%';
   document.getElementById('ih-sub').textContent=ih.tier==='low'?'Your cardiovascular risk factors are in the low range. Continue your current lifestyle habits.':ih.tier==='mod'?'Some cardiovascular risk factors are present. Lifestyle changes now can significantly lower your long-term risk.':'Multiple significant cardiovascular risk factors detected. Please consult a healthcare provider.';
-
-  // INTERHEART factor breakdown
   document.getElementById('ih-factors').innerHTML=ih.factors.length===0
     ?'<div class="ih-factor-row"><span class="ih-factor-name">No significant risk factors detected</span></div>'
     :ih.factors.sort((a,b)=>b.pts-a.pts).map(f=>`<div class="ih-factor-row"><span class="ih-factor-name">${f.name}</span><span class="ih-factor-pts ${f.pts>=4?'pts-high':'pts-mod'}">+${f.pts}</span></div>`).join('');
 
-  // ── FRS results ──
   const frsEl=document.getElementById('frs-content');
   if(frsRisk!==null){
     const frsTier=frsRisk>=20?'high':frsRisk>=10?'mod':'low';
     const frsTierLabel=frsRisk>=20?'High risk (≥20%)':frsRisk>=10?'Intermediate risk (10–19%)':'Low risk (<10%)';
-    const frsColor=frsRisk>=20?'var(--red)':frsRisk>=10?'var(--amber)':'var(--green)';
+    const frsColor=frsRisk>=20?'var(--alert)':frsRisk>=10?'var(--risk-mod)':'#16a34a';
     frsEl.innerHTML=`
       <div class="frs-pct" style="color:${frsColor}">${frsRisk.toFixed(1)}%</div>
       <div class="frs-pct-label"><span data-en>chance of a cardiovascular event in the next 10 years</span></div>
@@ -2220,16 +2565,15 @@ function calculate(){
       </div>
       <div class="frs-sub">Based on your age, sex, BMI (${B.toFixed(1)}), systolic BP (${sbp} mmHg), smoking status, and diabetes history. Framingham Risk Score (BMI version), D'Agostino et al. 2008, validated in Malaysian population (Selvarajah et al. 2014).</div>`;
     renderActionCard(ih.tier,document.getElementById('cardioActionIcon'),document.getElementById('cardioActionTitle'),document.getElementById('cardioActionDriver'),document.getElementById('cardioActionBody'),document.getElementById('cardioActionSteps'),document.getElementById('cardioActionLinks'),document.getElementById('cardioActionCard'),L.cardioActionCards);
-  } else {
+  }else{
     frsEl.innerHTML=`<div class="frs-unlock">
-      <div class="frs-unlock-icon">🔒</div>
+      <div class="frs-unlock-icon">&#128274;</div>
       <div class="frs-unlock-title">Add your blood pressure to unlock</div>
-      <div class="frs-unlock-sub">Go back to Step 5 and enter your systolic blood pressure (the top number from a BP reading, e.g. 125 from 125/80) to see your personalised 10-year cardiovascular risk estimate.</div>
+      <div class="frs-unlock-sub">Go back to Step 5 and enter your systolic blood pressure to see your personalised 10-year cardiovascular risk estimate.</div>
     </div>`;
     renderActionCard(ih.tier,document.getElementById('cardioActionIcon'),document.getElementById('cardioActionTitle'),document.getElementById('cardioActionDriver'),document.getElementById('cardioActionBody'),document.getElementById('cardioActionSteps'),document.getElementById('cardioActionLinks'),document.getElementById('cardioActionCard'),L.cardioActionCards);
   }
 
-  // Show results
   document.getElementById('formSection').style.display='none';
   document.getElementById('results').style.display='block';
   window.scrollTo({top:0,behavior:'smooth'});
