@@ -2191,7 +2191,7 @@ const MS_AGE_BANDS=[18,30,40,50,60];
 
 const msWHtR=(wc,h)=>wc/h;
 const msABSI=(wc,B,h)=>(wc/100)/(Math.pow(B,2/3)*Math.pow(h/100,0.5));
-const msConi=(wc,w,h)=>0.109*((wc/100)/Math.sqrt(w/(h/100)));
+const msConi=(wc,w,h)=>(wc/100)/(0.109*Math.sqrt(w/(h/100)));
 const msBAI=(hip,h)=>(hip/Math.pow(h/100,1.5))-18;
 
 function msFINDRISC(p){
