@@ -17,7 +17,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cermin Diri — Know Your Numbers</title>
 
-  <!-- Google Fonts — Inter as StabilGrotesk stand-in -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;600;700&display=swap" rel="stylesheet" />
 
@@ -33,7 +32,6 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* Raw Materials palette */
       --canvas:        #f4e9e1;
       --ink:           #0e0e0e;
       --charcoal:      #242320;
@@ -48,13 +46,11 @@
       --mint:          #cee4cd;
       --pink:          #e4d0cd;
 
-      /* Semantic aliases */
       --bg:            var(--canvas);
       --surface:       var(--snow);
       --border:        var(--ink);
       --border-light:  rgba(14,14,14,0.12);
 
-      /* Risk colours */
       --risk-low:      #20db70;
       --risk-low-bg:   #d4f4e4;
       --risk-mod:      #ff8c00;
@@ -659,7 +655,7 @@
       letter-spacing: 0.04em;
     }
 
-    /* ── METRIC CARDS LABEL ── */
+    /* ── METRIC CARDS ── */
     .ms-cards-lbl {
       font-size: 11px;
       font-weight: 700;
@@ -671,7 +667,6 @@
     }
     .ms-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
 
-    /* Metric card */
     .ms-mc {
       border: 2px solid var(--border-light);
       border-radius: var(--radius-card);
@@ -721,7 +716,6 @@
       background: var(--canvas);
     }
 
-    /* bar */
     .ms-barw { padding-bottom: 24px; margin-bottom: 6px; }
     .ms-btrack { height: 8px; border-radius: 4px; position: relative; width: 100%; }
     .ms-bseg { position: absolute; height: 8px; top: 0; }
@@ -1132,6 +1126,126 @@
     .frs-unlock-title { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
     .frs-unlock-sub { font-size: 13px; color: rgba(14,14,14,0.45); line-height: 1.6; }
 
+    /* ── NEXT STEPS CTA ── */
+    .next-steps-section {
+      margin-bottom: 20px;
+    }
+    .next-steps-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(14,14,14,0.4);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .ns-sub-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(14,14,14,0.3);
+      margin: 0 0 8px;
+      display: block;
+    }
+    .ns-apps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 480px) { .ns-apps-grid { grid-template-columns: 1fr; } }
+    .ns-app-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 16px 18px;
+      background: var(--snow);
+      border: 2px solid var(--border-light);
+      border-radius: var(--radius-card);
+      text-decoration: none;
+      transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+      min-height: 108px;
+    }
+    .ns-app-card:hover {
+      border-color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 4px 4px 0 rgba(14,14,14,0.08);
+    }
+    .ns-app-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .ns-app-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(14,14,14,0.35);
+    }
+    .ns-app-arrow {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(14,14,14,0.2);
+    }
+    .ns-app-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+      line-height: 1.1;
+    }
+    .ns-app-desc {
+      font-size: 12px;
+      color: rgba(14,14,14,0.45);
+      line-height: 1.5;
+      font-weight: 400;
+    }
+    .ns-reads-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+    @media (max-width: 520px) { .ns-reads-grid { grid-template-columns: 1fr; } }
+    .ns-read-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 14px 16px;
+      background: var(--canvas);
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-card);
+      text-decoration: none;
+      transition: border-color 0.15s, background 0.15s;
+      min-height: 96px;
+    }
+    .ns-read-card:hover { border-color: var(--ink); background: var(--snow); }
+    .ns-read-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(14,14,14,0.3);
+      margin-bottom: 7px;
+    }
+    .ns-read-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      flex: 1;
+    }
+    .ns-read-arrow {
+      font-size: 11px;
+      color: var(--coral);
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
     /* ── SOURCES ── */
     .sources-section {
       margin-top: 56px;
@@ -1311,7 +1425,6 @@
       text-decoration: none;
     }
     .about-compact-handle:hover { text-decoration: underline; }
-    .about-compact-sep { color: var(--border-light); }
 
     /* ── FOOTER ── */
     .site-footer {
@@ -1381,6 +1494,15 @@
       box-shadow: 4px 4px 0 rgba(14,14,14,0.2);
     }
 
+    /* ── ANIMATION ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .container > * { animation: fadeUp 0.5s ease both; }
+    header          { animation-delay: 0.05s; }
+    .form-card      { animation-delay: 0.12s; }
+
     /* ── BILINGUAL ── */
     [data-bm] { display: none !important; }
     [data-en] { display: inline !important; }
@@ -1390,15 +1512,6 @@
     div[data-en], p[data-en], li[data-en] { display: block !important; }
     [data-lang="bm"] div[data-bm], [data-lang="bm"] p[data-bm], [data-lang="bm"] li[data-bm] { display: block !important; }
     [data-lang="bm"] div[data-en], [data-lang="bm"] p[data-en], [data-lang="bm"] li[data-en] { display: none !important; }
-
-    /* ── ANIMATION ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .container > * { animation: fadeUp 0.5s ease both; }
-    header          { animation-delay: 0.05s; }
-    .form-card      { animation-delay: 0.12s; }
 
     /* ── MOBILE ── */
     @media (max-width: 520px) {
@@ -1422,6 +1535,8 @@
       .tab-btn { font-size: 11px; padding: 9px 8px; }
       .site-nav-links { gap: 0; }
       .site-nav-links a { padding: 5px 7px; font-size: 9px; }
+      .ns-apps-grid { grid-template-columns: 1fr; }
+      .ns-reads-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1675,7 +1790,6 @@
     <!-- ═══ METABOLIC TAB ═══ -->
     <div class="tab-panel active" id="panel-metabolik">
 
-      <!-- Dial -->
       <div class="ms-dial-wrap" id="ms-dial-wrap">
         <div class="ms-dial-rel">
           <canvas id="ms-dc" width="260" height="130"></canvas>
@@ -1689,13 +1803,11 @@
         <div class="ms-dial-context" id="ms-dc-ctx"></div>
       </div>
 
-      <!-- Floor-rule callout -->
       <div class="ms-floor-callout" id="ms-floor-callout">
         <div>&#9888;&#65039;</div>
         <div id="ms-floor-callout-text"></div>
       </div>
 
-      <!-- Summary strip -->
       <div class="summary-strip">
         <div>
           <div class="strip-label">BMI</div>
@@ -1714,7 +1826,6 @@
         </div>
       </div>
 
-      <!-- FINDRISC -->
       <div class="ms-fr-card">
         <div class="ms-fr-top">
           <div class="ms-fr-title"><span data-en>Diabetes risk score</span><span data-bm>Skor risiko diabetes</span></div>
@@ -1731,11 +1842,9 @@
         </div>
       </div>
 
-      <!-- Metric cards -->
       <div class="ms-cards-lbl"><span data-en>Your measurements — tap any card to explore</span><span data-bm>Ukuran anda — ketik kad untuk maklumat lanjut</span></div>
       <div class="ms-cards-grid" id="ms-cards"></div>
 
-      <!-- Chart -->
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title">&#128205; <span data-en>BMI vs Waist — Goal planner</span><span data-bm>BMI vs Pinggang — Perancang sasaran</span></div>
@@ -1758,7 +1867,6 @@
         <div class="age-zone-note" id="ageZoneNote"></div>
       </div>
 
-      <!-- Sliders -->
       <div class="slider-card">
         <div class="slider-card-header">
           <h3><span data-en>What if I improve?</span><span data-bm>Bagaimana jika saya bertambah baik?</span></h3>
@@ -1792,7 +1900,6 @@
         </div>
       </div>
 
-      <!-- Population scatter -->
       <div class="ms-scatter-card">
         <div class="ms-scatter-head">
           <div class="ms-scatter-title">&#128205; <span data-en>Your position among Malaysians</span><span data-bm>Kedudukan anda dalam kalangan rakyat Malaysia</span></div>
@@ -1828,7 +1935,6 @@
         </div>
       </div>
 
-      <!-- Metabolic action card -->
       <div id="actionCard" class="action-card" style="display:none">
         <div class="action-card-header">
           <div class="action-icon" id="actionIcon"></div>
@@ -1892,6 +1998,85 @@
       </div>
 
     </div><!-- /panel-kardio -->
+
+    <!-- ═══ NEXT STEPS CTA ═══ -->
+    <div class="next-steps-section" id="nextStepsSection">
+
+      <span class="next-steps-label">
+        <span data-en>What's next?</span><span data-bm>Langkah seterusnya?</span>
+      </span>
+
+      <!-- Apps -->
+      <span class="ns-sub-label">
+        <span data-en>Tools for you</span><span data-bm>Alatan untuk anda</span>
+      </span>
+      <div class="ns-apps-grid">
+
+        <a class="ns-app-card" href="https://www.aufthority.com/rancangdiri/" target="_blank" rel="noopener" data-umami-event="cta-rancangdiri">
+          <div class="ns-app-card-top">
+            <span class="ns-app-tag"><span data-en>Lifestyle plan</span><span data-bm>Pelan gaya hidup</span></span>
+            <span class="ns-app-arrow">↗</span>
+          </div>
+          <div class="ns-app-name">RancangDiri</div>
+          <div class="ns-app-desc"><span data-en>Turn your results into a personalised lifestyle playbook. One session.</span><span data-bm>Jadikan keputusan anda pelan gaya hidup peribadi. Satu sesi.</span></div>
+        </a>
+
+        <a class="ns-app-card" href="https://mytdee.aufthority.com/" target="_blank" rel="noopener" data-umami-event="cta-mytdee">
+          <div class="ns-app-card-top">
+            <span class="ns-app-tag"><span data-en>Calorie target</span><span data-bm>Sasaran kalori</span></span>
+            <span class="ns-app-arrow">↗</span>
+          </div>
+          <div class="ns-app-name">MyTDEE</div>
+          <div class="ns-app-desc"><span data-en>Malaysia-calibrated daily energy target. Built on local research.</span><span data-bm>Sasaran tenaga harian dikalibrasi untuk Malaysia.</span></div>
+        </a>
+
+        <a class="ns-app-card" href="https://makanlah.aufthority.com/onboarding.html" target="_blank" rel="noopener" data-umami-event="cta-makanlah">
+          <div class="ns-app-card-top">
+            <span class="ns-app-tag"><span data-en>Meal diary</span><span data-bm>Diari makan</span></span>
+            <span class="ns-app-arrow">↗</span>
+          </div>
+          <div class="ns-app-name">MakanLah</div>
+          <div class="ns-app-desc"><span data-en>Photo-first meal log built for Malaysian food. Snap &amp; track.</span><span data-bm>Log makanan foto untuk masakan Malaysia. Snap &amp; rekod.</span></div>
+        </a>
+
+        <a class="ns-app-card" href="https://www.aufthority.com/boroi/" target="_blank" rel="noopener" data-umami-event="cta-boroi">
+          <div class="ns-app-card-top">
+            <span class="ns-app-tag"><span data-en>Belly fat risk</span><span data-bm>Risiko lemak perut</span></span>
+            <span class="ns-app-arrow">↗</span>
+          </div>
+          <div class="ns-app-name">Boroi</div>
+          <div class="ns-app-desc"><span data-en>Deep-dive on abdominal obesity — how your waist shapes your risk.</span><span data-bm>Kaji lebih dalam tentang obesiti abdomen dan risiko pinggang anda.</span></div>
+        </a>
+
+      </div><!-- /ns-apps-grid -->
+
+      <!-- Reading list -->
+      <span class="ns-sub-label" style="margin-top:20px">
+        <span data-en>Read more</span><span data-bm>Baca lanjut</span>
+      </span>
+      <div class="ns-reads-grid">
+
+        <a class="ns-read-card" href="https://www.aufthority.com/malaysiaobes/" target="_blank" rel="noopener" data-umami-event="cta-read-obes">
+          <div class="ns-read-tag">Explainer</div>
+          <div class="ns-read-title"><span data-en>Understanding obesity in Malaysia</span><span data-bm>Memahami obesiti di Malaysia</span></div>
+          <div class="ns-read-arrow">Read →</div>
+        </a>
+
+        <a class="ns-read-card" href="https://www.aufthority.com/usahaextreme/" target="_blank" rel="noopener" data-umami-event="cta-read-usaha">
+          <div class="ns-read-tag">Explainer</div>
+          <div class="ns-read-title"><span data-en>Why extreme diets backfire</span><span data-bm>Kenapa diet ekstrem gagal</span></div>
+          <div class="ns-read-arrow">Read →</div>
+        </a>
+
+        <a class="ns-read-card" href="https://www.aufthority.com/tdee/" target="_blank" rel="noopener" data-umami-event="cta-read-tdee">
+          <div class="ns-read-tag">Explainer</div>
+          <div class="ns-read-title"><span data-en>What is TDEE and why it matters</span><span data-bm>Apa itu TDEE dan kenapa ia penting</span></div>
+          <div class="ns-read-arrow">Read →</div>
+        </a>
+
+      </div><!-- /ns-reads-grid -->
+
+    </div><!-- /next-steps-section -->
 
     <button class="btn-reset" onclick="resetApp()"><span data-en>← Start Over</span><span data-bm>← Mulakan Semula</span></button>
 
@@ -2001,7 +2186,7 @@
     <div class="about-compact-body">
       <span class="about-compact-name">Auf Ali</span>
       <a class="about-compact-handle" href="https://www.threads.net/@theaufthority" target="_blank" rel="noopener">@theaufthority</a>
-      <span class="about-compact-sep">·</span>
+      <span style="color:var(--border-light)">·</span>
       <span>I create evidence-based health tools for Malaysians</span>
     </div>
   </div>
@@ -2046,7 +2231,7 @@
 <script>
 /* ══════════════════════════════════════
    ALL LOGIC PRESERVED FROM ORIGINAL
-   (unchanged from v1 — only CSS classes updated)
+   (unchanged — only CTA section added above)
 ══════════════════════════════════════ */
 
 const LANG = {
@@ -2573,6 +2758,10 @@ function calculate(){
     </div>`;
     renderActionCard(ih.tier,document.getElementById('cardioActionIcon'),document.getElementById('cardioActionTitle'),document.getElementById('cardioActionDriver'),document.getElementById('cardioActionBody'),document.getElementById('cardioActionSteps'),document.getElementById('cardioActionLinks'),document.getElementById('cardioActionCard'),L.cardioActionCards);
   }
+
+  // Show the Next Steps CTA section
+  const nss = document.getElementById('nextStepsSection');
+  if (nss) nss.style.display = 'block';
 
   document.getElementById('formSection').style.display='none';
   document.getElementById('results').style.display='block';
