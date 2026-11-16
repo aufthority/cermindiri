@@ -423,59 +423,7 @@
     /* ── RESULTS ── */
     #results { display: none; }
 
-    .results-header {
-      margin-bottom: 28px;
-      padding-bottom: 28px;
-      border-bottom: 2px solid var(--ink);
-    }
-    .results-header h2 {
-      font-size: clamp(36px, 8vw, 56px);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .results-header p {
-      font-size: 13px;
-      color: var(--ink-muted);
-      font-weight: 500;
-    }
 
-    /* ── TAB BAR ── */
-    .tab-bar {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      background: var(--snow);
-      border: 2px solid var(--ink);
-      border-radius: var(--radius-card);
-      padding: 4px;
-      margin-bottom: 24px;
-      gap: 4px;
-    }
-    .tab-btn {
-      padding: 11px 12px;
-      border: none;
-      border-radius: 10px;
-      background: transparent;
-      font-family: var(--font);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--ink-muted);
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      letter-spacing: 0.02em;
-    }
-    .tab-btn:hover { color: var(--ink); }
-    .tab-btn.active {
-      background: var(--ink);
-      color: var(--canvas);
-    }
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
 
     /* ── AGE CALLOUT ── */
     .age-callout {
@@ -495,105 +443,8 @@
     .age-callout strong { font-weight: 700; display: block; margin-bottom: 2px; }
     .age-zone-note { font-size: 11px; color: var(--ink-muted); margin-top: 10px; font-style: italic; }
 
-    /* ── FLOOR CALLOUT ── */
-    .ms-floor-callout {
-      display: none;
-      align-items: flex-start;
-      gap: 12px;
-      background: var(--risk-mod-bg);
-      border: 2px solid var(--risk-mod);
-      border-radius: var(--radius-card);
-      padding: 16px 20px;
-      margin-top: 16px;
-      font-size: 13px;
-      color: var(--ink);
-      line-height: 1.65;
-    }
-    .ms-floor-callout.visible { display: flex; }
 
-    /* ── DIAL WRAP ── */
-    .ms-dial-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 20px;
-      padding: 32px 24px 24px;
-      background: var(--snow);
-      border: 2px solid var(--ink);
-      border-radius: var(--radius-card);
-    }
-    .ms-dial-rel { position: relative; width: 260px; height: 130px; }
-    #ms-dc { width: 260px; height: 130px; display: block; }
-    .ms-dial-score-row { text-align: center; margin-top: 12px; }
-    .ms-dial-num {
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1;
-      display: block;
-      letter-spacing: -0.04em;
-    }
-    .ms-dial-lbl {
-      font-size: 10px;
-      color: var(--ink-muted);
-      margin-top: 4px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      display: block;
-    }
-    .ms-dial-verdict {
-      font-size: 18px;
-      font-weight: 700;
-      margin-top: 14px;
-      letter-spacing: -0.02em;
-    }
-    .ms-dial-sub {
-      font-size: 14px;
-      color: var(--ink-muted);
-      text-align: center;
-      max-width: 400px;
-      margin-top: 6px;
-      line-height: 1.65;
-    }
-    .ms-dial-context {
-      font-size: 11px;
-      color: var(--ink-muted);
-      text-align: center;
-      margin-top: 8px;
-      padding: 5px 14px;
-      background: var(--canvas);
-      border-radius: var(--radius-btn);
-      letter-spacing: 0.04em;
-      font-weight: 500;
-      border: 1px solid var(--border-light);
-    }
 
-    /* ── SUMMARY STRIP ── */
-    .summary-strip {
-      background: var(--snow);
-      border: 2px solid var(--ink);
-      border-radius: var(--radius-card);
-      padding: 20px 24px;
-      margin-bottom: 16px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      text-align: center;
-    }
-    .strip-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-bottom: 4px;
-    }
-    .strip-value {
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-    }
     .strip-risk {
       font-size: 11px;
       font-weight: 600;
@@ -604,27 +455,6 @@
     .r-mod  { color: var(--risk-mod); }
     .r-high { color: var(--alert); }
 
-    /* ── FINDRISC CARD ── */
-    .ms-fr-card {
-      border: 2px solid var(--ink);
-      border-radius: var(--radius-card);
-      padding: 22px 24px;
-      margin-bottom: 16px;
-      background: var(--snow);
-    }
-    .ms-fr-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 10px;
-    }
-    .ms-fr-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-    }
     .ms-fr-pill {
       font-size: 11px;
       font-weight: 700;
@@ -655,14 +485,6 @@
       border: 2.5px solid var(--ink);
       border-radius: 50%;
       transition: left 0.4s ease;
-    }
-    .ms-fticks {
-      display: flex;
-      justify-content: space-between;
-      font-size: 9px;
-      color: var(--ink-muted);
-      font-weight: 600;
-      letter-spacing: 0.04em;
     }
 
     /* ── METRIC CARDS ── */
@@ -855,14 +677,6 @@
       overflow: hidden;
       background: var(--snow);
     }
-    .ms-scatter-head { padding: 16px 20px 0; }
-    .ms-scatter-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-    }
     .ms-scatter-filters {
       display: flex;
       gap: 8px;
@@ -967,28 +781,6 @@
     .action-link.secondary { background: transparent; color: var(--ink); }
     .action-link.secondary:hover { background: var(--ink); color: var(--canvas); }
 
-    /* ── INTERHEART CARD ── */
-    .ih-card {
-      background: var(--snow);
-      border: 2px solid var(--ink);
-      border-radius: var(--radius-card);
-      padding: 24px;
-      margin-bottom: 16px;
-    }
-    .ih-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 8px;
-      gap: 12px;
-    }
-    .ih-card-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-    }
     .ih-tier-pill {
       font-size: 11px;
       font-weight: 700;
@@ -1002,18 +794,6 @@
     .ih-tier-pill.low  { background: var(--risk-low-bg); color: var(--risk-low-ink); border-color: var(--risk-low-ink); }
     .ih-tier-pill.mod  { background: var(--risk-mod-bg); color: var(--risk-mod); border-color: var(--risk-mod); }
     .ih-tier-pill.high { background: var(--risk-high-bg); color: var(--alert); border-color: var(--alert); }
-    .ih-score-row {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      margin: 12px 0 4px;
-    }
-    .ih-score-num {
-      font-size: 40px;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-    }
-    .ih-score-denom { font-size: 16px; color: var(--ink-muted); font-weight: 500; }
     .ih-track {
       height: 8px;
       border-radius: 4px;
@@ -1031,23 +811,6 @@
       border: 2.5px solid var(--ink);
       border-radius: 50%;
       transition: left 0.4s ease;
-    }
-    .ih-track-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 10px;
-      color: var(--ink-muted);
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-    .ih-factors-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-bottom: 8px;
-      margin-top: 16px;
     }
     .ih-factors { display: flex; flex-direction: column; gap: 6px; }
     .ih-factor-row {
@@ -1073,22 +836,6 @@
     .ih-factor-pts.pts-mod  { background: var(--risk-mod-bg); color: var(--risk-mod); border-color: var(--risk-mod); }
     .ih-sub { font-size: 13px; color: var(--ink-muted); line-height: 1.6; margin-top: 4px; font-weight: 500; }
 
-    /* ── FRS CARD ── */
-    .frs-card {
-      background: var(--snow);
-      border: 2px solid var(--ink);
-      border-radius: var(--radius-card);
-      padding: 24px;
-      margin-bottom: 16px;
-    }
-    .frs-card-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-bottom: 14px;
-    }
     .frs-pct {
       font-size: 52px;
       font-weight: 700;
@@ -1096,7 +843,6 @@
       line-height: 1;
       margin-bottom: 4px;
     }
-    .frs-pct-label { font-size: 13px; color: var(--ink-muted); margin-bottom: 12px; font-weight: 500; }
     .frs-tier-pill {
       display: inline-block;
       font-size: 11px;
@@ -1111,7 +857,6 @@
     .frs-tier-pill.low  { background: var(--risk-low-bg); color: var(--risk-low-ink); border-color: var(--risk-low-ink); }
     .frs-tier-pill.mod  { background: var(--risk-mod-bg); color: var(--risk-mod); border-color: var(--risk-mod); }
     .frs-tier-pill.high { background: var(--risk-high-bg); color: var(--alert); border-color: var(--alert); }
-    .frs-bar-wrap { margin: 12px 0 6px; }
     .frs-bar-track {
       height: 8px;
       border-radius: 4px;
@@ -1129,8 +874,6 @@
       border-radius: 50%;
       transition: left 0.4s ease;
     }
-    .frs-bar-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--ink-muted); margin-top: 5px; font-weight: 600; }
-    .frs-sub { font-size: 13px; color: var(--ink-muted); line-height: 1.65; margin-top: 12px; font-weight: 500; }
     .frs-unlock { text-align: center; padding: 28px 20px; }
     .frs-unlock-icon { font-size: 28px; margin-bottom: 10px; }
     .frs-unlock-title { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
@@ -1139,15 +882,6 @@
     /* ── NEXT STEPS CTA ── */
     .next-steps-section {
       margin-bottom: 20px;
-    }
-    .next-steps-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-bottom: 12px;
-      display: block;
     }
     .ns-sub-label {
       font-size: 10px;
@@ -1513,9 +1247,126 @@
     header          { animation-delay: 0.05s; }
     .form-card      { animation-delay: 0.12s; }
 
+    /* ═══════════════ DESIGN C · FORM ═══════════════ */
+    .form-card { border: 1.5px solid var(--ink); border-radius: 20px; }
+    .step-progress { gap: 6px; }
+    .step-dot { flex: 1; width: auto; height: 6px; border-radius: 3px; border: none; background: rgba(var(--ink-rgb),0.12); }
+    .step-dot.active { background: var(--accent); transform: none; }
+    .step-dot.done { background: var(--ink); }
+    .step-title { font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -0.01em; text-transform: none; color: var(--ink); margin-bottom: 18px; }
+    label { font-size: 14px; font-weight: 700; letter-spacing: 0; text-transform: none; color: var(--ink); }
+    .sex-btn { min-height: 48px; background: var(--snow); border: 1.5px solid var(--ink); border-radius: 12px; color: var(--ink); font-weight: 600; }
+    .sex-btn:hover { background: var(--canvas); }
+    .sex-btn.active { background: var(--ink); border-color: var(--ink); color: var(--snow); }
+    input[type="number"] { background: var(--snow); border: 1.5px solid var(--ink); border-radius: 12px; }
+    input[type="number"]:focus { border-color: var(--accent); }
+    .btn-back { border: 1.5px solid var(--ink); color: var(--ink); }
+    .btn-next, .btn-primary { border: 1.5px solid var(--ink); }
+
+    /* ═══════════════ DESIGN C · RESULTS ═══════════════ */
+    .r-top { display: flex; margin-bottom: 12px; }
+    .r-edit { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 16px; background: var(--snow); border: 1.5px solid var(--ink); border-radius: var(--radius-btn); font: 700 13px var(--font); color: var(--ink); cursor: pointer; }
+    .r-edit:hover { background: var(--ink); color: var(--snow); }
+
+    .r-answer { background: var(--ink); color: var(--canvas); border-radius: 20px; padding: 26px 22px 22px; display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+    .r-answer-meta { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 10px; border-bottom: 1.5px solid var(--canvas); font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+    #ansMeta { color: var(--canvas-muted); }
+    .r-answer-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(30px, 7vw, 40px); line-height: 1.02; letter-spacing: -0.02em; color: var(--canvas); text-wrap: balance; }
+    .r-answer-sub { color: var(--canvas-muted); font-size: 15px; line-height: 1.55; max-width: 52ch; }
+    .r-score { background: var(--canvas); color: var(--ink); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+    .r-score-row { display: flex; align-items: center; justify-content: space-between; gap: 8px 12px; flex-wrap: wrap; }
+    .r-score-num { font-family: var(--font-display); font-weight: 800; font-size: 44px; line-height: 1; letter-spacing: -0.02em; }
+    .r-score-of { font-size: 13px; font-weight: 600; }
+    .r-verdict { font-size: 14px; font-weight: 800; }
+    .r-bar { position: relative; padding: 5px 0; }
+    .r-bar-track { height: 14px; display: grid; grid-template-columns: 30fr 40fr 30fr; border: 1.5px solid var(--ink); border-radius: 999px; overflow: hidden; }
+    .r-bar-track span:nth-child(1) { background: var(--risk-low-bg); border-right: 1.5px solid var(--ink); }
+    .r-bar-track span:nth-child(2) { background: var(--risk-mod-bg); border-right: 1.5px solid var(--ink); }
+    .r-bar-track span:nth-child(3) { background: var(--risk-high-bg); }
+    .r-bar-mark { position: absolute; top: 0; width: 8px; height: 27px; margin-left: -4px; background: var(--ink); border: 2px solid var(--canvas); border-radius: 3px; transition: left 0.4s ease; }
+    .r-bar-lbl { display: grid; grid-template-columns: 30fr 40fr 30fr; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+    .r-bar-lbl > span:nth-child(2) { text-align: center; }
+    .r-bar-lbl > span:nth-child(3) { text-align: right; }
+
+    .r-sec { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .r-h { font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -0.01em; margin: 0 2px; }
+
+    .r-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+    .r-tile { background: var(--snow); border: 1.5px solid var(--ink); border-radius: 16px; padding: 14px 12px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .r-tile-lbl { font-size: 12px; font-weight: 700; }
+    .r-tile-val { font-family: var(--font-display); font-weight: 800; font-size: 28px; line-height: 1.1; letter-spacing: -0.01em; white-space: nowrap; }
+    .r-tile-ref { font-size: 11px; color: var(--ink-muted); }
+
+    /* Risk tags: square-cornered labels, not pills */
+    .strip-risk, .ms-pill, .ms-fr-pill, .ih-tier-pill, .frs-tier-pill, .ih-factor-pts, .tag-low, .tag-mod, .tag-high {
+      display: inline-block; align-self: flex-start; font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 3px 7px; border-radius: 4px; border: 1.5px solid currentColor; white-space: nowrap; margin: 0; }
+    .strip-risk.r-low  { background: var(--risk-low-bg); color: var(--risk-low-ink); }
+    .strip-risk.r-mod  { background: var(--risk-mod-bg); color: var(--risk-mod); }
+    .strip-risk.r-high { background: var(--risk-high-bg); color: var(--alert); }
+
+    .r-rows { background: var(--snow); border: 1.5px solid var(--ink); border-radius: 16px; overflow: hidden; }
+    .r-row { padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; border-top: 1.5px solid var(--ink); }
+    .r-row:first-child { border-top: none; }
+    .r-row-head, .r-row-val { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .r-row-val { align-items: center; }
+    .r-row-name { font-weight: 700; }
+    .r-row-src { font-size: 13px; color: var(--ink-muted); }
+    .r-row-sub { font-size: 13px; color: var(--ink-muted); line-height: 1.55; margin: 0; }
+    .frs-pct { font-family: var(--font-display); font-weight: 800; font-size: 28px; line-height: 1; margin: 0; color: var(--ink); }
+    .ms-ftrack, .ih-track, .frs-bar-track { height: 10px; margin: 0; border: 1.5px solid var(--ink); border-radius: 999px; }
+    .ih-sub { margin: 0; font-weight: 400; }
+    .frs-unlock { text-align: left; padding: 0; }
+    .frs-unlock-icon { font-size: 20px; margin-bottom: 4px; }
+    .frs-unlock-title { font-size: 16px; }
+    details.r-inline > summary { list-style: none; cursor: pointer; font-size: 13px; font-weight: 700; color: var(--accent); min-height: 32px; display: flex; align-items: center; }
+    details.r-inline > summary::-webkit-details-marker { display: none; }
+    details.r-inline > summary::after { content: '+'; margin-left: 6px; }
+    details.r-inline[open] > summary::after { content: '−'; }
+    details.r-inline .ih-factors { margin-top: 6px; }
+
+    .action-card { margin: 0; padding: 20px; border: 1.5px solid var(--ink); border-radius: 20px; }
+    .action-card.tier-green, .action-card.tier-amber, .action-card.tier-red { background: var(--snow); }
+    .action-card-header { gap: 12px; margin-bottom: 10px; align-items: center; }
+    .action-card .action-icon { font-size: 26px; }
+    .action-card .action-title { font-family: var(--font-display); font-size: 20px; }
+    .action-card .action-body { margin-bottom: 8px; color: var(--ink-muted); }
+    .action-card .action-steps { gap: 0; margin-bottom: 14px; }
+    .action-card .action-step { padding: 10px 0; border-top: 1.5px solid var(--ink); font-weight: 600; }
+    .action-card .action-step-num { width: 24px; height: auto; background: none; border: none; color: var(--accent); font-family: var(--font-display); font-size: 24px; font-weight: 800; line-height: 1; margin: 0; }
+    .action-card .action-link { background: none; border: none; padding: 0; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-transform: none; letter-spacing: 0; font-size: 13px; }
+    .action-card .action-link:hover { background: none; color: var(--accent); transform: none; }
+    .action-links { gap: 6px 16px; }
+    #frs-content { display: flex; flex-direction: column; gap: 10px; }
+    #actionCard .action-card-header, #actionCard .action-body { display: none; }
+    #actionCard .action-step:first-child { border-top: none; padding-top: 0; }
+    .r-cta { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 0 20px; border-radius: var(--radius-btn); background: var(--accent); color: var(--snow); border: 1.5px solid var(--ink); font-weight: 800; text-decoration: none; }
+    .r-cta:hover { background: var(--ink); }
+
+    .chart-card { border: 1.5px solid var(--ink); border-radius: 20px; margin-bottom: 0; }
+    .chart-card-title { font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -0.01em; text-transform: none; color: var(--ink); }
+    .slider-card { border-radius: 20px; margin-bottom: 0; }
+
+    .r-more { background: var(--snow); border: 1.5px solid var(--ink); border-radius: 16px; }
+    .r-more > summary { list-style: none; min-height: 52px; padding: 0 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-weight: 700; font-size: 15px; cursor: pointer; }
+    .r-more > summary::-webkit-details-marker { display: none; }
+    .r-more > summary::after { content: '+'; font-size: 20px; font-weight: 800; }
+    .r-more[open] > summary::after { content: '−'; }
+    .r-more-body { padding: 4px 16px 18px; }
+    .r-more-p { font-size: 14px; color: var(--ink-muted); line-height: 1.6; margin: 0 0 10px; }
+    .r-more .ms-cards-lbl { margin-top: 0; }
+    .r-more .ms-scatter-card { border: none; margin: 0; overflow: visible; }
+    .r-more .ms-scatter-filters, .r-more .ms-scatter-inner { padding-left: 0; padding-right: 0; }
+    .r-more .next-steps-section { margin: 0; }
+    .r-sec > .disclaimer { margin-top: 2px !important; text-align: left; }
+
+    @media (max-width: 520px) {
+      .r-tile { padding: 12px 10px; }
+      .r-tile-val { font-size: 23px; }
+    }
+
     /* ── DISPLAY TYPE (design C) ── */
-    .hero-title, .results-header h2, .ms-dial-num, .strip-value, .ms-mc-val,
-    .ih-score-num, .frs-pct, .slider-val, .action-title, .slider-card-header h3,
+    .hero-title, .ms-mc-val, .slider-val, .action-title, .slider-card-header h3,
     .ns-app-name, .frs-unlock-title { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.01em; }
 
     /* ── ICONS ── */
@@ -1542,15 +1393,12 @@
       .sex-btn { padding: 9px 10px; font-size: 12px; }
       input[type="number"] { padding: 10px 12px; font-size: 14px; }
       .btn-primary { padding: 13px; font-size: 14px; }
-      .summary-strip { grid-template-columns: repeat(3,1fr); gap: 8px; padding: 14px 12px; }
-      .strip-value { font-size: 20px; }
       .chart-wrap { height: 280px; }
       .chart-card, .slider-card { padding: 18px 14px; }
       .ms-cards-grid { grid-template-columns: 1fr; }
       .ms-scatter-filters { gap: 5px; }
       .ms-ftog { padding: 4px 8px; font-size: 10px; }
       .lang-toggle { top: 62px; right: 10px; padding: 5px 12px; font-size: 10px; }
-      .tab-btn { font-size: 11px; padding: 9px 8px; }
       .site-nav-links { gap: 0; }
       .site-nav-links a { padding: 5px 7px; font-size: 9px; }
       .ns-apps-grid { grid-template-columns: 1fr; }
@@ -1784,91 +1632,133 @@
   <!-- ═══ RESULTS ═══ -->
   <div id="results">
 
-    <div class="results-header">
-      <h2><span data-en>Your Health Profile</span><span data-bm>Profil Kesihatan Anda</span></h2>
-      <p id="resultsSubtitle"></p>
+    <div class="r-top">
+      <button class="r-edit" onclick="resetApp()"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg> <span data-en>Edit answers</span><span data-bm>Ubah jawapan</span></button>
     </div>
 
-    <!-- Age callout -->
+    <!-- ═══ 1 · THE ANSWER ═══ -->
+    <section class="r-answer" aria-labelledby="ansTitle">
+      <div class="r-answer-meta"><span><span data-en>Your reflection</span><span data-bm>Cerminan anda</span></span><span id="ansMeta"></span></div>
+      <h2 class="r-answer-title" id="ansTitle"></h2>
+      <p class="r-answer-sub" id="ansSub"></p>
+      <div class="r-score">
+        <div class="r-score-row">
+          <div><span class="r-score-num" id="ms-dn">—</span><span class="r-score-of"> / 100 <span data-en>overall risk</span><span data-bm>risiko keseluruhan</span></span></div>
+          <span class="r-verdict" id="ms-dv">—</span>
+        </div>
+        <div class="r-bar"><div class="r-bar-track"><span></span><span></span><span></span></div><div class="r-bar-mark" id="msBarMark" style="left:0%"></div></div>
+        <div class="r-bar-lbl"><span><span data-en>Healthy</span><span data-bm>Sihat</span></span><span><span data-en>Watch</span><span data-bm>Awasi</span></span><span><span data-en>High</span><span data-bm>Tinggi</span></span></div>
+      </div>
+    </section>
+
     <div class="age-callout" id="ageCallout">
       <div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></div>
       <div id="ageCalloutText"></div>
     </div>
 
-    <!-- Tabs -->
-    <div class="tab-bar">
-      <button class="tab-btn active" id="tab-metabolik" onclick="switchTab('metabolik')">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> <span data-en>Metabolic Health</span><span data-bm>Kesihatan Metabolik</span>
-      </button>
-      <button class="tab-btn" id="tab-kardio" onclick="switchTab('kardio')">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg> <span data-en>Cardiovascular Health</span><span data-bm>Kesihatan Kardiovaskular</span>
-      </button>
-    </div>
-
-    <!-- ═══ METABOLIC TAB ═══ -->
-    <div class="tab-panel active" id="panel-metabolik">
-
-      <div class="ms-dial-wrap" id="ms-dial-wrap">
-        <div class="ms-dial-rel">
-          <canvas id="ms-dc" width="260" height="130"></canvas>
+    <!-- ═══ 2 · KEY NUMBERS ═══ -->
+    <section class="r-sec">
+      <h3 class="r-h"><span data-en>Your three key numbers</span><span data-bm>Tiga angka utama anda</span></h3>
+      <div class="r-tiles">
+        <div class="r-tile">
+          <div class="r-tile-lbl"><span data-en>Waist</span><span data-bm>Pinggang</span></div>
+          <div class="r-tile-val" id="sWaist">—</div>
+          <div class="r-tile-ref" id="sWaistRef"></div>
+          <div class="strip-risk" id="sWaistcat"></div>
         </div>
-        <div class="ms-dial-score-row">
-          <span class="ms-dial-num" id="ms-dn">—</span>
-          <span class="ms-dial-lbl"><span data-en>Overall risk index — lower is better</span><span data-bm>Indeks risiko keseluruhan — lebih rendah lebih baik</span></span>
+        <div class="r-tile">
+          <div class="r-tile-lbl">BMI</div>
+          <div class="r-tile-val" id="sBMI">—</div>
+          <div class="r-tile-ref" id="sBMIRef"></div>
+          <div class="strip-risk" id="sBMIcat"></div>
         </div>
-        <div class="ms-dial-verdict" id="ms-dv">—</div>
-        <div class="ms-dial-sub"     id="ms-ds">—</div>
-        <div class="ms-dial-context" id="ms-dc-ctx"></div>
-      </div>
-
-      <div class="ms-floor-callout" id="ms-floor-callout">
-        <div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></div>
-        <div id="ms-floor-callout-text"></div>
-      </div>
-
-      <div class="summary-strip">
-        <div>
-          <div class="strip-label">BMI</div>
-          <div class="strip-value" id="sBMI">—</div>
-          <div class="strip-risk"  id="sBMIcat"></div>
-        </div>
-        <div>
-          <div class="strip-label">Waist</div>
-          <div class="strip-value" id="sWaist">—</div>
-          <div class="strip-risk"  id="sWaistcat"></div>
-        </div>
-        <div>
-          <div class="strip-label">WHtR</div>
-          <div class="strip-value" id="sWHtR">—</div>
-          <div class="strip-risk"  id="sWHtRcat"></div>
+        <div class="r-tile">
+          <div class="r-tile-lbl"><span data-en>Waist ÷ height</span><span data-bm>Pinggang ÷ tinggi</span></div>
+          <div class="r-tile-val" id="sWHtR">—</div>
+          <div class="r-tile-ref"><span data-en>Under 0.50</span><span data-bm>Bawah 0.50</span></div>
+          <div class="strip-risk" id="sWHtRcat"></div>
         </div>
       </div>
+    </section>
 
-      <div class="ms-fr-card">
-        <div class="ms-fr-top">
-          <div class="ms-fr-title"><span data-en>Diabetes risk score</span><span data-bm>Skor risiko diabetes</span></div>
-          <div class="ms-fr-pill" id="ms-fr-pill">—</div>
+    <!-- ═══ 3 · WHAT TO DO ═══ -->
+    <section class="r-sec">
+      <h3 class="r-h"><span data-en>What to do next</span><span data-bm>Apa perlu dibuat</span></h3>
+      <div id="actionCard" class="action-card" style="display:none">
+        <div class="action-card-header">
+          <div class="action-icon" id="actionIcon"></div>
+          <div>
+            <div class="action-title" id="actionTitle"></div>
+            <div class="action-driver" id="actionDriver"></div>
+          </div>
         </div>
-        <div class="ms-fr-sub" id="ms-fr-sub">—</div>
-        <div class="ms-ftrack"><div class="ms-fthumb" id="ms-fthumb" style="left:0%"></div></div>
-        <div class="ms-fticks">
-          <span data-en>Low</span><span data-bm>Rendah</span>
-          <span data-en>Slightly elevated</span><span data-bm>Agak tinggi</span>
-          <span data-en>Moderate</span><span data-bm>Sederhana</span>
-          <span data-en>High</span><span data-bm>Tinggi</span>
-          <span data-en>Very high</span><span data-bm>Sangat tinggi</span>
+        <p class="action-body" id="actionBody"></p>
+        <ol class="action-steps" id="actionSteps"></ol>
+        <div class="action-links" id="actionLinks"></div>
+      </div>
+      <a class="r-cta" href="https://www.aufthority.com/rancangdiri/" target="_blank" rel="noopener" data-umami-event="cta-rancangdiri-results"><span data-en>Build my plan in RancangDiri</span><span data-bm>Bina pelan saya dalam RancangDiri</span> <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+    </section>
+
+    <!-- ═══ 4 · RISK SCORES ═══ -->
+    <section class="r-sec">
+      <h3 class="r-h"><span data-en>Your risk scores</span><span data-bm>Skor risiko anda</span></h3>
+      <div class="r-rows">
+        <div class="r-row">
+          <div class="r-row-head">
+            <div><div class="r-row-name"><span data-en>Diabetes, next 10 years</span><span data-bm>Diabetes, 10 tahun akan datang</span></div><div class="r-row-src" id="msFrScore">FINDRISC</div></div>
+            <div class="ms-fr-pill" id="ms-fr-pill">—</div>
+          </div>
+          <div class="ms-ftrack"><div class="ms-fthumb" id="ms-fthumb" style="left:0%"></div></div>
+          <p class="r-row-sub" id="ms-fr-sub">—</p>
+        </div>
+        <div class="r-row frs-card">
+          <div class="r-row-head"><div><div class="r-row-name"><span data-en>Heart or stroke event, 10 years</span><span data-bm>Kejadian jantung atau strok, 10 tahun</span></div><div class="r-row-src">Framingham</div></div></div>
+          <div id="frs-content"></div>
+        </div>
+        <div class="r-row">
+          <div class="r-row-head">
+            <div><div class="r-row-name"><span data-en>Heart risk habits</span><span data-bm>Tabiat risiko jantung</span></div><div class="r-row-src">INTERHEART · <span id="ih-score-num">—</span> / 48</div></div>
+            <div class="ih-tier-pill" id="ih-tier-pill">—</div>
+          </div>
+          <div class="ih-track"><div class="ih-thumb" id="ih-thumb" style="left:0%"></div></div>
+          <p class="r-row-sub ih-sub" id="ih-sub">—</p>
+          <details class="r-inline">
+            <summary><span data-en>What adds to this score</span><span data-bm>Apa yang menambah skor ini</span></summary>
+            <div class="ih-factors" id="ih-factors"></div>
+          </details>
         </div>
       </div>
+      <details class="r-more r-more-flat">
+        <summary><span data-en>What to do for your heart</span><span data-bm>Apa perlu dibuat untuk jantung anda</span></summary>
+        <div class="r-more-body">
+      <div id="cardioActionCard" class="action-card" style="display:none">
+        <div class="action-card-header">
+          <div class="action-icon" id="cardioActionIcon"></div>
+          <div>
+            <div class="action-title" id="cardioActionTitle"></div>
+            <div class="action-driver" id="cardioActionDriver"></div>
+          </div>
+        </div>
+        <p class="action-body" id="cardioActionBody"></p>
+        <ol class="action-steps" id="cardioActionSteps"></ol>
+        <div class="action-links" id="cardioActionLinks"></div>
+      </div>
+        </div>
+      </details>
+      <div class="disclaimer" style="margin-top:16px">
+        <span data-en>INTERHEART score is a screening tool, not a diagnosis. Based on Lee et al. 2023 (PMID: 37242265) and McGorrian et al. 2011. Framingham Risk Score (BMI version) derived from D'Agostino et al. 2008.</span>
+        <span data-bm>Skor INTERHEART adalah alat saringan, bukan diagnosis. Berdasarkan Lee et al. 2023 (PMID: 37242265) dan McGorrian et al. 2011. Skor Risiko Framingham (versi BMI) berdasarkan D'Agostino et al. 2008.</span>
+      </div>
+    </section>
 
-      <div class="ms-cards-lbl"><span data-en>Your measurements — tap any card to explore</span><span data-bm>Ukuran anda — ketik kad untuk maklumat lanjut</span></div>
-      <div class="ms-cards-grid" id="ms-cards"></div>
-
+    <!-- ═══ 5 · ONE CHART ═══ -->
+    <section class="r-sec">
       <div class="chart-card">
         <div class="chart-card-header">
-          <div class="chart-card-title"><span data-en>BMI vs Waist — Goal planner</span><span data-bm>BMI vs Pinggang — Perancang sasaran</span></div>
+          <div class="chart-card-title"><span data-en>Where you sit</span><span data-bm>Kedudukan anda</span></div>
           <label class="pop-toggle">
             <input type="checkbox" id="chkPop" onchange="togglePop()" />
-            <span data-en>Show Malaysian population (NHMS 2019)</span><span data-bm>Tunjuk populasi Malaysia (NHMS 2019)</span>
+            <span data-en>Show Malaysians (NHMS 2019)</span><span data-bm>Tunjuk rakyat Malaysia (NHMS 2019)</span>
           </label>
         </div>
         <div class="chart-wrap">
@@ -1884,11 +1774,10 @@
         </div>
         <div class="age-zone-note" id="ageZoneNote"></div>
       </div>
-
       <div class="slider-card">
         <div class="slider-card-header">
           <h3><span data-en>What if I improve?</span><span data-bm>Bagaimana jika saya bertambah baik?</span></h3>
-          <p><span data-en>Drag to simulate your goal — watch the green dot move on the chart above.</span><span data-bm>Seret untuk simulasi sasaran anda.</span></p>
+          <p><span data-en>Drag to set a goal — the light purple dot on the chart above moves with it.</span><span data-bm>Seret untuk tetapkan sasaran — titik ungu muda pada carta di atas akan bergerak.</span></p>
         </div>
         <div class="slider-group">
           <div class="slider-label-row">
@@ -1917,12 +1806,23 @@
           <div class="context-note" id="ctxWaist"></div>
         </div>
       </div>
+    </section>
 
-      <div class="ms-scatter-card">
-        <div class="ms-scatter-head">
-          <div class="ms-scatter-title"><span data-en>Your position among Malaysians</span><span data-bm>Kedudukan anda dalam kalangan rakyat Malaysia</span></div>
-        </div>
-        <div class="ms-scatter-filters">
+    <!-- ═══ 6 · THE DETAIL (folded) ═══ -->
+    <section class="r-sec">
+      <h3 class="r-h"><span data-en>The detail</span><span data-bm>Butiran</span></h3>
+    <details class="r-more">
+      <summary><span data-en>All body measurements</span><span data-bm>Semua ukuran badan</span></summary>
+      <div class="r-more-body">
+        <div class="ms-cards-lbl"><span data-en>Your measurements — tap any card to explore</span><span data-bm>Ukuran anda — ketik kad untuk maklumat lanjut</span></div>
+      <div class="ms-cards-grid" id="ms-cards"></div>
+      </div>
+    </details>
+    <details class="r-more">
+      <summary><span data-en>Compare with other Malaysians</span><span data-bm>Banding dengan rakyat Malaysia lain</span></summary>
+      <div class="r-more-body">
+        <div class="ms-scatter-card">
+                <div class="ms-scatter-filters">
           <div class="ms-fgrp">
             <span class="ms-fgrp-lbl"><span data-en>Sex</span><span data-bm>Jantina</span></span>
             <button class="ms-ftog" id="ms-sf-male"   onclick="msSetSex('male')"><span data-en>Male</span><span data-bm>Lelaki</span></button>
@@ -1952,78 +1852,23 @@
           <div class="ms-scatter-note"><span data-en>Population cloud seeded from NHMS 2019 &amp; 2023 published mean BMI and waist distributions by sex and age group (IKU/MOH Malaysia). Individual points are statistically simulated — not real survey respondents.</span><span data-bm>Data populasi berdasarkan taburan min BMI dan pinggang NHMS 2019 &amp; 2023 mengikut jantina dan kumpulan umur (IKU/KKM Malaysia). Titik-titik adalah simulasi statistik — bukan responden sebenar.</span></div>
         </div>
       </div>
-
-      <div id="actionCard" class="action-card" style="display:none">
-        <div class="action-card-header">
-          <div class="action-icon" id="actionIcon"></div>
-          <div>
-            <div class="action-title" id="actionTitle"></div>
-            <div class="action-driver" id="actionDriver"></div>
-          </div>
-        </div>
-        <p class="action-body" id="actionBody"></p>
-        <ol class="action-steps" id="actionSteps"></ol>
-        <div class="action-links" id="actionLinks"></div>
       </div>
-
-    </div><!-- /panel-metabolik -->
-
-    <!-- ═══ CARDIOVASCULAR TAB ═══ -->
-    <div class="tab-panel" id="panel-kardio">
-
-      <div class="ih-card">
-        <div class="ih-card-header">
-          <div class="ih-card-title">INTERHEART <span data-en>Self-Assessment Score</span><span data-bm>Skor Penilaian Kendiri</span></div>
-          <div class="ih-tier-pill" id="ih-tier-pill">—</div>
-        </div>
-        <div class="ih-sub" id="ih-sub">—</div>
-        <div class="ih-score-row">
-          <span class="ih-score-num" id="ih-score-num">—</span>
-          <span class="ih-score-denom">/ 48</span>
-        </div>
-        <div class="ih-track"><div class="ih-thumb" id="ih-thumb" style="left:0%"></div></div>
-        <div class="ih-track-labels">
-          <span>0 — <span data-en>Low</span><span data-bm>Rendah</span></span>
-          <span><span data-en>Moderate</span><span data-bm>Sederhana</span> — 10</span>
-          <span>16 — <span data-en>High</span><span data-bm>Tinggi</span></span>
-          <span>48</span>
-        </div>
-        <div class="ih-factors-title"><span data-en>Your contributing risk factors</span><span data-bm>Faktor risiko anda</span></div>
-        <div class="ih-factors" id="ih-factors"></div>
+    </details>
+    <details class="r-more">
+      <summary><span data-en>How your score is built</span><span data-bm>Bagaimana skor anda dikira</span></summary>
+      <div class="r-more-body">
+        <p class="r-more-p" id="ms-ds">—</p>
+        <p class="r-more-p" id="ms-dc-ctx"></p>
+        <p class="r-more-p" id="resultsSubtitle"></p>
+        <p class="r-more-p"><span data-en>The overall risk index (0–100) blends waist, diabetes risk score, BMI, waist ÷ height, body shape (ABSI) and fat pattern (conicity). The weights are a design choice for readability, not a clinically validated score. See the data sources below.</span><span data-bm>Indeks risiko keseluruhan (0–100) menggabungkan pinggang, skor risiko diabetes, BMI, pinggang ÷ tinggi, bentuk badan (ABSI) dan taburan lemak (conicity). Pemberat ini ialah pilihan reka bentuk untuk memudahkan bacaan, bukan skor klinikal yang disahkan. Lihat sumber data di bawah.</span></p>
       </div>
+    </details>
+    <details class="r-more">
+      <summary><span data-en>More tools and reading</span><span data-bm>Alat dan bacaan lain</span></summary>
+      <div class="r-more-body">
+        <div class="next-steps-section" id="nextStepsSection">
 
-      <div class="frs-card">
-        <div class="frs-card-title"><span data-en>10-Year Cardiovascular Risk (Framingham)</span><span data-bm>Risiko Kardiovaskular 10 Tahun (Framingham)</span></div>
-        <div id="frs-content"></div>
-      </div>
-
-      <div id="cardioActionCard" class="action-card" style="display:none">
-        <div class="action-card-header">
-          <div class="action-icon" id="cardioActionIcon"></div>
-          <div>
-            <div class="action-title" id="cardioActionTitle"></div>
-            <div class="action-driver" id="cardioActionDriver"></div>
-          </div>
-        </div>
-        <p class="action-body" id="cardioActionBody"></p>
-        <ol class="action-steps" id="cardioActionSteps"></ol>
-        <div class="action-links" id="cardioActionLinks"></div>
-      </div>
-
-      <div class="disclaimer" style="margin-top:16px">
-        <span data-en>INTERHEART score is a screening tool, not a diagnosis. Based on Lee et al. 2023 (PMID: 37242265) and McGorrian et al. 2011. Framingham Risk Score (BMI version) derived from D'Agostino et al. 2008.</span>
-        <span data-bm>Skor INTERHEART adalah alat saringan, bukan diagnosis. Berdasarkan Lee et al. 2023 (PMID: 37242265) dan McGorrian et al. 2011. Skor Risiko Framingham (versi BMI) berdasarkan D'Agostino et al. 2008.</span>
-      </div>
-
-    </div><!-- /panel-kardio -->
-
-    <!-- ═══ NEXT STEPS CTA ═══ -->
-    <div class="next-steps-section" id="nextStepsSection">
-
-      <span class="next-steps-label">
-        <span data-en>What's next?</span><span data-bm>Langkah seterusnya?</span>
-      </span>
-
+      
       <!-- Apps -->
       <span class="ns-sub-label">
         <span data-en>Tools for you</span><span data-bm>Alatan untuk anda</span>
@@ -2095,6 +1940,9 @@
       </div><!-- /ns-reads-grid -->
 
     </div><!-- /next-steps-section -->
+      </div>
+    </details>
+    </section>
 
     <!-- auf-support:start -->
 <!-- Generated by aufthority-home/tools/donate/build.py: edit there, not here. -->
@@ -2413,13 +2261,6 @@ function validateStep(n) {
   return true;
 }
 
-function switchTab(tab) {
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  document.getElementById('tab-'+tab).classList.add('active');
-  document.getElementById('panel-'+tab).classList.add('active');
-  if(tab==='metabolik'&&!chart){setTimeout(()=>{renderChart();msDrawScatter();},80);}
-}
 
 function setSex(s){sex=s;document.querySelectorAll('[data-sex]').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-sex="${s}"]`).classList.add('active');document.getElementById('gdmRow').style.display=s==='female'?'':'none';}
 function setAct(v){act=v;document.querySelectorAll('[data-act]').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-act="${v}"]`).classList.add('active');}
@@ -2588,27 +2429,6 @@ function msDrawScatter(){
   });
 }
 
-function msDrawDial(score,riskCol){
-  const c=document.getElementById('ms-dc');const dpr=window.devicePixelRatio||1;
-  c.width=260*dpr;c.height=130*dpr;const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
-  const W=260,H=130,cx=W/2,cy=H-8,r=108;ctx.clearRect(0,0,W,H);
-  const toRad=p=>Math.PI+(p/100)*Math.PI;
-  [{f:0,t:40,col:`rgb(${tok('--zone-low-rgb')})`},{f:40,t:70,col:`rgb(${tok('--zone-mod-rgb')})`},{f:70,t:100,col:`rgb(${tok('--zone-high-rgb')})`}].forEach(s=>{
-    ctx.beginPath();ctx.arc(cx,cy,r,toRad(s.f),toRad(s.t));ctx.lineWidth=14;ctx.strokeStyle=s.col;ctx.globalAlpha=0.75;ctx.lineCap='butt';ctx.stroke();ctx.globalAlpha=1;
-  });
-  [40,70].forEach(p=>{
-    const a=toRad(p);ctx.beginPath();ctx.moveTo(cx+(r-10)*Math.cos(a),cy+(r-10)*Math.sin(a));ctx.lineTo(cx+(r+1)*Math.cos(a),cy+(r+1)*Math.sin(a));ctx.lineWidth=2;ctx.strokeStyle='rgba(255,255,255,0.9)';ctx.stroke();
-  });
-  ctx.font="600 9px 'Inter',sans-serif";ctx.globalAlpha=0.7;const lr=r-22;
-  [{f:0,t:40,txt:'Low',col:tok('--risk-low-ink')},{f:40,t:70,txt:'Moderate',col:tok('--risk-mod')},{f:70,t:100,txt:'High',col:tok('--alert')}].forEach(s=>{
-    const a=toRad((s.f+s.t)/2);ctx.fillStyle=s.col;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(s.txt,cx+lr*Math.cos(a),cy+lr*Math.sin(a));
-  });
-  ctx.globalAlpha=1;
-  const na=toRad(Math.min(Math.max(score,0),100));
-  ctx.beginPath();ctx.moveTo(cx+8*Math.cos(na+Math.PI),cy+8*Math.sin(na+Math.PI));ctx.lineTo(cx+(r-8)*Math.cos(na),cy+(r-8)*Math.sin(na));ctx.lineWidth=2.5;ctx.strokeStyle=riskCol;ctx.lineCap='round';ctx.stroke();
-  ctx.beginPath();ctx.arc(cx,cy,6,0,Math.PI*2);ctx.fillStyle=riskCol;ctx.fill();
-  ctx.beginPath();ctx.arc(cx,cy,3,0,Math.PI*2);ctx.fillStyle=tok('--canvas');ctx.fill();
-}
 
 function msBuildBar(def,value,sx,age){
   const t1=def.t1fn?def.t1fn(sx,age):def.t1,t2=def.t2fn?def.t2fn(sx,age):def.t2;
@@ -2637,7 +2457,7 @@ function renderChart(){
   const lc=tokA('--ink-rgb',0.45),gc=tokA('--ink-rgb',0.06),tc=tokA('--ink-rgb',0.35);
   const zones={id:'riskZones',beforeDraw(chart){
     const{ctx,chartArea:{left,right,top,bottom},scales:{x,y}}=chart;
-    const hTop=y.getPixelForValue(th.healthy[1]+4.5),hBot=y.getPixelForValue(th.healthy[0]),wL=x.getPixelForValue(t);
+    const hTop=y.getPixelForValue(th.overweight+4.5),hBot=y.getPixelForValue(th.healthy[0]),wL=x.getPixelForValue(t);
     ctx.save();
     ctx.fillStyle=tokA('--zone-low-rgb',0.2);ctx.fillRect(left,hTop,wL-left,hBot-hTop);
     ctx.fillStyle=tokA('--zone-mod-rgb',0.18);ctx.fillRect(left,top,right-left,hTop-top);ctx.fillRect(left,hBot,wL-left,bottom-hBot);ctx.fillRect(wL,hTop,right-wL,hBot-hTop);
@@ -2665,12 +2485,12 @@ function drawAnnotations(curBMI,goalBMI,goalChanged,t,th){
   if(!chart)return;
   const ctx=chart.ctx,xS=chart.scales.x,yS=chart.scales.y,tc='rgba(0,0,0,0.35)';
   ctx.save();ctx.setLineDash([5,4]);ctx.strokeStyle='rgba(0,0,0,0.15)';ctx.lineWidth=1;
-  [[t,'x'],[th.healthy[1],'y'],[th.healthy[1]+4.5,'y']].forEach(([val,axis])=>{
+  [[t,'x'],[th.healthy[1],'y'],[th.overweight+4.5,'y']].forEach(([val,axis])=>{
     ctx.beginPath();if(axis==='x'){const px=xS.getPixelForValue(val);ctx.moveTo(px,yS.top);ctx.lineTo(px,yS.bottom);}
     else{const py=yS.getPixelForValue(val);ctx.moveTo(xS.left,py);ctx.lineTo(xS.right,py);}ctx.stroke();
   });
   ctx.setLineDash([]);ctx.font="11px 'Inter',sans-serif";ctx.fillStyle=tc;
-  ctx.textAlign='right';ctx.fillText(`BMI ${th.healthy[1]}`,xS.right-4,yS.getPixelForValue(th.healthy[1])-5);ctx.fillText(`BMI ${th.healthy[1]+4.5}`,xS.right-4,yS.getPixelForValue(th.healthy[1]+4.5)-5);
+  ctx.textAlign='right';ctx.fillText(`BMI ${th.overweight}`,xS.right-4,yS.getPixelForValue(th.healthy[1])-5);ctx.fillText(`BMI ${th.overweight+4.5}`,xS.right-4,yS.getPixelForValue(th.overweight+4.5)-5);
   ctx.textAlign='left';ctx.fillText(`Waist ${t}cm`,xS.getPixelForValue(t)+4,yS.top+14);
   if(goalChanged){
     const x1=xS.getPixelForValue(S.waist),y1=yS.getPixelForValue(curBMI),x2=xS.getPixelForValue(S.goalWt),y2=yS.getPixelForValue(goalBMI);
@@ -2700,6 +2520,57 @@ function renderActionCard(tier,iconEl,titleEl,driverEl,bodyEl,stepsEl,linksEl,ca
   stepsEl.innerHTML=d.steps.map((s,i)=>`<li class="action-step"><div class="action-step-num">${i+1}</div><span>${s}</span></li>`).join('');
   linksEl.innerHTML=d.links.map(l=>`<a href="${l.url}" target="_blank" rel="noopener" class="action-link${l.sec?' secondary':''}">${l.label}</a>`).join('');
   cardEl.style.display='block';
+}
+
+// ── Headline: the one thing to work on (design C) ──
+// Severity decides first. On a tie: when something is high, clinical risk leads
+// (heart, then diabetes); when it is only moderate, the changeable measure leads
+// (waist, then weight). Copy is EN/BM and re-renders on language toggle.
+let LAST=null;
+const HEAD={
+  en:{meta:(sx,a)=>`${sx==='male'?'Male':'Female'} · ${a}`, wref:t=>`Under ${t} cm`,
+    t:{waist:'Your waist is the one thing to work on.',bmi:'Your weight is the one thing to work on.',lowbmi:'Your weight is the one thing to look at.',diab:'Your diabetes risk is the one thing to act on.',heart:'Your heart risk is the one thing to act on.',ok:'Your numbers look healthy.'},
+    s:{waist:(t,g)=>`Bringing it under ${t} cm — about ${g} cm from where you are — puts it back in the healthy range for Malaysians.`,
+       bmi:(w,g)=>`At your height, a healthy BMI for your age means about ${w} kg or less — ${g} kg from where you are.`,
+       lowbmi:()=>'Your BMI is below the healthy range. A doctor or dietitian can check why.',
+       diab:f=>`FINDRISC score ${f} of 26. A fasting blood sugar test at any klinik will give a clearer picture.`,
+       diabKnown:()=>'You have been told your blood sugar is high before. Regular follow-up with your doctor or klinik matters most.',
+       heartF:x=>`${x>=30?'A 30% or higher':'About '+x.toFixed(1)+'%'} chance of a heart or stroke event in the next 10 years. A doctor can do a full heart check.`,
+       heartI:n=>`Your heart risk habits score ${n} of 48. See what adds to it under your risk scores.`,
+       ok:()=>'Keep your current habits and check again in a year.'}},
+  bm:{meta:(sx,a)=>`${sx==='male'?'Lelaki':'Perempuan'} · ${a}`, wref:t=>`Bawah ${t} cm`,
+    t:{waist:'Fokus utama anda: ukur lilit pinggang.',bmi:'Fokus utama anda: berat badan.',lowbmi:'Perkara utama untuk disemak: berat badan.',diab:'Fokus utama anda: risiko diabetes.',heart:'Fokus utama anda: risiko jantung.',ok:'Angka anda nampak sihat.'},
+    s:{waist:(t,g)=>`Turunkan ke bawah ${t} cm — kira-kira ${g} cm dari sekarang — untuk kembali ke julat sihat bagi rakyat Malaysia.`,
+       bmi:(w,g)=>`Pada ketinggian anda, BMI yang sihat untuk umur anda bermaksud kira-kira ${w} kg atau kurang — ${g} kg dari sekarang.`,
+       lowbmi:()=>'BMI anda di bawah julat sihat. Doktor atau pakar diet boleh menyemak puncanya.',
+       diab:f=>`Skor FINDRISC anda ${f} daripada 26. Ujian gula darah berpuasa di mana-mana klinik akan memberi gambaran lebih jelas.`,
+       diabKnown:()=>'Anda pernah dimaklumkan gula darah anda tinggi. Susulan berkala dengan doktor atau klinik adalah paling penting.',
+       heartF:x=>`${x>=30?'30% atau lebih':'Kira-kira '+x.toFixed(1)+'%'} kemungkinan kejadian jantung atau strok dalam 10 tahun akan datang. Doktor boleh membuat pemeriksaan jantung penuh.`,
+       heartI:n=>`Skor tabiat risiko jantung anda ${n} daripada 48. Lihat apa yang menambah skor ini di bahagian skor risiko.`,
+       ok:()=>'Teruskan tabiat sekarang dan semak semula dalam setahun.'}}
+};
+function msRenderHeadline(){
+  if(!LAST)return;
+  const {sx,age,height,weight,waist,bc,wc,frT,fr,ih,frsRisk,glcKnown}=LAST;
+  const L=HEAD[document.documentElement.getAttribute('data-lang')==='bm'?'bm':'en'];
+  const th=bmiThresholds(age), wT=sx==='male'?90:80;
+  const heart=frsRisk!==null?(frsRisk>=20?'high':frsRisk>=10?'mod':'low'):ih.tier;
+  const lvl={waist:wc.risk,bmi:bc.risk,diab:frT.col,heart};
+  const order={high:['heart','diab','waist','bmi'],mod:['waist','bmi','diab','heart']};
+  let key='ok';
+  for(const r of ['high','mod']){const k=order[r].find(k=>lvl[k]===r);if(k){key=k;break;}}
+  let sub;
+  if(key==='waist') sub=L.s.waist(wT,Math.max(1,Math.round(waist-wT)));
+  else if(key==='bmi'&&bc.cat==='Underweight'){key='lowbmi';sub=L.s.lowbmi();}
+  else if(key==='bmi'){const w=th.healthy[1]*(height/100)**2;sub=L.s.bmi(Math.floor(w),Math.max(1,Math.round(weight-w)));}
+  else if(key==='diab') sub=glcKnown?L.s.diabKnown():L.s.diab(fr);
+  else if(key==='heart') sub=frsRisk!==null?L.s.heartF(frsRisk):L.s.heartI(ih.score);
+  else sub=L.s.ok();
+  document.getElementById('ansMeta').textContent=L.meta(sx,age);
+  document.getElementById('ansTitle').textContent=L.t[key];
+  document.getElementById('ansSub').textContent=sub;
+  document.getElementById('sWaistRef').textContent=L.wref(wT);
+  document.getElementById('sBMIRef').textContent=`${th.healthy[0]}–${th.healthy[1]}`;
 }
 
 function calculate(){
@@ -2736,13 +2607,6 @@ function calculate(){
   const metricRisks=MS_METRICS.map(m=>m.riskFn(({bmi:B,wc:waist,whtr:WR,absi:A,con:CO})[m.key],sex,age));
   const allRisks=[...metricRisks,frT.col];
   const worstMetric=allRisks.includes('high')?'high':allRisks.includes('mod')?'mod':'low';
-  const fc=document.getElementById('ms-floor-callout'),fct=document.getElementById('ms-floor-callout-text');
-  if(worstMetric==='high'&&compositeVerdict==='low'){
-    const hi=metricRisks.findIndex(r=>r==='high');
-    const nm=hi>=0?getLang().metricNames[MS_METRICS[hi].key]:(frT.col==='high'?'Diabetes risk':'');
-    if(nm){fc.setAttribute('data-metric-key',hi>=0?MS_METRICS[hi].key:'diabetes');fct.textContent=getLang().floorCallout.label(nm);fc.classList.add('visible');}
-    else fc.classList.remove('visible');
-  }else fc.classList.remove('visible');
 
   const callout=document.getElementById('ageCallout'),calloutText=document.getElementById('ageCalloutText');
   if(age<18){calloutText.innerHTML='<strong>Under 18 detected.</strong> Thresholds are calibrated for adults.';callout.classList.add('visible');}
@@ -2755,7 +2619,7 @@ function calculate(){
   document.getElementById('ms-dv').textContent=vmap[worst].t;document.getElementById('ms-dv').style.color=rCol;
   document.getElementById('ms-ds').textContent=vmap[worst].s;
   const ctxEl=document.getElementById('ms-dc-ctx');if(ctxEl)ctxEl.textContent=getLang().ctxNote(comp);
-  msDrawDial(comp,rCol);
+  const bm=document.getElementById('msBarMark');if(bm)bm.style.left=Math.min(100,Math.max(0,comp))+'%';
 
   document.getElementById('sBMI').textContent=B.toFixed(1);document.getElementById('sBMIcat').textContent=bc.cat;document.getElementById('sBMIcat').className='strip-risk r-'+bc.risk;
   document.getElementById('sWaist').textContent=waist+' cm';document.getElementById('sWaistcat').textContent=wc.cat;document.getElementById('sWaistcat').className='strip-risk r-'+wc.risk;
@@ -2764,6 +2628,7 @@ function calculate(){
 
   document.getElementById('ms-fr-pill').textContent=frT.label;document.getElementById('ms-fr-pill').className='ms-fr-pill '+frT.col;
   document.getElementById('ms-fr-sub').textContent=`Score ${fr} out of 26 — estimated ${frT.prob} chance of developing type 2 diabetes within 10 years. ${frT.col==='low'?'Your lifestyle and measurements suggest low risk.':frT.col==='mod'?'Consider discussing your risk at your next medical check-up.':'We recommend seeking a fasting blood glucose test at your nearest klinik or hospital.'}`;
+  document.getElementById('msFrScore').textContent=`FINDRISC · ${fr} / 26`;
   document.getElementById('ms-fthumb').style.left=Math.min(97,(fr/26*100))+'%';
 
   const allMetrics=[...MS_METRICS];
@@ -2813,16 +2678,10 @@ function calculate(){
   if(frsRisk!==null){
     const frsTier=frsRisk>=20?'high':frsRisk>=10?'mod':'low';
     const frsTierLabel=frsRisk>=20?'High risk (≥20%)':frsRisk>=10?'Intermediate risk (10–19%)':'Low risk (<10%)';
-    const frsColor=frsRisk>=20?'var(--alert)':frsRisk>=10?'var(--risk-mod)':'var(--risk-low-ink)';
     frsEl.innerHTML=`
-      <div class="frs-pct" style="color:${frsColor}">${frsRisk.toFixed(1)}%</div>
-      <div class="frs-pct-label"><span data-en>chance of a cardiovascular event in the next 10 years</span></div>
-      <div class="frs-tier-pill ${frsTier}">${frsTierLabel}</div>
-      <div class="frs-bar-wrap">
-        <div class="frs-bar-track"><div class="frs-bar-thumb" style="left:${Math.min(97,frsRisk/35*100)}%"></div></div>
-        <div class="frs-bar-labels"><span>0%</span><span>Low &lt;10%</span><span>Int. 10–19%</span><span>High ≥20%</span></div>
-      </div>
-      <div class="frs-sub">Based on your age, sex, BMI (${B.toFixed(1)}), systolic BP (${sbp} mmHg), smoking status, and diabetes history. Framingham Risk Score (BMI version), D'Agostino et al. 2008, validated in Malaysian population (Selvarajah et al. 2014).</div>`;
+      <div class="r-row-val"><div class="frs-pct">${frsRisk.toFixed(1)}%</div><div class="frs-tier-pill ${frsTier}">${frsTierLabel}</div></div>
+      <div class="frs-bar-track"><div class="frs-bar-thumb" style="left:${Math.min(97,frsRisk/35*100)}%"></div></div>
+      <p class="r-row-sub">Based on your age, sex, BMI (${B.toFixed(1)}), systolic BP (${sbp} mmHg), smoking and diabetes history.</p>`;
     renderActionCard(ih.tier,document.getElementById('cardioActionIcon'),document.getElementById('cardioActionTitle'),document.getElementById('cardioActionDriver'),document.getElementById('cardioActionBody'),document.getElementById('cardioActionSteps'),document.getElementById('cardioActionLinks'),document.getElementById('cardioActionCard'),L.cardioActionCards);
   }else{
     frsEl.innerHTML=`<div class="frs-unlock">
@@ -2833,11 +2692,14 @@ function calculate(){
     renderActionCard(ih.tier,document.getElementById('cardioActionIcon'),document.getElementById('cardioActionTitle'),document.getElementById('cardioActionDriver'),document.getElementById('cardioActionBody'),document.getElementById('cardioActionSteps'),document.getElementById('cardioActionLinks'),document.getElementById('cardioActionCard'),L.cardioActionCards);
   }
 
+  LAST={sx:sex,age,height,weight,waist,bc,wc,frT,fr,ih,frsRisk,glcKnown:glc==='yes'};msRenderHeadline();
+
   // Show the Next Steps CTA section
   const nss = document.getElementById('nextStepsSection');
   if (nss) nss.style.display = 'block';
 
   document.getElementById('formSection').style.display='none';
+  document.querySelector('header').style.display='none';
   document.getElementById('results').style.display='block';
   window.scrollTo({top:0,behavior:'smooth'});
   setTimeout(()=>{renderChart();msDrawScatter();},80);
@@ -2850,9 +2712,9 @@ function resetApp(){
   if(msScatterChart){msScatterChart.destroy();msScatterChart=null;}
   document.getElementById('results').style.display='none';
   document.getElementById('formSection').style.display='block';
+  document.querySelector('header').style.display='';
   document.getElementById('chkPop').checked=false;
   document.getElementById('ageCallout').classList.remove('visible');
-  document.getElementById('ms-floor-callout').classList.remove('visible');
   document.getElementById('actionCard').style.display='none';
   document.getElementById('cardioActionCard').style.display='none';
   showPop=false;S={};msPopCache={};currentStep=1;
@@ -2870,6 +2732,7 @@ function toggleLang(){
   html.setAttribute('data-lang',next);html.setAttribute('lang',isBM?'en':'ms');
   document.querySelector('.lang-en').style.display=isBM?'':'none';
   document.querySelector('.lang-bm').style.display=isBM?'none':'';
+  msRenderHeadline();
 }
 </script>
 </body>
