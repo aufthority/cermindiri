@@ -18,7 +18,7 @@
   <title>Cermin Diri — Know Your Numbers</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@700;800&display=swap" rel="stylesheet" />
 
   <script defer src="https://cloud.umami.is/script.js" data-website-id="7c961c49-4871-4b9d-b031-d9b95d4e4a68"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
@@ -32,51 +32,50 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
+      /* ═══ CerminDiri · design C "Grafik Jujur" ═══
+         One accent (violet) for brand and "you"; green/amber/red only ever mean risk.
+         Every text colour here passes WCAG AA (4.5:1) on white and on --canvas. */
       --canvas:        #f4e9e1;
       --ink:           #0e0e0e;
       --charcoal:      #242320;
       --snow:          #ffffff;
-      --coral:         #ff3d00;
-      --yellow:        #ffff00;
-      --neon:          #05ff00;
-      --violet:        #5900cc;
-      --royal:         #2835f8;
-      --alert:         #ff003d;
-      --leaf:          #20db70;
-      --mint:          #cee4cd;
-      --pink:          #e4d0cd;
+      --accent:        #5900cc;
+      --ink-muted:     #5a5550;   /* secondary text on light surfaces */
+      --canvas-muted:  #b8ada5;   /* secondary text on --ink surfaces */
+      --alert:         #b42318;   /* high-risk text, borders, fills */
+      --mint:          #d4f0dd;
 
       --bg:            var(--canvas);
       --surface:       var(--snow);
       --border:        var(--ink);
       --border-light:  rgba(14,14,14,0.12);
 
-      --risk-low:      #20db70;
-      --risk-low-bg:   #d4f4e4;
-      --risk-mod:      #ff8c00;
-      --risk-mod-bg:   #fff3dc;
-      --risk-high:     #ff003d;
-      --risk-high-bg:  #ffe0e8;
+      --risk-low-bg:   #d4f0dd;
+      --risk-mod:      #8a4b00;
+      --risk-mod-bg:   #ffebc2;
+      --risk-high-bg:  #ffd6d6;
 
       --radius-btn:    44px;
       --radius-card:   16px;
       --radius-badge:  24px;
       --font:          'Inter', ui-sans-serif, system-ui, sans-serif;
+      --font-display:  'Inter Tight', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
       /* ── Role tokens: every colour the app draws comes from here ── */
       --ink-rgb:          14,14,14;
       --canvas-rgb:       244,233,225;
-      --coral-rgb:        255,61,0;
-      --risk-low-ink:     #16a34a;
-      --risk-low-rgb:     22,163,74;
-      --risk-mod-rgb:     255,140,0;
-      --risk-high-rgb:    255,0,61;
-      --risk-severe:      #8B0000;
-      --you:              #378ADD;   /* your dot, goal-planner chart */
-      --you-scatter:      var(--coral); /* your dot, population chart */
-      --goal:             #3B6D11;
-      --zone-low-rgb:     99,153,34;
-      --zone-mod-rgb:     186,117,23;
-      --zone-high-rgb:    226,75,74;
+      --accent-rgb:       89,0,204;
+      --risk-low-ink:     #17683f;
+      --risk-low-rgb:     23,104,63;
+      --risk-mod-rgb:     138,75,0;
+      --risk-high-rgb:    180,35,24;
+      --risk-severe:      #7a1712;
+      --you:              var(--accent);   /* your dot, both charts */
+      --you-scatter:      var(--accent);
+      --goal:             #a98be6;         /* where you are heading: lighter violet */
+      --zone-low-rgb:     63,166,107;
+      --zone-mod-rgb:     242,169,59;
+      --zone-high-rgb:    229,72,77;
       --pop-rgb:          136,135,128;
     }
 
@@ -130,7 +129,7 @@
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(var(--canvas-rgb),0.5);
+      color: var(--canvas-muted);
       text-decoration: none;
       padding: 5px 10px;
       border-radius: 6px;
@@ -144,7 +143,7 @@
       top: 62px;
       right: 16px;
       z-index: 199;
-      background: var(--yellow);
+      background: var(--snow);
       color: var(--ink);
       border: 1.5px solid var(--ink);
       border-radius: var(--radius-btn);
@@ -157,7 +156,7 @@
       transition: all 0.15s;
       text-transform: uppercase;
     }
-    .lang-toggle:hover { background: var(--ink); color: var(--yellow); }
+    .lang-toggle:hover { background: var(--ink); color: var(--snow); }
 
     /* ── CONTAINER ── */
     .container {
@@ -177,10 +176,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--ink);
-      color: var(--canvas);
-      padding: 5px 14px;
-      border-radius: var(--radius-btn);
+      color: var(--ink);
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.14em;
@@ -190,7 +186,7 @@
     .eyebrow-dot {
       width: 6px;
       height: 6px;
-      background: var(--coral);
+      background: var(--accent);
       border-radius: 50%;
     }
 
@@ -202,14 +198,14 @@
       color: var(--ink);
       margin-bottom: 16px;
     }
-    .hero-title .accent { color: var(--coral); }
+    .hero-title .accent { color: var(--accent); }
 
     .hero-byline {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       margin-bottom: 12px;
     }
 
@@ -225,10 +221,8 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--pink);
-      border: 1.5px solid var(--ink);
-      border-radius: var(--radius-btn);
-      padding: 5px 14px;
+      border-top: 1.5px solid var(--ink);
+      padding: 8px 0 0;
       font-size: 10px;
       font-weight: 600;
       color: var(--ink);
@@ -252,8 +246,8 @@
       transition: all 0.25s;
     }
     .step-dot.active {
-      background: var(--coral);
-      border-color: var(--coral);
+      background: var(--accent);
+      border-color: var(--accent);
       transform: scale(1.4);
     }
     .step-dot.done {
@@ -278,7 +272,7 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       margin-bottom: 22px;
     }
 
@@ -298,7 +292,7 @@
       text-transform: none;
       letter-spacing: 0;
       font-size: 11px;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
     }
 
     input[type="number"] {
@@ -317,8 +311,8 @@
     }
     input[type="number"]:focus {
       outline: none;
-      border-color: var(--coral);
-      box-shadow: 0 0 0 3px rgba(var(--coral-rgb),0.12);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(var(--accent-rgb),0.12);
     }
     .input-wrap { position: relative; }
     .input-wrap input { padding-right: 50px; }
@@ -328,7 +322,7 @@
       top: 50%;
       transform: translateY(-50%);
       font-size: 12px;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       font-weight: 600;
       pointer-events: none;
       letter-spacing: 0.04em;
@@ -349,7 +343,7 @@
       font-family: var(--font);
       font-size: 13px;
       font-weight: 600;
-      color: rgba(var(--ink-rgb),0.5);
+      color: var(--ink-muted);
       transition: all 0.15s;
     }
     .sex-btn:hover { border-color: var(--ink); color: var(--ink); }
@@ -369,7 +363,7 @@
       font-family: var(--font);
       font-size: 13px;
       font-weight: 600;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       cursor: pointer;
       transition: all 0.15s;
       flex-shrink: 0;
@@ -390,13 +384,13 @@
       transition: all 0.2s;
       letter-spacing: 0.04em;
     }
-    .btn-next:hover { background: var(--coral); border-color: var(--coral); color: var(--snow); }
+    .btn-next:hover { background: var(--accent); border-color: var(--accent); color: var(--snow); }
 
     .btn-primary {
       width: 100%;
       padding: 16px;
       margin-top: 22px;
-      background: var(--coral);
+      background: var(--accent);
       color: var(--snow);
       border: 2px solid var(--ink);
       border-radius: var(--radius-btn);
@@ -416,7 +410,7 @@
 
     .sbp-hint {
       font-size: 12px;
-      color: rgba(var(--ink-rgb),0.5);
+      color: var(--ink-muted);
       margin-top: 8px;
       line-height: 1.6;
       padding: 10px 14px;
@@ -424,7 +418,7 @@
       border-radius: 10px;
       border: 1.5px solid var(--border-light);
     }
-    .sbp-hint strong { color: var(--coral); }
+    .sbp-hint strong { color: var(--accent); }
 
     /* ── RESULTS ── */
     #results { display: none; }
@@ -443,7 +437,7 @@
     }
     .results-header p {
       font-size: 13px;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       font-weight: 500;
     }
 
@@ -466,7 +460,7 @@
       font-family: var(--font);
       font-size: 13px;
       font-weight: 700;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       cursor: pointer;
       transition: all 0.2s;
       display: flex;
@@ -499,7 +493,7 @@
     }
     .age-callout.visible { display: flex; }
     .age-callout strong { font-weight: 700; display: block; margin-bottom: 2px; }
-    .age-zone-note { font-size: 11px; color: rgba(var(--ink-rgb),0.4); margin-top: 10px; font-style: italic; }
+    .age-zone-note { font-size: 11px; color: var(--ink-muted); margin-top: 10px; font-style: italic; }
 
     /* ── FLOOR CALLOUT ── */
     .ms-floor-callout {
@@ -541,7 +535,7 @@
     }
     .ms-dial-lbl {
       font-size: 10px;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       margin-top: 4px;
       font-weight: 600;
       letter-spacing: 0.08em;
@@ -556,7 +550,7 @@
     }
     .ms-dial-sub {
       font-size: 14px;
-      color: rgba(var(--ink-rgb),0.55);
+      color: var(--ink-muted);
       text-align: center;
       max-width: 400px;
       margin-top: 6px;
@@ -564,7 +558,7 @@
     }
     .ms-dial-context {
       font-size: 11px;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       text-align: center;
       margin-top: 8px;
       padding: 5px 14px;
@@ -592,7 +586,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       margin-bottom: 4px;
     }
     .strip-value {
@@ -629,7 +623,7 @@
       font-weight: 700;
       letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
     }
     .ms-fr-pill {
       font-size: 11px;
@@ -643,11 +637,11 @@
     .ms-fr-pill.low  { background: var(--risk-low-bg); color: var(--risk-low-ink); border-color: var(--risk-low-ink); }
     .ms-fr-pill.mod  { background: var(--risk-mod-bg); color: var(--risk-mod); border-color: var(--risk-mod); }
     .ms-fr-pill.high { background: var(--risk-high-bg); color: var(--alert); border-color: var(--alert); }
-    .ms-fr-sub { font-size: 13px; color: rgba(var(--ink-rgb),0.55); margin-bottom: 16px; line-height: 1.65; }
+    .ms-fr-sub { font-size: 13px; color: var(--ink-muted); margin-bottom: 16px; line-height: 1.65; }
     .ms-ftrack {
       height: 8px;
       border-radius: 4px;
-      background: linear-gradient(to right, var(--risk-low-ink) 0%, var(--risk-low-ink) 30%, var(--risk-mod) 55%, var(--alert) 75%, var(--risk-severe) 100%);
+      background: linear-gradient(to right, rgb(var(--zone-low-rgb)) 0%, rgb(var(--zone-low-rgb)) 30%, rgb(var(--zone-mod-rgb)) 55%, rgb(var(--zone-high-rgb)) 75%, var(--risk-severe) 100%);
       position: relative;
       margin-bottom: 8px;
     }
@@ -666,7 +660,7 @@
       display: flex;
       justify-content: space-between;
       font-size: 9px;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       font-weight: 600;
       letter-spacing: 0.04em;
     }
@@ -675,7 +669,7 @@
     .ms-cards-lbl {
       font-size: 11px;
       font-weight: 700;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       letter-spacing: 0.10em;
       text-transform: uppercase;
       margin-bottom: 10px;
@@ -716,17 +710,17 @@
       margin-top: 8px;
       letter-spacing: -0.03em;
     }
-    .ms-mc-unit { font-size: 13px; color: rgba(var(--ink-rgb),0.4); font-family: var(--font); font-weight: 500; }
+    .ms-mc-unit { font-size: 13px; color: var(--ink-muted); font-family: var(--font); font-weight: 500; }
     .ms-mc-expand { display: none; margin-top: 14px; padding-top: 14px; border-top: 1.5px solid var(--border-light); }
     .ms-mc.open .ms-mc-expand { display: block; }
-    .ms-mc-hint { font-size: 11px; color: rgba(var(--ink-rgb),0.35); margin-top: 6px; font-weight: 500; }
+    .ms-mc-hint { font-size: 11px; color: var(--ink-muted); margin-top: 6px; font-weight: 500; }
     .ms-mc.open .ms-mc-hint { display: none; }
     .ms-clinical-note {
       margin-top: 10px;
       padding: 8px 12px;
       border-radius: 8px;
       font-size: 11px;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       line-height: 1.55;
       border-left: 3px solid var(--border-light);
       background: var(--canvas);
@@ -735,11 +729,11 @@
     .ms-barw { padding-bottom: 24px; margin-bottom: 6px; }
     .ms-btrack { height: 8px; border-radius: 4px; position: relative; width: 100%; }
     .ms-bseg { position: absolute; height: 8px; top: 0; }
-    .ms-bseg.g { background: rgba(var(--risk-low-rgb),0.3); border-radius: 4px 0 0 4px; }
-    .ms-bseg.a { background: rgba(var(--risk-mod-rgb),0.3); }
-    .ms-bseg.r { background: rgba(var(--risk-high-rgb),0.3); border-radius: 0 4px 4px 0; }
+    .ms-bseg.g { background: rgba(var(--zone-low-rgb),0.3); border-radius: 4px 0 0 4px; }
+    .ms-bseg.a { background: rgba(var(--zone-mod-rgb),0.3); }
+    .ms-bseg.r { background: rgba(var(--zone-high-rgb),0.3); border-radius: 0 4px 4px 0; }
     .ms-btick { position: absolute; top: -3px; width: 1px; height: 14px; background: var(--border-light); }
-    .ms-btlbl { position: absolute; top: 15px; font-size: 10px; color: rgba(var(--ink-rgb),0.4); transform: translateX(-50%); white-space: nowrap; font-weight: 600; }
+    .ms-btlbl { position: absolute; top: 15px; font-size: 10px; color: var(--ink-muted); transform: translateX(-50%); white-space: nowrap; font-weight: 600; }
     .ms-bdot { position: absolute; top: 50%; transform: translate(-50%,-50%); width: 16px; height: 16px; border-radius: 50%; border: 2.5px solid var(--snow); box-shadow: 0 0 0 1.5px rgba(var(--ink-rgb),0.2); z-index: 2; }
     .ms-eplain { font-size: 13px; line-height: 1.65; padding: 10px 14px; border-radius: 10px; margin-top: 8px; font-weight: 500; }
     .ms-epg { background: var(--risk-low-bg); color: var(--risk-low-ink); }
@@ -767,14 +761,14 @@
       font-weight: 700;
       letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
     }
     .pop-toggle {
       display: flex;
       align-items: center;
       gap: 7px;
       font-size: 12px;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       cursor: pointer;
       user-select: none;
       font-weight: 500;
@@ -782,7 +776,7 @@
     .pop-toggle input[type="checkbox"] { width: 14px; height: 14px; cursor: pointer; accent-color: var(--ink); }
     .chart-wrap { position: relative; width: 100%; height: 380px; }
     .chart-legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
-    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(var(--ink-rgb),0.4); font-weight: 500; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-muted); font-weight: 500; }
     .legend-swatch { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
     .legend-swatch.circle { border-radius: 50%; }
 
@@ -802,7 +796,7 @@
       margin-bottom: 6px;
       letter-spacing: -0.02em;
     }
-    .slider-card-header p { font-size: 13px; color: rgba(var(--canvas-rgb),0.4); }
+    .slider-card-header p { font-size: 13px; color: var(--canvas-muted); }
     .slider-group { margin-bottom: 28px; }
     .slider-group:last-child { margin-bottom: 0; }
     .slider-label-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
@@ -811,7 +805,7 @@
       font-weight: 700;
       letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: rgba(var(--canvas-rgb),0.4);
+      color: var(--canvas-muted);
     }
     .slider-val-wrap { display: flex; align-items: baseline; gap: 6px; }
     .slider-val {
@@ -820,8 +814,8 @@
       color: var(--canvas);
       letter-spacing: -0.03em;
     }
-    .slider-unit { font-size: 14px; color: rgba(var(--canvas-rgb),0.35); }
-    .slider-delta { font-size: 13px; font-weight: 700; color: var(--neon); }
+    .slider-unit { font-size: 14px; color: var(--canvas-muted); }
+    .slider-delta { font-size: 13px; font-weight: 700; color: var(--risk-low-bg); }
     input[type="range"] {
       -webkit-appearance: none;
       appearance: none;
@@ -848,10 +842,10 @@
       justify-content: space-between;
       margin-top: 8px;
       font-size: 11px;
-      color: rgba(var(--canvas-rgb),0.2);
+      color: var(--canvas-muted);
       font-weight: 500;
     }
-    .context-note { font-size: 12px; color: rgba(var(--canvas-rgb),0.35); margin-top: 8px; line-height: 1.6; }
+    .context-note { font-size: 12px; color: var(--canvas-muted); margin-top: 8px; line-height: 1.6; }
 
     /* ── POPULATION SCATTER ── */
     .ms-scatter-card {
@@ -867,7 +861,7 @@
       font-weight: 700;
       letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
     }
     .ms-scatter-filters {
       display: flex;
@@ -878,7 +872,7 @@
       align-items: center;
     }
     .ms-fgrp { display: flex; gap: 5px; align-items: center; }
-    .ms-fgrp-lbl { font-size: 11px; color: rgba(var(--ink-rgb),0.4); font-weight: 600; margin-right: 2px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .ms-fgrp-lbl { font-size: 11px; color: var(--ink-muted); font-weight: 600; margin-right: 2px; letter-spacing: 0.04em; text-transform: uppercase; }
     .ms-ftog {
       padding: 5px 12px;
       border: 1.5px solid var(--border-light);
@@ -886,17 +880,17 @@
       font-size: 11px;
       cursor: pointer;
       background: var(--canvas);
-      color: rgba(var(--ink-rgb),0.5);
+      color: var(--ink-muted);
       font-family: var(--font);
       font-weight: 600;
       transition: all 0.15s;
     }
     .ms-ftog.on { background: var(--ink); border-color: var(--ink); color: var(--canvas); }
     .ms-scatter-inner { padding: 14px 18px 18px; }
-    .ms-sleg { display: flex; gap: 14px; margin-top: 10px; flex-wrap: wrap; font-size: 12px; color: rgba(var(--ink-rgb),0.4); font-weight: 500; }
+    .ms-sleg { display: flex; gap: 14px; margin-top: 10px; flex-wrap: wrap; font-size: 12px; color: var(--ink-muted); font-weight: 500; }
     .ms-sl { display: flex; align-items: center; gap: 5px; }
     .ms-sl-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-    .ms-scatter-note { font-size: 11px; color: rgba(var(--ink-rgb),0.35); margin-top: 8px; line-height: 1.5; }
+    .ms-scatter-note { font-size: 11px; color: var(--ink-muted); margin-top: 8px; line-height: 1.5; }
     .ms-percentile-badge {
       margin-top: 10px;
       padding: 10px 14px;
@@ -931,7 +925,7 @@
     .tier-green .action-title { color: var(--risk-low-ink); }
     .tier-amber .action-title { color: var(--risk-mod); }
     .tier-red   .action-title { color: var(--alert); }
-    .action-driver { font-size: 13px; font-weight: 500; color: rgba(var(--ink-rgb),0.5); }
+    .action-driver { font-size: 13px; font-weight: 500; color: var(--ink-muted); }
     .action-body { font-size: 14px; color: var(--ink); line-height: 1.75; margin-bottom: 18px; }
     .action-steps { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; }
     .action-step { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--ink); line-height: 1.6; }
@@ -969,7 +963,7 @@
     .tier-green .action-link { background: var(--ink); color: var(--canvas); }
     .tier-amber .action-link { background: var(--ink); color: var(--canvas); }
     .tier-red   .action-link { background: var(--ink); color: var(--canvas); }
-    .action-link:hover { background: var(--coral); border-color: var(--coral); transform: translateY(-1px); }
+    .action-link:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
     .action-link.secondary { background: transparent; color: var(--ink); }
     .action-link.secondary:hover { background: var(--ink); color: var(--canvas); }
 
@@ -993,7 +987,7 @@
       font-weight: 700;
       letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
     }
     .ih-tier-pill {
       font-size: 11px;
@@ -1019,11 +1013,11 @@
       font-weight: 700;
       letter-spacing: -0.04em;
     }
-    .ih-score-denom { font-size: 16px; color: rgba(var(--ink-rgb),0.4); font-weight: 500; }
+    .ih-score-denom { font-size: 16px; color: var(--ink-muted); font-weight: 500; }
     .ih-track {
       height: 8px;
       border-radius: 4px;
-      background: linear-gradient(to right, var(--risk-low-ink) 0%, var(--risk-low-ink) 20%, var(--risk-mod) 35%, var(--alert) 35%, var(--alert) 100%);
+      background: linear-gradient(to right, rgb(var(--zone-low-rgb)) 0%, rgb(var(--zone-low-rgb)) 20%, rgb(var(--zone-mod-rgb)) 35%, rgb(var(--zone-high-rgb)) 35%, rgb(var(--zone-high-rgb)) 100%);
       position: relative;
       margin: 12px 0 6px;
     }
@@ -1042,7 +1036,7 @@
       display: flex;
       justify-content: space-between;
       font-size: 10px;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       font-weight: 600;
       margin-bottom: 16px;
     }
@@ -1051,7 +1045,7 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       margin-bottom: 8px;
       margin-top: 16px;
     }
@@ -1077,7 +1071,7 @@
     }
     .ih-factor-pts.pts-high { background: var(--risk-high-bg); color: var(--alert); border-color: var(--alert); }
     .ih-factor-pts.pts-mod  { background: var(--risk-mod-bg); color: var(--risk-mod); border-color: var(--risk-mod); }
-    .ih-sub { font-size: 13px; color: rgba(var(--ink-rgb),0.5); line-height: 1.6; margin-top: 4px; font-weight: 500; }
+    .ih-sub { font-size: 13px; color: var(--ink-muted); line-height: 1.6; margin-top: 4px; font-weight: 500; }
 
     /* ── FRS CARD ── */
     .frs-card {
@@ -1092,7 +1086,7 @@
       font-weight: 700;
       letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       margin-bottom: 14px;
     }
     .frs-pct {
@@ -1102,7 +1096,7 @@
       line-height: 1;
       margin-bottom: 4px;
     }
-    .frs-pct-label { font-size: 13px; color: rgba(var(--ink-rgb),0.4); margin-bottom: 12px; font-weight: 500; }
+    .frs-pct-label { font-size: 13px; color: var(--ink-muted); margin-bottom: 12px; font-weight: 500; }
     .frs-tier-pill {
       display: inline-block;
       font-size: 11px;
@@ -1121,7 +1115,7 @@
     .frs-bar-track {
       height: 8px;
       border-radius: 4px;
-      background: linear-gradient(to right, var(--risk-low-ink), var(--risk-mod) 30%, var(--alert) 60%);
+      background: linear-gradient(to right, rgb(var(--zone-low-rgb)), rgb(var(--zone-mod-rgb)) 30%, rgb(var(--zone-high-rgb)) 60%);
       position: relative;
     }
     .frs-bar-thumb {
@@ -1135,12 +1129,12 @@
       border-radius: 50%;
       transition: left 0.4s ease;
     }
-    .frs-bar-labels { display: flex; justify-content: space-between; font-size: 10px; color: rgba(var(--ink-rgb),0.35); margin-top: 5px; font-weight: 600; }
-    .frs-sub { font-size: 13px; color: rgba(var(--ink-rgb),0.45); line-height: 1.65; margin-top: 12px; font-weight: 500; }
+    .frs-bar-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--ink-muted); margin-top: 5px; font-weight: 600; }
+    .frs-sub { font-size: 13px; color: var(--ink-muted); line-height: 1.65; margin-top: 12px; font-weight: 500; }
     .frs-unlock { text-align: center; padding: 28px 20px; }
     .frs-unlock-icon { font-size: 28px; margin-bottom: 10px; }
     .frs-unlock-title { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
-    .frs-unlock-sub { font-size: 13px; color: rgba(var(--ink-rgb),0.45); line-height: 1.6; }
+    .frs-unlock-sub { font-size: 13px; color: var(--ink-muted); line-height: 1.6; }
 
     /* ── NEXT STEPS CTA ── */
     .next-steps-section {
@@ -1151,7 +1145,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       margin-bottom: 12px;
       display: block;
     }
@@ -1160,7 +1154,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(var(--ink-rgb),0.3);
+      color: var(--ink-muted);
       margin: 0 0 8px;
       display: block;
     }
@@ -1199,7 +1193,7 @@
       font-weight: 700;
       letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: rgba(var(--ink-rgb),0.35);
+      color: var(--ink-muted);
     }
     .ns-app-arrow {
       font-size: 13px;
@@ -1216,7 +1210,7 @@
     }
     .ns-app-desc {
       font-size: 12px;
-      color: rgba(var(--ink-rgb),0.45);
+      color: var(--ink-muted);
       line-height: 1.5;
       font-weight: 400;
     }
@@ -1244,7 +1238,7 @@
       font-weight: 700;
       letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: rgba(var(--ink-rgb),0.3);
+      color: var(--ink-muted);
       margin-bottom: 7px;
     }
     .ns-read-title {
@@ -1257,7 +1251,7 @@
     }
     .ns-read-arrow {
       font-size: 11px;
-      color: var(--coral);
+      color: var(--accent);
       font-weight: 700;
       margin-top: 10px;
     }
@@ -1286,7 +1280,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
     }
     .sources-toggle-icon {
       width: 22px;
@@ -1298,7 +1292,7 @@
       justify-content: center;
       flex-shrink: 0;
       transition: transform 0.3s, background 0.2s;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       font-size: 12px;
       font-weight: 700;
     }
@@ -1332,12 +1326,12 @@
       flex-shrink: 0;
     }
     .source-name { font-size: 14px; font-weight: 600; color: var(--ink); }
-    .source-desc { font-size: 13px; color: rgba(var(--ink-rgb),0.5); line-height: 1.65; }
+    .source-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.65; }
     .source-link {
       display: inline-block;
       margin-top: 8px;
       font-size: 12px;
-      color: var(--coral);
+      color: var(--accent);
       text-decoration: none;
       font-weight: 600;
       letter-spacing: 0.02em;
@@ -1349,7 +1343,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       margin: 28px 0 12px;
       padding-bottom: 8px;
       border-bottom: 1.5px solid var(--border-light);
@@ -1361,7 +1355,7 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       padding: 6px 10px;
       border-bottom: 1.5px solid var(--border-light);
     }
@@ -1385,7 +1379,7 @@
       font-family: var(--font);
       font-size: 14px;
       font-weight: 700;
-      color: rgba(var(--ink-rgb),0.4);
+      color: var(--ink-muted);
       cursor: pointer;
       transition: all 0.15s;
       letter-spacing: 0.04em;
@@ -1397,7 +1391,7 @@
       text-align: center;
       margin-top: 28px;
       font-size: 12px;
-      color: rgba(var(--ink-rgb),0.35);
+      color: var(--ink-muted);
       line-height: 1.75;
       font-weight: 500;
     }
@@ -1428,7 +1422,7 @@
     }
     .about-compact-body {
       font-size: 13px;
-      color: rgba(var(--ink-rgb),0.5);
+      color: var(--ink-muted);
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -1436,7 +1430,7 @@
     }
     .about-compact-name { font-weight: 700; color: var(--ink); }
     .about-compact-handle {
-      color: var(--coral);
+      color: var(--accent);
       font-weight: 600;
       text-decoration: none;
     }
@@ -1454,7 +1448,7 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(var(--ink-rgb),0.35);
+      color: var(--ink-muted);
       margin-bottom: 20px;
     }
     .footer-links {
@@ -1485,14 +1479,14 @@
       color: var(--canvas);
     }
     .footer-link svg { width: 14px; height: 14px; flex-shrink: 0; fill: currentColor; }
-    .footer-copy { font-size: 12px; color: rgba(var(--ink-rgb),0.35); font-weight: 500; }
+    .footer-copy { font-size: 12px; color: var(--ink-muted); font-weight: 500; }
     .toyyib-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 12px 24px;
       margin-bottom: 20px;
-      background: var(--yellow);
+      background: var(--snow);
       color: var(--ink);
       border-radius: var(--radius-btn);
       font-size: 13px;
@@ -1505,7 +1499,7 @@
     }
     .toyyib-btn:hover {
       background: var(--ink);
-      color: var(--yellow);
+      color: var(--snow);
       transform: translateY(-2px);
       box-shadow: 4px 4px 0 rgba(var(--ink-rgb),0.2);
     }
@@ -1518,6 +1512,14 @@
     .container > * { animation: fadeUp 0.5s ease both; }
     header          { animation-delay: 0.05s; }
     .form-card      { animation-delay: 0.12s; }
+
+    /* ── DISPLAY TYPE (design C) ── */
+    .hero-title, .results-header h2, .ms-dial-num, .strip-value, .ms-mc-val,
+    .ih-score-num, .frs-pct, .slider-val, .action-title, .slider-card-header h3,
+    .ns-app-name, .frs-unlock-title { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.01em; }
+
+    /* ── ICONS ── */
+    .ico { width: 1.15em; height: 1.15em; flex-shrink: 0; vertical-align: -0.2em; }
 
     /* ── BILINGUAL ── */
     [data-bm] { display: none !important; }
@@ -1609,8 +1611,8 @@
         <div class="form-group full">
           <label><span data-en>Biological Sex</span><span data-bm>Jantina</span></label>
           <div class="sex-toggle">
-            <button class="sex-btn" data-sex="male"   onclick="setSex('male')"><span data-en>♂ Male</span><span data-bm>♂ Lelaki</span></button>
-            <button class="sex-btn"        data-sex="female" onclick="setSex('female')"><span data-en>♀ Female</span><span data-bm>♀ Perempuan</span></button>
+            <button class="sex-btn" data-sex="male"   onclick="setSex('male')"><span data-en>Male</span><span data-bm>Lelaki</span></button>
+            <button class="sex-btn"        data-sex="female" onclick="setSex('female')"><span data-en>Female</span><span data-bm>Perempuan</span></button>
           </div>
         </div>
         <div class="form-group full">
@@ -1789,17 +1791,17 @@
 
     <!-- Age callout -->
     <div class="age-callout" id="ageCallout">
-      <div>&#9888;</div>
+      <div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></div>
       <div id="ageCalloutText"></div>
     </div>
 
     <!-- Tabs -->
     <div class="tab-bar">
       <button class="tab-btn active" id="tab-metabolik" onclick="switchTab('metabolik')">
-        &#128147; <span data-en>Metabolic Health</span><span data-bm>Kesihatan Metabolik</span>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> <span data-en>Metabolic Health</span><span data-bm>Kesihatan Metabolik</span>
       </button>
       <button class="tab-btn" id="tab-kardio" onclick="switchTab('kardio')">
-        &#10084;&#65039; <span data-en>Cardiovascular Health</span><span data-bm>Kesihatan Kardiovaskular</span>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg> <span data-en>Cardiovascular Health</span><span data-bm>Kesihatan Kardiovaskular</span>
       </button>
     </div>
 
@@ -1820,7 +1822,7 @@
       </div>
 
       <div class="ms-floor-callout" id="ms-floor-callout">
-        <div>&#9888;&#65039;</div>
+        <div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></div>
         <div id="ms-floor-callout-text"></div>
       </div>
 
@@ -1863,7 +1865,7 @@
 
       <div class="chart-card">
         <div class="chart-card-header">
-          <div class="chart-card-title">&#128205; <span data-en>BMI vs Waist — Goal planner</span><span data-bm>BMI vs Pinggang — Perancang sasaran</span></div>
+          <div class="chart-card-title"><span data-en>BMI vs Waist — Goal planner</span><span data-bm>BMI vs Pinggang — Perancang sasaran</span></div>
           <label class="pop-toggle">
             <input type="checkbox" id="chkPop" onchange="togglePop()" />
             <span data-en>Show Malaysian population (NHMS 2019)</span><span data-bm>Tunjuk populasi Malaysia (NHMS 2019)</span>
@@ -1918,7 +1920,7 @@
 
       <div class="ms-scatter-card">
         <div class="ms-scatter-head">
-          <div class="ms-scatter-title">&#128205; <span data-en>Your position among Malaysians</span><span data-bm>Kedudukan anda dalam kalangan rakyat Malaysia</span></div>
+          <div class="ms-scatter-title"><span data-en>Your position among Malaysians</span><span data-bm>Kedudukan anda dalam kalangan rakyat Malaysia</span></div>
         </div>
         <div class="ms-scatter-filters">
           <div class="ms-fgrp">
@@ -1941,9 +1943,9 @@
             <canvas id="ms-sc" role="img" aria-label="Scatter chart showing your BMI and waist plotted against simulated Malaysian population."></canvas>
           </div>
           <div class="ms-sleg">
-            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(var(--risk-low-rgb),0.5)"></div><span data-en>Healthy</span><span data-bm>Sihat</span></div>
-            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(var(--risk-mod-rgb),0.5)"></div><span data-en>One risk factor</span><span data-bm>Satu faktor risiko</span></div>
-            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(var(--risk-high-rgb),0.5)"></div><span data-en>Both elevated</span><span data-bm>Kedua-dua tinggi</span></div>
+            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(var(--zone-low-rgb),0.5)"></div><span data-en>Healthy</span><span data-bm>Sihat</span></div>
+            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(var(--zone-mod-rgb),0.5)"></div><span data-en>One risk factor</span><span data-bm>Satu faktor risiko</span></div>
+            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(var(--zone-high-rgb),0.5)"></div><span data-en>Both elevated</span><span data-bm>Kedua-dua tinggi</span></div>
             <div class="ms-sl"><div class="ms-sl-dot" style="background:var(--you-scatter);border:2px solid white;box-shadow:0 0 0 1px rgba(var(--ink-rgb),.2)"></div>You</div>
           </div>
           <div class="ms-percentile-badge" id="ms-percentile"></div>
@@ -2220,7 +2222,7 @@
 
         <div class="source-card" style="border-color:var(--risk-mod);background:var(--risk-mod-bg)">
           <div class="source-card-header"><span class="source-pill" style="background:var(--risk-mod);color:#fff">Limitations</span><span class="source-name" style="color:var(--risk-mod)">Important Caveats</span></div>
-          <ul style="font-size:13px;color:rgba(var(--ink-rgb),0.6);line-height:1.75;padding-left:18px;margin-top:8px">
+          <ul style="font-size:13px;color: var(--ink-muted);line-height:1.75;padding-left:18px;margin-top:8px">
             <li>All tools are screening aids, not diagnostic instruments.</li>
             <li>INTERHEART was originally derived from a MI case-control study. The NL-IHRS version has been validated in Southeast Asia but regional recalibration improves accuracy further.</li>
             <li>FRS was developed in a predominantly White American cohort. Validated in Malaysia but may overestimate risk in some Asian subgroups.</li>
@@ -2299,29 +2301,29 @@ const LANG = {
     tapHint: 'tap to explore',
     floorCallout: { label: (n) => `Just one thing to note — your ${n} is a little elevated. Everything else looks good. Worth mentioning to your doctor at your next visit.` },
     actionCards: {
-      low: { icon:'🌿', title:'Keep it up', driver:'All metabolic markers are in the healthy range.',
+      low: { title:'Keep it up', driver:'All metabolic markers are in the healthy range.',
         body:'Your measurements suggest low metabolic risk based on WHO Asia-Pacific thresholds.',
         steps:['Stay active — aim for 150 min moderate exercise per week','Eat plenty of vegetables, fruit, and whole grains','Schedule an annual check-up to monitor trends','Maintain a healthy sleep schedule (7–9 hours)'],
         links:[{label:'MOH Malaysia',url:'https://www.moh.gov.my',sec:false},{label:'NHMS 2023',url:'https://iku.nih.gov.my/nhms-2023',sec:true}] },
-      mod: { icon:'⚠️', title:'Some markers to watch', driver:'One or more measurements are in the elevated risk zone.',
+      mod: { title:'Some markers to watch', driver:'One or more measurements are in the elevated risk zone.',
         body:'Your results suggest elevated metabolic risk. Manageable with targeted lifestyle changes.',
         steps:['Reduce refined carbs: white rice, white bread, sugary drinks (teh tarik, air bandung)','Aim for 10,000 steps or 30 min brisk walking daily','Add more sayur and buah — aim for 5 portions a day','Book a blood test to check glucose and cholesterol'],
         links:[{label:'Find a klinik',url:'https://hfmd.moh.gov.my/hfmd2/index.php/ms/carian-fasiliti',sec:false},{label:'MOH Malaysia',url:'https://www.moh.gov.my',sec:true}] },
-      high: { icon:'🔴', title:'Elevated risk detected', driver:'Multiple markers are in the high-risk zone.',
+      high: { title:'Elevated risk detected', driver:'Multiple markers are in the high-risk zone.',
         body:'Your measurements indicate significant metabolic risk. We recommend consulting a healthcare provider.',
         steps:['Visit a klinik for a full metabolic panel (glucose, HbA1c, lipids, BP)','Ask about free screening under Peka B40','Eliminate sugary drinks and processed food immediately','KOSPEN offers free community health support'],
         links:[{label:'Peka B40 screening',url:'https://www.pekab40.com.my',sec:false},{label:'Find a klinik',url:'https://hfmd.moh.gov.my/hfmd2/index.php/ms/carian-fasiliti',sec:true}] }
     },
     cardioActionCards: {
-      low: { icon:'💚', title:'Low cardiovascular risk', driver:'INTERHEART score is in the low range.',
+      low: { title:'Low cardiovascular risk', driver:'INTERHEART score is in the low range.',
         body:'Your cardiovascular risk profile looks reassuring. Keep up your current habits and monitor regularly.',
         steps:['Maintain your current physical activity level','Continue eating vegetables and fruit daily','Avoid taking up smoking','Schedule a heart check-up every 2–3 years'],
         links:[{label:'Malaysian Heart Association',url:'https://www.malaysianheart.org',sec:false}] },
-      mod: { icon:'🫀', title:'Moderate cardiovascular risk', driver:'INTERHEART score is in the moderate range.',
+      mod: { title:'Moderate cardiovascular risk', driver:'INTERHEART score is in the moderate range.',
         body:'Some lifestyle factors are elevating your cardiovascular risk. Targeted changes now can significantly reduce your long-term risk.',
         steps:['Address your highest-scoring risk factors first (see breakdown above)','If you smoke, quitting is the single most impactful change','Reduce stress — consider mindfulness, adequate sleep, social connection','Visit a klinik for blood pressure, fasting glucose, and lipid checks'],
         links:[{label:'Find a klinik',url:'https://hfmd.moh.gov.my/hfmd2/index.php/ms/carian-fasiliti',sec:false},{label:'Malaysian Heart Association',url:'https://www.malaysianheart.org',sec:true}] },
-      high: { icon:'❤️‍🔥', title:'High cardiovascular risk', driver:'INTERHEART score is in the high range.',
+      high: { title:'High cardiovascular risk', driver:'INTERHEART score is in the high range.',
         body:'Your cardiovascular risk profile warrants prompt attention. Please see a healthcare provider for a full cardiovascular assessment.',
         steps:['See a doctor soon for BP, fasting lipids, glucose, and ECG','If you smoke, stopping now is the most urgent change','Discuss your INTERHEART score with your doctor — bring this result','Ask about Peka B40 free screening if eligible'],
         links:[{label:'Peka B40 screening',url:'https://www.pekab40.com.my',sec:false},{label:'Find a klinik',url:'https://hfmd.moh.gov.my/hfmd2/index.php/ms/carian-fasiliti',sec:true}] }
@@ -2339,29 +2341,29 @@ const LANG = {
     tapHint: 'ketik untuk maklumat',
     floorCallout: { label: (n) => `Satu perkara nak diberi perhatian — ${n} anda agak tinggi. Keseluruhannya nampak okay. Baik dibincangkan dengan doktor.` },
     actionCards: {
-      low: { icon:'🌿', title:'Teruskan usaha anda', driver:'Ketiga-tiga penanda berada dalam julat sihat.',
+      low: { title:'Teruskan usaha anda', driver:'Ketiga-tiga penanda berada dalam julat sihat.',
         body:'Ukuran anda menunjukkan risiko metabolik yang rendah berdasarkan ambang WHO Asia-Pasifik.',
         steps:['Kekal aktif — sasarkan 150 min senaman sederhana seminggu','Teruskan makan banyak sayur, buah dan bijirin penuh','Jadualkan pemeriksaan tahunan','Kekalkan jadual tidur yang sihat (7–9 jam)'],
         links:[{label:'KKM Malaysia',url:'https://www.moh.gov.my',sec:false},{label:'NHMS 2023',url:'https://iku.nih.gov.my/nhms-2023',sec:true}] },
-      mod: { icon:'⚠️', title:'Beberapa penanda perlu diperhatikan', driver:'Satu atau lebih ukuran berada dalam zon risiko tinggi.',
+      mod: { title:'Beberapa penanda perlu diperhatikan', driver:'Satu atau lebih ukuran berada dalam zon risiko tinggi.',
         body:'Keputusan anda menunjukkan risiko metabolik yang meningkat. Boleh diurus dengan perubahan gaya hidup yang tepat.',
         steps:['Kurangkan karbohidrat halus: nasi putih, roti putih, minuman manis','Sasarkan 10,000 langkah atau 30 min berjalan pantas setiap hari','Tambah lebih banyak sayur dan buah — sasarkan 5 hidangan sehari','Tempah ujian darah untuk semak glukosa dan kolesterol'],
         links:[{label:'Cari klinik',url:'https://hfmd.moh.gov.my/hfmd2/index.php/ms/carian-fasiliti',sec:false},{label:'KKM Malaysia',url:'https://www.moh.gov.my',sec:true}] },
-      high: { icon:'🔴', title:'Risiko tinggi dikesan', driver:'Pelbagai penanda berada dalam zon risiko tinggi.',
+      high: { title:'Risiko tinggi dikesan', driver:'Pelbagai penanda berada dalam zon risiko tinggi.',
         body:'Ukuran anda menunjukkan risiko metabolik yang ketara. Kami mengesyorkan anda berjumpa dengan pengamal kesihatan.',
         steps:['Pergi ke klinik untuk panel metabolik penuh (glukosa, HbA1c, lipid, BP)','Tanya tentang saringan percuma Peka B40','Elakkan minuman manis dan makanan diproses segera','KOSPEN menawarkan sokongan kesihatan komuniti percuma'],
         links:[{label:'Saringan Peka B40',url:'https://www.pekab40.com.my',sec:false},{label:'Cari klinik',url:'https://hfmd.moh.gov.my/hfmd2/index.php/ms/carian-fasiliti',sec:true}] }
     },
     cardioActionCards: {
-      low: { icon:'💚', title:'Risiko kardiovaskular rendah', driver:'Skor INTERHEART dalam julat rendah.',
+      low: { title:'Risiko kardiovaskular rendah', driver:'Skor INTERHEART dalam julat rendah.',
         body:'Profil risiko kardiovaskular anda menggalakkan. Teruskan tabiat semasa dan pantau secara berkala.',
         steps:['Kekalkan tahap aktiviti fizikal semasa','Teruskan makan sayur dan buah setiap hari','Jauhi merokok','Jadualkan pemeriksaan jantung setiap 2–3 tahun'],
         links:[{label:'Persatuan Jantung Malaysia',url:'https://www.malaysianheart.org',sec:false}] },
-      mod: { icon:'🫀', title:'Risiko kardiovaskular sederhana', driver:'Skor INTERHEART dalam julat sederhana.',
+      mod: { title:'Risiko kardiovaskular sederhana', driver:'Skor INTERHEART dalam julat sederhana.',
         body:'Beberapa faktor gaya hidup meningkatkan risiko kardiovaskular anda. Perubahan sekarang boleh mengurangkan risiko jangka panjang.',
         steps:['Atasi faktor risiko tertinggi anda dahulu (lihat pecahan di atas)','Jika merokok, berhenti adalah perubahan paling besar kesannya','Kurangkan tekanan — cuba mindfulness, tidur cukup, hubungan sosial','Pergi ke klinik untuk semak tekanan darah, glukosa, dan lipid'],
         links:[{label:'Cari klinik',url:'https://hfmd.moh.gov.my/hfmd2/index.php/ms/carian-fasiliti',sec:false},{label:'Persatuan Jantung Malaysia',url:'https://www.malaysianheart.org',sec:true}] },
-      high: { icon:'❤️‍🔥', title:'Risiko kardiovaskular tinggi', driver:'Skor INTERHEART dalam julat tinggi.',
+      high: { title:'Risiko kardiovaskular tinggi', driver:'Skor INTERHEART dalam julat tinggi.',
         body:'Profil risiko kardiovaskular anda memerlukan perhatian segera. Sila berjumpa doktor untuk penilaian kardiovaskular penuh.',
         steps:['Jumpa doktor segera untuk BP, lipid puasa, glukosa, dan ECG','Jika merokok, berhenti sekarang adalah perubahan paling mendesak','Bincangkan skor INTERHEART anda dengan doktor','Tanya tentang saringan percuma Peka B40 jika layak'],
         links:[{label:'Saringan Peka B40',url:'https://www.pekab40.com.my',sec:false},{label:'Cari klinik',url:'https://hfmd.moh.gov.my/hfmd2/index.php/ms/carian-fasiliti',sec:true}] }
@@ -2540,7 +2542,7 @@ function msGetPop(pSex,pAge){
   for(let i=0;i<n;i++){const ab=bands[Math.floor(Math.random()*bands.length)];pts.push({b:Math.max(15,Math.min(44,gauss(MS_BMI[pSex][ab],3.8))),w:Math.max(56,Math.min(128,gauss(MS_WC[pSex][ab],9.5)))});}
   msPopCache[key]=pts;return pts;
 }
-function msPtColor(b,w,pSex){const bR=b>=27.5,wR=pSex==='male'?w>=90:w>=80;if(bR&&wR)return tokA('--risk-high-rgb',0.45);if(bR||wR)return tokA('--risk-mod-rgb',0.45);return tokA('--risk-low-rgb',0.45);}
+function msPtColor(b,w,pSex){const bR=b>=27.5,wR=pSex==='male'?w>=90:w>=80;if(bR&&wR)return tokA('--zone-high-rgb',0.45);if(bR||wR)return tokA('--zone-mod-rgb',0.45);return tokA('--zone-low-rgb',0.45);}
 function msSetSex(s){msSFilter.sex=s;document.getElementById('ms-sf-male').classList.toggle('on',s==='male');document.getElementById('ms-sf-female').classList.toggle('on',s==='female');msDrawScatter();}
 function msSetAge(a){msSFilter.age=a;['all','18','30','40','50','60'].forEach(v=>document.getElementById('ms-sa-'+v).classList.toggle('on',v===a));msDrawScatter();}
 
@@ -2550,9 +2552,9 @@ function msDrawScatter(){
   const zones={id:'ms-zones',beforeDraw(chart){
     const{ctx:c,chartArea:{left,right,top,bottom},scales:{x,y}}=chart;if(!x||!y)return;
     const wcL=x.getPixelForValue(wcT),bL=y.getPixelForValue(23);c.save();
-    c.fillStyle=tokA('--risk-low-rgb',0.06);c.fillRect(left,bL,wcL-left,bottom-bL);
-    c.fillStyle=tokA('--risk-mod-rgb',0.06);c.fillRect(wcL,bL,right-wcL,bottom-bL);c.fillRect(left,top,wcL-left,bL-top);
-    c.fillStyle=tokA('--risk-high-rgb',0.06);c.fillRect(wcL,top,right-wcL,bL-top);
+    c.fillStyle=tokA('--zone-low-rgb',0.06);c.fillRect(left,bL,wcL-left,bottom-bL);
+    c.fillStyle=tokA('--zone-mod-rgb',0.06);c.fillRect(wcL,bL,right-wcL,bottom-bL);c.fillRect(left,top,wcL-left,bL-top);
+    c.fillStyle=tokA('--zone-high-rgb',0.06);c.fillRect(wcL,top,right-wcL,bL-top);
     c.strokeStyle=tokA('--ink-rgb',0.1);c.lineWidth=1;c.setLineDash([4,3]);
     c.beginPath();c.moveTo(wcL,top);c.lineTo(wcL,bottom);c.stroke();
     c.beginPath();c.moveTo(left,bL);c.lineTo(right,bL);c.stroke();
@@ -2591,7 +2593,7 @@ function msDrawDial(score,riskCol){
   c.width=260*dpr;c.height=130*dpr;const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=260,H=130,cx=W/2,cy=H-8,r=108;ctx.clearRect(0,0,W,H);
   const toRad=p=>Math.PI+(p/100)*Math.PI;
-  [{f:0,t:40,col:tok('--risk-low-ink')},{f:40,t:70,col:tok('--risk-mod')},{f:70,t:100,col:tok('--alert')}].forEach(s=>{
+  [{f:0,t:40,col:`rgb(${tok('--zone-low-rgb')})`},{f:40,t:70,col:`rgb(${tok('--zone-mod-rgb')})`},{f:70,t:100,col:`rgb(${tok('--zone-high-rgb')})`}].forEach(s=>{
     ctx.beginPath();ctx.arc(cx,cy,r,toRad(s.f),toRad(s.t));ctx.lineWidth=14;ctx.strokeStyle=s.col;ctx.globalAlpha=0.75;ctx.lineCap='butt';ctx.stroke();ctx.globalAlpha=1;
   });
   [40,70].forEach(p=>{
@@ -2690,10 +2692,11 @@ function onSlide(){
 }
 function togglePop(){showPop=document.getElementById('chkPop').checked;renderChart();}
 
+const TIER_ICON={low:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.1V12a10 10 0 1 1-5.9-9.1"/><path d="M22 4 12 14l-3-3"/></svg>',mod:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>',high:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 2h8.2L22 7.9v8.2L16.1 22H7.9L2 16.1V7.9z"/><path d="M12 8v4M12 16h.01"/></svg>'};
 function renderActionCard(tier,iconEl,titleEl,driverEl,bodyEl,stepsEl,linksEl,cardEl,cards){
   const d=cards[tier];
   cardEl.className=`action-card tier-${tier==='low'?'green':tier==='mod'?'amber':'red'}`;
-  iconEl.textContent=d.icon;titleEl.textContent=d.title;driverEl.textContent=d.driver;bodyEl.textContent=d.body;
+  iconEl.innerHTML=TIER_ICON[tier];titleEl.textContent=d.title;driverEl.textContent=d.driver;bodyEl.textContent=d.body;
   stepsEl.innerHTML=d.steps.map((s,i)=>`<li class="action-step"><div class="action-step-num">${i+1}</div><span>${s}</span></li>`).join('');
   linksEl.innerHTML=d.links.map(l=>`<a href="${l.url}" target="_blank" rel="noopener" class="action-link${l.sec?' secondary':''}">${l.label}</a>`).join('');
   cardEl.style.display='block';
@@ -2823,7 +2826,7 @@ function calculate(){
     renderActionCard(ih.tier,document.getElementById('cardioActionIcon'),document.getElementById('cardioActionTitle'),document.getElementById('cardioActionDriver'),document.getElementById('cardioActionBody'),document.getElementById('cardioActionSteps'),document.getElementById('cardioActionLinks'),document.getElementById('cardioActionCard'),L.cardioActionCards);
   }else{
     frsEl.innerHTML=`<div class="frs-unlock">
-      <div class="frs-unlock-icon">&#128274;</div>
+      <div class="frs-unlock-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
       <div class="frs-unlock-title">Add your blood pressure to unlock</div>
       <div class="frs-unlock-sub">Go back to Step 5 and enter your systolic blood pressure to see your personalised 10-year cardiovascular risk estimate.</div>
     </div>`;
