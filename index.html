@@ -1360,6 +1360,30 @@
     .r-more .next-steps-section { margin: 0; }
     .r-sec > .disclaimer { margin-top: 2px !important; text-align: left; }
 
+    /* Phone and tablet: one column, reading order answer → numbers → what to do → risks */
+    .r-cols { display: flex; flex-direction: column; }
+    .r-col { display: contents; }
+    .r-answer { order: 1; } .age-callout { order: 2; } .r-sec--keys { order: 3; } .r-sec--todo { order: 4; } .r-sec--risk { order: 5; }
+
+    /* Laptop and desktop */
+    @media (min-width: 960px) {
+      body.show-results .container { max-width: 1160px; padding-left: 32px; padding-right: 32px; }
+      .r-cols { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 0 28px; align-items: start; }
+      .r-col { display: flex; flex-direction: column; }
+      .r-col-main .r-answer { margin-bottom: 24px; }
+      .r-answer { padding: 32px 30px 28px; }
+      .r-answer-title { font-size: 44px; }
+      .r-sec--chart { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 16px; align-items: stretch; }
+      .r-sec--chart .chart-wrap { height: 340px; }
+      .r-sec--chart .slider-card { padding: 28px 24px; }
+      .r-sec--detail { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; align-items: start; }
+      .r-sec--detail > .r-h { grid-column: 1 / -1; }
+      .r-sec--detail > .r-more[open] { grid-column: 1 / -1; }
+      .r-more .ms-cards-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .r-more .ns-apps-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      body.show-results .auf-support { max-width: 640px; }
+    }
+
     @media (max-width: 520px) {
       .r-tile { padding: 12px 10px; }
       .r-tile-val { font-size: 23px; }
@@ -1636,6 +1660,10 @@
       <button class="r-edit" onclick="resetApp()"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg> <span data-en>Edit answers</span><span data-bm>Ubah jawapan</span></button>
     </div>
 
+    <!-- Phone: one column in reading order (answer, numbers, what to do, risks).
+         Laptop/desktop: answer + what to do on the left, numbers + risks on the right. -->
+    <div class="r-cols">
+    <div class="r-col r-col-main">
     <!-- ═══ 1 · THE ANSWER ═══ -->
     <section class="r-answer" aria-labelledby="ansTitle">
       <div class="r-answer-meta"><span><span data-en>Your reflection</span><span data-bm>Cerminan anda</span></span><span id="ansMeta"></span></div>
@@ -1656,8 +1684,28 @@
       <div id="ageCalloutText"></div>
     </div>
 
+    <!-- ═══ 3 · WHAT TO DO ═══ -->
+    <section class="r-sec r-sec--todo">
+      <h3 class="r-h"><span data-en>What to do next</span><span data-bm>Apa perlu dibuat</span></h3>
+      <div id="actionCard" class="action-card" style="display:none">
+        <div class="action-card-header">
+          <div class="action-icon" id="actionIcon"></div>
+          <div>
+            <div class="action-title" id="actionTitle"></div>
+            <div class="action-driver" id="actionDriver"></div>
+          </div>
+        </div>
+        <p class="action-body" id="actionBody"></p>
+        <ol class="action-steps" id="actionSteps"></ol>
+        <div class="action-links" id="actionLinks"></div>
+      </div>
+      <a class="r-cta" href="https://www.aufthority.com/rancangdiri/" target="_blank" rel="noopener" data-umami-event="cta-rancangdiri-results"><span data-en>Build my plan in RancangDiri</span><span data-bm>Bina pelan saya dalam RancangDiri</span> <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+    </section>
+
+    </div>
+    <div class="r-col r-col-side">
     <!-- ═══ 2 · KEY NUMBERS ═══ -->
-    <section class="r-sec">
+    <section class="r-sec r-sec--keys">
       <h3 class="r-h"><span data-en>Your three key numbers</span><span data-bm>Tiga angka utama anda</span></h3>
       <div class="r-tiles">
         <div class="r-tile">
@@ -1681,26 +1729,8 @@
       </div>
     </section>
 
-    <!-- ═══ 3 · WHAT TO DO ═══ -->
-    <section class="r-sec">
-      <h3 class="r-h"><span data-en>What to do next</span><span data-bm>Apa perlu dibuat</span></h3>
-      <div id="actionCard" class="action-card" style="display:none">
-        <div class="action-card-header">
-          <div class="action-icon" id="actionIcon"></div>
-          <div>
-            <div class="action-title" id="actionTitle"></div>
-            <div class="action-driver" id="actionDriver"></div>
-          </div>
-        </div>
-        <p class="action-body" id="actionBody"></p>
-        <ol class="action-steps" id="actionSteps"></ol>
-        <div class="action-links" id="actionLinks"></div>
-      </div>
-      <a class="r-cta" href="https://www.aufthority.com/rancangdiri/" target="_blank" rel="noopener" data-umami-event="cta-rancangdiri-results"><span data-en>Build my plan in RancangDiri</span><span data-bm>Bina pelan saya dalam RancangDiri</span> <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
-    </section>
-
     <!-- ═══ 4 · RISK SCORES ═══ -->
-    <section class="r-sec">
+    <section class="r-sec r-sec--risk">
       <h3 class="r-h"><span data-en>Your risk scores</span><span data-bm>Skor risiko anda</span></h3>
       <div class="r-rows">
         <div class="r-row">
@@ -1751,8 +1781,11 @@
       </div>
     </section>
 
+    </div>
+    </div>
+
     <!-- ═══ 5 · ONE CHART ═══ -->
-    <section class="r-sec">
+    <section class="r-sec r-sec--chart">
       <div class="chart-card">
         <div class="chart-card-header">
           <div class="chart-card-title"><span data-en>Where you sit</span><span data-bm>Kedudukan anda</span></div>
@@ -1809,7 +1842,7 @@
     </section>
 
     <!-- ═══ 6 · THE DETAIL (folded) ═══ -->
-    <section class="r-sec">
+    <section class="r-sec r-sec--detail">
       <h3 class="r-h"><span data-en>The detail</span><span data-bm>Butiran</span></h3>
     <details class="r-more">
       <summary><span data-en>All body measurements</span><span data-bm>Semua ukuran badan</span></summary>
@@ -2700,6 +2733,7 @@ function calculate(){
 
   document.getElementById('formSection').style.display='none';
   document.querySelector('header').style.display='none';
+  document.body.classList.add('show-results');
   document.getElementById('results').style.display='block';
   window.scrollTo({top:0,behavior:'smooth'});
   setTimeout(()=>{renderChart();msDrawScatter();},80);
@@ -2713,6 +2747,7 @@ function resetApp(){
   document.getElementById('results').style.display='none';
   document.getElementById('formSection').style.display='block';
   document.querySelector('header').style.display='';
+  document.body.classList.remove('show-results');
   document.getElementById('chkPop').checked=false;
   document.getElementById('ageCallout').classList.remove('visible');
   document.getElementById('actionCard').style.display='none';
