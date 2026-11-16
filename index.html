@@ -1491,7 +1491,7 @@
           <label><span data-en>Age</span><span data-bm>Umur</span></label>
           <div class="input-wrap">
             <input type="number" id="inAge" placeholder="e.g. 35" min="15" max="100" />
-            <span class="unit">yrs</span>
+            <span class="unit"><span data-en>yrs</span><span data-bm>thn</span></span>
           </div>
         </div>
       </div>
@@ -1517,7 +1517,7 @@
           <div class="input-wrap"><input type="number" id="inWaist" placeholder="e.g. 88" min="40" max="160" step="0.5" /><span class="unit">cm</span></div>
         </div>
         <div class="form-group">
-          <label>Hip <span class="label-optional">(<span data-en>optional</span><span data-bm>pilihan</span>)</span></label>
+          <label><span data-en>Hip</span><span data-bm>Pinggul</span> <span class="label-optional">(<span data-en>optional</span><span data-bm>pilihan</span>)</span></label>
           <div class="input-wrap"><input type="number" id="inHip" placeholder="e.g. 96" min="40" max="200" step="0.5" /><span class="unit">cm</span></div>
         </div>
       </div>
@@ -1803,7 +1803,7 @@
           <div class="legend-item"><div class="legend-swatch" style="background:rgba(var(--zone-high-rgb),0.35)"></div> <span data-en>High risk</span><span data-bm>Risiko tinggi</span></div>
           <div class="legend-item"><div class="legend-swatch circle" style="background:var(--you)"></div> <span data-en>Your position</span><span data-bm>Kedudukan anda</span></div>
           <div class="legend-item"><div class="legend-swatch circle" style="background:var(--goal);opacity:0.6"></div> <span data-en>Your goal</span><span data-bm>Sasaran anda</span></div>
-          <div class="legend-item"><div class="legend-swatch circle" style="background:rgb(var(--pop-rgb));opacity:0.5"></div> MY population</div>
+          <div class="legend-item"><div class="legend-swatch circle" style="background:rgb(var(--pop-rgb));opacity:0.5"></div> <span data-en>Malaysians</span><span data-bm>Rakyat Malaysia</span></div>
         </div>
         <div class="age-zone-note" id="ageZoneNote"></div>
       </div>
@@ -1863,7 +1863,7 @@
           </div>
           <div class="ms-fgrp">
             <span class="ms-fgrp-lbl"><span data-en>Age group</span><span data-bm>Kumpulan umur</span></span>
-            <button class="ms-ftog on" id="ms-sa-all" onclick="msSetAge('all')">All</button>
+            <button class="ms-ftog on" id="ms-sa-all" onclick="msSetAge('all')"><span data-en>All</span><span data-bm>Semua</span></button>
             <button class="ms-ftog"    id="ms-sa-18"  onclick="msSetAge('18')">18–29</button>
             <button class="ms-ftog"    id="ms-sa-30"  onclick="msSetAge('30')">30–39</button>
             <button class="ms-ftog"    id="ms-sa-40"  onclick="msSetAge('40')">40–49</button>
@@ -1879,7 +1879,7 @@
             <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(var(--zone-low-rgb),0.5)"></div><span data-en>Healthy</span><span data-bm>Sihat</span></div>
             <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(var(--zone-mod-rgb),0.5)"></div><span data-en>One risk factor</span><span data-bm>Satu faktor risiko</span></div>
             <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(var(--zone-high-rgb),0.5)"></div><span data-en>Both elevated</span><span data-bm>Kedua-dua tinggi</span></div>
-            <div class="ms-sl"><div class="ms-sl-dot" style="background:var(--you-scatter);border:2px solid white;box-shadow:0 0 0 1px rgba(var(--ink-rgb),.2)"></div>You</div>
+            <div class="ms-sl"><div class="ms-sl-dot" style="background:var(--you-scatter);border:2px solid white;box-shadow:0 0 0 1px rgba(var(--ink-rgb),.2)"></div><span data-en>You</span><span data-bm>Anda</span></div>
           </div>
           <div class="ms-percentile-badge" id="ms-percentile"></div>
           <div class="ms-scatter-note"><span data-en>Population cloud seeded from NHMS 2019 &amp; 2023 published mean BMI and waist distributions by sex and age group (IKU/MOH Malaysia). Individual points are statistically simulated — not real survey respondents.</span><span data-bm>Data populasi berdasarkan taburan min BMI dan pinggang NHMS 2019 &amp; 2023 mengikut jantina dan kumpulan umur (IKU/KKM Malaysia). Titik-titik adalah simulasi statistik — bukan responden sebenar.</span></div>
@@ -2258,6 +2258,56 @@ const LANG = {
   }
 };
 
+// ── Text the app builds after calculating, in both languages ──
+const TX={
+  en:{
+    cat:{Underweight:'Underweight',Healthy:'Healthy',Overweight:'Overweight',Obese:'Obese',Normal:'Normal',Elevated:'Elevated','High risk':'High risk'},
+    fr:{Low:'Low','Slightly elevated':'Slightly elevated',Moderate:'Moderate',High:'High','Very high':'Very high'},
+    frSub:(f,p,c)=>`Score ${f} out of 26 — estimated ${p} chance of developing type 2 diabetes within 10 years. `+(c==='low'?'Your lifestyle and measurements suggest low risk.':c==='mod'?'Consider discussing your risk at your next medical check-up.':'We recommend seeking a fasting blood glucose test at your nearest klinik or hospital.'),
+    ihTier:{low:'Low risk',mod:'Moderate risk',high:'High risk'},
+    ihSub:{low:'Your cardiovascular risk factors are in the low range. Continue your current lifestyle habits.',mod:'Some cardiovascular risk factors are present. Lifestyle changes now can significantly lower your long-term risk.',high:'Multiple significant cardiovascular risk factors detected. Please consult a healthcare provider.'},
+    ihNone:'No significant risk factors detected',
+    ihf:n=>n,
+    frsTier:{high:'High risk (≥20%)',mod:'Intermediate risk (10–19%)',low:'Low risk (<10%)'},
+    frsSub:(b,p)=>`Based on your age, sex, BMI (${b}), systolic BP (${p} mmHg), smoking and diabetes history.`,
+    frsLockT:'Add your blood pressure to unlock',
+    frsLockS:'Go back to Step 5 and enter your systolic blood pressure to see your personalised 10-year cardiovascular risk estimate.',
+    age:{u18:'<strong>Under 18 detected.</strong> Thresholds are calibrated for adults.',a70:'<strong>Age 70+ detected.</strong> Healthy BMI range adjusted to 22.0–26.9.',a60:'<strong>Age 60–69 detected.</strong> Healthy BMI range adjusted to 20.0–24.9.'},
+    subtitle:(sx,a,l)=>`${sx==='male'?'Male':'Female'}, ${a} years old · BMI thresholds: age group ${l}`,
+    ctxW:{low:'Your weight is in the healthy range.',mod:'Reducing weight by 5–10% significantly lowers metabolic risk.',high:'Weight loss of 10–15% substantially reduces diabetes and cardiovascular risk.'},
+    ctxC:{low:'Your waist circumference is within the healthy range.',mod:'Reducing waist by 5–10 cm meaningfully reduces visceral fat.',high:'Central obesity is a primary driver of metabolic disease. Prioritise waist reduction.'},
+    pct:{good:p=>`You are healthier than ${p}% of Malaysians in this sample. Keep it up.`,amber:'Your measurements are around the middle of the Malaysian population.',bad:'Your measurements put you in the higher-risk group compared to this sample.'},
+    axWaist:'Waist (cm)',axWaistLong:'Waist circumference (cm)',waistLine:t=>`Waist ${t}cm`,
+    tipYou:(y,x)=>`You — BMI ${y}, Waist ${x} cm`,tipPt:(y,x)=>`BMI ${y}, Waist ${x} cm`,
+    lblMod:'moderate',lblHigh:'high',
+    alertAge:'Please enter a valid age.',alertBody:'Please enter weight, height, and waist circumference.',alertReq:'Please complete all required fields.'
+  },
+  bm:{
+    cat:{Underweight:'Kurang berat',Healthy:'Sihat',Overweight:'Lebih berat',Obese:'Obes',Normal:'Normal',Elevated:'Meningkat','High risk':'Risiko tinggi'},
+    fr:{Low:'Rendah','Slightly elevated':'Agak tinggi',Moderate:'Sederhana',High:'Tinggi','Very high':'Sangat tinggi'},
+    frSub:(f,p,c)=>`Skor ${f} daripada 26 — anggaran ${p} kemungkinan mendapat diabetes jenis 2 dalam tempoh 10 tahun. `+(c==='low'?'Gaya hidup dan ukuran anda menunjukkan risiko rendah.':c==='mod'?'Bincangkan risiko ini semasa pemeriksaan kesihatan anda yang seterusnya.':'Kami syorkan ujian glukosa darah berpuasa di klinik atau hospital berdekatan.'),
+    ihTier:{low:'Risiko rendah',mod:'Risiko sederhana',high:'Risiko tinggi'},
+    ihSub:{low:'Faktor risiko kardiovaskular anda dalam julat rendah. Teruskan tabiat gaya hidup anda sekarang.',mod:'Terdapat beberapa faktor risiko kardiovaskular. Perubahan gaya hidup sekarang boleh merendahkan risiko jangka panjang anda dengan ketara.',high:'Beberapa faktor risiko kardiovaskular yang ketara dikesan. Sila berjumpa pengamal kesihatan.'},
+    ihNone:'Tiada faktor risiko ketara dikesan',
+    ihf:n=>{const M={'Age ≥55 (male)':'Umur ≥55 (lelaki)','Age ≥65 (female)':'Umur ≥65 (perempuan)','Current smoker':'Perokok semasa','Ex-smoker':'Bekas perokok','High blood pressure':'Tekanan darah tinggi','Diabetes / high glucose':'Diabetes / gula darah tinggi','Family history of heart attack <60':'Sejarah keluarga serangan jantung sebelum umur 60','Frequent stress / low mood':'Kerap tertekan / murung','Occasional stress / low mood':'Kadang-kadang tertekan / murung','Daily fried / fatty / salty food':'Makanan goreng / berlemak / masin setiap hari','No daily veg or fruit':'Tiada sayur atau buah setiap hari','Low physical activity':'Aktiviti fizikal rendah','Moderate physical activity':'Aktiviti fizikal sederhana'};
+      return M[n]||n.replace('Waist-hip ratio','Nisbah pinggang-pinggul');},
+    frsTier:{high:'Risiko tinggi (≥20%)',mod:'Risiko pertengahan (10–19%)',low:'Risiko rendah (<10%)'},
+    frsSub:(b,p)=>`Berdasarkan umur, jantina, BMI (${b}), tekanan darah sistolik (${p} mmHg), status merokok dan sejarah diabetes anda.`,
+    frsLockT:'Masukkan tekanan darah untuk melihat skor ini',
+    frsLockS:'Kembali ke Langkah 5 dan masukkan tekanan darah sistolik anda untuk melihat anggaran risiko kardiovaskular 10 tahun anda.',
+    age:{u18:'<strong>Umur bawah 18 dikesan.</strong> Ambang ini ditentukur untuk orang dewasa.',a70:'<strong>Umur 70+ dikesan.</strong> Julat BMI sihat diselaraskan kepada 22.0–26.9.',a60:'<strong>Umur 60–69 dikesan.</strong> Julat BMI sihat diselaraskan kepada 20.0–24.9.'},
+    subtitle:(sx,a,l)=>`${sx==='male'?'Lelaki':'Perempuan'}, ${a} tahun · Ambang BMI: kumpulan umur ${l}`,
+    ctxW:{low:'Berat badan anda dalam julat sihat.',mod:'Menurunkan berat badan sebanyak 5–10% boleh merendahkan risiko metabolik dengan ketara.',high:'Penurunan berat badan sebanyak 10–15% boleh mengurangkan risiko diabetes dan kardiovaskular dengan ketara.'},
+    ctxC:{low:'Ukur lilit pinggang anda dalam julat sihat.',mod:'Mengurangkan pinggang sebanyak 5–10 cm boleh mengurangkan lemak viseral dengan bermakna.',high:'Obesiti abdomen ialah pemacu utama penyakit metabolik. Utamakan pengurangan ukur lilit pinggang.'},
+    pct:{good:p=>`Anda lebih sihat daripada ${p}% rakyat Malaysia dalam sampel ini. Teruskan.`,amber:'Ukuran anda berada di sekitar pertengahan populasi Malaysia.',bad:'Ukuran anda meletakkan anda dalam kumpulan berisiko lebih tinggi berbanding sampel ini.'},
+    axWaist:'Pinggang (cm)',axWaistLong:'Ukur lilit pinggang (cm)',waistLine:t=>`Pinggang ${t}cm`,
+    tipYou:(y,x)=>`Anda — BMI ${y}, pinggang ${x} cm`,tipPt:(y,x)=>`BMI ${y}, pinggang ${x} cm`,
+    lblMod:'sederhana',lblHigh:'tinggi',
+    alertAge:'Sila masukkan umur yang sah.',alertBody:'Sila masukkan berat, tinggi dan ukur lilit pinggang.',alertReq:'Sila lengkapkan semua maklumat yang diperlukan.'
+  }
+};
+const isBM=()=>document.documentElement.getAttribute('data-lang')==='bm';
+const T=()=>TX[isBM()?'bm':'en'];
 function getLang() { return document.documentElement.getAttribute('data-lang')==='bm' ? LANG.bm : LANG.en; }
 
 // No preselected answers: each must be chosen explicitly (null = unanswered).
@@ -2289,8 +2339,8 @@ function stepAnswered(n){
 }
 function validateStep(n) {
   if(!stepAnswered(n)){alert(unansweredMsg());return false;}
-  if(n===1){const age=parseInt(document.getElementById('inAge').value);if(!age||age<10||age>110){alert('Please enter a valid age.');return false;}}
-  if(n===2){const w=parseFloat(document.getElementById('inWeight').value),h=parseFloat(document.getElementById('inHeight').value),wc=parseFloat(document.getElementById('inWaist').value);if(!w||!h||!wc){alert('Please enter weight, height, and waist circumference.');return false;}}
+  if(n===1){const age=parseInt(document.getElementById('inAge').value);if(!age||age<10||age>110){alert(T().alertAge);return false;}}
+  if(n===2){const w=parseFloat(document.getElementById('inWeight').value),h=parseFloat(document.getElementById('inHeight').value),wc=parseFloat(document.getElementById('inWaist').value);if(!w||!h||!wc){alert(T().alertBody);return false;}}
   return true;
 }
 
@@ -2386,23 +2436,23 @@ const msPillCls=r=>r==='high'?'ms-pr':r==='mod'?'ms-pa':'ms-pg';
 
 const MS_METRICS=[
   // BMI thresholds come from bmiThresholds()/bmiCat() so the card always agrees with the summary strip (age-adjusted).
-  {key:'bmi',plain:'BMI',tip:'Body Mass Index, WHO Asia-Pacific cutoffs, adjusted for age 60+.',unit:'kg/m²',min:15,max:42,
+  {key:'bmi',plain:'BMI',tipBm:'Indeks Jisim Tubuh, ambang WHO Asia-Pasifik, diselaraskan untuk umur 60+.',plainBm:(v,sx,a)=>{const c=bmiCat(v,a).cat,x=v.toFixed(1);return c==='Obese'?`BMI anda ${x} berada dalam julat obes bagi rakyat Malaysia seusia anda.`:c==='Overweight'?`BMI anda ${x} berada dalam julat lebih berat bagi rakyat Malaysia seusia anda.`:c==='Underweight'?`BMI anda ${x} di bawah julat sihat.`:`BMI anda ${x} berada dalam julat sihat bagi rakyat Malaysia seusia anda.`;},tip:'Body Mass Index, WHO Asia-Pacific cutoffs, adjusted for age 60+.',unit:'kg/m²',min:15,max:42,
     t1fn:(s,a)=>bmiThresholds(a).overweight,t2fn:(s,a)=>bmiThresholds(a).overweight+4.5,
     t1lFn:(s,a)=>String(bmiThresholds(a).overweight),t2lFn:(s,a)=>String(bmiThresholds(a).overweight+4.5),
     riskFn:(v,sx,a)=>bmiCat(v,a).risk,dispFn:v=>v.toFixed(1),
     plainFn:(v,sx,a)=>{const c=bmiCat(v,a).cat;return c==='Obese'?`Your BMI of ${v.toFixed(1)} is in the obese range for Malaysians your age.`:c==='Overweight'?`Your BMI of ${v.toFixed(1)} is in the overweight range for Malaysians your age.`:c==='Underweight'?`Your BMI of ${v.toFixed(1)} is below the healthy range.`:`Your BMI of ${v.toFixed(1)} is in the healthy range for Malaysians your age.`;}},
-  {key:'wc',plain:'Belly size',tip:'Waist circumference — the single strongest predictor of metabolic disease in Asian populations.',unit:'cm',min:55,max:130,
+  {key:'wc',plain:'Belly size',tipBm:'Ukur lilit pinggang — peramal tunggal terkuat penyakit metabolik dalam populasi Asia.',plainBm:(v,sx)=>{const t=sx==='male'?90:80,t2=sx==='male'?100:88,x=Math.round(v);return v>=t2?`Pada ${x} cm, pinggang anda jauh melebihi ambang risiko.`:v>=t?`Pada ${x} cm, pinggang anda melebihi ambang sihat.`:`Pada ${x} cm, pinggang anda dalam julat sihat.`;},tip:'Waist circumference — the single strongest predictor of metabolic disease in Asian populations.',unit:'cm',min:55,max:130,
     t1fn:s=>s==='male'?90:80,t2fn:s=>s==='male'?100:88,t1lFn:s=>s==='male'?'90 cm':'80 cm',t2lFn:s=>s==='male'?'100 cm':'88 cm',
     riskFn:(v,sx)=>waistCat(v,sx).risk,dispFn:v=>Math.round(v),
     plainFn:(v,sx)=>{const t=sx==='male'?90:80,t2=sx==='male'?100:88;return v>=t2?`At ${Math.round(v)} cm your waist significantly exceeds the risk threshold.`:v>=t?`At ${Math.round(v)} cm your waist is above the healthy threshold.`:`At ${Math.round(v)} cm your waist is within the healthy range.`;}},
-  {key:'whtr',plain:'Belly vs your height',tip:'Waist-to-Height Ratio. Keep your waist below half your height.',unit:'',min:0.3,max:0.8,t1:0.5,t2:0.6,t1l:'0.50',t2l:'0.60',
+  {key:'whtr',plain:'Belly vs your height',tipBm:'Nisbah pinggang-ketinggian. Pastikan pinggang kurang daripada separuh ketinggian anda.',plainBm:v=>`Pinggang anda ${Math.round(v*100)}% daripada ketinggian anda — ${v>=0.5?'melebihi':'di bawah'} had 50%.`,tip:'Waist-to-Height Ratio. Keep your waist below half your height.',unit:'',min:0.3,max:0.8,t1:0.5,t2:0.6,t1l:'0.50',t2l:'0.60',
     riskFn:v=>v>=0.6?'high':v>=0.5?'mod':'low',dispFn:v=>v.toFixed(2),
     plainFn:v=>v>=0.5?`Your waist is ${Math.round(v*100)}% of your height — above the 50% boundary.`:`Your waist is ${Math.round(v*100)}% of your height — below the 50% boundary.`},
-  {key:'absi',plain:'Body shape risk',tip:'A Body Shape Index (ABSI) — captures visceral fat risk beyond BMI.',unit:'',min:0.065,max:0.115,
-    t1fn:s=>s==='male'?0.087:0.083,t2fn:s=>s==='male'?0.100:0.095,t1lFn:()=>'moderate',t2lFn:()=>'high',
+  {key:'absi',plain:'Body shape risk',tipBm:'A Body Shape Index (ABSI) — menangkap risiko lemak viseral di luar BMI.',plainBm:(v,sx)=>{const n=sx==='male'?0.087:0.083,h=sx==='male'?0.100:0.095;return v>=h?'Bentuk badan anda menunjukkan lemak abdomen yang ketara.':v>=n?'Bentuk badan anda menunjukkan risiko lemak di bahagian tengah yang agak meningkat.':'Bentuk badan anda menunjukkan lemak tidak tertumpu secara berlebihan di sekitar abdomen.';},tip:'A Body Shape Index (ABSI) — captures visceral fat risk beyond BMI.',unit:'',min:0.065,max:0.115,
+    t1fn:s=>s==='male'?0.087:0.083,t2fn:s=>s==='male'?0.100:0.095,t1lFn:()=>T().lblMod,t2lFn:()=>T().lblHigh,
     riskFn:(v,sx)=>{const n=sx==='male'?0.087:0.083,h=sx==='male'?0.100:0.095;return v>=h?'high':v>=n?'mod':'low';},dispFn:v=>v.toFixed(4),
     plainFn:(v,sx)=>{const n=sx==='male'?0.087:0.083,h=sx==='male'?0.100:0.095;return v>=h?'Your body shape suggests significant abdominal fat.':v>=n?'Your body shape shows moderately elevated central fat risk.':'Your body shape indicates fat is not disproportionately concentrated around your abdomen.';}},
-  {key:'con',plain:'Abdominal fat pattern',tip:'Conicity Index — compares body shape to a cylinder. Higher values = apple-shaped distribution.',unit:'',min:0.9,max:1.6,
+  {key:'con',plain:'Abdominal fat pattern',tipBm:'Conicity Index — membandingkan bentuk badan dengan silinder. Nilai lebih tinggi = taburan lemak bentuk epal.',plainBm:(v,sx)=>{const t=sx==='male'?1.25:1.18;return v>=t?`Indeks ${v.toFixed(2)} menunjukkan taburan lemak bentuk epal.`:`Indeks ${v.toFixed(2)} menunjukkan taburan lemak yang lebih sihat.`;},tip:'Conicity Index — compares body shape to a cylinder. Higher values = apple-shaped distribution.',unit:'',min:0.9,max:1.6,
     t1fn:s=>s==='male'?1.25:1.18,t2fn:s=>s==='male'?1.38:1.30,t1lFn:s=>s==='male'?'1.25':'1.18',t2lFn:s=>s==='male'?'1.38':'1.30',
     riskFn:(v,sx)=>{const t=sx==='male'?1.25:1.18,t2=sx==='male'?1.38:1.30;return v>=t2?'high':v>=t?'mod':'low';},dispFn:v=>v.toFixed(2),
     plainFn:(v,sx)=>{const t=sx==='male'?1.25:1.18;return v>=t?`An index of ${v.toFixed(2)} indicates apple-shaped fat distribution.`:`An index of ${v.toFixed(2)} indicates a healthier fat distribution.`;}}
@@ -2441,9 +2491,9 @@ function msDrawScatter(){
   const badge=document.getElementById('ms-percentile');
   if(badge){
     badge.style.display='block';
-    if(pctile>=60){badge.className='ms-percentile-badge good';badge.textContent=`You are healthier than ${pctile}% of Malaysians in this sample. Keep it up.`;}
-    else if(pctile>=35){badge.className='ms-percentile-badge amber';badge.textContent='Your measurements are around the middle of the Malaysian population.';}
-    else{badge.className='ms-percentile-badge bad';badge.textContent='Your measurements put you in the higher-risk group compared to this sample.';}
+    if(pctile>=60){badge.className='ms-percentile-badge good';badge.textContent=T().pct.good(pctile);}
+    else if(pctile>=35){badge.className='ms-percentile-badge amber';badge.textContent=T().pct.amber;}
+    else{badge.className='ms-percentile-badge bad';badge.textContent=T().pct.bad;}
   }
   const isMobile=window.innerWidth<520;
   if(msScatterChart){msScatterChart.destroy();msScatterChart=null;}
@@ -2455,9 +2505,9 @@ function msDrawScatter(){
       {label:'You',data:[{x:msUserPt.wc,y:msUserPt.bmi}],backgroundColor:tok('--you-scatter'),borderColor:'white',borderWidth:2.5,pointRadius:isMobile?8:10,pointHoverRadius:12}
     ]},
     options:{responsive:true,maintainAspectRatio:false,
-      scales:{x:{title:{display:true,text:'Waist (cm)',color:tokA('--ink-rgb',0.4),font:{size:11}},min:55,max:130,grid:{color:tokA('--ink-rgb',0.06)},ticks:{color:tokA('--ink-rgb',0.4),font:{size:10}}},
+      scales:{x:{title:{display:true,text:T().axWaist,color:tokA('--ink-rgb',0.4),font:{size:11}},min:55,max:130,grid:{color:tokA('--ink-rgb',0.06)},ticks:{color:tokA('--ink-rgb',0.4),font:{size:10}}},
               y:{title:{display:true,text:'BMI',color:tokA('--ink-rgb',0.4),font:{size:11}},min:15,max:43,grid:{color:tokA('--ink-rgb',0.06)},ticks:{color:tokA('--ink-rgb',0.4),font:{size:10}}}},
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{const{x,y}=c.raw;return c.datasetIndex===1?`You — BMI ${y.toFixed(1)}, Waist ${Math.round(x)} cm`:`BMI ${y.toFixed(1)}, Waist ${Math.round(x)} cm`;}}}}
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{const{x,y}=c.raw;return c.datasetIndex===1?T().tipYou(y.toFixed(1),Math.round(x)):T().tipPt(y.toFixed(1),Math.round(x));}}}}
     },plugins:[zones]
   });
 }
@@ -2480,8 +2530,6 @@ function msBuildBar(def,value,sx,age){
   </div></div>`;
 }
 
-const CTX_WEIGHT={low:'Your weight is in the healthy range.',mod:'Reducing weight by 5–10% significantly lowers metabolic risk.',high:'Weight loss of 10–15% substantially reduces diabetes and cardiovascular risk.'};
-const CTX_WAIST={low:'Your waist circumference is within the healthy range.',mod:'Reducing waist by 5–10 cm meaningfully reduces visceral fat.',high:'Central obesity is a primary driver of metabolic disease. Prioritise waist reduction.'};
 
 function renderChart(){
   if(!S.weight)return;
@@ -2502,8 +2550,8 @@ function renderChart(){
   const datasets=[{type:'scatter',label:'You',data:[{x:S.waist,y:b}],backgroundColor:tok('--you'),borderColor:'#fff',borderWidth:2,pointRadius:10,pointHoverRadius:13,order:1}];
   if(goalChanged)datasets.push({type:'scatter',label:'Goal',data:[{x:S.goalWt,y:goalBMI}],backgroundColor:tok('--goal'),borderColor:'#fff',borderWidth:2,pointRadius:8,pointHoverRadius:11,order:2});
   if(showPop){const pop=getPopData();datasets.push({type:'scatter',label:'Population',data:pop,backgroundColor:tokA('--pop-rgb',0.35),pointRadius:3,pointHoverRadius:5,order:3});}
-  chart=new Chart(ctx,{type:'scatter',data:{datasets},options:{responsive:true,maintainAspectRatio:false,animation:{duration:300},plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{const{x,y}=ctx.raw;return `BMI ${y.toFixed(1)}, Waist ${x} cm`;}}}},
-    scales:{x:{min:50,max:130,title:{display:true,text:'Waist circumference (cm)',color:lc,font:{size:12}},grid:{color:gc},ticks:{color:tc,stepSize:10,callback:v=>v+' cm'}},
+  chart=new Chart(ctx,{type:'scatter',data:{datasets},options:{responsive:true,maintainAspectRatio:false,animation:{duration:300},plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{const{x,y}=ctx.raw;return T().tipPt(y.toFixed(1),x);}}}},
+    scales:{x:{min:50,max:130,title:{display:true,text:T().axWaistLong,color:lc,font:{size:12}},grid:{color:gc},ticks:{color:tc,stepSize:10,callback:v=>v+' cm'}},
             y:{min:14,max:45,title:{display:true,text:'BMI',color:lc,font:{size:12}},grid:{color:gc},ticks:{color:tc,stepSize:5}}}},plugins:[zones]});
   setTimeout(()=>drawAnnotations(b,goalBMI,goalChanged,t,th),420);
 }
@@ -2524,7 +2572,7 @@ function drawAnnotations(curBMI,goalBMI,goalChanged,t,th){
   });
   ctx.setLineDash([]);ctx.font="11px 'Inter',sans-serif";ctx.fillStyle=tc;
   ctx.textAlign='right';ctx.fillText(`BMI ${th.overweight}`,xS.right-4,yS.getPixelForValue(th.healthy[1])-5);ctx.fillText(`BMI ${th.overweight+4.5}`,xS.right-4,yS.getPixelForValue(th.overweight+4.5)-5);
-  ctx.textAlign='left';ctx.fillText(`Waist ${t}cm`,xS.getPixelForValue(t)+4,yS.top+14);
+  ctx.textAlign='left';ctx.fillText(T().waistLine(t),xS.getPixelForValue(t)+4,yS.top+14);
   if(goalChanged){
     const x1=xS.getPixelForValue(S.waist),y1=yS.getPixelForValue(curBMI),x2=xS.getPixelForValue(S.goalWt),y2=yS.getPixelForValue(goalBMI);
     const dx=x2-x1,dy=y2-y1,len=Math.sqrt(dx*dx+dy*dy);
@@ -2539,8 +2587,8 @@ function onSlide(){
   const dW=+(S.weight-S.goalW).toFixed(1),dC=+(S.waist-S.goalWt).toFixed(1);
   document.getElementById('slWeightDelta').textContent=dW>0?`−${dW} kg`:dW<0?`+${Math.abs(dW)} kg`:'';
   document.getElementById('slWaistDelta').textContent=dC>0?`−${dC} cm`:dC<0?`+${Math.abs(dC)} cm`:'';
-  document.getElementById('ctxWeight').textContent=CTX_WEIGHT[bmiCat(calcBMI(S.goalW,S.height),S.age).risk];
-  document.getElementById('ctxWaist').textContent=CTX_WAIST[waistCat(S.goalWt,sex).risk];
+  document.getElementById('ctxWeight').textContent=T().ctxW[bmiCat(calcBMI(S.goalW,S.height),S.age).risk];
+  document.getElementById('ctxWaist').textContent=T().ctxC[waistCat(S.goalWt,sex).risk];
   renderChart();
 }
 function togglePop(){showPop=document.getElementById('chkPop').checked;renderChart();}
@@ -2606,7 +2654,7 @@ function msRenderHeadline(){
   document.getElementById('sBMIRef').textContent=`${th.healthy[0]}–${th.healthy[1]}`;
 }
 
-function calculate(){
+function calculate(rerender){
   const age=parseInt(document.getElementById('inAge').value);
   const weight=parseFloat(document.getElementById('inWeight').value);
   const height=parseFloat(document.getElementById('inHeight').value);
@@ -2615,7 +2663,7 @@ function calculate(){
   const hip=hipRaw?parseFloat(hipRaw):null;
   const sbpRaw=document.getElementById('inSBP').value;
   const sbp=sbpRaw?parseFloat(sbpRaw):null;
-  if(!age||!weight||!height||!waist){alert('Please complete all required fields.');return;}
+  if(!age||!weight||!height||!waist){alert(T().alertReq);return;}
   if(![1,3,4].every(stepAnswered)){alert(unansweredMsg());return;}
 
   const B=calcBMI(weight,height),bc=bmiCat(B,age),wc=waistCat(waist,sex),wr=whtR(waist,height);
@@ -2642,9 +2690,9 @@ function calculate(){
   const worstMetric=allRisks.includes('high')?'high':allRisks.includes('mod')?'mod':'low';
 
   const callout=document.getElementById('ageCallout'),calloutText=document.getElementById('ageCalloutText');
-  if(age<18){calloutText.innerHTML='<strong>Under 18 detected.</strong> Thresholds are calibrated for adults.';callout.classList.add('visible');}
-  else if(age>=70){calloutText.innerHTML='<strong>Age 70+ detected.</strong> Healthy BMI range adjusted to 22.0–26.9.';callout.classList.add('visible');}
-  else if(age>=60){calloutText.innerHTML='<strong>Age 60–69 detected.</strong> Healthy BMI range adjusted to 20.0–24.9.';callout.classList.add('visible');}
+  if(age<18){calloutText.innerHTML=T().age.u18;callout.classList.add('visible');}
+  else if(age>=70){calloutText.innerHTML=T().age.a70;callout.classList.add('visible');}
+  else if(age>=60){calloutText.innerHTML=T().age.a60;callout.classList.add('visible');}
   else callout.classList.remove('visible');
 
   document.getElementById('ms-dn').textContent=comp;
@@ -2654,24 +2702,24 @@ function calculate(){
   const ctxEl=document.getElementById('ms-dc-ctx');if(ctxEl)ctxEl.textContent=getLang().ctxNote(comp);
   const bm=document.getElementById('msBarMark');if(bm)bm.style.left=Math.min(100,Math.max(0,comp))+'%';
 
-  document.getElementById('sBMI').textContent=B.toFixed(1);document.getElementById('sBMIcat').textContent=bc.cat;document.getElementById('sBMIcat').className='strip-risk r-'+bc.risk;
-  document.getElementById('sWaist').textContent=waist+' cm';document.getElementById('sWaistcat').textContent=wc.cat;document.getElementById('sWaistcat').className='strip-risk r-'+wc.risk;
-  document.getElementById('sWHtR').textContent=wr.val;document.getElementById('sWHtRcat').textContent=wr.cat;document.getElementById('sWHtRcat').className='strip-risk r-'+wr.risk;
-  document.getElementById('resultsSubtitle').textContent=`${sex==='male'?'Male':'Female'}, ${age} years old · BMI thresholds: age group ${th.label}`;
+  document.getElementById('sBMI').textContent=B.toFixed(1);document.getElementById('sBMIcat').textContent=T().cat[bc.cat];document.getElementById('sBMIcat').className='strip-risk r-'+bc.risk;
+  document.getElementById('sWaist').textContent=waist+' cm';document.getElementById('sWaistcat').textContent=T().cat[wc.cat];document.getElementById('sWaistcat').className='strip-risk r-'+wc.risk;
+  document.getElementById('sWHtR').textContent=wr.val;document.getElementById('sWHtRcat').textContent=T().cat[wr.cat];document.getElementById('sWHtRcat').className='strip-risk r-'+wr.risk;
+  document.getElementById('resultsSubtitle').textContent=T().subtitle(sex,age,th.label);
 
-  document.getElementById('ms-fr-pill').textContent=frT.label;document.getElementById('ms-fr-pill').className='ms-fr-pill '+frT.col;
-  document.getElementById('ms-fr-sub').textContent=`Score ${fr} out of 26 — estimated ${frT.prob} chance of developing type 2 diabetes within 10 years. ${frT.col==='low'?'Your lifestyle and measurements suggest low risk.':frT.col==='mod'?'Consider discussing your risk at your next medical check-up.':'We recommend seeking a fasting blood glucose test at your nearest klinik or hospital.'}`;
+  document.getElementById('ms-fr-pill').textContent=T().fr[frT.label];document.getElementById('ms-fr-pill').className='ms-fr-pill '+frT.col;
+  document.getElementById('ms-fr-sub').textContent=T().frSub(fr,frT.prob,frT.col);
   document.getElementById('msFrScore').textContent=`FINDRISC · ${fr} / 26`;
   document.getElementById('ms-fthumb').style.left=Math.min(97,(fr/26*100))+'%';
 
   const allMetrics=[...MS_METRICS];
   const allVals={bmi:B,wc:waist,whtr:WR,absi:A,con:CO,bai:BAI};
   if(BAI!==null){
-    allMetrics.push({key:'bai',plain:'Estimated body fat',tip:'Body Adiposity Index (BAI) — estimates body fat % from hip and height.',unit:'%',min:5,max:55,t1:sex==='male'?22:30,t2:sex==='male'?28:36,t1l:sex==='male'?'22%':'30%',t2l:sex==='male'?'28%':'36%',
+    allMetrics.push({key:'bai',plain:'Estimated body fat',tip:'Body Adiposity Index (BAI) — estimates body fat % from hip and height.',tipBm:'Body Adiposity Index (BAI) — menganggar peratus lemak badan daripada pinggul dan ketinggian.',plainBm:v=>{const hi=sex==='male'?28:36,lo=sex==='male'?22:30,x=v.toFixed(1);return v>=hi?`Anggaran lemak badan anda ${x}% melebihi ambang sihat.`:v>=lo?`Anggaran lemak badan anda ${x}% menghampiri had atas.`:`Anggaran lemak badan anda ${x}% berada dalam julat sihat.`;},unit:'%',min:5,max:55,t1:sex==='male'?22:30,t2:sex==='male'?28:36,t1l:sex==='male'?'22%':'30%',t2l:sex==='male'?'28%':'36%',
       riskFn:v=>v>=(sex==='male'?28:36)?'high':v>=(sex==='male'?22:30)?'mod':'low',dispFn:v=>v.toFixed(1),
       plainFn:v=>{const hi=sex==='male'?28:36,lo=sex==='male'?22:30;return v>=hi?`Your estimated body fat of ${v.toFixed(1)}% exceeds the healthy threshold.`:v>=lo?`Your estimated body fat of ${v.toFixed(1)}% is approaching the upper limit.`:`Your estimated body fat of ${v.toFixed(1)}% is within the healthy range.`;}});
   }
-  const L=getLang();
+  const L=getLang(),openCard=document.querySelector('.ms-mc.open')?.dataset.key;
   document.getElementById('ms-cards').innerHTML=allMetrics.map(m=>{
     const v=allVals[m.key];if(v===null||v===undefined)return'';
     const risk=m.riskFn(v,sex,age),cardName=L.metricNames[m.key]||m.plain,pillText=L.pills[risk];
@@ -2679,48 +2727,51 @@ function calculate(){
     return `<div class="ms-mc" data-key="${m.key}" onclick="msToggleCard('${m.key}')">
       <div class="ms-mc-head"><div class="ms-mc-name">${cardName}</div><div class="ms-pill ${msPillCls(risk)}">${pillText}</div></div>
       <div class="ms-mc-val">${m.dispFn(v)}<span class="ms-mc-unit"> ${m.unit}</span></div>
-      <div class="ms-mc-expand">${msBuildBar(m,v,sex,age)}<div class="ms-eplain ${epCls}">${m.plainFn(v,sex,age)}</div><div class="ms-clinical-note">${m.tip}</div></div>
+      <div class="ms-mc-expand">${msBuildBar(m,v,sex,age)}<div class="ms-eplain ${epCls}">${(isBM()&&m.plainBm?m.plainBm:m.plainFn)(v,sex,age)}</div><div class="ms-clinical-note">${isBM()&&m.tipBm?m.tipBm:m.tip}</div></div>
       <div class="ms-mc-hint">${L.tapHint}</div>
     </div>`;
   }).join('');
+  if(openCard)document.querySelector(`.ms-mc[data-key="${openCard}"]`)?.classList.add('open');
 
-  S={age,weight,height,waist,goalW:weight,goalWt:waist};
-  const sw=document.getElementById('slWeight');sw.min=Math.max(30,Math.round(weight*0.72*2)/2);sw.max=Math.round(weight*1.08*2)/2;sw.value=weight;
+  const keepGoal=rerender&&S.weight===weight&&S.waist===waist;
+  S={age,weight,height,waist,goalW:keepGoal?S.goalW:weight,goalWt:keepGoal?S.goalWt:waist};
+  const sw=document.getElementById('slWeight');sw.min=Math.max(30,Math.round(weight*0.72*2)/2);sw.max=Math.round(weight*1.08*2)/2;sw.value=S.goalW;
   document.getElementById('slWeightMin').textContent=sw.min+' kg';document.getElementById('slWeightMax').textContent=sw.max+' kg';document.getElementById('slWeightVal').textContent=weight.toFixed(1);
-  const sc=document.getElementById('slWaist');sc.min=Math.max(40,Math.round(waist*0.72*2)/2);sc.max=Math.round(waist*1.08*2)/2;sc.value=waist;
+  const sc=document.getElementById('slWaist');sc.min=Math.max(40,Math.round(waist*0.72*2)/2);sc.max=Math.round(waist*1.08*2)/2;sc.value=S.goalWt;
   document.getElementById('slWaistMin').textContent=sc.min+' cm';document.getElementById('slWaistMax').textContent=sc.max+' cm';document.getElementById('slWaistVal').textContent=waist.toFixed(1);
-  document.getElementById('ctxWeight').textContent=CTX_WEIGHT[bc.risk];document.getElementById('ctxWaist').textContent=CTX_WAIST[wc.risk];
+  document.getElementById('ctxWeight').textContent=T().ctxW[bc.risk];document.getElementById('ctxWaist').textContent=T().ctxC[wc.risk];
 
-  msUserPt={bmi:B,wc:waist};msSFilter.sex=sex;msSFilter.age='all';msPopCache={};
+  msUserPt={bmi:B,wc:waist};
+  if(!rerender){msSFilter.sex=sex;msSFilter.age='all';msPopCache={};
   document.getElementById('ms-sf-male').classList.toggle('on',sex==='male');document.getElementById('ms-sf-female').classList.toggle('on',sex==='female');
-  ['all','18','30','40','50','60'].forEach(v=>document.getElementById('ms-sa-'+v).classList.toggle('on',v==='all'));
+  ['all','18','30','40','50','60'].forEach(v=>document.getElementById('ms-sa-'+v).classList.toggle('on',v==='all'));}
 
   renderActionCard(worst,document.getElementById('actionIcon'),document.getElementById('actionTitle'),document.getElementById('actionDriver'),document.getElementById('actionBody'),document.getElementById('actionSteps'),document.getElementById('actionLinks'),document.getElementById('actionCard'),L.actionCards);
 
   document.getElementById('ih-score-num').textContent=ih.score;
   const tierPill=document.getElementById('ih-tier-pill');
-  tierPill.textContent=ih.tier==='low'?'Low risk':ih.tier==='mod'?'Moderate risk':'High risk';
+  tierPill.textContent=T().ihTier[ih.tier];
   tierPill.className='ih-tier-pill '+ih.tier;
   document.getElementById('ih-thumb').style.left=Math.min(97,(ih.score/48*100))+'%';
-  document.getElementById('ih-sub').textContent=ih.tier==='low'?'Your cardiovascular risk factors are in the low range. Continue your current lifestyle habits.':ih.tier==='mod'?'Some cardiovascular risk factors are present. Lifestyle changes now can significantly lower your long-term risk.':'Multiple significant cardiovascular risk factors detected. Please consult a healthcare provider.';
+  document.getElementById('ih-sub').textContent=T().ihSub[ih.tier];
   document.getElementById('ih-factors').innerHTML=ih.factors.length===0
-    ?'<div class="ih-factor-row"><span class="ih-factor-name">No significant risk factors detected</span></div>'
-    :ih.factors.sort((a,b)=>b.pts-a.pts).map(f=>`<div class="ih-factor-row"><span class="ih-factor-name">${f.name}</span><span class="ih-factor-pts ${f.pts>=4?'pts-high':'pts-mod'}">+${f.pts}</span></div>`).join('');
+    ?`<div class="ih-factor-row"><span class="ih-factor-name">${T().ihNone}</span></div>`
+    :ih.factors.sort((a,b)=>b.pts-a.pts).map(f=>`<div class="ih-factor-row"><span class="ih-factor-name">${T().ihf(f.name)}</span><span class="ih-factor-pts ${f.pts>=4?'pts-high':'pts-mod'}">+${f.pts}</span></div>`).join('');
 
   const frsEl=document.getElementById('frs-content');
   if(frsRisk!==null){
     const frsTier=frsRisk>=20?'high':frsRisk>=10?'mod':'low';
-    const frsTierLabel=frsRisk>=20?'High risk (≥20%)':frsRisk>=10?'Intermediate risk (10–19%)':'Low risk (<10%)';
+    const frsTierLabel=T().frsTier[frsTier];
     frsEl.innerHTML=`
       <div class="r-row-val"><div class="frs-pct">${frsRisk.toFixed(1)}%</div><div class="frs-tier-pill ${frsTier}">${frsTierLabel}</div></div>
       <div class="frs-bar-track"><div class="frs-bar-thumb" style="left:${Math.min(97,frsRisk/35*100)}%"></div></div>
-      <p class="r-row-sub">Based on your age, sex, BMI (${B.toFixed(1)}), systolic BP (${sbp} mmHg), smoking and diabetes history.</p>`;
+      <p class="r-row-sub">${T().frsSub(B.toFixed(1),sbp)}</p>`;
     renderActionCard(ih.tier,document.getElementById('cardioActionIcon'),document.getElementById('cardioActionTitle'),document.getElementById('cardioActionDriver'),document.getElementById('cardioActionBody'),document.getElementById('cardioActionSteps'),document.getElementById('cardioActionLinks'),document.getElementById('cardioActionCard'),L.cardioActionCards);
   }else{
     frsEl.innerHTML=`<div class="frs-unlock">
       <div class="frs-unlock-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-      <div class="frs-unlock-title">Add your blood pressure to unlock</div>
-      <div class="frs-unlock-sub">Go back to Step 5 and enter your systolic blood pressure to see your personalised 10-year cardiovascular risk estimate.</div>
+      <div class="frs-unlock-title">${T().frsLockT}</div>
+      <div class="frs-unlock-sub">${T().frsLockS}</div>
     </div>`;
     renderActionCard(ih.tier,document.getElementById('cardioActionIcon'),document.getElementById('cardioActionTitle'),document.getElementById('cardioActionDriver'),document.getElementById('cardioActionBody'),document.getElementById('cardioActionSteps'),document.getElementById('cardioActionLinks'),document.getElementById('cardioActionCard'),L.cardioActionCards);
   }
@@ -2735,8 +2786,8 @@ function calculate(){
   document.querySelector('header').style.display='none';
   document.body.classList.add('show-results');
   document.getElementById('results').style.display='block';
-  window.scrollTo({top:0,behavior:'smooth'});
-  setTimeout(()=>{renderChart();msDrawScatter();},80);
+  if(!rerender)window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(()=>{if(rerender)onSlide();else renderChart();msDrawScatter();},rerender?0:80);
 }
 
 function msToggleCard(k){const c=document.querySelector(`.ms-mc[data-key="${k}"]`);if(!c)return;const was=c.classList.contains('open');document.querySelectorAll('.ms-mc').forEach(x=>x.classList.remove('open'));if(!was)c.classList.add('open');}
@@ -2767,7 +2818,8 @@ function toggleLang(){
   html.setAttribute('data-lang',next);html.setAttribute('lang',isBM?'en':'ms');
   document.querySelector('.lang-en').style.display=isBM?'':'none';
   document.querySelector('.lang-bm').style.display=isBM?'none':'';
-  msRenderHeadline();
+  // Results are on screen: rebuild their text in the new language, in place
+  if(document.getElementById('results').style.display==='block')calculate(true);
 }
 </script>
 </body>
