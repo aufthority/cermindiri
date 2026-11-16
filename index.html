@@ -62,6 +62,22 @@
       --radius-card:   16px;
       --radius-badge:  24px;
       --font:          'Inter', ui-sans-serif, system-ui, sans-serif;
+      /* ── Role tokens: every colour the app draws comes from here ── */
+      --ink-rgb:          14,14,14;
+      --canvas-rgb:       244,233,225;
+      --coral-rgb:        255,61,0;
+      --risk-low-ink:     #16a34a;
+      --risk-low-rgb:     22,163,74;
+      --risk-mod-rgb:     255,140,0;
+      --risk-high-rgb:    255,0,61;
+      --risk-severe:      #8B0000;
+      --you:              #378ADD;   /* your dot, goal-planner chart */
+      --you-scatter:      var(--coral); /* your dot, population chart */
+      --goal:             #3B6D11;
+      --zone-low-rgb:     99,153,34;
+      --zone-mod-rgb:     186,117,23;
+      --zone-high-rgb:    226,75,74;
+      --pop-rgb:          136,135,128;
     }
 
     html { scroll-behavior: smooth; }
@@ -114,7 +130,7 @@
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(244,233,225,0.5);
+      color: rgba(var(--canvas-rgb),0.5);
       text-decoration: none;
       padding: 5px 10px;
       border-radius: 6px;
@@ -193,7 +209,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       margin-bottom: 12px;
     }
 
@@ -262,7 +278,7 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       margin-bottom: 22px;
     }
 
@@ -282,7 +298,7 @@
       text-transform: none;
       letter-spacing: 0;
       font-size: 11px;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
     }
 
     input[type="number"] {
@@ -302,7 +318,7 @@
     input[type="number"]:focus {
       outline: none;
       border-color: var(--coral);
-      box-shadow: 0 0 0 3px rgba(255,61,0,0.12);
+      box-shadow: 0 0 0 3px rgba(var(--coral-rgb),0.12);
     }
     .input-wrap { position: relative; }
     .input-wrap input { padding-right: 50px; }
@@ -312,7 +328,7 @@
       top: 50%;
       transform: translateY(-50%);
       font-size: 12px;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       font-weight: 600;
       pointer-events: none;
       letter-spacing: 0.04em;
@@ -333,7 +349,7 @@
       font-family: var(--font);
       font-size: 13px;
       font-weight: 600;
-      color: rgba(14,14,14,0.5);
+      color: rgba(var(--ink-rgb),0.5);
       transition: all 0.15s;
     }
     .sex-btn:hover { border-color: var(--ink); color: var(--ink); }
@@ -353,7 +369,7 @@
       font-family: var(--font);
       font-size: 13px;
       font-weight: 600;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       cursor: pointer;
       transition: all 0.15s;
       flex-shrink: 0;
@@ -400,7 +416,7 @@
 
     .sbp-hint {
       font-size: 12px;
-      color: rgba(14,14,14,0.5);
+      color: rgba(var(--ink-rgb),0.5);
       margin-top: 8px;
       line-height: 1.6;
       padding: 10px 14px;
@@ -427,7 +443,7 @@
     }
     .results-header p {
       font-size: 13px;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       font-weight: 500;
     }
 
@@ -450,7 +466,7 @@
       font-family: var(--font);
       font-size: 13px;
       font-weight: 700;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       cursor: pointer;
       transition: all 0.2s;
       display: flex;
@@ -483,7 +499,7 @@
     }
     .age-callout.visible { display: flex; }
     .age-callout strong { font-weight: 700; display: block; margin-bottom: 2px; }
-    .age-zone-note { font-size: 11px; color: rgba(14,14,14,0.4); margin-top: 10px; font-style: italic; }
+    .age-zone-note { font-size: 11px; color: rgba(var(--ink-rgb),0.4); margin-top: 10px; font-style: italic; }
 
     /* ── FLOOR CALLOUT ── */
     .ms-floor-callout {
@@ -525,7 +541,7 @@
     }
     .ms-dial-lbl {
       font-size: 10px;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       margin-top: 4px;
       font-weight: 600;
       letter-spacing: 0.08em;
@@ -540,7 +556,7 @@
     }
     .ms-dial-sub {
       font-size: 14px;
-      color: rgba(14,14,14,0.55);
+      color: rgba(var(--ink-rgb),0.55);
       text-align: center;
       max-width: 400px;
       margin-top: 6px;
@@ -548,7 +564,7 @@
     }
     .ms-dial-context {
       font-size: 11px;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       text-align: center;
       margin-top: 8px;
       padding: 5px 14px;
@@ -576,7 +592,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       margin-bottom: 4px;
     }
     .strip-value {
@@ -590,7 +606,7 @@
       margin-top: 2px;
       letter-spacing: 0.04em;
     }
-    .r-low  { color: #16a34a; }
+    .r-low  { color: var(--risk-low-ink); }
     .r-mod  { color: var(--risk-mod); }
     .r-high { color: var(--alert); }
 
@@ -613,7 +629,7 @@
       font-weight: 700;
       letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
     }
     .ms-fr-pill {
       font-size: 11px;
@@ -624,14 +640,14 @@
       text-transform: uppercase;
       border: 1.5px solid transparent;
     }
-    .ms-fr-pill.low  { background: var(--risk-low-bg); color: #16a34a; border-color: #16a34a; }
+    .ms-fr-pill.low  { background: var(--risk-low-bg); color: var(--risk-low-ink); border-color: var(--risk-low-ink); }
     .ms-fr-pill.mod  { background: var(--risk-mod-bg); color: var(--risk-mod); border-color: var(--risk-mod); }
     .ms-fr-pill.high { background: var(--risk-high-bg); color: var(--alert); border-color: var(--alert); }
-    .ms-fr-sub { font-size: 13px; color: rgba(14,14,14,0.55); margin-bottom: 16px; line-height: 1.65; }
+    .ms-fr-sub { font-size: 13px; color: rgba(var(--ink-rgb),0.55); margin-bottom: 16px; line-height: 1.65; }
     .ms-ftrack {
       height: 8px;
       border-radius: 4px;
-      background: linear-gradient(to right, #16a34a 0%, #16a34a 30%, var(--risk-mod) 55%, var(--alert) 75%, #8B0000 100%);
+      background: linear-gradient(to right, var(--risk-low-ink) 0%, var(--risk-low-ink) 30%, var(--risk-mod) 55%, var(--alert) 75%, var(--risk-severe) 100%);
       position: relative;
       margin-bottom: 8px;
     }
@@ -650,7 +666,7 @@
       display: flex;
       justify-content: space-between;
       font-size: 9px;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       font-weight: 600;
       letter-spacing: 0.04em;
     }
@@ -659,7 +675,7 @@
     .ms-cards-lbl {
       font-size: 11px;
       font-weight: 700;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       letter-spacing: 0.10em;
       text-transform: uppercase;
       margin-bottom: 10px;
@@ -690,7 +706,7 @@
       text-transform: uppercase;
       border: 1.5px solid transparent;
     }
-    .ms-pg { background: var(--risk-low-bg); color: #16a34a; border-color: #16a34a; }
+    .ms-pg { background: var(--risk-low-bg); color: var(--risk-low-ink); border-color: var(--risk-low-ink); }
     .ms-pa { background: var(--risk-mod-bg); color: var(--risk-mod); border-color: var(--risk-mod); }
     .ms-pr { background: var(--risk-high-bg); color: var(--alert); border-color: var(--alert); }
     .ms-mc-val {
@@ -700,17 +716,17 @@
       margin-top: 8px;
       letter-spacing: -0.03em;
     }
-    .ms-mc-unit { font-size: 13px; color: rgba(14,14,14,0.4); font-family: var(--font); font-weight: 500; }
+    .ms-mc-unit { font-size: 13px; color: rgba(var(--ink-rgb),0.4); font-family: var(--font); font-weight: 500; }
     .ms-mc-expand { display: none; margin-top: 14px; padding-top: 14px; border-top: 1.5px solid var(--border-light); }
     .ms-mc.open .ms-mc-expand { display: block; }
-    .ms-mc-hint { font-size: 11px; color: rgba(14,14,14,0.35); margin-top: 6px; font-weight: 500; }
+    .ms-mc-hint { font-size: 11px; color: rgba(var(--ink-rgb),0.35); margin-top: 6px; font-weight: 500; }
     .ms-mc.open .ms-mc-hint { display: none; }
     .ms-clinical-note {
       margin-top: 10px;
       padding: 8px 12px;
       border-radius: 8px;
       font-size: 11px;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       line-height: 1.55;
       border-left: 3px solid var(--border-light);
       background: var(--canvas);
@@ -719,14 +735,14 @@
     .ms-barw { padding-bottom: 24px; margin-bottom: 6px; }
     .ms-btrack { height: 8px; border-radius: 4px; position: relative; width: 100%; }
     .ms-bseg { position: absolute; height: 8px; top: 0; }
-    .ms-bseg.g { background: rgba(22,163,74,0.3); border-radius: 4px 0 0 4px; }
-    .ms-bseg.a { background: rgba(255,140,0,0.3); }
-    .ms-bseg.r { background: rgba(255,0,61,0.3); border-radius: 0 4px 4px 0; }
+    .ms-bseg.g { background: rgba(var(--risk-low-rgb),0.3); border-radius: 4px 0 0 4px; }
+    .ms-bseg.a { background: rgba(var(--risk-mod-rgb),0.3); }
+    .ms-bseg.r { background: rgba(var(--risk-high-rgb),0.3); border-radius: 0 4px 4px 0; }
     .ms-btick { position: absolute; top: -3px; width: 1px; height: 14px; background: var(--border-light); }
-    .ms-btlbl { position: absolute; top: 15px; font-size: 10px; color: rgba(14,14,14,0.4); transform: translateX(-50%); white-space: nowrap; font-weight: 600; }
-    .ms-bdot { position: absolute; top: 50%; transform: translate(-50%,-50%); width: 16px; height: 16px; border-radius: 50%; border: 2.5px solid var(--snow); box-shadow: 0 0 0 1.5px rgba(14,14,14,0.2); z-index: 2; }
+    .ms-btlbl { position: absolute; top: 15px; font-size: 10px; color: rgba(var(--ink-rgb),0.4); transform: translateX(-50%); white-space: nowrap; font-weight: 600; }
+    .ms-bdot { position: absolute; top: 50%; transform: translate(-50%,-50%); width: 16px; height: 16px; border-radius: 50%; border: 2.5px solid var(--snow); box-shadow: 0 0 0 1.5px rgba(var(--ink-rgb),0.2); z-index: 2; }
     .ms-eplain { font-size: 13px; line-height: 1.65; padding: 10px 14px; border-radius: 10px; margin-top: 8px; font-weight: 500; }
-    .ms-epg { background: var(--risk-low-bg); color: #16a34a; }
+    .ms-epg { background: var(--risk-low-bg); color: var(--risk-low-ink); }
     .ms-epa { background: var(--risk-mod-bg); color: var(--risk-mod); }
     .ms-epr { background: var(--risk-high-bg); color: var(--alert); }
 
@@ -751,14 +767,14 @@
       font-weight: 700;
       letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
     }
     .pop-toggle {
       display: flex;
       align-items: center;
       gap: 7px;
       font-size: 12px;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       cursor: pointer;
       user-select: none;
       font-weight: 500;
@@ -766,7 +782,7 @@
     .pop-toggle input[type="checkbox"] { width: 14px; height: 14px; cursor: pointer; accent-color: var(--ink); }
     .chart-wrap { position: relative; width: 100%; height: 380px; }
     .chart-legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
-    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(14,14,14,0.4); font-weight: 500; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(var(--ink-rgb),0.4); font-weight: 500; }
     .legend-swatch { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
     .legend-swatch.circle { border-radius: 50%; }
 
@@ -786,7 +802,7 @@
       margin-bottom: 6px;
       letter-spacing: -0.02em;
     }
-    .slider-card-header p { font-size: 13px; color: rgba(244,233,225,0.4); }
+    .slider-card-header p { font-size: 13px; color: rgba(var(--canvas-rgb),0.4); }
     .slider-group { margin-bottom: 28px; }
     .slider-group:last-child { margin-bottom: 0; }
     .slider-label-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
@@ -795,7 +811,7 @@
       font-weight: 700;
       letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: rgba(244,233,225,0.4);
+      color: rgba(var(--canvas-rgb),0.4);
     }
     .slider-val-wrap { display: flex; align-items: baseline; gap: 6px; }
     .slider-val {
@@ -804,7 +820,7 @@
       color: var(--canvas);
       letter-spacing: -0.03em;
     }
-    .slider-unit { font-size: 14px; color: rgba(244,233,225,0.35); }
+    .slider-unit { font-size: 14px; color: rgba(var(--canvas-rgb),0.35); }
     .slider-delta { font-size: 13px; font-weight: 700; color: var(--neon); }
     input[type="range"] {
       -webkit-appearance: none;
@@ -812,7 +828,7 @@
       width: 100%;
       height: 5px;
       border-radius: 3px;
-      background: rgba(244,233,225,0.15);
+      background: rgba(var(--canvas-rgb),0.15);
       outline: none;
       cursor: pointer;
     }
@@ -832,10 +848,10 @@
       justify-content: space-between;
       margin-top: 8px;
       font-size: 11px;
-      color: rgba(244,233,225,0.2);
+      color: rgba(var(--canvas-rgb),0.2);
       font-weight: 500;
     }
-    .context-note { font-size: 12px; color: rgba(244,233,225,0.35); margin-top: 8px; line-height: 1.6; }
+    .context-note { font-size: 12px; color: rgba(var(--canvas-rgb),0.35); margin-top: 8px; line-height: 1.6; }
 
     /* ── POPULATION SCATTER ── */
     .ms-scatter-card {
@@ -851,7 +867,7 @@
       font-weight: 700;
       letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
     }
     .ms-scatter-filters {
       display: flex;
@@ -862,7 +878,7 @@
       align-items: center;
     }
     .ms-fgrp { display: flex; gap: 5px; align-items: center; }
-    .ms-fgrp-lbl { font-size: 11px; color: rgba(14,14,14,0.4); font-weight: 600; margin-right: 2px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .ms-fgrp-lbl { font-size: 11px; color: rgba(var(--ink-rgb),0.4); font-weight: 600; margin-right: 2px; letter-spacing: 0.04em; text-transform: uppercase; }
     .ms-ftog {
       padding: 5px 12px;
       border: 1.5px solid var(--border-light);
@@ -870,17 +886,17 @@
       font-size: 11px;
       cursor: pointer;
       background: var(--canvas);
-      color: rgba(14,14,14,0.5);
+      color: rgba(var(--ink-rgb),0.5);
       font-family: var(--font);
       font-weight: 600;
       transition: all 0.15s;
     }
     .ms-ftog.on { background: var(--ink); border-color: var(--ink); color: var(--canvas); }
     .ms-scatter-inner { padding: 14px 18px 18px; }
-    .ms-sleg { display: flex; gap: 14px; margin-top: 10px; flex-wrap: wrap; font-size: 12px; color: rgba(14,14,14,0.4); font-weight: 500; }
+    .ms-sleg { display: flex; gap: 14px; margin-top: 10px; flex-wrap: wrap; font-size: 12px; color: rgba(var(--ink-rgb),0.4); font-weight: 500; }
     .ms-sl { display: flex; align-items: center; gap: 5px; }
     .ms-sl-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-    .ms-scatter-note { font-size: 11px; color: rgba(14,14,14,0.35); margin-top: 8px; line-height: 1.5; }
+    .ms-scatter-note { font-size: 11px; color: rgba(var(--ink-rgb),0.35); margin-top: 8px; line-height: 1.5; }
     .ms-percentile-badge {
       margin-top: 10px;
       padding: 10px 14px;
@@ -890,7 +906,7 @@
       line-height: 1.5;
       display: none;
     }
-    .ms-percentile-badge.good  { background: var(--risk-low-bg); color: #16a34a; }
+    .ms-percentile-badge.good  { background: var(--risk-low-bg); color: var(--risk-low-ink); }
     .ms-percentile-badge.amber { background: var(--risk-mod-bg); color: var(--risk-mod); }
     .ms-percentile-badge.bad   { background: var(--risk-high-bg); color: var(--alert); }
 
@@ -912,10 +928,10 @@
       letter-spacing: -0.02em;
       margin-bottom: 4px;
     }
-    .tier-green .action-title { color: #16a34a; }
+    .tier-green .action-title { color: var(--risk-low-ink); }
     .tier-amber .action-title { color: var(--risk-mod); }
     .tier-red   .action-title { color: var(--alert); }
-    .action-driver { font-size: 13px; font-weight: 500; color: rgba(14,14,14,0.5); }
+    .action-driver { font-size: 13px; font-weight: 500; color: rgba(var(--ink-rgb),0.5); }
     .action-body { font-size: 14px; color: var(--ink); line-height: 1.75; margin-bottom: 18px; }
     .action-steps { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; }
     .action-step { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--ink); line-height: 1.6; }
@@ -932,7 +948,7 @@
       margin-top: 1px;
       border: 1.5px solid transparent;
     }
-    .tier-green .action-step-num { background: #16a34a; color: #fff; }
+    .tier-green .action-step-num { background: var(--risk-low-ink); color: #fff; }
     .tier-amber .action-step-num { background: var(--risk-mod); color: #fff; }
     .tier-red   .action-step-num { background: var(--alert);     color: #fff; }
     .action-links { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -977,7 +993,7 @@
       font-weight: 700;
       letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
     }
     .ih-tier-pill {
       font-size: 11px;
@@ -989,7 +1005,7 @@
       text-transform: uppercase;
       border: 1.5px solid transparent;
     }
-    .ih-tier-pill.low  { background: var(--risk-low-bg); color: #16a34a; border-color: #16a34a; }
+    .ih-tier-pill.low  { background: var(--risk-low-bg); color: var(--risk-low-ink); border-color: var(--risk-low-ink); }
     .ih-tier-pill.mod  { background: var(--risk-mod-bg); color: var(--risk-mod); border-color: var(--risk-mod); }
     .ih-tier-pill.high { background: var(--risk-high-bg); color: var(--alert); border-color: var(--alert); }
     .ih-score-row {
@@ -1003,11 +1019,11 @@
       font-weight: 700;
       letter-spacing: -0.04em;
     }
-    .ih-score-denom { font-size: 16px; color: rgba(14,14,14,0.4); font-weight: 500; }
+    .ih-score-denom { font-size: 16px; color: rgba(var(--ink-rgb),0.4); font-weight: 500; }
     .ih-track {
       height: 8px;
       border-radius: 4px;
-      background: linear-gradient(to right, #16a34a 0%, #16a34a 20%, var(--risk-mod) 35%, var(--alert) 35%, var(--alert) 100%);
+      background: linear-gradient(to right, var(--risk-low-ink) 0%, var(--risk-low-ink) 20%, var(--risk-mod) 35%, var(--alert) 35%, var(--alert) 100%);
       position: relative;
       margin: 12px 0 6px;
     }
@@ -1026,7 +1042,7 @@
       display: flex;
       justify-content: space-between;
       font-size: 10px;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       font-weight: 600;
       margin-bottom: 16px;
     }
@@ -1035,7 +1051,7 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       margin-bottom: 8px;
       margin-top: 16px;
     }
@@ -1061,7 +1077,7 @@
     }
     .ih-factor-pts.pts-high { background: var(--risk-high-bg); color: var(--alert); border-color: var(--alert); }
     .ih-factor-pts.pts-mod  { background: var(--risk-mod-bg); color: var(--risk-mod); border-color: var(--risk-mod); }
-    .ih-sub { font-size: 13px; color: rgba(14,14,14,0.5); line-height: 1.6; margin-top: 4px; font-weight: 500; }
+    .ih-sub { font-size: 13px; color: rgba(var(--ink-rgb),0.5); line-height: 1.6; margin-top: 4px; font-weight: 500; }
 
     /* ── FRS CARD ── */
     .frs-card {
@@ -1076,7 +1092,7 @@
       font-weight: 700;
       letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       margin-bottom: 14px;
     }
     .frs-pct {
@@ -1086,7 +1102,7 @@
       line-height: 1;
       margin-bottom: 4px;
     }
-    .frs-pct-label { font-size: 13px; color: rgba(14,14,14,0.4); margin-bottom: 12px; font-weight: 500; }
+    .frs-pct-label { font-size: 13px; color: rgba(var(--ink-rgb),0.4); margin-bottom: 12px; font-weight: 500; }
     .frs-tier-pill {
       display: inline-block;
       font-size: 11px;
@@ -1098,14 +1114,14 @@
       text-transform: uppercase;
       border: 1.5px solid transparent;
     }
-    .frs-tier-pill.low  { background: var(--risk-low-bg); color: #16a34a; border-color: #16a34a; }
+    .frs-tier-pill.low  { background: var(--risk-low-bg); color: var(--risk-low-ink); border-color: var(--risk-low-ink); }
     .frs-tier-pill.mod  { background: var(--risk-mod-bg); color: var(--risk-mod); border-color: var(--risk-mod); }
     .frs-tier-pill.high { background: var(--risk-high-bg); color: var(--alert); border-color: var(--alert); }
     .frs-bar-wrap { margin: 12px 0 6px; }
     .frs-bar-track {
       height: 8px;
       border-radius: 4px;
-      background: linear-gradient(to right, #16a34a, var(--risk-mod) 30%, var(--alert) 60%);
+      background: linear-gradient(to right, var(--risk-low-ink), var(--risk-mod) 30%, var(--alert) 60%);
       position: relative;
     }
     .frs-bar-thumb {
@@ -1119,12 +1135,12 @@
       border-radius: 50%;
       transition: left 0.4s ease;
     }
-    .frs-bar-labels { display: flex; justify-content: space-between; font-size: 10px; color: rgba(14,14,14,0.35); margin-top: 5px; font-weight: 600; }
-    .frs-sub { font-size: 13px; color: rgba(14,14,14,0.45); line-height: 1.65; margin-top: 12px; font-weight: 500; }
+    .frs-bar-labels { display: flex; justify-content: space-between; font-size: 10px; color: rgba(var(--ink-rgb),0.35); margin-top: 5px; font-weight: 600; }
+    .frs-sub { font-size: 13px; color: rgba(var(--ink-rgb),0.45); line-height: 1.65; margin-top: 12px; font-weight: 500; }
     .frs-unlock { text-align: center; padding: 28px 20px; }
     .frs-unlock-icon { font-size: 28px; margin-bottom: 10px; }
     .frs-unlock-title { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
-    .frs-unlock-sub { font-size: 13px; color: rgba(14,14,14,0.45); line-height: 1.6; }
+    .frs-unlock-sub { font-size: 13px; color: rgba(var(--ink-rgb),0.45); line-height: 1.6; }
 
     /* ── NEXT STEPS CTA ── */
     .next-steps-section {
@@ -1135,7 +1151,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       margin-bottom: 12px;
       display: block;
     }
@@ -1144,7 +1160,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(14,14,14,0.3);
+      color: rgba(var(--ink-rgb),0.3);
       margin: 0 0 8px;
       display: block;
     }
@@ -1170,7 +1186,7 @@
     .ns-app-card:hover {
       border-color: var(--ink);
       transform: translateY(-2px);
-      box-shadow: 4px 4px 0 rgba(14,14,14,0.08);
+      box-shadow: 4px 4px 0 rgba(var(--ink-rgb),0.08);
     }
     .ns-app-card-top {
       display: flex;
@@ -1183,12 +1199,12 @@
       font-weight: 700;
       letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: rgba(14,14,14,0.35);
+      color: rgba(var(--ink-rgb),0.35);
     }
     .ns-app-arrow {
       font-size: 13px;
       font-weight: 700;
-      color: rgba(14,14,14,0.2);
+      color: rgba(var(--ink-rgb),0.2);
     }
     .ns-app-name {
       font-size: 18px;
@@ -1200,7 +1216,7 @@
     }
     .ns-app-desc {
       font-size: 12px;
-      color: rgba(14,14,14,0.45);
+      color: rgba(var(--ink-rgb),0.45);
       line-height: 1.5;
       font-weight: 400;
     }
@@ -1228,7 +1244,7 @@
       font-weight: 700;
       letter-spacing: 0.10em;
       text-transform: uppercase;
-      color: rgba(14,14,14,0.3);
+      color: rgba(var(--ink-rgb),0.3);
       margin-bottom: 7px;
     }
     .ns-read-title {
@@ -1270,7 +1286,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
     }
     .sources-toggle-icon {
       width: 22px;
@@ -1282,7 +1298,7 @@
       justify-content: center;
       flex-shrink: 0;
       transition: transform 0.3s, background 0.2s;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       font-size: 12px;
       font-weight: 700;
     }
@@ -1316,7 +1332,7 @@
       flex-shrink: 0;
     }
     .source-name { font-size: 14px; font-weight: 600; color: var(--ink); }
-    .source-desc { font-size: 13px; color: rgba(14,14,14,0.5); line-height: 1.65; }
+    .source-desc { font-size: 13px; color: rgba(var(--ink-rgb),0.5); line-height: 1.65; }
     .source-link {
       display: inline-block;
       margin-top: 8px;
@@ -1333,7 +1349,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       margin: 28px 0 12px;
       padding-bottom: 8px;
       border-bottom: 1.5px solid var(--border-light);
@@ -1345,14 +1361,14 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       padding: 6px 10px;
       border-bottom: 1.5px solid var(--border-light);
     }
     .scoring-table td { padding: 7px 10px; border-bottom: 1px solid var(--border-light); color: var(--ink); vertical-align: top; line-height: 1.5; }
     .scoring-table tr:last-child td { border-bottom: none; }
     .scoring-table tr:nth-child(even) td { background: var(--canvas); }
-    .tag-low  { display:inline-block; padding:3px 10px; border-radius:var(--radius-btn); font-size:10px; font-weight:700; background:var(--risk-low-bg); color:#16a34a; border:1px solid #16a34a; }
+    .tag-low  { display:inline-block; padding:3px 10px; border-radius:var(--radius-btn); font-size:10px; font-weight:700; background:var(--risk-low-bg); color:var(--risk-low-ink); border:1px solid var(--risk-low-ink); }
     .tag-mod  { display:inline-block; padding:3px 10px; border-radius:var(--radius-btn); font-size:10px; font-weight:700; background:var(--risk-mod-bg); color:var(--risk-mod); border:1px solid var(--risk-mod); }
     .tag-high { display:inline-block; padding:3px 10px; border-radius:var(--radius-btn); font-size:10px; font-weight:700; background:var(--risk-high-bg); color:var(--alert); border:1px solid var(--alert); }
     .sources-inner { padding-top: 20px; }
@@ -1369,7 +1385,7 @@
       font-family: var(--font);
       font-size: 14px;
       font-weight: 700;
-      color: rgba(14,14,14,0.4);
+      color: rgba(var(--ink-rgb),0.4);
       cursor: pointer;
       transition: all 0.15s;
       letter-spacing: 0.04em;
@@ -1381,7 +1397,7 @@
       text-align: center;
       margin-top: 28px;
       font-size: 12px;
-      color: rgba(14,14,14,0.35);
+      color: rgba(var(--ink-rgb),0.35);
       line-height: 1.75;
       font-weight: 500;
     }
@@ -1412,7 +1428,7 @@
     }
     .about-compact-body {
       font-size: 13px;
-      color: rgba(14,14,14,0.5);
+      color: rgba(var(--ink-rgb),0.5);
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -1438,7 +1454,7 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(14,14,14,0.35);
+      color: rgba(var(--ink-rgb),0.35);
       margin-bottom: 20px;
     }
     .footer-links {
@@ -1469,7 +1485,7 @@
       color: var(--canvas);
     }
     .footer-link svg { width: 14px; height: 14px; flex-shrink: 0; fill: currentColor; }
-    .footer-copy { font-size: 12px; color: rgba(14,14,14,0.35); font-weight: 500; }
+    .footer-copy { font-size: 12px; color: rgba(var(--ink-rgb),0.35); font-weight: 500; }
     .toyyib-btn {
       display: inline-flex;
       align-items: center;
@@ -1491,7 +1507,7 @@
       background: var(--ink);
       color: var(--yellow);
       transform: translateY(-2px);
-      box-shadow: 4px 4px 0 rgba(14,14,14,0.2);
+      box-shadow: 4px 4px 0 rgba(var(--ink-rgb),0.2);
     }
 
     /* ── ANIMATION ── */
@@ -1857,12 +1873,12 @@
           <canvas id="riskChart" role="img" aria-label="Scatter chart of BMI vs waist circumference showing WHO Asia-Pacific risk zones."></canvas>
         </div>
         <div class="chart-legend">
-          <div class="legend-item"><div class="legend-swatch" style="background:rgba(99,153,34,0.35)"></div> <span data-en>Healthy zone</span><span data-bm>Zon sihat</span></div>
-          <div class="legend-item"><div class="legend-swatch" style="background:rgba(186,117,23,0.35)"></div> <span data-en>Elevated risk</span><span data-bm>Risiko meningkat</span></div>
-          <div class="legend-item"><div class="legend-swatch" style="background:rgba(226,75,74,0.35)"></div> <span data-en>High risk</span><span data-bm>Risiko tinggi</span></div>
-          <div class="legend-item"><div class="legend-swatch circle" style="background:#378ADD"></div> <span data-en>Your position</span><span data-bm>Kedudukan anda</span></div>
-          <div class="legend-item"><div class="legend-swatch circle" style="background:#3B6D11;opacity:0.6"></div> <span data-en>Your goal</span><span data-bm>Sasaran anda</span></div>
-          <div class="legend-item"><div class="legend-swatch circle" style="background:#888780;opacity:0.5"></div> MY population</div>
+          <div class="legend-item"><div class="legend-swatch" style="background:rgba(var(--zone-low-rgb),0.35)"></div> <span data-en>Healthy zone</span><span data-bm>Zon sihat</span></div>
+          <div class="legend-item"><div class="legend-swatch" style="background:rgba(var(--zone-mod-rgb),0.35)"></div> <span data-en>Elevated risk</span><span data-bm>Risiko meningkat</span></div>
+          <div class="legend-item"><div class="legend-swatch" style="background:rgba(var(--zone-high-rgb),0.35)"></div> <span data-en>High risk</span><span data-bm>Risiko tinggi</span></div>
+          <div class="legend-item"><div class="legend-swatch circle" style="background:var(--you)"></div> <span data-en>Your position</span><span data-bm>Kedudukan anda</span></div>
+          <div class="legend-item"><div class="legend-swatch circle" style="background:var(--goal);opacity:0.6"></div> <span data-en>Your goal</span><span data-bm>Sasaran anda</span></div>
+          <div class="legend-item"><div class="legend-swatch circle" style="background:rgb(var(--pop-rgb));opacity:0.5"></div> MY population</div>
         </div>
         <div class="age-zone-note" id="ageZoneNote"></div>
       </div>
@@ -1925,10 +1941,10 @@
             <canvas id="ms-sc" role="img" aria-label="Scatter chart showing your BMI and waist plotted against simulated Malaysian population."></canvas>
           </div>
           <div class="ms-sleg">
-            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(22,163,74,0.5)"></div><span data-en>Healthy</span><span data-bm>Sihat</span></div>
-            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(255,140,0,0.5)"></div><span data-en>One risk factor</span><span data-bm>Satu faktor risiko</span></div>
-            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(255,0,61,0.5)"></div><span data-en>Both elevated</span><span data-bm>Kedua-dua tinggi</span></div>
-            <div class="ms-sl"><div class="ms-sl-dot" style="background:#ff3d00;border:2px solid white;box-shadow:0 0 0 1px rgba(14,14,14,.2)"></div>You</div>
+            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(var(--risk-low-rgb),0.5)"></div><span data-en>Healthy</span><span data-bm>Sihat</span></div>
+            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(var(--risk-mod-rgb),0.5)"></div><span data-en>One risk factor</span><span data-bm>Satu faktor risiko</span></div>
+            <div class="ms-sl"><div class="ms-sl-dot" style="background:rgba(var(--risk-high-rgb),0.5)"></div><span data-en>Both elevated</span><span data-bm>Kedua-dua tinggi</span></div>
+            <div class="ms-sl"><div class="ms-sl-dot" style="background:var(--you-scatter);border:2px solid white;box-shadow:0 0 0 1px rgba(var(--ink-rgb),.2)"></div>You</div>
           </div>
           <div class="ms-percentile-badge" id="ms-percentile"></div>
           <div class="ms-scatter-note"><span data-en>Population cloud seeded from NHMS 2019 &amp; 2023 published mean BMI and waist distributions by sex and age group (IKU/MOH Malaysia). Individual points are statistically simulated — not real survey respondents.</span><span data-bm>Data populasi berdasarkan taburan min BMI dan pinggang NHMS 2019 &amp; 2023 mengikut jantina dan kumpulan umur (IKU/KKM Malaysia). Titik-titik adalah simulasi statistik — bukan responden sebenar.</span></div>
@@ -2167,7 +2183,7 @@
 
         <div class="method-section-label" style="margin-top:36px">Scoring — INTERHEART NL-IHRS</div>
         <div class="source-card">
-          <div class="source-card-header"><span class="source-pill" style="background:rgba(14,14,14,0.4)">Algorithm</span><span class="source-name">INTERHEART Score Components (0–48 points total)</span></div>
+          <div class="source-card-header"><span class="source-pill" style="background:rgba(var(--ink-rgb),0.4)">Algorithm</span><span class="source-name">INTERHEART Score Components (0–48 points total)</span></div>
           <table class="scoring-table">
             <thead><tr><th>Factor</th><th>Condition</th><th>Points</th></tr></thead>
             <tbody>
@@ -2198,13 +2214,13 @@
 
         <div class="method-section-label">Scoring — Framingham Risk Score (BMI version)</div>
         <div class="source-card">
-          <div class="source-card-header"><span class="source-pill" style="background:rgba(14,14,14,0.4)">Algorithm</span><span class="source-name">FRS BMI-based 10-year CVD Risk</span></div>
+          <div class="source-card-header"><span class="source-pill" style="background:rgba(var(--ink-rgb),0.4)">Algorithm</span><span class="source-name">FRS BMI-based 10-year CVD Risk</span></div>
           <p class="source-desc">Point totals are summed from sex-specific tables for age, BMI, systolic BP (treated/untreated), smoking, and diabetes status. The sum is converted to a 10-year risk percentage via the D'Agostino 2008 lookup table. Risk tiers: Low &lt;10%, Intermediate 10–19%, High ≥20%.</p>
         </div>
 
         <div class="source-card" style="border-color:var(--risk-mod);background:var(--risk-mod-bg)">
           <div class="source-card-header"><span class="source-pill" style="background:var(--risk-mod);color:#fff">Limitations</span><span class="source-name" style="color:var(--risk-mod)">Important Caveats</span></div>
-          <ul style="font-size:13px;color:rgba(14,14,14,0.6);line-height:1.75;padding-left:18px;margin-top:8px">
+          <ul style="font-size:13px;color:rgba(var(--ink-rgb),0.6);line-height:1.75;padding-left:18px;margin-top:8px">
             <li>All tools are screening aids, not diagnostic instruments.</li>
             <li>INTERHEART was originally derived from a MI case-control study. The NL-IHRS version has been validated in Southeast Asia but regional recalibration improves accuracy further.</li>
             <li>FRS was developed in a predominantly White American cohort. Validated in Malaysia but may overestimate risk in some Asian subgroups.</li>
@@ -2268,6 +2284,9 @@
 </div><!-- /container -->
 
 <script>
+// Colour tokens live in :root; canvas and Chart.js need resolved values.
+const tok=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const tokA=(n,a)=>`rgba(${tok(n)},${a})`;
 /* ══════════════════════════════════════
    ALL LOGIC PRESERVED FROM ORIGINAL
    (unchanged — only CTA section added above)
@@ -2486,7 +2505,7 @@ function calcFRS({age,msex,bmi,sbp,smk,glc,bpMed}){
 const msNorm=(v,mn,mx)=>Math.max(0,Math.min(1,(v-mn)/(mx-mn)));
 const msToS=(v,mn,mx)=>Math.round(msNorm(v,mn,mx)*100);
 function msComposite(sc){return Math.round(sc.wc*0.25+sc.fr*0.25+sc.bmi*0.20+sc.whtr*0.15+sc.absi*0.10+sc.con*0.05);}
-const msRCol=r=>r==='high'?'#ff003d':r==='mod'?'#ff8c00':'#16a34a';
+const msRCol=r=>r==='high'?tok('--alert'):r==='mod'?tok('--risk-mod'):tok('--risk-low-ink');
 const msPillCls=r=>r==='high'?'ms-pr':r==='mod'?'ms-pa':'ms-pg';
 
 const MS_METRICS=[
@@ -2521,7 +2540,7 @@ function msGetPop(pSex,pAge){
   for(let i=0;i<n;i++){const ab=bands[Math.floor(Math.random()*bands.length)];pts.push({b:Math.max(15,Math.min(44,gauss(MS_BMI[pSex][ab],3.8))),w:Math.max(56,Math.min(128,gauss(MS_WC[pSex][ab],9.5)))});}
   msPopCache[key]=pts;return pts;
 }
-function msPtColor(b,w,pSex){const bR=b>=27.5,wR=pSex==='male'?w>=90:w>=80;if(bR&&wR)return'rgba(255,0,61,0.45)';if(bR||wR)return'rgba(255,140,0,0.45)';return'rgba(22,163,74,0.45)';}
+function msPtColor(b,w,pSex){const bR=b>=27.5,wR=pSex==='male'?w>=90:w>=80;if(bR&&wR)return tokA('--risk-high-rgb',0.45);if(bR||wR)return tokA('--risk-mod-rgb',0.45);return tokA('--risk-low-rgb',0.45);}
 function msSetSex(s){msSFilter.sex=s;document.getElementById('ms-sf-male').classList.toggle('on',s==='male');document.getElementById('ms-sf-female').classList.toggle('on',s==='female');msDrawScatter();}
 function msSetAge(a){msSFilter.age=a;['all','18','30','40','50','60'].forEach(v=>document.getElementById('ms-sa-'+v).classList.toggle('on',v===a));msDrawScatter();}
 
@@ -2531,10 +2550,10 @@ function msDrawScatter(){
   const zones={id:'ms-zones',beforeDraw(chart){
     const{ctx:c,chartArea:{left,right,top,bottom},scales:{x,y}}=chart;if(!x||!y)return;
     const wcL=x.getPixelForValue(wcT),bL=y.getPixelForValue(23);c.save();
-    c.fillStyle='rgba(22,163,74,0.06)';c.fillRect(left,bL,wcL-left,bottom-bL);
-    c.fillStyle='rgba(255,140,0,0.06)';c.fillRect(wcL,bL,right-wcL,bottom-bL);c.fillRect(left,top,wcL-left,bL-top);
-    c.fillStyle='rgba(255,0,61,0.06)';c.fillRect(wcL,top,right-wcL,bL-top);
-    c.strokeStyle='rgba(14,14,14,0.1)';c.lineWidth=1;c.setLineDash([4,3]);
+    c.fillStyle=tokA('--risk-low-rgb',0.06);c.fillRect(left,bL,wcL-left,bottom-bL);
+    c.fillStyle=tokA('--risk-mod-rgb',0.06);c.fillRect(wcL,bL,right-wcL,bottom-bL);c.fillRect(left,top,wcL-left,bL-top);
+    c.fillStyle=tokA('--risk-high-rgb',0.06);c.fillRect(wcL,top,right-wcL,bL-top);
+    c.strokeStyle=tokA('--ink-rgb',0.1);c.lineWidth=1;c.setLineDash([4,3]);
     c.beginPath();c.moveTo(wcL,top);c.lineTo(wcL,bottom);c.stroke();
     c.beginPath();c.moveTo(left,bL);c.lineTo(right,bL);c.stroke();
     c.setLineDash([]);c.restore();
@@ -2557,11 +2576,11 @@ function msDrawScatter(){
     type:'scatter',
     data:{datasets:[
       {label:'Population',data:pts.map(p=>({x:p.w,y:p.b})),backgroundColor:pts.map(p=>msPtColor(p.b,p.w,msSFilter.sex)),pointRadius:isMobile?3:4,pointHoverRadius:isMobile?5:6},
-      {label:'You',data:[{x:msUserPt.wc,y:msUserPt.bmi}],backgroundColor:'#ff3d00',borderColor:'white',borderWidth:2.5,pointRadius:isMobile?8:10,pointHoverRadius:12}
+      {label:'You',data:[{x:msUserPt.wc,y:msUserPt.bmi}],backgroundColor:tok('--you-scatter'),borderColor:'white',borderWidth:2.5,pointRadius:isMobile?8:10,pointHoverRadius:12}
     ]},
     options:{responsive:true,maintainAspectRatio:false,
-      scales:{x:{title:{display:true,text:'Waist (cm)',color:'rgba(14,14,14,0.4)',font:{size:11}},min:55,max:130,grid:{color:'rgba(14,14,14,0.06)'},ticks:{color:'rgba(14,14,14,0.4)',font:{size:10}}},
-              y:{title:{display:true,text:'BMI',color:'rgba(14,14,14,0.4)',font:{size:11}},min:15,max:43,grid:{color:'rgba(14,14,14,0.06)'},ticks:{color:'rgba(14,14,14,0.4)',font:{size:10}}}},
+      scales:{x:{title:{display:true,text:'Waist (cm)',color:tokA('--ink-rgb',0.4),font:{size:11}},min:55,max:130,grid:{color:tokA('--ink-rgb',0.06)},ticks:{color:tokA('--ink-rgb',0.4),font:{size:10}}},
+              y:{title:{display:true,text:'BMI',color:tokA('--ink-rgb',0.4),font:{size:11}},min:15,max:43,grid:{color:tokA('--ink-rgb',0.06)},ticks:{color:tokA('--ink-rgb',0.4),font:{size:10}}}},
       plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{const{x,y}=c.raw;return c.datasetIndex===1?`You — BMI ${y.toFixed(1)}, Waist ${Math.round(x)} cm`:`BMI ${y.toFixed(1)}, Waist ${Math.round(x)} cm`;}}}}
     },plugins:[zones]
   });
@@ -2572,21 +2591,21 @@ function msDrawDial(score,riskCol){
   c.width=260*dpr;c.height=130*dpr;const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=260,H=130,cx=W/2,cy=H-8,r=108;ctx.clearRect(0,0,W,H);
   const toRad=p=>Math.PI+(p/100)*Math.PI;
-  [{f:0,t:40,col:'#16a34a'},{f:40,t:70,col:'#ff8c00'},{f:70,t:100,col:'#ff003d'}].forEach(s=>{
+  [{f:0,t:40,col:tok('--risk-low-ink')},{f:40,t:70,col:tok('--risk-mod')},{f:70,t:100,col:tok('--alert')}].forEach(s=>{
     ctx.beginPath();ctx.arc(cx,cy,r,toRad(s.f),toRad(s.t));ctx.lineWidth=14;ctx.strokeStyle=s.col;ctx.globalAlpha=0.75;ctx.lineCap='butt';ctx.stroke();ctx.globalAlpha=1;
   });
   [40,70].forEach(p=>{
     const a=toRad(p);ctx.beginPath();ctx.moveTo(cx+(r-10)*Math.cos(a),cy+(r-10)*Math.sin(a));ctx.lineTo(cx+(r+1)*Math.cos(a),cy+(r+1)*Math.sin(a));ctx.lineWidth=2;ctx.strokeStyle='rgba(255,255,255,0.9)';ctx.stroke();
   });
   ctx.font="600 9px 'Inter',sans-serif";ctx.globalAlpha=0.7;const lr=r-22;
-  [{f:0,t:40,txt:'Low',col:'#16a34a'},{f:40,t:70,txt:'Moderate',col:'#ff8c00'},{f:70,t:100,txt:'High',col:'#ff003d'}].forEach(s=>{
+  [{f:0,t:40,txt:'Low',col:tok('--risk-low-ink')},{f:40,t:70,txt:'Moderate',col:tok('--risk-mod')},{f:70,t:100,txt:'High',col:tok('--alert')}].forEach(s=>{
     const a=toRad((s.f+s.t)/2);ctx.fillStyle=s.col;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(s.txt,cx+lr*Math.cos(a),cy+lr*Math.sin(a));
   });
   ctx.globalAlpha=1;
   const na=toRad(Math.min(Math.max(score,0),100));
   ctx.beginPath();ctx.moveTo(cx+8*Math.cos(na+Math.PI),cy+8*Math.sin(na+Math.PI));ctx.lineTo(cx+(r-8)*Math.cos(na),cy+(r-8)*Math.sin(na));ctx.lineWidth=2.5;ctx.strokeStyle=riskCol;ctx.lineCap='round';ctx.stroke();
   ctx.beginPath();ctx.arc(cx,cy,6,0,Math.PI*2);ctx.fillStyle=riskCol;ctx.fill();
-  ctx.beginPath();ctx.arc(cx,cy,3,0,Math.PI*2);ctx.fillStyle='#f4e9e1';ctx.fill();
+  ctx.beginPath();ctx.arc(cx,cy,3,0,Math.PI*2);ctx.fillStyle=tok('--canvas');ctx.fill();
 }
 
 function msBuildBar(def,value,sx,age){
@@ -2613,21 +2632,21 @@ function renderChart(){
   if(!S.weight)return;
   const b=calcBMI(S.weight,S.height),bc=bmiCat(b,S.age),wc=waistCat(S.waist,sex),th=bmiThresholds(S.age),t=sex==='male'?90:80;
   const goalBMI=calcBMI(S.goalW,S.height),goalChanged=S.goalW!==S.weight||S.goalWt!==S.waist;
-  const lc='rgba(14,14,14,0.45)',gc='rgba(14,14,14,0.06)',tc='rgba(14,14,14,0.35)';
+  const lc=tokA('--ink-rgb',0.45),gc=tokA('--ink-rgb',0.06),tc=tokA('--ink-rgb',0.35);
   const zones={id:'riskZones',beforeDraw(chart){
     const{ctx,chartArea:{left,right,top,bottom},scales:{x,y}}=chart;
     const hTop=y.getPixelForValue(th.healthy[1]+4.5),hBot=y.getPixelForValue(th.healthy[0]),wL=x.getPixelForValue(t);
     ctx.save();
-    ctx.fillStyle='rgba(99,153,34,0.2)';ctx.fillRect(left,hTop,wL-left,hBot-hTop);
-    ctx.fillStyle='rgba(186,117,23,0.18)';ctx.fillRect(left,top,right-left,hTop-top);ctx.fillRect(left,hBot,wL-left,bottom-hBot);ctx.fillRect(wL,hTop,right-wL,hBot-hTop);
-    ctx.fillStyle='rgba(226,75,74,0.18)';ctx.fillRect(wL,top,right-wL,hTop-top);ctx.fillRect(wL,hBot,right-wL,bottom-hBot);
+    ctx.fillStyle=tokA('--zone-low-rgb',0.2);ctx.fillRect(left,hTop,wL-left,hBot-hTop);
+    ctx.fillStyle=tokA('--zone-mod-rgb',0.18);ctx.fillRect(left,top,right-left,hTop-top);ctx.fillRect(left,hBot,wL-left,bottom-hBot);ctx.fillRect(wL,hTop,right-wL,hBot-hTop);
+    ctx.fillStyle=tokA('--zone-high-rgb',0.18);ctx.fillRect(wL,top,right-wL,hTop-top);ctx.fillRect(wL,hBot,right-wL,bottom-hBot);
     ctx.restore();
   }};
   if(chart){chart.destroy();chart=null;}
   const ctx=document.getElementById('riskChart').getContext('2d');
-  const datasets=[{type:'scatter',label:'You',data:[{x:S.waist,y:b}],backgroundColor:'#378ADD',borderColor:'#fff',borderWidth:2,pointRadius:10,pointHoverRadius:13,order:1}];
-  if(goalChanged)datasets.push({type:'scatter',label:'Goal',data:[{x:S.goalWt,y:goalBMI}],backgroundColor:'#3B6D11',borderColor:'#fff',borderWidth:2,pointRadius:8,pointHoverRadius:11,order:2});
-  if(showPop){const pop=getPopData();datasets.push({type:'scatter',label:'Population',data:pop,backgroundColor:'rgba(136,135,128,0.35)',pointRadius:3,pointHoverRadius:5,order:3});}
+  const datasets=[{type:'scatter',label:'You',data:[{x:S.waist,y:b}],backgroundColor:tok('--you'),borderColor:'#fff',borderWidth:2,pointRadius:10,pointHoverRadius:13,order:1}];
+  if(goalChanged)datasets.push({type:'scatter',label:'Goal',data:[{x:S.goalWt,y:goalBMI}],backgroundColor:tok('--goal'),borderColor:'#fff',borderWidth:2,pointRadius:8,pointHoverRadius:11,order:2});
+  if(showPop){const pop=getPopData();datasets.push({type:'scatter',label:'Population',data:pop,backgroundColor:tokA('--pop-rgb',0.35),pointRadius:3,pointHoverRadius:5,order:3});}
   chart=new Chart(ctx,{type:'scatter',data:{datasets},options:{responsive:true,maintainAspectRatio:false,animation:{duration:300},plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{const{x,y}=ctx.raw;return `BMI ${y.toFixed(1)}, Waist ${x} cm`;}}}},
     scales:{x:{min:50,max:130,title:{display:true,text:'Waist circumference (cm)',color:lc,font:{size:12}},grid:{color:gc},ticks:{color:tc,stepSize:10,callback:v=>v+' cm'}},
             y:{min:14,max:45,title:{display:true,text:'BMI',color:lc,font:{size:12}},grid:{color:gc},ticks:{color:tc,stepSize:5}}}},plugins:[zones]});
@@ -2654,7 +2673,7 @@ function drawAnnotations(curBMI,goalBMI,goalChanged,t,th){
   if(goalChanged){
     const x1=xS.getPixelForValue(S.waist),y1=yS.getPixelForValue(curBMI),x2=xS.getPixelForValue(S.goalWt),y2=yS.getPixelForValue(goalBMI);
     const dx=x2-x1,dy=y2-y1,len=Math.sqrt(dx*dx+dy*dy);
-    if(len>16){const ux=dx/len,uy=dy/len;ctx.beginPath();ctx.setLineDash([5,4]);ctx.strokeStyle='#3B6D11';ctx.lineWidth=1.5;ctx.moveTo(x1+ux*14,y1+uy*14);ctx.lineTo(x2-ux*14,y2-uy*14);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#3B6D11';ctx.beginPath();ctx.moveTo(x2-ux*14,y2-uy*14);ctx.lineTo(x2-ux*23+uy*5,y2-uy*23-ux*5);ctx.lineTo(x2-ux*23-uy*5,y2-uy*23+ux*5);ctx.closePath();ctx.fill();}
+    if(len>16){const ux=dx/len,uy=dy/len;ctx.beginPath();ctx.setLineDash([5,4]);ctx.strokeStyle=tok('--goal');ctx.lineWidth=1.5;ctx.moveTo(x1+ux*14,y1+uy*14);ctx.lineTo(x2-ux*14,y2-uy*14);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=tok('--goal');ctx.beginPath();ctx.moveTo(x2-ux*14,y2-uy*14);ctx.lineTo(x2-ux*23+uy*5,y2-uy*23-ux*5);ctx.lineTo(x2-ux*23-uy*5,y2-uy*23+ux*5);ctx.closePath();ctx.fill();}
   }
   ctx.restore();
 }
@@ -2791,7 +2810,7 @@ function calculate(){
   if(frsRisk!==null){
     const frsTier=frsRisk>=20?'high':frsRisk>=10?'mod':'low';
     const frsTierLabel=frsRisk>=20?'High risk (≥20%)':frsRisk>=10?'Intermediate risk (10–19%)':'Low risk (<10%)';
-    const frsColor=frsRisk>=20?'var(--alert)':frsRisk>=10?'var(--risk-mod)':'#16a34a';
+    const frsColor=frsRisk>=20?'var(--alert)':frsRisk>=10?'var(--risk-mod)':'var(--risk-low-ink)';
     frsEl.innerHTML=`
       <div class="frs-pct" style="color:${frsColor}">${frsRisk.toFixed(1)}%</div>
       <div class="frs-pct-label"><span data-en>chance of a cardiovascular event in the next 10 years</span></div>
