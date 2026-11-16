@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sokong CerminDiri — Aufthority</title>
+<meta name="description" content="CerminDiri percuma untuk semua. Sumbangan pilihan melalui ToyyibPay (FPX/DuitNow) atau Buy Me A Coffee membantu menampung kos dan membina alat baharu.">
+<link rel="canonical" href="https://cermindiri.aufthority.com/donate/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aufthority">
+<meta property="og:title" content="Sokong CerminDiri — Aufthority">
+<meta property="og:description" content="Pastikan CerminDiri kekal percuma untuk semua.">
+<meta property="og:url" content="https://cermindiri.aufthority.com/donate/">
+<meta property="og:image" content="https://www.aufthority.com/preview_v2.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ms_MY">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@theaufthority">
+<meta name="twitter:title" content="Sokong CerminDiri — Aufthority">
+<meta name="twitter:description" content="Pastikan CerminDiri kekal percuma untuk semua.">
+<meta name="twitter:image" content="https://www.aufthority.com/preview_v2.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="7c961c49-4871-4b9d-b031-d9b95d4e4a68"></script>
+<style>
+  :root {
+    --bg: #f7f5f0; --card: #ffffff; --ink: #1a1d1a; --muted: #5d625c; --line: #e2ded5;
+    --accent: #2d6a4f; --accent-soft: #e6f0ea; --radius: 2px;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #111412; --card: #181c19; --ink: #eef0ec; --muted: #a3a9a2; --line: #2a302b;
+            --accent: #52b788; --accent-soft: #1b2a21; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 400 16px/1.6 'DM Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  html[lang="ms"] [data-en], html[lang="en"] [data-ms] { display: none !important; }
+  a { color: var(--accent); }
+  .skip { position: absolute; left: -999px; }
+  .skip:focus { left: 12px; top: 12px; background: var(--card); padding: 8px 12px; z-index: 9; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 28px; }
+  header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+               padding: 20px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+  .crumb { color: var(--muted); }
+  .crumb a { color: var(--ink); text-decoration: none; font-weight: 500; }
+  .crumb a:hover { color: var(--accent); }
+  .lang { display: flex; gap: 2px; }
+  .lang button { background: none; border: 1px solid transparent; color: var(--muted); cursor: pointer;
+                 font: 600 12px/1 'DM Sans', sans-serif; letter-spacing: .06em; padding: 7px 9px; border-radius: var(--radius); }
+  .lang button[aria-pressed="true"] { color: var(--ink); border-color: var(--line); }
+  main { padding: 48px 0 24px; }
+  .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+  h1 { font: 400 clamp(32px, 7vw, 46px)/1.1 'DM Serif Display', Georgia, serif; margin: 0 0 18px; letter-spacing: -.01em; }
+  h2 { font: 400 26px/1.2 'DM Serif Display', Georgia, serif; margin: 0 0 8px; }
+  .lede { font-size: 17px; color: var(--muted); margin: 0 0 8px; }
+  .thanks { font-family: 'DM Serif Display', Georgia, serif; font-size: 20px; margin: 16px 0 0; }
+  section { margin-top: 44px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
+  .pay { display: grid; grid-template-columns: 168px 1fr; gap: 26px; align-items: center; }
+  @media (max-width: 560px) { .pay { grid-template-columns: 1fr; justify-items: center; text-align: center; } }
+  .qr { background: #fff; padding: 12px; border: 1px solid var(--line); border-radius: var(--radius); line-height: 0; }
+  .qr img { width: 144px; height: 144px; image-rendering: pixelated; display: block; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+         color: var(--accent); background: var(--accent-soft); padding: 4px 8px; border-radius: var(--radius); margin-bottom: 10px; }
+  .meta { color: var(--muted); font-size: 14px; margin: 6px 0 16px; }
+  .payee { font-size: 14px; margin: 0 0 16px; }
+  .payee strong { font-weight: 600; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  @media (max-width: 560px) { .actions { justify-content: center; } }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px; border-radius: var(--radius);
+         font: 600 15px/1 'DM Sans', sans-serif; text-decoration: none; background: var(--ink); color: var(--bg); border: 1px solid var(--ink); }
+  .btn:hover { opacity: .88; }
+  .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+  .note { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
+  ol.steps { list-style: none; counter-reset: s; padding: 0; margin: 16px 0 0; display: grid; gap: 14px; }
+  ol.steps li { counter-increment: s; display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; }
+  ol.steps li::before { content: counter(s); font: 400 22px/1.2 'DM Serif Display', serif; color: var(--accent); }
+  .uses { margin: 14px 0 0; padding-left: 20px; color: var(--muted); }
+  .uses li { margin: 4px 0; }
+  .optional { border-left: 2px solid var(--accent); padding: 4px 0 4px 16px; color: var(--muted); }
+  ul.apps { list-style: none; padding: 0; margin: 16px 0 0; border-top: 1px solid var(--line); }
+  ul.apps li { border-bottom: 1px solid var(--line); }
+  ul.apps a { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; color: var(--ink); text-decoration: none; }
+  ul.apps a:hover .app-name { color: var(--accent); }
+  .app-name { font-weight: 600; }
+  .app-tag { color: var(--muted); font-size: 14px; text-align: right; }
+  .here { display: block; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-top: 2px; }
+  .follow { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 12px; font-size: 15px; }
+  footer { border-top: 1px solid var(--line); margin-top: 56px; padding: 24px 0 max(28px, env(safe-area-inset-bottom));
+           font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: space-between; }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+<a class="skip" href="#main"><span data-ms>Langkau ke kandungan</span><span data-en>Skip to content</span></a>
+<div class="wrap">
+  <header class="top">
+    <div class="crumb"><a href="https://www.aufthority.com">Aufthority</a> / <a href="https://cermindiri.aufthority.com/">CerminDiri</a> / <span data-ms>Sokong</span><span data-en>Support</span></div>
+    <div class="lang" role="group" aria-label="Bahasa / Language">
+      <button type="button" data-set-lang="ms" data-umami-event="CerminDiri - Donate Lang BM">BM</button>
+      <button type="button" data-set-lang="en" data-umami-event="CerminDiri - Donate Lang EN">EN</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <p class="eyebrow"><span data-ms>Sokong CerminDiri</span><span data-en>Support CerminDiri</span></p>
+    <h1><span data-ms>Pastikan CerminDiri kekal percuma untuk semua.</span><span data-en>Keep CerminDiri free for everyone.</span></h1>
+    <p class="lede">
+      <span data-ms>CerminDiri dibina dan diselenggara oleh seorang pembina, dan akan sentiasa percuma. Jika ia membantu anda, sumbangan kecil membantu menampung kos dan membina alat baharu berasaskan bukti untuk rakyat Malaysia.</span>
+      <span data-en>CerminDiri is built and maintained by one person, and it will always be free. If it has helped you, a small contribution keeps it running and funds new evidence-based tools for Malaysians.</span>
+    </p>
+    <ul class="uses">
+      <li><span data-ms>Hos laman dan domain</span><span data-en>Hosting and domains</span></li>
+      <li><span data-ms>Masa untuk menyemak kajian terkini dan mengemas kini alat</span><span data-en>Time to review new research and keep tools up to date</span></li>
+      <li><span data-ms>Pembangunan alat percuma yang baharu</span><span data-en>Building new free tools</span></li>
+    </ul>
+    <p class="thanks">Terima kasih!</p>
+
+    <section aria-labelledby="h-my">
+      <div class="card pay">
+        <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsAQMAAABDsxw2AAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB1UlEQVRoge2avZGDQAyFxRAQUoJLcWlQmkuhBIcEjOXVz2rxzd2NEwHBUySWz9EbSU+Lib6LiT1K3vFjLNkyvGh69ky3+m4BlowtKoYcrgWTXJLZTkwpYPnYUNQQaTTGjcrjSzVUnnkDdiAmBSIlo8lceGDXxai0NS0xTYAdi0V/KwV1Z68s+rsNAkvA2MOmjPS3/y0BsARsF1o7RRpeXb7fA9hpmGlaFGQpqPtT66jTKdPEBZaNLVQLKpKBW8xU2yCwPMxirKuiPNQlJbAIYOdiE7e5T+bH7Jitv0UBAsvEpI5iN9HbFdVIeelvrD8ElouxbCJtxJMPF648uT0GlorpiO85hotuK+K4/MTFAnYBzCprs/4mxiwKau+TgeViLR9kr2dWh8Z7Hlg61g4l1Hq12mHfVoBlY0PcaInvFbu7HzfuwYBdBGPT9MY2Uwyrnxf3bRBYImaz3uyxjngvMY1ZeWC5WIvbSsZTu9rqjAV2DWxy7dwV62q50ucnYCJgyZjp1ZsTeKhqHG3NL7sWYNmYTpl+tyFKtJvGMGbAjsG47SYfV47ALoi99EWs8xFEwLIxskOb9bzV3YTrgt8Dy8dCEfs7hKRrVy/n5emnJQB2GvZdvAFJeAfOr8NYmwAAAABJRU5ErkJggg==" alt="Kod QR ke halaman ToyyibPay Fund Aufthority Projects" width="144" height="144"></div>
+        <div>
+          <span class="tag"><span data-ms>Dari Malaysia</span><span data-en>From Malaysia</span></span>
+          <h2 id="h-my">ToyyibPay</h2>
+          <p class="meta"><span data-ms>FPX atau DuitNow perbankan dalam talian. Apa-apa jumlah.</span><span data-en>FPX or DuitNow online banking. Any amount.</span></p>
+          <p class="payee"><span data-ms>Penerima:</span><span data-en>Pay to:</span> <strong>Abdur Rahman Auf Ali</strong></p>
+          <div class="actions">
+            <a class="btn" href="https://toyyibpay.com/Fund-Aufthority-Projects" target="_blank" rel="noopener" data-umami-event="CerminDiri - Donate ToyyibPay"><span data-ms>Derma melalui ToyyibPay</span><span data-en>Donate via ToyyibPay</span></a>
+            <a class="btn ghost" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsAQMAAABDsxw2AAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB1UlEQVRoge2avZGDQAyFxRAQUoJLcWlQmkuhBIcEjOXVz2rxzd2NEwHBUySWz9EbSU+Lib6LiT1K3vFjLNkyvGh69ky3+m4BlowtKoYcrgWTXJLZTkwpYPnYUNQQaTTGjcrjSzVUnnkDdiAmBSIlo8lceGDXxai0NS0xTYAdi0V/KwV1Z68s+rsNAkvA2MOmjPS3/y0BsARsF1o7RRpeXb7fA9hpmGlaFGQpqPtT66jTKdPEBZaNLVQLKpKBW8xU2yCwPMxirKuiPNQlJbAIYOdiE7e5T+bH7Jitv0UBAsvEpI5iN9HbFdVIeelvrD8ElouxbCJtxJMPF648uT0GlorpiO85hotuK+K4/MTFAnYBzCprs/4mxiwKau+TgeViLR9kr2dWh8Z7Hlg61g4l1Hq12mHfVoBlY0PcaInvFbu7HzfuwYBdBGPT9MY2Uwyrnxf3bRBYImaz3uyxjngvMY1ZeWC5WIvbSsZTu9rqjAV2DWxy7dwV62q50ucnYCJgyZjp1ZsTeKhqHG3NL7sWYNmYTpl+tyFKtJvGMGbAjsG47SYfV47ALoi99EWs8xFEwLIxskOb9bzV3YTrgt8Dy8dCEfs7hKRrVy/n5emnJQB2GvZdvAFJeAfOr8NYmwAAAABJRU5ErkJggg==" download="Aufthority-ToyyibPay-QR.png" data-umami-event="CerminDiri - Donate Save QR"><span data-ms>Simpan QR</span><span data-en>Save QR</span></a>
+          </div>
+          <p class="note"><span data-ms>Imbas dengan kamera telefon untuk membuka halaman bayaran. Pastikan nama penerima betul sebelum membayar.</span><span data-en>Scan with your phone camera to open the payment page. Check the recipient name before you pay.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-intl">
+      <div class="card">
+        <span class="tag"><span data-ms>Dari luar Malaysia</span><span data-en>From outside Malaysia</span></span>
+        <h2 id="h-intl">Buy Me A Coffee</h2>
+        <p class="meta"><span data-ms>Kad debit atau kredit dari mana-mana negara. USD 1 secawan, sekali atau bulanan.</span><span data-en>Debit or credit card from any country. USD 1 per coffee, one-off or monthly.</span></p>
+        <div class="actions">
+          <a class="btn" href="https://buymeacoffee.com/aufali" target="_blank" rel="noopener" data-umami-event="CerminDiri - Donate BMC"><span data-ms>Belanja saya kopi</span><span data-en>Buy me a coffee</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-how">
+      <h2 id="h-how"><span data-ms>Cara menderma</span><span data-en>How to donate</span></h2>
+      <ol class="steps">
+        <li><span><span data-ms>Imbas atau simpan kod QR, atau tekan butang ToyyibPay.</span><span data-en>Scan or save the QR code, or tap the ToyyibPay button.</span></span></li>
+        <li><span><span data-ms>Pilih bank anda melalui FPX atau DuitNow (Maybank2u, CIMB Clicks, RHB, Bank Islam dan lain-lain).</span><span data-en>Choose your bank via FPX or DuitNow (Maybank2u, CIMB Clicks, RHB, Bank Islam and others).</span></span></li>
+        <li><span><span data-ms>Masukkan apa-apa jumlah yang anda selesa. Resit akan dihantar ke e-mel anda.</span><span data-en>Enter any amount you are comfortable with. A receipt is sent to your email.</span></span></li>
+      </ol>
+    </section>
+
+    <section>
+      <p class="optional"><span data-ms>Sumbangan adalah pilihan dan tidak membuka apa-apa ciri tambahan. Setiap alat kekal percuma untuk semua.</span><span data-en>Donations are optional and unlock nothing extra. Every tool stays free for everyone.</span></p>
+    </section>
+
+    <section aria-labelledby="h-apps">
+      <h2 id="h-apps"><span data-ms>7 alat percuma, seorang pembina</span><span data-en>7 free tools, one creator</span></h2>
+      <p class="meta"><span data-ms>Sumbangan anda menyokong kesemuanya.</span><span data-en>Your support helps all of them.</span></p>
+      <ul class="apps">
+        <li><a href="https://cermindiri.aufthority.com/" data-umami-event="CerminDiri - Donate Other app"><span class="app-name">CerminDiri<span class="here"><span data-ms>Anda di sini</span><span data-en>You are here</span></span></span><span class="app-tag"><span data-ms>Kenali angka kesihatan anda</span><span data-en>Know your health numbers</span></span></a></li>
+        <li><a href="https://www.aufthority.com/nafaslega/" data-umami-event="CerminDiri - Donate Other app"><span class="app-name">NafasLega</span><span class="app-tag"><span data-ms>Latihan pernafasan berpandu</span><span data-en>Guided breathing exercise</span></span></a></li>
+        <li><a href="https://mytdee.aufthority.com/" data-umami-event="CerminDiri - Donate Other app"><span class="app-name">MyTDEE</span><span class="app-tag"><span data-ms>Kalkulator kalori yang ditentukur untuk rakyat Malaysia</span><span data-en>Calorie calculator calibrated for Malaysians</span></span></a></li>
+        <li><a href="https://www.aufthority.com/boroi/" data-umami-event="CerminDiri - Donate Other app"><span class="app-name">Why The Belly?</span><span class="app-tag"><span data-ms>Punca sebenar berat badan naik</span><span data-en>What is really driving your weight gain</span></span></a></li>
+        <li><a href="https://www.aufthority.com/energy-audit/" data-umami-event="CerminDiri - Donate Other app"><span class="app-name">Energy Audit</span><span class="app-tag"><span data-ms>Kenal pasti jenis penat anda</span><span data-en>Find out which type of tiredness you have</span></span></a></li>
+        <li><a href="https://www.aufthority.com/rancangdiri/" data-umami-event="CerminDiri - Donate Other app"><span class="app-name">RancangDiri</span><span class="app-tag"><span data-ms>Pelan aktiviti dan pemakanan yang mudah diikuti</span><span data-en>A simple activity and meal plan</span></span></a></li>
+        <li><a href="https://kansercheck.aufthority.com/" data-umami-event="CerminDiri - Donate Other app"><span class="app-name">KanserCheck</span><span class="app-tag"><span data-ms>Audit risiko gaya hidup bagi enam kanser utama</span><span data-en>Lifestyle risk audit for six major cancers</span></span></a></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="h-follow">
+      <h2 id="h-follow"><span data-ms>Ikuti Aufthority</span><span data-en>Follow Aufthority</span></h2>
+      <div class="follow">
+        <a href="https://www.threads.com/@theaufthority" target="_blank" rel="noopener">Threads</a>
+        <a href="https://www.instagram.com/theaufthority" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@theaufthority" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://aufthority.substack.com" target="_blank" rel="noopener">Substack</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Aufthority</span>
+    <span><a href="https://cermindiri.aufthority.com/"><span data-ms>Kembali ke CerminDiri</span><span data-en>Back to CerminDiri</span></a> · <a href="https://www.aufthority.com">aufthority.com</a></span>
+  </footer>
+</div>
+<script>
+(function () {
+  var KEY = 'aufthority.donate.lang', APP_KEY = '';
+  function get(k) { try { return k ? localStorage.getItem(k) : null; } catch (e) { return null; } }
+  function norm(v) { return v === 'en' ? 'en' : (v === 'ms' || v === 'bm') ? 'ms' : null; }
+  var q = norm(new URLSearchParams(location.search).get('lang'));
+  var lang = q || norm(get(KEY)) || norm(get(APP_KEY)) || 'ms';
+  function apply(l) {
+    document.documentElement.lang = l;
+    document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === l));
+    });
+  }
+  apply(lang);
+  document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var l = b.getAttribute('data-set-lang'); apply(l);
+      try { localStorage.setItem(KEY, l); } catch (e) {}
+    });
+  });
+})();
+</script>
+</body>
+</html>
