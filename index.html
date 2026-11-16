@@ -1593,7 +1593,7 @@
         <div class="form-group full">
           <label><span data-en>Biological Sex</span><span data-bm>Jantina</span></label>
           <div class="sex-toggle">
-            <button class="sex-btn active" data-sex="male"   onclick="setSex('male')"><span data-en>♂ Male</span><span data-bm>♂ Lelaki</span></button>
+            <button class="sex-btn" data-sex="male"   onclick="setSex('male')"><span data-en>♂ Male</span><span data-bm>♂ Lelaki</span></button>
             <button class="sex-btn"        data-sex="female" onclick="setSex('female')"><span data-en>♀ Female</span><span data-bm>♀ Perempuan</span></button>
           </div>
         </div>
@@ -1644,21 +1644,21 @@
         <div class="form-group full">
           <label><span data-en>Ever told you have high blood pressure or on BP medication?</span><span data-bm>Pernah diberitahu mempunyai tekanan darah tinggi atau mengambil ubat?</span></label>
           <div class="sex-toggle">
-            <button class="sex-btn active" data-bp="no"  onclick="setBp('no')"><span data-en>No</span><span data-bm>Tidak</span></button>
+            <button class="sex-btn" data-bp="no"  onclick="setBp('no')"><span data-en>No</span><span data-bm>Tidak</span></button>
             <button class="sex-btn"        data-bp="yes" onclick="setBp('yes')"><span data-en>Yes</span><span data-bm>Ya</span></button>
           </div>
         </div>
         <div class="form-group full">
           <label><span data-en>Ever found to have high blood glucose or diabetes?</span><span data-bm>Pernah didapati mempunyai gula darah tinggi atau diabetes?</span></label>
           <div class="sex-toggle">
-            <button class="sex-btn active" data-glc="no"  onclick="setGlc('no')"><span data-en>No</span><span data-bm>Tidak</span></button>
+            <button class="sex-btn" data-glc="no"  onclick="setGlc('no')"><span data-en>No</span><span data-bm>Tidak</span></button>
             <button class="sex-btn"        data-glc="yes" onclick="setGlc('yes')"><span data-en>Yes</span><span data-bm>Ya</span></button>
           </div>
         </div>
         <div class="form-group full">
           <label><span data-en>Family history of diabetes</span><span data-bm>Sejarah keluarga diabetes</span></label>
           <div class="sex-toggle" style="grid-template-columns:1fr 1fr 1fr">
-            <button class="sex-btn active" data-fam="none" onclick="setFam('none')"><span data-en>None</span><span data-bm>Tiada</span></button>
+            <button class="sex-btn" data-fam="none" onclick="setFam('none')"><span data-en>None</span><span data-bm>Tiada</span></button>
             <button class="sex-btn"        data-fam="2nd"  onclick="setFam('2nd')"><span data-en>Grandparent / aunt / uncle</span><span data-bm>Datuk / nenek / pak cik / mak cik</span></button>
             <button class="sex-btn"        data-fam="1st"  onclick="setFam('1st')"><span data-en>Parent / sibling / child</span><span data-bm>Ibu bapa / adik-beradik / anak</span></button>
           </div>
@@ -1666,14 +1666,14 @@
         <div class="form-group full">
           <label><span data-en>Family history of heart attack before age 60?</span><span data-bm>Adakah ahli keluarga pernah diserang jantung sebelum umur 60?</span></label>
           <div class="sex-toggle">
-            <button class="sex-btn active" data-fhx="no"  onclick="setFhx('no')"><span data-en>No</span><span data-bm>Tidak</span></button>
+            <button class="sex-btn" data-fhx="no"  onclick="setFhx('no')"><span data-en>No</span><span data-bm>Tidak</span></button>
             <button class="sex-btn"        data-fhx="yes" onclick="setFhx('yes')"><span data-en>Yes</span><span data-bm>Ya</span></button>
           </div>
         </div>
         <div class="form-group full" id="gdmRow" style="display:none">
           <label><span data-en>Ever had gestational diabetes?</span><span data-bm>Pernah menghidap diabetes semasa hamil?</span></label>
           <div class="sex-toggle">
-            <button class="sex-btn active" data-gdm="no"  onclick="setGdm('no')"><span data-en>No</span><span data-bm>Tidak</span></button>
+            <button class="sex-btn" data-gdm="no"  onclick="setGdm('no')"><span data-en>No</span><span data-bm>Tidak</span></button>
             <button class="sex-btn"        data-gdm="yes" onclick="setGdm('yes')"><span data-en>Yes</span><span data-bm>Ya</span></button>
           </div>
         </div>
@@ -1691,7 +1691,7 @@
         <div class="form-group full">
           <label><span data-en>Smoking status</span><span data-bm>Status merokok</span></label>
           <div class="sex-toggle" style="grid-template-columns:1fr 1fr 1fr">
-            <button class="sex-btn active" data-smk="never"   onclick="setSmk('never')"><span data-en>Never</span><span data-bm>Tidak pernah</span></button>
+            <button class="sex-btn" data-smk="never"   onclick="setSmk('never')"><span data-en>Never</span><span data-bm>Tidak pernah</span></button>
             <button class="sex-btn"        data-smk="ex"      onclick="setSmk('ex')"><span data-en>Ex-smoker</span><span data-bm>Bekas perokok</span></button>
             <button class="sex-btn"        data-smk="current" onclick="setSmk('current')"><span data-en>Current</span><span data-bm>Perokok</span></button>
           </div>
@@ -1701,13 +1701,13 @@
           <div class="sex-toggle" style="grid-template-columns:1fr 1fr 1fr">
             <button class="sex-btn" data-act="sedentary" onclick="setAct('sedentary')"><span data-en>Low (&lt;3×/week)</span><span data-bm>Rendah (&lt;3×/minggu)</span></button>
             <button class="sex-btn" data-act="moderate"  onclick="setAct('moderate')"><span data-en>Moderate (3–4×/week)</span><span data-bm>Sederhana (3–4×/minggu)</span></button>
-            <button class="sex-btn active" data-act="active" onclick="setAct('active')"><span data-en>Active (&gt;4×/week)</span><span data-bm>Aktif (&gt;4×/minggu)</span></button>
+            <button class="sex-btn" data-act="active" onclick="setAct('active')"><span data-en>Active (&gt;4×/week)</span><span data-bm>Aktif (&gt;4×/minggu)</span></button>
           </div>
         </div>
         <div class="form-group full">
           <label><span data-en>Eat vegetables or fruit every day?</span><span data-bm>Makan sayur atau buah setiap hari?</span></label>
           <div class="sex-toggle">
-            <button class="sex-btn active" data-diet="yes" onclick="setDiet('yes')"><span data-en>Yes</span><span data-bm>Ya</span></button>
+            <button class="sex-btn" data-diet="yes" onclick="setDiet('yes')"><span data-en>Yes</span><span data-bm>Ya</span></button>
             <button class="sex-btn"        data-diet="no"  onclick="setDiet('no')"><span data-en>No</span><span data-bm>Tidak</span></button>
           </div>
         </div>
@@ -1715,13 +1715,13 @@
           <label><span data-en>Eat fried, fatty, or heavily salted food daily?</span><span data-bm>Makan makanan goreng, berlemak, atau masin setiap hari?</span></label>
           <div class="sex-toggle">
             <button class="sex-btn" data-junk="yes" onclick="setJunk('yes')"><span data-en>Yes</span><span data-bm>Ya</span></button>
-            <button class="sex-btn active" data-junk="no" onclick="setJunk('no')"><span data-en>No</span><span data-bm>Tidak</span></button>
+            <button class="sex-btn" data-junk="no" onclick="setJunk('no')"><span data-en>No</span><span data-bm>Tidak</span></button>
           </div>
         </div>
         <div class="form-group full">
           <label><span data-en>How often do you feel stressed, anxious, or low in mood?</span><span data-bm>Seberapa kerap anda rasa tertekan, cemas, atau sedih?</span></label>
           <div class="sex-toggle" style="grid-template-columns:1fr 1fr 1fr">
-            <button class="sex-btn active" data-stress="rarely"    onclick="setStress('rarely')"><span data-en>Rarely</span><span data-bm>Jarang</span></button>
+            <button class="sex-btn" data-stress="rarely"    onclick="setStress('rarely')"><span data-en>Rarely</span><span data-bm>Jarang</span></button>
             <button class="sex-btn"        data-stress="sometimes" onclick="setStress('sometimes')"><span data-en>Sometimes</span><span data-bm>Kadang-kadang</span></button>
             <button class="sex-btn"        data-stress="often"     onclick="setStress('often')"><span data-en>Often</span><span data-bm>Kerap</span></button>
           </div>
@@ -2358,7 +2358,8 @@ const LANG = {
 
 function getLang() { return document.documentElement.getAttribute('data-lang')==='bm' ? LANG.bm : LANG.en; }
 
-let sex='male', act='active', diet='yes', smk='never', bp='no', glc='no', fam='none', gdm='no', fhx='no', junk='no', stress='rarely';
+// No preselected answers: each must be chosen explicitly (null = unanswered).
+let sex=null, act=null, diet=null, smk=null, bp=null, glc=null, fam=null, gdm=null, fhx=null, junk=null, stress=null;
 let S={}, chart=null, showPop=false, msScatterChart=null;
 let msSFilter={sex:'male',age:'all'}, msUserPt={bmi:22,wc:80};
 let currentStep = 1;
@@ -2377,7 +2378,15 @@ function goStep(n) {
   document.querySelector('.form-card').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
+function unansweredMsg(){return document.documentElement.getAttribute('data-lang')==='bm'?'Sila jawab semua soalan sebelum meneruskan.':'Please answer every question before continuing.';}
+function stepAnswered(n){
+  if(n===1)return sex!==null;
+  if(n===3)return bp!==null&&glc!==null&&fam!==null&&fhx!==null&&(sex!=='female'||gdm!==null);
+  if(n===4)return smk!==null&&act!==null&&diet!==null&&junk!==null&&stress!==null;
+  return true;
+}
 function validateStep(n) {
+  if(!stepAnswered(n)){alert(unansweredMsg());return false;}
   if(n===1){const age=parseInt(document.getElementById('inAge').value);if(!age||age<10||age>110){alert('Please enter a valid age.');return false;}}
   if(n===2){const w=parseFloat(document.getElementById('inWeight').value),h=parseFloat(document.getElementById('inHeight').value),wc=parseFloat(document.getElementById('inWaist').value);if(!w||!h||!wc){alert('Please enter weight, height, and waist circumference.');return false;}}
   return true;
@@ -2404,10 +2413,10 @@ function setFhx(v){fhx=v;document.querySelectorAll('[data-fhx]').forEach(b=>b.cl
 function setGdm(v){gdm=v;document.querySelectorAll('[data-gdm]').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-gdm="${v}"]`).classList.add('active');}
 
 function calcBMI(w,h){return w/((h/100)**2);}
-function whtR(waist,h){const r=(waist/h).toFixed(2);return{val:r,risk:r>=0.6?'high':r>=0.5?'mod':'low',cat:r>=0.6?'High risk':r>=0.5?'Elevated':'Healthy'};}
+function whtR(waist,h){const x=waist/h,r=x.toFixed(2);return{val:r,risk:x>=0.6?'high':x>=0.5?'mod':'low',cat:x>=0.6?'High risk':x>=0.5?'Elevated':'Healthy'};}
 function bmiThresholds(age){if(age>=70)return{low:18.5,healthy:[22.0,26.9],overweight:27.0,label:'70+'};if(age>=60)return{low:18.5,healthy:[20.0,24.9],overweight:25.0,label:'60–69'};return{low:18.5,healthy:[18.5,22.9],overweight:23.0,label:'18–59'};}
 function bmiCat(b,age){const t=bmiThresholds(age||35);if(b<t.low)return{cat:'Underweight',risk:'mod'};if(b<=t.healthy[1])return{cat:'Healthy',risk:'low'};if(b<t.overweight+4.5)return{cat:'Overweight',risk:'mod'};return{cat:'Obese',risk:'high'};}
-function waistCat(w,s){const t1=s==='male'?90:80,t2=s==='male'?100:90;if(w<t1)return{cat:'Normal',risk:'low'};if(w<t2)return{cat:'Elevated',risk:'mod'};return{cat:'High risk',risk:'high'};}
+function waistCat(w,s){const t1=s==='male'?90:80,t2=s==='male'?100:88;if(w<t1)return{cat:'Normal',risk:'low'};if(w<t2)return{cat:'Elevated',risk:'mod'};return{cat:'High risk',risk:'high'};}
 
 const MS_BMI={male:{18:23.8,30:25.6,40:26.1,50:25.8,60:24.9},female:{18:23.2,30:25.8,40:27.4,50:28.1,60:26.8}};
 const MS_WC={male:{18:82.0,30:88.5,40:91.2,50:90.8,60:89.4},female:{18:77.5,30:81.2,40:85.6,50:87.3,60:85.9}};
@@ -2481,12 +2490,15 @@ const msRCol=r=>r==='high'?'#ff003d':r==='mod'?'#ff8c00':'#16a34a';
 const msPillCls=r=>r==='high'?'ms-pr':r==='mod'?'ms-pa':'ms-pg';
 
 const MS_METRICS=[
-  {key:'bmi',plain:'BMI',tip:'Body Mass Index. Asian obesity threshold is 27.5.',unit:'kg/m²',min:15,max:42,t1:23,t2:27.5,t1l:'23',t2l:'27.5',
-    riskFn:v=>v>=27.5?'high':v>=23?'mod':'low',dispFn:v=>v.toFixed(1),
-    plainFn:v=>v>=27.5?`Your BMI of ${v.toFixed(1)} is above the Asian obesity threshold of 27.5.`:v>=23?`Your BMI of ${v.toFixed(1)} is in the overweight range for Malaysians.`:`Your BMI of ${v.toFixed(1)} is in the healthy range for Malaysians.`},
+  // BMI thresholds come from bmiThresholds()/bmiCat() so the card always agrees with the summary strip (age-adjusted).
+  {key:'bmi',plain:'BMI',tip:'Body Mass Index, WHO Asia-Pacific cutoffs, adjusted for age 60+.',unit:'kg/m²',min:15,max:42,
+    t1fn:(s,a)=>bmiThresholds(a).overweight,t2fn:(s,a)=>bmiThresholds(a).overweight+4.5,
+    t1lFn:(s,a)=>String(bmiThresholds(a).overweight),t2lFn:(s,a)=>String(bmiThresholds(a).overweight+4.5),
+    riskFn:(v,sx,a)=>bmiCat(v,a).risk,dispFn:v=>v.toFixed(1),
+    plainFn:(v,sx,a)=>{const c=bmiCat(v,a).cat;return c==='Obese'?`Your BMI of ${v.toFixed(1)} is in the obese range for Malaysians your age.`:c==='Overweight'?`Your BMI of ${v.toFixed(1)} is in the overweight range for Malaysians your age.`:c==='Underweight'?`Your BMI of ${v.toFixed(1)} is below the healthy range.`:`Your BMI of ${v.toFixed(1)} is in the healthy range for Malaysians your age.`;}},
   {key:'wc',plain:'Belly size',tip:'Waist circumference — the single strongest predictor of metabolic disease in Asian populations.',unit:'cm',min:55,max:130,
     t1fn:s=>s==='male'?90:80,t2fn:s=>s==='male'?100:88,t1lFn:s=>s==='male'?'90 cm':'80 cm',t2lFn:s=>s==='male'?'100 cm':'88 cm',
-    riskFn:(v,sx)=>sx==='male'?(v>=100?'high':v>=90?'mod':'low'):(v>=88?'high':v>=80?'mod':'low'),dispFn:v=>Math.round(v),
+    riskFn:(v,sx)=>waistCat(v,sx).risk,dispFn:v=>Math.round(v),
     plainFn:(v,sx)=>{const t=sx==='male'?90:80,t2=sx==='male'?100:88;return v>=t2?`At ${Math.round(v)} cm your waist significantly exceeds the risk threshold.`:v>=t?`At ${Math.round(v)} cm your waist is above the healthy threshold.`:`At ${Math.round(v)} cm your waist is within the healthy range.`;}},
   {key:'whtr',plain:'Belly vs your height',tip:'Waist-to-Height Ratio. Keep your waist below half your height.',unit:'',min:0.3,max:0.8,t1:0.5,t2:0.6,t1l:'0.50',t2l:'0.60',
     riskFn:v=>v>=0.6?'high':v>=0.5?'mod':'low',dispFn:v=>v.toFixed(2),
@@ -2577,13 +2589,13 @@ function msDrawDial(score,riskCol){
   ctx.beginPath();ctx.arc(cx,cy,3,0,Math.PI*2);ctx.fillStyle='#f4e9e1';ctx.fill();
 }
 
-function msBuildBar(def,value,sx){
-  const t1=def.t1fn?def.t1fn(sx):def.t1,t2=def.t2fn?def.t2fn(sx):def.t2;
-  const t1l=def.t1lFn?def.t1lFn(sx):String(t1),t2l=def.t2lFn?def.t2lFn(sx):String(t2);
+function msBuildBar(def,value,sx,age){
+  const t1=def.t1fn?def.t1fn(sx,age):def.t1,t2=def.t2fn?def.t2fn(sx,age):def.t2;
+  const t1l=def.t1lFn?def.t1lFn(sx,age):String(t1),t2l=def.t2lFn?def.t2lFn(sx,age):String(t2);
   const mn=def.min,mx=def.max,total=mx-mn;
   const p1=((t1-mn)/total*100).toFixed(1),p2=((t2-mn)/total*100).toFixed(1);
   const pU=((Math.max(mn,Math.min(mx,value))-mn)/total*100).toFixed(1);
-  const risk=def.riskFn(value,sx);
+  const risk=def.riskFn(value,sx,age);
   return `<div class="ms-barw"><div class="ms-btrack" style="background:transparent;position:relative">
     <div class="ms-bseg g" style="left:0;width:${p1}%"></div>
     <div class="ms-bseg a" style="left:${p1}%;width:${parseFloat(p2)-parseFloat(p1)}%"></div>
@@ -2678,6 +2690,7 @@ function calculate(){
   const sbpRaw=document.getElementById('inSBP').value;
   const sbp=sbpRaw?parseFloat(sbpRaw):null;
   if(!age||!weight||!height||!waist){alert('Please complete all required fields.');return;}
+  if(![1,3,4].every(stepAnswered)){alert(unansweredMsg());return;}
 
   const B=calcBMI(weight,height),bc=bmiCat(B,age),wc=waistCat(waist,sex),wr=whtR(waist,height);
   const WR=msWHtR(waist,height),A=msABSI(waist,B,height),CO=msConi(waist,weight,height);
@@ -2698,7 +2711,7 @@ function calculate(){
   const worst=compositeVerdict;
   const rCol=msRCol(worst);
 
-  const metricRisks=MS_METRICS.map(m=>m.riskFn(({bmi:B,wc:waist,whtr:WR,absi:A,con:CO})[m.key],sex));
+  const metricRisks=MS_METRICS.map(m=>m.riskFn(({bmi:B,wc:waist,whtr:WR,absi:A,con:CO})[m.key],sex,age));
   const allRisks=[...metricRisks,frT.col];
   const worstMetric=allRisks.includes('high')?'high':allRisks.includes('mod')?'mod':'low';
   const fc=document.getElementById('ms-floor-callout'),fct=document.getElementById('ms-floor-callout-text');
@@ -2741,12 +2754,12 @@ function calculate(){
   const L=getLang();
   document.getElementById('ms-cards').innerHTML=allMetrics.map(m=>{
     const v=allVals[m.key];if(v===null||v===undefined)return'';
-    const risk=m.riskFn(v,sex),cardName=L.metricNames[m.key]||m.plain,pillText=L.pills[risk];
+    const risk=m.riskFn(v,sex,age),cardName=L.metricNames[m.key]||m.plain,pillText=L.pills[risk];
     const epCls=risk==='high'?'ms-epr':risk==='mod'?'ms-epa':'ms-epg';
     return `<div class="ms-mc" data-key="${m.key}" onclick="msToggleCard('${m.key}')">
       <div class="ms-mc-head"><div class="ms-mc-name">${cardName}</div><div class="ms-pill ${msPillCls(risk)}">${pillText}</div></div>
       <div class="ms-mc-val">${m.dispFn(v)}<span class="ms-mc-unit"> ${m.unit}</span></div>
-      <div class="ms-mc-expand">${msBuildBar(m,v,sex)}<div class="ms-eplain ${epCls}">${m.plainFn(v,sex)}</div><div class="ms-clinical-note">${m.tip}</div></div>
+      <div class="ms-mc-expand">${msBuildBar(m,v,sex,age)}<div class="ms-eplain ${epCls}">${m.plainFn(v,sex,age)}</div><div class="ms-clinical-note">${m.tip}</div></div>
       <div class="ms-mc-hint">${L.tapHint}</div>
     </div>`;
   }).join('');
